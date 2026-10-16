@@ -7,6 +7,8 @@ import { DetailPanel } from "./ui/DetailPanel";
 
 const Overview = lazy(() => import("./views/Overview"));
 const Placeholder = lazy(() => import("./views/Placeholder"));
+const Traces = lazy(() => import("./views/Traces"));
+const Graph = lazy(() => import("./views/Graph"));
 
 export default function App() {
   const { load, core, error, setScope, select } = useAtlas();
@@ -29,6 +31,8 @@ export default function App() {
   if (error) view = <div className="error glass"><h2>Data unavailable</h2><p className="muted" style={{ marginTop: 8 }}>{error}</p></div>;
   else if (!core) view = <div className="loading">Loading the atlas</div>;
   else if (route.view === "overview" || route.view === "node") view = <Overview />;
+  else if (route.view === "traces") view = <Traces />;
+  else if (route.view === "graph") view = <Graph />;
   else view = <Placeholder view={route.view} />;
 
   return (
