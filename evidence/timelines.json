@@ -1,0 +1,98 @@
+[
+  {
+    "id": "tl-card-lifecycle-dual-message",
+    "name": "Card payment lifecycle (dual-message, illustrative clocks)",
+    "phases": [
+      {
+        "name": "Authentication (optional EMV 3DS for CNP)",
+        "what": "Merchant sends transaction, payment method and device data; frictionless or step-up (OTP, knowledge-based, biometrics). Timing not publicly specified.",
+        "sync": "sync",
+        "sourceIds": [
+          "src-standards-emvco-3ds"
+        ]
+      },
+      {
+        "name": "Authorisation",
+        "what": "Real-time request/response (ISO 8583 0100/0110 class, secondary) checking validity, status and funds; creates issuer hold and merchant record; moves no final funds. Notes summarise this clock as seconds; no timeout values publicly specified.",
+        "sync": "sync",
+        "sourceIds": [
+          "src-cards-crossborder-phillyfed",
+          "src-cards-crossborder-wiki-iso8583"
+        ]
+      },
+      {
+        "name": "Hold validity",
+        "what": "Uncaptured authorisations expire and release funds; vendor windows 2 to 7 days by brand and channel (Visa CNP merchant-initiated exactly 4 days 18 hours).",
+        "sync": "async",
+        "sourceIds": [
+          "src-cards-crossborder-stripe-hold"
+        ]
+      },
+      {
+        "name": "Capture",
+        "what": "Merchant choice within hold window; partial capture releases remainder; most payments allow one capture.",
+        "sync": "async",
+        "sourceIds": [
+          "src-cards-crossborder-stripe-hold"
+        ]
+      },
+      {
+        "name": "Clearing",
+        "what": "Merchant batches drafts at least daily; network routes to issuer; issuer match and drop; interchange assessed; usually within one day for dual-message.",
+        "sync": "batch",
+        "sourceIds": [
+          "src-cards-crossborder-phillyfed"
+        ]
+      },
+      {
+        "name": "Settlement",
+        "what": "Net positions per client bank at cutoff; usually about two days for dual-message; single-message tied to daily cutoff; US funds move within about an hour after cutoff; Monday to Friday.",
+        "sync": "batch",
+        "sourceIds": [
+          "src-cards-crossborder-phillyfed"
+        ]
+      },
+      {
+        "name": "Merchant funding",
+        "what": "Contractual credit by acquirer; most merchants within 24 hours of drafts entering settlement.",
+        "sync": "batch",
+        "sourceIds": [
+          "src-cards-crossborder-phillyfed"
+        ]
+      },
+      {
+        "name": "Posting",
+        "what": "Issuer posts the transaction when the clearing presentment is matched to the authorisation and releases the hold (illustrative model from notes).",
+        "sync": "batch",
+        "sourceIds": [
+          "src-cards-crossborder-phillyfed"
+        ]
+      },
+      {
+        "name": "Statementing",
+        "what": "Issuer statement cycle; cadence is an issuer choice not set in the sources opened. Issuer statements may not distinguish authorisations from captures (vendor).",
+        "sync": "batch",
+        "sourceIds": [
+          "src-cards-crossborder-stripe-hold"
+        ]
+      },
+      {
+        "name": "Reconciliation",
+        "what": "Notes model this as daily against network reports; cadence is an issuer and acquirer choice not set in the sources opened.",
+        "sync": "batch",
+        "sourceIds": []
+      },
+      {
+        "name": "Disputes",
+        "what": "Weeks to months; staged cycle per scheme rules; Mastercard first chargeback up to 120 days in most cases per secondary source (needs verification).",
+        "sync": "async",
+        "sourceIds": [
+          "src-uk-visa-rules",
+          "src-cards-crossborder-mc-chargeback",
+          "src-cards-crossborder-cbgurus"
+        ]
+      }
+    ],
+    "topic": "cards-crossborder"
+  }
+]

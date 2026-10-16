@@ -1,0 +1,144 @@
+{
+  "name": "fintech-atlas-evidence",
+  "asOf": "2026-10-15",
+  "generatedBy": "scripts/merge.ts",
+  "inputs": [
+    {
+      "file": "inputs/evidence/uk.json",
+      "sha256": "f787ecfcb04ca362903f1a6e6751673a5b84ed982dc8b025f82d464324fff1d5",
+      "bytes": 260826
+    },
+    {
+      "file": "inputs/evidence/us.json",
+      "sha256": "e3c1a9a019510b6913cbd70207217b8251d2e707bf622d923c6ab8c12572bd66",
+      "bytes": 239783
+    },
+    {
+      "file": "inputs/evidence/eu.json",
+      "sha256": "7c013a536d2f31ffc351e22c2001c17c0641cd191edc67abec2025503b698dcd",
+      "bytes": 265601
+    },
+    {
+      "file": "inputs/evidence/sg.json",
+      "sha256": "c3cd05e3b5ca3caafeac8f414c91096cf190d5f324c150febbe76159ee4efbfe",
+      "bytes": 200361
+    },
+    {
+      "file": "inputs/evidence/in.json",
+      "sha256": "933f48a40abda06aac81d5c76f4d217c7069a9a94cc6ef075f94be96f9b74174",
+      "bytes": 381168
+    },
+    {
+      "file": "inputs/evidence/cn.json",
+      "sha256": "de8960be8b07329fb69bbf54d2009287da119c4001d2c8e466417f1dc88a3736",
+      "bytes": 229191
+    },
+    {
+      "file": "inputs/evidence/cbdc.json",
+      "sha256": "4490c69e0cfdc5a3396f25e6f72c7c55cf03e6b055690275c8014dae24055f08",
+      "bytes": 219292
+    },
+    {
+      "file": "inputs/evidence/standards.json",
+      "sha256": "861d1a08e50846895e1ce9d1bd91fec1e5586ba499c3435fae7c0f917734babc",
+      "bytes": 279813
+    },
+    {
+      "file": "inputs/evidence/crypto.json",
+      "sha256": "12fbb0e3bee6bd33e6d1eb4bf4ffc0aa64a94882393dfe544c61df1cd0ca7696",
+      "bytes": 237857
+    },
+    {
+      "file": "inputs/evidence/cards-crossborder.json",
+      "sha256": "f36bd8c47443e22c334a95d51a15268493a4dc985401d629504728ca292c4fb0",
+      "bytes": 220373
+    },
+    {
+      "file": "inputs/evidence/banking-ops.json",
+      "sha256": "bb6060cce3ef1adaabdcbdcfb3ab3cfe2424409c7895418529aed45999957ffe",
+      "bytes": 205880
+    },
+    {
+      "file": "inputs/evidence/insurance-markets.json",
+      "sha256": "db01f17e9f0211608ea9050bfa86a64a7472efc675a2ccdb095f13fc779d8509",
+      "bytes": 201185
+    },
+    {
+      "file": "inputs/coverage-manifest.md",
+      "sha256": "cdd0709a81c6e40e66abf4ada6427709600d2096e24994353603f3fdaac08654",
+      "bytes": 3544
+    },
+    {
+      "file": "inputs/curated-aliases.json",
+      "sha256": "d5cbaf3448bcc0c4005e91eb35972a44aba6654b704fec6f39e6577913972af5",
+      "bytes": 2901
+    },
+    {
+      "file": "inputs/status-overrides.json",
+      "sha256": "b54b0e60ae59a7a08d88973ab76f40183b6bb2212d4ebcfa5f4ea0fef31220d0",
+      "bytes": 815
+    }
+  ],
+  "inputCounts": {
+    "sources": 677,
+    "entities": 798,
+    "relationships": 708,
+    "rules": 457,
+    "claims": 1306,
+    "scenarios": 24,
+    "journalEntries": 35,
+    "timelines": 1,
+    "operatingModels": 4,
+    "cbdcDesignDimensions": 11,
+    "crossReferences": 8,
+    "conflicts": 42,
+    "gaps": 282
+  },
+  "counts": {
+    "sources": 625,
+    "nodes": 737,
+    "edges": 705,
+    "rules": 442,
+    "claims": 1306,
+    "scenarios": 24,
+    "journal-entries": 35,
+    "timelines": 1,
+    "operating-models": 4,
+    "cbdc-design-dimensions": 11,
+    "cross-references": 8,
+    "conflicts": 42,
+    "gaps": 282,
+    "id-aliases": 87,
+    "merge-log": 593,
+    "stub-nodes": 1
+  },
+  "claimsByStatus": {
+    "conflicting": 30,
+    "needs_verification": 57,
+    "supported": 454,
+    "verified": 765
+  },
+  "nodesByModule": {
+    "capital_markets": 16,
+    "cbdc": 42,
+    "core": 616,
+    "crypto": 40,
+    "insurance": 23
+  },
+  "mergeSummary": {
+    "duplicate_merged": 115,
+    "id_alias": 31,
+    "id_collision_split": 2,
+    "reference_rewritten": 46,
+    "scalar_disagreement": 313,
+    "settlement_filled": 56,
+    "status_change": 1,
+    "stub_created": 1,
+    "unresolved_label": 28,
+    "node_alias_ids": 30,
+    "rule_alias_ids": 5,
+    "source_alias_ids": 52,
+    "edge_alias_ids": 0,
+    "rejected_name_matches": 8
+  }
+}

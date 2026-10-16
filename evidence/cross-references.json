@@ -1,0 +1,58 @@
+[
+  {
+    "id": "xref-banking-ops-1",
+    "topic": "banking-ops",
+    "subject": "India tiered eKYC",
+    "pointer": "in.md section 5 (RBI KYC Directions 2025)",
+    "summary": "OTP-based e-KYC accounts capped (INR 1 lakh balance, INR 2 lakh credits a year, one year to complete full CDD); V-CIP controls; CKYCR upload within 10 days. No URL cited in banking-ops notes."
+  },
+  {
+    "id": "xref-banking-ops-2",
+    "topic": "banking-ops",
+    "subject": "UK VRP",
+    "pointer": "uk.md section 4",
+    "summary": "Commercial VRP scheme run by UKPI live from 2 Jun 2026 (wave 1: regulated financial services, government, utilities, rail); layered on OBL APIs and settled over FPS. No URL cited in banking-ops notes."
+  },
+  {
+    "id": "xref-banking-ops-3",
+    "topic": "banking-ops",
+    "subject": "US Section 1033",
+    "pointer": "us.md Q4",
+    "summary": "Rule on the books but enjoined and under reconsideration; model integrations as contractual/FDX-based."
+  },
+  {
+    "id": "xref-banking-ops-4",
+    "topic": "banking-ops",
+    "subject": "Payment sanctions screening",
+    "pointer": "us.md Q1; eu.md (SCT Inst)",
+    "summary": "OFAC SDN blocking, 50% rule, 10-business-day reporting; EU Instant Payments Regulation daily customer screening against EU sanctions lists instead of per-transaction screening."
+  },
+  {
+    "id": "xref-banking-ops-5",
+    "topic": "banking-ops",
+    "subject": "EU instant payment timeouts",
+    "pointer": "eu.md (SCT Inst, EPC source)",
+    "summary": "If the 10-second maximum cannot be met, the payer PSP must immediately restore the payer's account."
+  },
+  {
+    "id": "xref-banking-ops-6",
+    "topic": "banking-ops",
+    "subject": "Nostro/vostro entries and card clearing",
+    "pointer": "cards-crossborder.json",
+    "summary": "Bank A's INR account at Bank C is A's nostro and C's vostro; Bank C credits via its settlement account at the central bank."
+  },
+  {
+    "id": "xref-banking-ops-7",
+    "topic": "banking-ops",
+    "subject": "Central bank account access",
+    "pointer": "us.md (master accounts), uk.md (RTGS non-bank access), eu.md (T2/TIPS)",
+    "summary": "Pointers only."
+  },
+  {
+    "id": "xref-banking-ops-8",
+    "topic": "banking-ops",
+    "subject": "LSP and DLG detail",
+    "pointer": "in.md section 4",
+    "summary": "LSP fund-flow rule not re-verified in banking-ops."
+  }
+]

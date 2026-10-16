@@ -1,0 +1,470 @@
+[
+  {
+    "id": "conf-uk-1",
+    "subject": "PSR legal status",
+    "sourceA": "src-uk-fstech-crossborder",
+    "sourceB": "src-uk-bratby-fsm-bill",
+    "description": "FSTech (16 Jan 2026) says the PSR has since been merged into the FCA; Bratby and the Bill's progress show the PSR ceases to exist only on commencement of the FSM Bill 2026, which had not been enacted or commenced on the evidence found. As of Oct 2026 the PSR still exists in law.",
+    "topic": "uk",
+    "jurisdictions": [
+      "UK"
+    ]
+  },
+  {
+    "id": "conf-uk-2",
+    "subject": "Live tokenised central bank money cash leg",
+    "sourceA": "src-uk-boe-dp-progress",
+    "sourceB": "src-uk-boe-wholesale",
+    "description": "The March 2026 digital pound progress update says a live system already settles the sterling cash leg of tokenised transactions using tokenised central bank money (unnamed); the July 2026 wholesale innovation page confirms no live tokenised central bank money cash leg.",
+    "topic": "uk",
+    "jurisdictions": [
+      "UK"
+    ]
+  },
+  {
+    "id": "conf-us-1",
+    "subject": "FedNow $1M limit date",
+    "sourceA": "src-us-frbs-fednow-risk-2025",
+    "sourceB": "src-us-digitaltransactions-fednow",
+    "description": "Fed press release dates the $1M limit to 24 Jun 2025; Digital Transactions says March 2025 (probably the announcement).",
+    "topic": "us",
+    "jurisdictions": [
+      "US"
+    ]
+  },
+  {
+    "id": "conf-us-2",
+    "subject": "Section 1033 pre-injunction compliance date",
+    "sourceA": "src-us-mva-1033",
+    "sourceB": "src-us-obt-1033",
+    "description": "Moore and Van Allen says prior court orders extended compliance to 30 Jun 2026; Open Banking Tracker says no 30 Jun 2026 deadline exists (first tier 1 Apr 2026).",
+    "topic": "us",
+    "jurisdictions": [
+      "US"
+    ]
+  },
+  {
+    "id": "conf-us-3",
+    "subject": "ROAD to Housing Act enactment date",
+    "sourceA": "src-us-hfsc-road",
+    "sourceB": "src-us-theblock-road",
+    "description": "House FSC press release says it became law 'today' (11 Jul 2026); The Block implies 10 Jul 2026.",
+    "topic": "us",
+    "jurisdictions": [
+      "US"
+    ]
+  },
+  {
+    "id": "conf-us-4",
+    "subject": "RTP daily value",
+    "sourceA": "src-us-tch-rtp",
+    "sourceB": "src-us-tch-rtp",
+    "description": "Same TCH page: $6.9B daily average value in body vs 'over $4B daily' in page meta.",
+    "topic": "us",
+    "jurisdictions": [
+      "US"
+    ]
+  },
+  {
+    "id": "conf-us-5",
+    "subject": "Payment Account pause scope",
+    "sourceA": "src-us-fr-payment-account",
+    "sourceB": "src-us-mayerbrown-eo",
+    "description": "Federal Register extract implies Tier 3 decisions paused; Mayer Brown says Tier 2 and Tier 3.",
+    "topic": "us",
+    "jurisdictions": [
+      "US"
+    ]
+  },
+  {
+    "id": "conf-eu-1",
+    "subject": "SCT Inst execution time",
+    "sourceA": "src-eu-epc-sct-inst",
+    "sourceB": "src-eu-epc122-16-ig",
+    "description": "EPC scheme page states 9 s maximum execution time; EPC IG 2025 describes a 5-second target maximum execution time; IPR legal maximum is 10 s.",
+    "topic": "eu",
+    "jurisdictions": [
+      "EU"
+    ]
+  },
+  {
+    "id": "conf-eu-2",
+    "subject": "SCT Inst maximum amount",
+    "sourceA": "src-eu-epc-sct-inst",
+    "sourceB": "src-eu-epc-sct-inst",
+    "description": "Same EPC page: meta description says up to 15,000 euros; body says no scheme-level maximum.",
+    "topic": "eu",
+    "jurisdictions": [
+      "EU"
+    ]
+  },
+  {
+    "id": "conf-eu-3",
+    "subject": "End of unstructured addresses",
+    "sourceA": "src-eu-epc122-16-ig",
+    "sourceB": "src-eu-epc-sct-inst-rb-v12",
+    "description": "IG says unstructured addresses end 15 Nov 2026; rulebook v1.2 postpones with no new date (v1.2 prevails).",
+    "topic": "eu",
+    "jurisdictions": [
+      "EU"
+    ]
+  },
+  {
+    "id": "conf-eu-4",
+    "subject": "PSD3/PSR application period",
+    "sourceA": "src-eu-hl-psd3",
+    "sourceB": "src-eu-ftw-psd3",
+    "description": "18 months (Hogan Lovells) vs about 21 months (FinTech Weekly); OEIL stage labels also inconsistent (early second reading vs '1st reading' forecast).",
+    "topic": "eu",
+    "jurisdictions": [
+      "EU"
+    ]
+  },
+  {
+    "id": "conf-eu-5",
+    "subject": "IPR entry into force",
+    "sourceA": "src-eu-com-payment-services",
+    "sourceB": "src-eu-bbk-tips-reach",
+    "description": "8 Apr 2024 (Commission) vs 9 Apr 2024 (Bundesbank); the 20th day after 19 Mar publication is 8 April.",
+    "topic": "eu",
+    "jurisdictions": [
+      "EU",
+      "EA"
+    ]
+  },
+  {
+    "id": "conf-eu-6",
+    "subject": "Digital euro holding-limit setting under Council position",
+    "sourceA": "src-eu-freshfields-de",
+    "sourceB": "src-eu-agence-europe-de",
+    "description": "Council implementing decision on ECB recommendation (Freshfields) vs ECB sets limits within a Council ceiling (Agence Europe).",
+    "topic": "eu",
+    "jurisdictions": [
+      "EU"
+    ]
+  },
+  {
+    "id": "conf-eu-7",
+    "subject": "AMLR application date",
+    "sourceA": "src-eu-amlr-eli",
+    "sourceB": "src-eu-com-aml",
+    "description": "EUR-Lex ELI metadata labels 10 Jul 2027 as first in-force date; Commission says 'from 2027'.",
+    "topic": "eu",
+    "jurisdictions": [
+      "EU"
+    ]
+  },
+  {
+    "id": "conf-sg-1",
+    "subject": "Indonesia's status in Nexus Global Payments",
+    "sourceA": "src-sg-bis-nexus",
+    "sourceB": "src-sg-wiki-paynow",
+    "description": "BIS lists Bank Indonesia among the six central banks that incorporated NGP in 2025; Wikipedia says Bank Indonesia was a special observer until Feb 2026 when it became a full member.",
+    "topic": "sg",
+    "jurisdictions": [
+      "GLOBAL",
+      "SG"
+    ]
+  },
+  {
+    "id": "conf-sg-2",
+    "subject": "Number of benchmarked jurisdictions in PayNow Gen2 release",
+    "sourceA": "src-sg-abs-gen2-release",
+    "sourceB": "src-sg-abs-gen2-release",
+    "description": "The joint MAS and ABS release names 11 benchmarked jurisdictions but lists 10 (internal inconsistency).",
+    "topic": "sg",
+    "jurisdictions": [
+      "SG"
+    ]
+  },
+  {
+    "id": "conf-in-1",
+    "subject": "DPDP Rules 2025 notification date",
+    "sourceA": "src-in-azb-dpdp-phasing",
+    "sourceB": "src-in-pib-dpdp-explainer",
+    "description": "AZB and Partners gives notifications dated 13 Nov 2025; the PIB explainer gives 14 Nov 2025. Gazette not opened.",
+    "topic": "in",
+    "jurisdictions": [
+      "IN"
+    ]
+  },
+  {
+    "id": "conf-in-2",
+    "subject": "e₹-W call money pilot bank mix",
+    "sourceA": "src-in-business-standard-call-money",
+    "sourceB": "src-in-business-standard-call-money",
+    "description": "Business Standard says 4 public and 5 private banks, but replacing HSBC with Federal Bank in the nine-bank G-sec list yields 3 public and 6 private (internal inconsistency).",
+    "topic": "in",
+    "jurisdictions": [
+      "IN"
+    ]
+  },
+  {
+    "id": "conf-in-3",
+    "subject": "e₹ wallet bank count",
+    "sourceA": "src-in-rbi-erupee-faq",
+    "sourceB": "src-in-rbi-governor-gff2025",
+    "description": "RBI e₹ FAQ lists 20 rows of banks with Kotak twice (19 distinct); Governor cites 19 banks. Consistent after de-duplication; recorded for data hygiene.",
+    "topic": "in",
+    "jurisdictions": [
+      "IN"
+    ]
+  },
+  {
+    "id": "conf-in-4",
+    "subject": "UPI Lite per-transaction limit",
+    "sourceA": "src-in-npci-upi-lite",
+    "sourceB": "src-in-npci-upi-circulars",
+    "description": "NPCI UPI Lite page says below ₹500 per transaction; widely reported higher limits were not verified from any opened source and later circulars (OC 179, CC/01) were not opened.",
+    "topic": "in",
+    "jurisdictions": [
+      "IN"
+    ]
+  },
+  {
+    "id": "conf-cn-1",
+    "subject": "e-CNY cumulative transaction count",
+    "sourceA": "src-cn-xinhua-20251229",
+    "sourceB": "src-cn-suzhou-repost",
+    "description": "Xinhua Chinese reports 34.8亿笔 (3.48 billion); AI-summarised readings of the Suzhou repost and The Paper rendered it as 34.8 billion, a unit error. Correct figure is 3.48 billion.",
+    "topic": "cn",
+    "jurisdictions": [
+      "CN"
+    ]
+  },
+  {
+    "id": "conf-cn-2",
+    "subject": "e-CNY cumulative transaction count",
+    "sourceA": "src-cn-xinhua-20251229",
+    "sourceB": "src-cn-thepaper-20251230",
+    "description": "Same unit error in the reading of The Paper (34.8 billion vs correct 3.48 billion).",
+    "topic": "cn",
+    "jurisdictions": [
+      "CN"
+    ]
+  },
+  {
+    "id": "conf-cn-3",
+    "subject": "Monetary aggregate of e-CNY 2.0 balances",
+    "sourceA": "src-cn-cicc-sina-20260310",
+    "sourceB": "src-cn-xinhua-20260113",
+    "description": "CICC says 2.0 balances enter M1; PBOC-voice text says only by liquidity into the corresponding aggregate.",
+    "topic": "cn",
+    "jurisdictions": [
+      "CN"
+    ]
+  },
+  {
+    "id": "conf-cn-4",
+    "subject": "Location of non-bank 100% e-CNY margin",
+    "sourceA": "src-cn-cicc-sina-20260310",
+    "sourceB": "src-cn-lulei-article-aisixiang",
+    "description": "CICC says non-banks deposit 100% margin with the PBOC; Lu Lei and Xinhua say 100% e-CNY margin treated like customer reserve funds without naming where; Decree 768 Art. 29 allows reserve funds at the PBOC or approved banks.",
+    "topic": "cn",
+    "jurisdictions": [
+      "CN"
+    ]
+  },
+  {
+    "id": "conf-cn-5",
+    "subject": "Initial e-CNY operators",
+    "sourceA": "src-cn-sina-bbt-20260818",
+    "sourceB": "src-cn-wiki-digital-renminbi",
+    "description": "Sina/BBT says the pilot started with four big state banks; Wikipedia mentions six state-owned banks building apps. Both consistent with Industrial Bank as 10th in 2022; early count not settled by a primary source.",
+    "topic": "cn",
+    "jurisdictions": [
+      "CN"
+    ]
+  },
+  {
+    "id": "conf-cn-6",
+    "subject": "CBETS operating hours",
+    "sourceA": "src-cn-ithome-cctv-cbets",
+    "sourceB": "src-cn-xinhua-20260617",
+    "description": "IT之家/CCTV say 7x24 and Xinhua English says round-the-clock; the Xinhua Chinese report of 17 Jun 2026 does not state hours.",
+    "topic": "cn",
+    "jurisdictions": [
+      "CN"
+    ]
+  },
+  {
+    "id": "conf-cn-7",
+    "subject": "CIPS participant counts",
+    "sourceA": "src-cn-cips-en-home",
+    "sourceB": "src-cn-mpaypass-rmb-report-2026",
+    "description": "CIPS site gives 214 direct / 1,651 indirect (Sep 2026); PBOC report via mpaypass gives 210 / 1,619 (end-June 2026). Consistent as growth.",
+    "topic": "cn",
+    "jurisdictions": [
+      "CN"
+    ]
+  },
+  {
+    "id": "conf-cn-8",
+    "subject": "Relationship of e-CNY Center International to the DCI",
+    "sourceA": "src-cn-xinhua-gansu-cbets-20260617",
+    "sourceB": "src-cn-xinhua-20250926",
+    "description": "Xinhua English says the center operates CBETS under the guidance of the DCI; Xinhua Chinese says the center was set up and managed by the DCI.",
+    "topic": "cn",
+    "jurisdictions": [
+      "CN"
+    ]
+  },
+  {
+    "id": "conf-cn-9",
+    "subject": "CIPS Asia participant sub-count",
+    "sourceA": "src-cn-cips-en-home",
+    "sourceB": "src-cn-cips-en-home",
+    "description": "CIPS English home page shows Asia 148 direct / 1,157 indirect alongside a regional breakdown of Asia 1,176 indirect (internal inconsistency).",
+    "topic": "cn",
+    "jurisdictions": [
+      "CN"
+    ]
+  },
+  {
+    "id": "conf-cbdc-1",
+    "subject": "e-CNY liability classification",
+    "sourceA": "src-cbdc-imf-ftn-2025-006-pdf",
+    "sourceB": "src-cn-govcn-en-20251229",
+    "description": "IMF Fintech Note (Nov 2025) describes e-CNY as a direct PBOC liability unaffected by intermediary insolvency; the gov.cn/Xinhua report says that from 1 Jan 2026 e-CNY in commercial-bank wallets is classified as bank deposit liabilities. The PBOC change post-dates the IMF note.",
+    "topic": "cbdc",
+    "jurisdictions": [
+      "GLOBAL",
+      "CN"
+    ]
+  },
+  {
+    "id": "conf-cbdc-2",
+    "subject": "e-CNY remuneration",
+    "sourceA": "src-cbdc-imf-ftn-2025-006-pdf",
+    "sourceB": "src-cn-govcn-en-20251229",
+    "description": "IMF says e-CNY pays no interest; from 1 Jan 2026 bank-wallet e-CNY balances earn interest under deposit-rate rules.",
+    "topic": "cbdc",
+    "jurisdictions": [
+      "GLOBAL",
+      "CN"
+    ]
+  },
+  {
+    "id": "conf-cbdc-3",
+    "subject": "Agorá participant counts",
+    "sourceA": "src-cbdc-bis-agora-release-20260527",
+    "sourceB": "src-cbdc-bis-agora-page",
+    "description": "The 27 May 2026 release names seven central banks and says the Bank of Canada has joined (eight); participant lists show 27 named versus '28' stated. Needs reconciliation.",
+    "topic": "cbdc",
+    "jurisdictions": [
+      "GLOBAL"
+    ]
+  },
+  {
+    "id": "conf-cbdc-4",
+    "subject": "Helvetia pilot end date",
+    "sourceA": "src-cbdc-snb-release-20250630",
+    "sourceB": "src-cbdc-snb-helvetia",
+    "description": "SNB release of 30 Jun 2025 extended the pilot until at least mid-2027; the current SNB Helvetia page says until at least June 2028 (likely a later extension).",
+    "topic": "cbdc",
+    "jurisdictions": [
+      "CH"
+    ]
+  },
+  {
+    "id": "conf-cbdc-5",
+    "subject": "Count of live retail CBDCs",
+    "sourceA": "src-cbdc-bis-wp880",
+    "sourceB": "src-cbdc-sanddollar",
+    "description": "BIS WP 880 dataset (last updated March 2024) reported four live retail CBDCs; this pass names three (Sand Dollar, JAM-DEX, eNaira), consistent with Eastern Caribbean DCash no longer being counted, but no ECCB source was opened.",
+    "topic": "cbdc",
+    "jurisdictions": [
+      "GLOBAL",
+      "BS"
+    ]
+  },
+  {
+    "id": "conf-standards-1",
+    "subject": "ISO 20022 parts edition",
+    "sourceA": "src-standards-iso20022-about",
+    "sourceB": "src-standards-iso-20022-2",
+    "description": "iso20022.org says the current edition 'includes nine parts, published in April 2026', while the ISO catalogue still shows Part 2 as the 2013 edition (confirmed 2024). Safest record: Part 1 is a 2026 Edition 3; other parts per ISO catalogue, needs verification part by part.",
+    "topic": "standards",
+    "jurisdictions": [
+      "GLOBAL"
+    ]
+  },
+  {
+    "id": "conf-standards-2",
+    "subject": "CBPR+ structured address date",
+    "sourceA": "src-standards-swift-address-structuring",
+    "sourceB": "src-standards-swift-address-deferral",
+    "description": "Swift's address-structuring product page still says 'from November 2026'; the 27 August 2026 deferral notice (updated 21 September 2026) defers all payments changes. The deferral notice is newer and authoritative.",
+    "topic": "standards",
+    "jurisdictions": [
+      "GLOBAL"
+    ]
+  },
+  {
+    "id": "conf-crypto-1",
+    "subject": "BoE systemic stablecoin issuance cap currency",
+    "sourceA": "src-crypto-boe-systemic-stablecoin-20260622",
+    "sourceB": "src-crypto-coindesk-20260622",
+    "description": "BoE primary text sets a GBP 40bn temporary issuance guardrail per systemic stablecoin; CoinDesk reported 'USD 50 billion', a currency conversion.",
+    "topic": "crypto",
+    "jurisdictions": [
+      "UK"
+    ]
+  },
+  {
+    "id": "conf-crypto-2",
+    "subject": "Hong Kong first stablecoin licensees",
+    "sourceA": "src-crypto-hkma-20260410",
+    "sourceB": "src-crypto-elliptic-202604",
+    "description": "Elliptic's headline says licences went to 'HSBC and Standard Chartered'; the HKMA licensee is Anchorpoint Financial Limited (a joint venture associated with Standard Chartered), not Standard Chartered Bank itself.",
+    "topic": "crypto",
+    "jurisdictions": [
+      "HK"
+    ]
+  },
+  {
+    "id": "conf-crypto-3",
+    "subject": "Count of EMTs under MiCA",
+    "sourceA": "src-crypto-eba-mica-review-20260924",
+    "sourceB": "src-crypto-ross-substack-usdc",
+    "description": "EBA says 39 EMTs were issued under MiCA as of 1 September 2026; commentary says 45 EMTs are notified. Possibly different measures (issued vs notified) and dates.",
+    "topic": "crypto",
+    "jurisdictions": [
+      "EU"
+    ]
+  },
+  {
+    "id": "conf-cards-crossborder-1",
+    "subject": "Nexus Global Payments founding members",
+    "sourceA": "src-sg-bis-nexus",
+    "sourceB": "src-cards-crossborder-nexus-docs",
+    "description": "BIS says the central banks of India, Indonesia, Malaysia, Philippines, Singapore and Thailand incorporated Nexus Global Payments; Nexus documentation lists five countries (India, Malaysia, Philippines, Singapore, Thailand), omitting Indonesia.",
+    "topic": "cards-crossborder",
+    "jurisdictions": [
+      "GLOBAL"
+    ]
+  },
+  {
+    "id": "conf-banking-ops-1",
+    "subject": "Synapse shortfall size",
+    "sourceA": "src-banking-ops-pymnts-synapse",
+    "sourceB": "src-banking-ops-crowdfund-synapse",
+    "description": "PYMNTS (trustee report, Jun 2024) gives USD 65m to 96m; Crowdfund Insider (Dec 2025) gives USD 65m to 95m, notes USD 60m to 95m is also cited, and reports about USD 265m owed against USD 219m held.",
+    "topic": "banking-ops",
+    "jurisdictions": [
+      "US"
+    ]
+  },
+  {
+    "id": "conf-insurance-markets-1",
+    "subject": "EU T+1 legal status",
+    "sourceA": "src-insurance-markets-wiki-settlement",
+    "sourceB": "src-insurance-markets-eurlex-2025-2075-text",
+    "description": "Wikipedia describes the EU 11 October 2027 T+1 date only as an ESMA recommendation (November 2024); EUR-Lex shows Regulation (EU) 2025/2075 adopted, applying from 11 October 2027.",
+    "topic": "insurance-markets",
+    "jurisdictions": [
+      "GLOBAL",
+      "EU"
+    ]
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "om-full-licence-neobank",
+    "model": "Full-licence neobank (e.g. a UK bank post-mobilisation)",
+    "entityId": "global-model-full-licence-neobank",
+    "whoOwesCustomer": "The neobank (a bank)",
+    "protectionOnFailure": "DGS: FSCS GBP 120,000 (uk.md), FDIC USD 250,000 (us.md), DGSD EUR 100,000 (eu.md)",
+    "keyLedgerOwner": "Neobank's own core banking",
+    "sourceIds": [
+      "src-banking-ops-techeu-revolut"
+    ],
+    "notes": "Inference from findings; deposit limits from sibling notes.",
+    "topic": "banking-ops"
+  },
+  {
+    "id": "om-emi-neobank",
+    "model": "EMI-based neobank",
+    "entityId": "global-model-emi-neobank",
+    "whoOwesCustomer": "The EMI (e-money claim)",
+    "protectionOnFailure": "Safeguarded funds; UK special administration regime with objective to return relevant funds; no DGS",
+    "keyLedgerOwner": "EMI; safeguarding account at a credit institution reconciled to EMI ledger",
+    "sourceIds": [
+      "src-eu-emd2",
+      "src-banking-ops-uk-si-2021-716-note",
+      "src-banking-ops-gt-uk-insolvency"
+    ],
+    "notes": "Inference from findings.",
+    "topic": "banking-ops"
+  },
+  {
+    "id": "om-baas",
+    "model": "US sponsor-bank (BaaS)",
+    "entityId": "global-model-baas",
+    "whoOwesCustomer": "Sponsor bank (deposit in FBO/custodial account)",
+    "protectionOnFailure": "FDIC pass-through insurance against bank failure, only if records identify owners; nothing against fintech or middleware failure",
+    "keyLedgerOwner": "Should be bank; in practice often fintech or middleware (Synapse)",
+    "sourceIds": [
+      "src-banking-ops-mayer-fdic",
+      "src-banking-ops-pymnts-synapse"
+    ],
+    "notes": "Inference from findings.",
+    "topic": "banking-ops"
+  },
+  {
+    "id": "om-in-model-co-lending",
+    "model": "India co-lending / LSP",
+    "entityId": "in-model-co-lending",
+    "whoOwesCustomer": "Regulated entities (bank and NBFC) as lenders",
+    "protectionOnFailure": "Lender regulation; LSP is an agent, DLG capped",
+    "keyLedgerOwner": "Each RE books its share",
+    "sourceIds": [
+      "src-banking-ops-ksk-colending",
+      "src-banking-ops-rbi-colending"
+    ],
+    "notes": "Inference from findings; LSP and DLG detail in in.md section 4.",
+    "topic": "banking-ops"
+  }
+]

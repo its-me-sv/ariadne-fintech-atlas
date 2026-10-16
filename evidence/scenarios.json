@@ -1,0 +1,3782 @@
+[
+  {
+    "id": "scn-uk-fps-sip",
+    "name": "FPS Single Immediate Payment, Bank A customer to Bank B customer (both directly connected settling participants)",
+    "market": "UK",
+    "markets": [
+      "UK"
+    ],
+    "module": "core",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "Payer; Bank A",
+        "system": "Bank A app",
+        "action": "Payer authenticates in Bank A's app; strong customer authentication applies (PSRs 2017 reg 100).",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "No ledger change",
+        "controls": "Strong customer authentication",
+        "timing": null,
+        "failures": null,
+        "rules": [
+          "rule-uk-psrs-2017"
+        ],
+        "sourceIds": [
+          "src-uk-leg-psrs-2017"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "Bank A; Bank B",
+        "system": "Confirmation of Payee (peer to peer)",
+        "action": "For a new or amended payee, Bank A sends a CoP request API call to Bank B, which responds peer to peer (no central hub).",
+        "messageOrPayload": "CoP API request and response (format not publicly specified)",
+        "ledgerEffect": "No ledger change",
+        "controls": "Payee name check mandated by SD17",
+        "timing": null,
+        "failures": null,
+        "rules": [
+          "rule-uk-psr-sd17",
+          "rule-uk-payuk-cop-rules"
+        ],
+        "sourceIds": [
+          "src-uk-psr-sd17-2026",
+          "src-uk-payuk-cop"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "Bank A",
+        "system": "Bank A fraud, AML and sanctions controls",
+        "action": "Bank A runs fraud, AML and sanctions controls (MLRs 2017, OFSI consolidated list); if it has reasonable grounds to suspect APP fraud by D+1 it may hold the payment to end of D+4.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "No ledger change",
+        "controls": "MLRs 2017 CDD and monitoring; OFSI consolidated list screening; fraud hold",
+        "timing": "Hold decision by end of D+1; release no later than end of D+4",
+        "failures": "Payment held or refused on suspicion of fraud or sanctions match",
+        "rules": [
+          "rule-uk-mlrs-2017",
+          "rule-uk-ps-amendment-regs-2024"
+        ],
+        "sourceIds": [
+          "src-uk-leg-mlrs-2017",
+          "src-uk-govuk-ofsi",
+          "src-uk-regtomorrow-psamend-2024"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "Bank A",
+        "system": "Bank A limits; FPS",
+        "action": "Limit checks: £1m scheme maximum, the PSP's own lower limit, and the sender's Net Sender Cap for the current settlement cycle.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "No ledger change",
+        "controls": "Scheme limit, PSP limit, Net Sender Cap",
+        "timing": null,
+        "failures": "Payment rejected if limit or cap exceeded",
+        "rules": [],
+        "sourceIds": [
+          "src-uk-payuk-fps-types",
+          "src-uk-payuk-nsc"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 5,
+        "actor": "Bank A; Vocalink",
+        "system": "FPS central infrastructure (Vocalink)",
+        "action": "Bank A debits the payer's account and submits the payment to the FPS central infrastructure.",
+        "messageOrPayload": "not publicly specified (message format not verified in sources opened)",
+        "ledgerEffect": "Payer deposit at Bank A debited (commercial bank money)",
+        "controls": null,
+        "timing": null,
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-uk-payuk-vocalink-2025"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 6,
+        "actor": "FPS central infrastructure; Bank B",
+        "system": "FPS",
+        "action": "The central infrastructure routes the payment to Bank B, which accepts or rejects it in real time; Bank B credits the payee, usually almost immediately.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Payee deposit at Bank B credited (commercial bank money) before interbank settlement",
+        "controls": null,
+        "timing": "Usually almost immediate; legal maximum end of D+1 (reg 86)",
+        "failures": "Bank B rejects the payment",
+        "rules": [
+          "rule-uk-psrs-2017"
+        ],
+        "sourceIds": [
+          "src-uk-payuk-fps",
+          "src-uk-leg-psrs-2017"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 7,
+        "actor": "Bank of England; Bank A; Bank B",
+        "system": "RTGS",
+        "action": "At the next deferred net settlement cycle, the multilateral net positions of Bank A and Bank B are settled across their BoE accounts; prefunding in collateralisation accounts covers each net debit cap.",
+        "messageOrPayload": "n/a",
+        "ledgerEffect": "Central bank money moves between Bank A and Bank B BoE accounts (net)",
+        "controls": "Prefunded collateral up to net debit cap",
+        "timing": "Three cycles per business day per BoE 2017 and 2018 documents (2026 times need verification)",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-uk-boe-rtgs-pfmi-2017"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 8,
+        "actor": "Payer; Bank A; Bank B; FOS",
+        "system": "APP reimbursement process",
+        "action": "Exception path: if the payment was an APP scam, the payer claims from Bank A within 13 months; reimbursement due within 5 business days up to £85,000 per claim, cost split 50:50 between Bank A and Bank B; the payer can escalate to FOS (limit £455,000).",
+        "messageOrPayload": "n/a",
+        "ledgerEffect": "Reimbursement credited to payer; cost shared between sending and receiving PSPs",
+        "controls": null,
+        "timing": "Claim within 13 months; reimbursement within 5 business days",
+        "failures": "Gross negligence exception; excess up to £100 (not for vulnerable customers)",
+        "rules": [
+          "rule-uk-psr-sd20",
+          "rule-uk-psr-sd21",
+          "rule-uk-psr-ps24-7",
+          "rule-uk-fos-award-limits-2026"
+        ],
+        "sourceIds": [
+          "src-uk-psr-app",
+          "src-uk-fos-award-limits",
+          "src-uk-mttm-app"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Payee credited in commercial bank money within seconds; interbank obligation discharged later in central bank money at the next RTGS net settlement cycle, covered by prefunded collateral.",
+    "limitations": "FPS message format, current 2026 settlement cycle times and primary source on FPS returns or recalls were not verified. Customer credit is synchronous while interbank settlement is batch.",
+    "sourceIds": [
+      "src-uk-leg-psrs-2017",
+      "src-uk-psr-sd17-2026",
+      "src-uk-payuk-cop",
+      "src-uk-leg-mlrs-2017",
+      "src-uk-govuk-ofsi",
+      "src-uk-regtomorrow-psamend-2024",
+      "src-uk-payuk-fps-types",
+      "src-uk-payuk-nsc",
+      "src-uk-payuk-vocalink-2025",
+      "src-uk-payuk-fps",
+      "src-uk-boe-rtgs-pfmi-2017",
+      "src-uk-psr-app",
+      "src-uk-fos-award-limits",
+      "src-uk-mttm-app"
+    ],
+    "topic": "uk"
+  },
+  {
+    "id": "scn-uk-card-present",
+    "name": "UK card-present purchase on a UK-issued Visa debit card at a UK merchant",
+    "market": "UK",
+    "markets": [
+      "UK"
+    ],
+    "module": "core",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "Cardholder; merchant; acquirer",
+        "system": "Merchant terminal and acquirer",
+        "action": "Cardholder taps or inserts the card; terminal and acquirer build an authorisation request.",
+        "messageOrPayload": "not publicly specified (message format not specified in sources opened)",
+        "ledgerEffect": "No ledger change",
+        "controls": null,
+        "timing": null,
+        "failures": null,
+        "rules": [],
+        "sourceIds": [],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "Acquirer; Visa; issuer",
+        "system": "VisaNet",
+        "action": "The acquirer routes the authorisation via VisaNet to the issuer.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "No ledger change",
+        "controls": "Visa Core Rules 7.3: routing, declines, response time limits",
+        "timing": "Synchronous",
+        "failures": null,
+        "rules": [
+          "rule-global-visa-core-rules"
+        ],
+        "sourceIds": [
+          "src-uk-visa-rules"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "Issuer",
+        "system": "Issuer authorisation",
+        "action": "The issuer checks status, funds and fraud and approves or declines; on approval it places a hold on available funds.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Hold on cardholder available funds; no interbank funds move",
+        "controls": "Issuer status, funds and fraud checks",
+        "timing": null,
+        "failures": "Decline",
+        "rules": [],
+        "sourceIds": [],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "Merchant; acquirer; Visa",
+        "system": "Visa clearing",
+        "action": "Later, the merchant or acquirer submits the transaction for clearing (Visa Core Rules 7.5); interchange applies, capped at 0.2% for a domestic consumer debit card under the UK IFR.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Clearing records create receivables and payables",
+        "controls": "UK IFR 0.2% cap on domestic consumer debit interchange",
+        "timing": "Batch, asynchronous",
+        "failures": null,
+        "rules": [
+          "rule-global-visa-core-rules",
+          "rule-uk-ifr"
+        ],
+        "sourceIds": [
+          "src-uk-visa-rules",
+          "src-uk-psr-ifr"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 5,
+        "actor": "Visa; issuer and acquirer settlement banks; Bank of England",
+        "system": "RTGS",
+        "action": "Visa calculates net positions; sterling net settlement goes through RTGS in 24-hour cycles, weekend cycles settled next business day; issuer-side settlement banks pay and acquirer-side settlement banks receive.",
+        "messageOrPayload": "n/a",
+        "ledgerEffect": "Central bank money moves from issuer-side to acquirer-side settlement banks (net)",
+        "controls": null,
+        "timing": "24-hour cycles (2026 cycle time needs verification)",
+        "failures": null,
+        "rules": [
+          "rule-global-visa-core-rules"
+        ],
+        "sourceIds": [
+          "src-uk-boe-rtgs-pfmi-2017"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 6,
+        "actor": "Issuer; acquirer; merchant",
+        "system": "Issuer and acquirer ledgers",
+        "action": "The issuer posts the cleared transaction to the cardholder account; the acquirer funds the merchant net of fees on contractual timing.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Cardholder account debited; merchant account credited net of fees (commercial bank money)",
+        "controls": null,
+        "timing": "not publicly specified (contractual)",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 7,
+        "actor": "Cardholder; issuer; acquirer; merchant; FOS",
+        "system": "Visa dispute process",
+        "action": "Exceptions: disputes or chargebacks under Visa rules section 11; for a credit card, CCA s75 gives joint liability for items above £100 and up to £30,000; escalation to FOS.",
+        "messageOrPayload": "n/a",
+        "ledgerEffect": "Chargeback reverses acquirer and merchant credit",
+        "controls": null,
+        "timing": null,
+        "failures": "Dispute, chargeback",
+        "rules": [
+          "rule-global-visa-core-rules",
+          "rule-uk-cca-1974-s75"
+        ],
+        "sourceIds": [
+          "src-uk-visa-rules",
+          "src-uk-leg-cca-s75"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Merchant funded in commercial bank money; interbank positions settled net in central bank money in RTGS; issuer has debited the cardholder.",
+    "limitations": "Authorisation is synchronous and moves no funds; clearing and settlement are batch. Card message format, exact 2026 Visa settlement time, Mastercard UK settlement and acquirer-to-merchant funding norms are not sourced.",
+    "sourceIds": [
+      "src-uk-visa-rules",
+      "src-uk-psr-ifr",
+      "src-uk-boe-rtgs-pfmi-2017",
+      "src-uk-leg-cca-s75"
+    ],
+    "topic": "uk"
+  },
+  {
+    "id": "scn-us-card-cnp-credit",
+    "name": "US card-not-present credit card purchase",
+    "market": "US",
+    "markets": [
+      "US"
+    ],
+    "module": "core",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "Cardholder; merchant; gateway",
+        "system": "Merchant checkout to acquirer processor",
+        "action": "Card details submitted; authorisation request sent.",
+        "messageOrPayload": "not publicly specified (network formats; ISO 8583 not confirmed)",
+        "ledgerEffect": "None; no funds move",
+        "controls": "Merchant and PSP fraud screening; authentication per network rules",
+        "timing": "Synchronous",
+        "failures": "Decline, timeout, duplicate",
+        "rules": [
+          "rule-global-visa-core-rules"
+        ],
+        "sourceIds": [
+          "src-us-visa-rules"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "Network; issuer processor; issuer",
+        "system": "Card network authorisation",
+        "action": "Issuer approves or declines and places a hold against the credit line.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Issuer reduces open-to-buy; no settlement",
+        "controls": "Issuer fraud controls; OFAC applies to all US persons",
+        "timing": "Synchronous",
+        "failures": "Decline, reversal",
+        "rules": [
+          "rule-global-visa-core-rules",
+          "rule-us-ofac-sanctions"
+        ],
+        "sourceIds": [
+          "src-us-visa-rules",
+          "src-us-ofac-faqs"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "Merchant; acquirer",
+        "system": "Acquirer clearing",
+        "action": "Capture and submission of clearing records.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Acquirer records receivable from network and payable to merchant",
+        "controls": "Clearing per Visa s.7.5",
+        "timing": "Asynchronous batch (timing not sourced)",
+        "failures": "Late presentment, amount mismatch",
+        "rules": [
+          "rule-global-visa-core-rules"
+        ],
+        "sourceIds": [
+          "src-us-visa-rules"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "Network",
+        "system": "Visa clearing and settlement (s.7.7)",
+        "action": "Interchange and fees applied; net positions computed.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Issuer posts purchase to cardholder credit account; issuer owes network; acquirer is owed",
+        "controls": "Credit interchange is network-set; Reg II caps apply only to covered debit issuers, not credit",
+        "timing": "Batch (not sourced)",
+        "failures": "not sourced",
+        "rules": [
+          "rule-global-visa-core-rules",
+          "rule-us-reg-ii"
+        ],
+        "sourceIds": [
+          "src-us-visa-rules",
+          "src-us-frb-reg-ii"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 5,
+        "actor": "Settlement banks",
+        "system": "Interbank funding, typically by wire (specific settlement banks and timing not sourced)",
+        "action": "Net obligations funded.",
+        "messageOrPayload": "If Fedwire: ISO 20022 since 14 Jul 2025",
+        "ledgerEffect": "Reserve balances move between master accounts; final and irrevocable when credited",
+        "controls": "Fedwire hours 21:00 (prior day) to 19:00 ET",
+        "timing": "Within Fedwire business day",
+        "failures": "Funding shortfall",
+        "rules": [
+          "rule-us-reg-j-subpart-b"
+        ],
+        "sourceIds": [
+          "src-us-ecfr-reg-j-b",
+          "src-us-frbs-fedwire-iso-faq"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 6,
+        "actor": "Acquirer",
+        "system": "Merchant funding (often ACH; not sourced)",
+        "action": "Merchant paid net of fees.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Merchant deposit account credited (commercial bank money)",
+        "controls": "Merchant reserves (not sourced)",
+        "timing": "not sourced",
+        "failures": "Funding hold",
+        "rules": [
+          "rule-us-nacha-operating-rules"
+        ],
+        "sourceIds": [],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 7,
+        "actor": "Cardholder; issuer; acquirer; merchant",
+        "system": "Reg Z dispute plus network dispute",
+        "action": "Chargeback branch: cardholder notifies issuer; issuer may raise a chargeback; acquirer debits merchant or represents.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Disputed amount cannot be collected or reported delinquent during Reg Z investigation; chargeback reverses acquirer and merchant credit",
+        "controls": "Reg Z unauthorized use liability lesser of $50 or amount obtained; billing error notice within 60 days, acknowledge in 30 days, resolve in two billing cycles, max 90 days; claims and defenses for purchases over $50; Visa 10.1/10.2 EMV liability shift; Category 13 consumer disputes",
+        "timing": "Reg Z timelines as stated; network time limits not extracted",
+        "failures": "Representment, arbitration (not detailed)",
+        "rules": [
+          "rule-us-reg-z",
+          "rule-global-visa-core-rules"
+        ],
+        "sourceIds": [
+          "src-us-cfpb-1026-12",
+          "src-us-cfpb-1026-13",
+          "src-us-visa-rules"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Merchant funded in commercial bank money; issuer holds receivable from cardholder; interbank positions settled in central bank money. Debit-card variant: Reg E $50/$500 liability and 10-business-day error resolution (90 days for POS) replace Reg Z; Reg II routing and cap apply.",
+    "limitations": "Only steps 1 to 2 are real-time and no step before interbank funding moves central bank money. Card message formats, settlement bank arrangements and timing, and network dispute time limits are not confirmed; step 6 is inference with no source; Mastercard not researched.",
+    "sourceIds": [
+      "src-us-visa-rules",
+      "src-us-ofac-faqs",
+      "src-us-frb-reg-ii",
+      "src-us-ecfr-reg-j-b",
+      "src-us-frbs-fedwire-iso-faq",
+      "src-us-cfpb-1026-12",
+      "src-us-cfpb-1026-13"
+    ],
+    "topic": "us"
+  },
+  {
+    "id": "scn-us-ach-payroll",
+    "name": "ACH credit payroll, with ACH debit return branch",
+    "market": "US",
+    "markets": [
+      "US"
+    ],
+    "module": "core",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "Employer (non-consumer Originator); ODFI; possibly Third-Party Sender",
+        "system": "ODFI origination",
+        "action": "Payroll credit file submitted.",
+        "messageOrPayload": "Nacha file format (layouts not opened)",
+        "ledgerEffect": "ODFI debits or holds employer funds (practice not sourced)",
+        "controls": "Risk-based monitoring for unauthorized and False Pretenses entries (Phase 1 from 20 Mar 2026, Phase 2 from 19 Jun 2026); OFAC screening",
+        "timing": "Before operator deadline",
+        "failures": "File rejection; BEC or payroll diversion",
+        "rules": [
+          "rule-us-nacha-fraud-monitoring-2026",
+          "rule-us-nacha-operating-rules",
+          "rule-us-ofac-sanctions"
+        ],
+        "sourceIds": [
+          "src-us-nacha-fraud",
+          "src-us-ofac-faqs"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "ODFI; ACH Operator",
+        "system": "FedACH (or TCH EPN)",
+        "action": "File transmitted, sorted and distributed to RDFIs.",
+        "messageOrPayload": "Nacha format",
+        "ledgerEffect": "None until settlement",
+        "controls": "Operator deadlines",
+        "timing": "Same Day deposit deadlines 10:30, 14:45, 16:45 ET; next-day deadlines through 02:15 ET",
+        "failures": "Missed window rolls to next",
+        "rules": [
+          "rule-us-nacha-operating-rules"
+        ],
+        "sourceIds": [
+          "src-us-frbs-fedach-schedule"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "Federal Reserve Banks",
+        "system": "FedACH settlement",
+        "action": "Net settlement.",
+        "messageOrPayload": "n/a",
+        "ledgerEffect": "ODFI master account debited, RDFI master accounts credited (central bank money)",
+        "controls": "Same Day limit $1M per payment",
+        "timing": "Same Day settlement 13:00, 17:00 or 18:00 ET; next-day 08:30 ET",
+        "failures": "not sourced",
+        "rules": [
+          "rule-us-nacha-operating-rules"
+        ],
+        "sourceIds": [
+          "src-us-frbs-fedach-schedule",
+          "src-us-frbs-same-day-ach"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "RDFI",
+        "system": "Core banking",
+        "action": "Credit posted to employee.",
+        "messageOrPayload": "n/a",
+        "ledgerEffect": "Employee deposit balance increases (commercial bank money)",
+        "controls": "RDFI credit monitoring (Phase 1 RDFIs with 10M+ 2023 receipts from 20 Mar 2026; all from 19 Jun 2026); Reg CC: electronic payments available by the business day after receipt",
+        "timing": "Reg CC next business day",
+        "failures": "R02 account closed, R03 no account, R04 invalid number: return within 2 banking days",
+        "rules": [
+          "rule-us-nacha-fraud-monitoring-2026",
+          "rule-us-reg-cc"
+        ],
+        "sourceIds": [
+          "src-us-nacha-fraud",
+          "src-us-ecfr-reg-cc",
+          "src-us-epcor-returns"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 5,
+        "actor": "RDFI",
+        "system": "ACH return via operator",
+        "action": "Debit return branch (e.g. consumer bill-pay debit): R01 insufficient funds within 2 banking days, or R10 unauthorized or not recognized within 60 calendar days (written statement requirement not confirmed).",
+        "messageOrPayload": "Return entry with reason code",
+        "ledgerEffect": "Settlement reversed: RDFI recovers from ODFI, ODFI debits Originator",
+        "controls": "Reg E $50/$500 liability and error resolution (10 business days, extendable to 45/90 with provisional credit)",
+        "timing": "2 banking days / 60 calendar days",
+        "failures": "Late or dishonored return (not detailed)",
+        "rules": [
+          "rule-us-nacha-operating-rules",
+          "rule-us-reg-e"
+        ],
+        "sourceIds": [
+          "src-us-epcor-returns",
+          "src-us-cfpb-1005-6",
+          "src-us-cfpb-1005-11"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Employee credited in commercial bank money; interbank positions net settled in Reserve Bank accounts by the ACH Operator at fixed windows; returns follow Nacha timeframes.",
+    "limitations": "Reg J subpart C excludes ACH from FedNow payment orders and Nacha says its fraud rules do not alter UCC 4A liability. Nacha file and record formats, Same Day ACH funds availability deadlines and EPN mechanics not sourced.",
+    "sourceIds": [
+      "src-us-nacha-fraud",
+      "src-us-ofac-faqs",
+      "src-us-frbs-fedach-schedule",
+      "src-us-frbs-same-day-ach",
+      "src-us-ecfr-reg-cc",
+      "src-us-epcor-returns",
+      "src-us-cfpb-1005-6",
+      "src-us-cfpb-1005-11"
+    ],
+    "topic": "us"
+  },
+  {
+    "id": "scn-us-fednow-vs-rtp",
+    "name": "FedNow vs RTP instant credit transfer (comparison)",
+    "market": "US",
+    "markets": [
+      "US"
+    ],
+    "module": "core",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "Sender bank",
+        "system": "Sender bank channels (FedNow or RTP)",
+        "action": "Sender bank authenticates customer, screens fraud and OFAC, checks limits and debits customer.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Customer deposit debited (commercial bank money)",
+        "controls": "FedNow account activity thresholds by segment since Jun 2025; network limit $10M on both rails (FedNow since 12 Nov 2025, RTP since 9 Feb 2025); OFAC",
+        "timing": null,
+        "failures": null,
+        "rules": [
+          "rule-us-ofac-sanctions"
+        ],
+        "sourceIds": [
+          "src-us-frbs-fednow-risk-2025",
+          "src-us-frbs-fednow-limit-2025",
+          "src-us-aba-rtp-10m"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "Federal Reserve Banks",
+        "system": "FedNow",
+        "action": "FedNow validates and settles gross: reserve balances move from sender to receiver master account (or correspondents').",
+        "messageOrPayload": "ISO 20022 (message names not confirmed)",
+        "ledgerEffect": "Master account balances debited and credited; no prefunding",
+        "controls": "Reg J subpart C",
+        "timing": "Real time, 24x7x365",
+        "failures": "Insufficient balance (no overdraft right)",
+        "rules": [
+          "rule-us-reg-j-subpart-c"
+        ],
+        "sourceIds": [
+          "src-us-frbs-fednow-settlement",
+          "src-us-ecfr-reg-j-c",
+          "src-us-frbs-fednow-about"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "The Clearing House",
+        "system": "RTP",
+        "action": "RTP validates and settles by adjusting both banks' positions in the joint account ledger.",
+        "messageOrPayload": "ISO 20022 (message names not confirmed)",
+        "ledgerEffect": "RTP ledger positions in the RTP Prefunded Balance Account at FRBNY (central bank money) reallocated",
+        "controls": "RTP Operating Rules (not opened)",
+        "timing": "Real time, 24/7/365",
+        "failures": null,
+        "rules": [
+          "rule-us-tch-rtp-rules"
+        ],
+        "sourceIds": [
+          "src-us-frb-rtp-interest",
+          "src-us-tch-rtp"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "Receiving bank",
+        "system": "Receiving bank core",
+        "action": "Receiving bank credits the beneficiary immediately (FedNow obligation under Reg J subpart C; RTP under RTP Rules).",
+        "messageOrPayload": "n/a",
+        "ledgerEffect": "Beneficiary deposit credited (commercial bank money)",
+        "controls": "FedNow: extra-review notice for suspected fraud or sanctions; RTP: immediate availability subject to limited exceptions; Reg E applies where EFTA applies (EFTA prevails over Reg J subpart C)",
+        "timing": null,
+        "failures": null,
+        "rules": [
+          "rule-us-reg-j-subpart-c",
+          "rule-us-tch-rtp-rules",
+          "rule-us-reg-e"
+        ],
+        "sourceIds": [
+          "src-us-ecfr-reg-j-c",
+          "src-us-tch-rtp-institution"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 5,
+        "actor": "RTP participants; Federal Reserve Banks",
+        "system": "FedNow LMTs and Fedwire",
+        "action": "RTP participants top up joint account positions 24x7 via FedNow LMTs from master accounts, and via Fedwire in Fedwire hours (mechanics not sourced).",
+        "messageOrPayload": "n/a",
+        "ledgerEffect": "Master account balances move to or from the RTP joint account",
+        "controls": null,
+        "timing": "24x7 (FedNow LMT); Fedwire business hours",
+        "failures": null,
+        "rules": [
+          "rule-us-reg-j-subpart-c"
+        ],
+        "sourceIds": [
+          "src-us-frbs-fednow-settlement"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 6,
+        "actor": "Sender; sender bank; receiving bank",
+        "system": "FedNow or RTP exception handling",
+        "action": "Exceptions: FedNow allows 60 calendar days to report unauthorized or erroneous orders; RTP uses a request-for-return-of-funds message (no sender recall).",
+        "messageOrPayload": "RTP request for return of funds (message name not confirmed)",
+        "ledgerEffect": "Any return is a new credit transfer back",
+        "controls": null,
+        "timing": null,
+        "failures": "Unauthorized or erroneous payment",
+        "rules": [
+          "rule-us-reg-j-subpart-c",
+          "rule-us-tch-rtp-rules"
+        ],
+        "sourceIds": [
+          "src-us-ecfr-reg-j-c",
+          "src-us-tch-rtp-institution"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Both rails deliver instant, final credit push payments up to $10M with ISO 20022 messaging: FedNow settles each payment gross in master accounts without prefunding (Fed-operated, production since 20 Jul 2023, over 1,800 participants per secondary source); RTP settles on its own ledger against the prefunded joint account at FRBNY (TCH-operated, bank-owned, production since 2017, over 1,378 participants).",
+    "limitations": "ISO 20022 message names and versions (pacs.008, pacs.002 etc.) not confirmed; RTP Operating Rules text not opened; FedNow participant count is from a secondary source.",
+    "sourceIds": [
+      "src-us-frbs-fednow-risk-2025",
+      "src-us-frbs-fednow-limit-2025",
+      "src-us-aba-rtp-10m",
+      "src-us-frbs-fednow-settlement",
+      "src-us-ecfr-reg-j-c",
+      "src-us-frbs-fednow-about",
+      "src-us-frb-rtp-interest",
+      "src-us-tch-rtp",
+      "src-us-tch-rtp-institution"
+    ],
+    "topic": "us"
+  },
+  {
+    "id": "scn-eu-sct-inst-de-fr-tips",
+    "name": "SCT Inst, payer at a German bank, payee at a French bank, both TIPS DCA holders (alternative via RT1)",
+    "market": "EA",
+    "markets": [
+      "EA"
+    ],
+    "module": "core",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "Payer (consumer); payer PSP",
+        "system": "Payer PSP app",
+        "action": "Payer enters payee IBAN, name and amount.",
+        "messageOrPayload": "not publicly specified (customer channel)",
+        "ledgerEffect": "None",
+        "controls": "User-set per-day or per-transaction instant limit (IPR Art 5a(6)); order above limit not executed",
+        "timing": null,
+        "failures": null,
+        "rules": [
+          "rule-eu-ipr-2024-886"
+        ],
+        "sourceIds": [
+          "src-eu-ipr"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "Payer PSP (Requesting PSP); payee PSP (Responding PSP)",
+        "system": "EPC VOP API",
+        "action": "Payer PSP sends a VOP request; response match, close match (name shown), no match (warning) or not possible; payer may still proceed with liability shifting per Art 5c(8).",
+        "messageOrPayload": "EPC VOP API request and response (spec v1.1.1, ISO 20022 resource elements); not a pacs message",
+        "ledgerEffect": "None",
+        "controls": "Free of charge; before authorisation; registration in EPC Directory Service",
+        "timing": "Target no more than 5 seconds",
+        "failures": null,
+        "rules": [
+          "rule-eu-epc-vop-rulebook-v1-1",
+          "rule-eu-ipr-2024-886"
+        ],
+        "sourceIds": [
+          "src-eu-epc-vop-first",
+          "src-eu-epc-vop-updates",
+          "src-eu-ipr"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "Payer; payer PSP",
+        "system": "Payer PSP authentication",
+        "action": "Payer authorises with strong customer authentication (two or more of knowledge, possession, inherence; dynamic linking per recitals 95-96).",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": "SCA under PSD2 Art 4(30)",
+        "timing": null,
+        "failures": null,
+        "rules": [
+          "rule-eu-psd2-2015-2366"
+        ],
+        "sourceIds": [
+          "src-eu-psd2"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "Payer PSP",
+        "system": "Payer PSP compliance",
+        "action": "No per-transfer screening against EU targeted financial sanctions (Art 5d(2)); daily customer screening and on every new listing instead; other restrictive measures and AML monitoring still apply; TFR intra-EU data requirements.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": "IPR Art 5d daily screening; TFR Art 5 (account numbers or unique transaction identifier), Art 4 otherwise",
+        "timing": null,
+        "failures": null,
+        "rules": [
+          "rule-eu-ipr-2024-886",
+          "rule-eu-tfr-2023-1113"
+        ],
+        "sourceIds": [
+          "src-eu-ipr",
+          "src-eu-tfr"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 5,
+        "actor": "Payer PSP",
+        "system": "TIPS (directly or via instructing party)",
+        "action": "Payer PSP time-stamps and sends the payment to TIPS.",
+        "messageOrPayload": "pacs.008.001.08 (DS-02) with mandatory AccptncDtTm in milliseconds",
+        "ledgerEffect": "None yet",
+        "controls": null,
+        "timing": "IPR 10-second clock runs from receipt by payer PSP",
+        "failures": null,
+        "rules": [
+          "rule-eu-epc122-16-ig-2025"
+        ],
+        "sourceIds": [
+          "src-eu-epc122-16-ig"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 6,
+        "actor": "TIPS",
+        "system": "TIPS",
+        "action": "TIPS validates and reserves the amount on the payer PSP's TIPS DCA, then forwards to the payee PSP; from reservation the order is entered and irrevocable in TARGET.",
+        "messageOrPayload": "pacs.008.001.08 forwarded",
+        "ledgerEffect": "Funds reserved on payer PSP TIPS DCA (central bank money)",
+        "controls": null,
+        "timing": "TIPS processing under 100 ms",
+        "failures": "Insufficient DCA liquidity or unreachable BIC leads to rejection",
+        "rules": [
+          "rule-ea-target-guideline-2022-912"
+        ],
+        "sourceIds": [
+          "src-eu-target-guideline",
+          "src-eu-ecb-tips"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 7,
+        "actor": "Payee PSP",
+        "system": "Payee PSP; TIPS",
+        "action": "Payee PSP checks the payee account and returns a positive or negative confirmation; on negative, TIPS releases the reservation and the payer PSP informs the payer.",
+        "messageOrPayload": "pacs.002.001.10 (DS-03)",
+        "ledgerEffect": "Negative: reservation released",
+        "controls": null,
+        "timing": null,
+        "failures": "Negative confirmation",
+        "rules": [
+          "rule-eu-epc122-16-ig-2025"
+        ],
+        "sourceIds": [
+          "src-eu-epc122-16-ig"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 8,
+        "actor": "TIPS",
+        "system": "TIPS",
+        "action": "On positive reply TIPS settles: debit payer PSP TIPS DCA, credit payee PSP TIPS DCA, final and irrevocable, and confirms to both PSPs.",
+        "messageOrPayload": "not publicly specified (TIPS notification message versions not extracted)",
+        "ledgerEffect": "Central bank money moves from payer PSP DCA to payee PSP DCA",
+        "controls": null,
+        "timing": "99.99% of payments under 5 s; TIPS timeout value not publicly extracted",
+        "failures": null,
+        "rules": [
+          "rule-ea-target-guideline-2022-912"
+        ],
+        "sourceIds": [
+          "src-eu-ecb-tips",
+          "src-eu-ecb-tips-facts"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 9,
+        "actor": "Payee PSP",
+        "system": "Payee PSP core banking",
+        "action": "Payee PSP credits the payee and makes funds available.",
+        "messageOrPayload": "n/a",
+        "ledgerEffect": "Illustrative: payee PSP Dr TIPS DCA (asset), Cr customer deposit (liability)",
+        "controls": null,
+        "timing": "Within 10 s of receipt time (IPR Art 5a(4)(c)); EPC scheme page: 9 s maximum execution",
+        "failures": null,
+        "rules": [
+          "rule-eu-ipr-2024-886",
+          "rule-eu-epc-sct-inst-2025-v1-2"
+        ],
+        "sourceIds": [
+          "src-eu-ipr",
+          "src-eu-epc-sct-inst"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 10,
+        "actor": "Payer PSP",
+        "system": "Payer PSP core banking",
+        "action": "Payer PSP receives confirmation and informs the payer; if no confirmation within 10 s it informs the payer free of charge and restores the account.",
+        "messageOrPayload": "n/a",
+        "ledgerEffect": "Illustrative: Dr payer deposit, Cr TIPS DCA",
+        "controls": null,
+        "timing": null,
+        "failures": "No confirmation in 10 s: restore account (Art 5a(4)(e), 5a(5))",
+        "rules": [
+          "rule-eu-ipr-2024-886"
+        ],
+        "sourceIds": [
+          "src-eu-ipr"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 11,
+        "actor": "Payer PSP",
+        "system": "T2 (CLM/RTGS) to TIPS",
+        "action": "Payer PSP replenishes its TIPS DCA from T2 on T2 business days; rule-based liquidity transfers decided Jan/Feb 2026; weekend window planned (no date).",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Both legs central bank money",
+        "controls": null,
+        "timing": null,
+        "failures": null,
+        "rules": [
+          "rule-ea-t2-hours-roadmap-2026",
+          "rule-ea-tips-liquidity-decisions-2026"
+        ],
+        "sourceIds": [
+          "src-eu-ecb-t2-hours"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 12,
+        "actor": "Payer PSP; payee PSP; payer",
+        "system": "SCT Inst R-transactions",
+        "action": "Exceptions after settlement: recall by PSP or request for recall by originator; positive answer is a new reverse settlement (original not unwound); negative answer; status investigation.",
+        "messageOrPayload": "camt.056.001.08 (DS-05, DS-08); pacs.004.001.09; camt.029.001.09; pacs.028.001.03",
+        "ledgerEffect": "Positive recall: new reverse settlement",
+        "controls": null,
+        "timing": "Recall deadlines not extracted",
+        "failures": null,
+        "rules": [
+          "rule-eu-epc122-16-ig-2025"
+        ],
+        "sourceIds": [
+          "src-eu-epc122-16-ig"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 13,
+        "actor": "EBA CLEARING (RT1); payer and payee PSPs",
+        "system": "RT1 with TIPS",
+        "action": "Alternative: steps 5 to 8 run through RT1 instead; RT1 positions are funded with central bank money in TIPS (participant TIPS DCA or across RT1 and TIPS via the RT1 AS technical account); ACHs connect via the TIPS platform so RT1 participants can exchange SCT Inst with TIPS DCA holders.",
+        "messageOrPayload": "not publicly specified (ISO 20022 per RT1)",
+        "ledgerEffect": "Cover moves between RT1 AS technical account and TIPS DCAs",
+        "controls": null,
+        "timing": "RT1 inter-PSP processing averages just over 1 s",
+        "failures": null,
+        "rules": [
+          "rule-ea-target-guideline-2022-912",
+          "rule-ea-tips-reachability-2020"
+        ],
+        "sourceIds": [
+          "src-eu-ebaclearing-rt1",
+          "src-eu-bbk-tips-reach",
+          "src-eu-target-guideline"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Payee funds available within 10 s; interbank obligation discharged with finality in central bank money (TIPS DCA, or RT1 AS technical account backed by TIPS).",
+    "limitations": "Ledger entries are illustrative, not from operator documentation. TIPS timeout, TIPS notification message variants, RT1 funding cycles and SCT Inst recall deadlines not sourced.",
+    "sourceIds": [
+      "src-eu-ipr",
+      "src-eu-epc-vop-first",
+      "src-eu-epc-vop-updates",
+      "src-eu-psd2",
+      "src-eu-tfr",
+      "src-eu-epc122-16-ig",
+      "src-eu-target-guideline",
+      "src-eu-ecb-tips",
+      "src-eu-ecb-tips-facts",
+      "src-eu-epc-sct-inst",
+      "src-eu-ecb-t2-hours",
+      "src-eu-ebaclearing-rt1",
+      "src-eu-bbk-tips-reach"
+    ],
+    "topic": "eu"
+  },
+  {
+    "id": "scn-ea-digital-euro-hypothetical",
+    "name": "HYPOTHETICAL digital euro journey (not live; legislation pending)",
+    "market": "EA",
+    "markets": [
+      "EA"
+    ],
+    "module": "cbdc",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "User; supervised PSP",
+        "system": "PSP digital euro front end",
+        "action": "HYPOTHETICAL: user opens a digital euro holding with a supervised PSP, which identifies the user for AML; the Eurosystem cannot identify users online.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": "PSP AML identification",
+        "timing": null,
+        "failures": null,
+        "rules": [
+          "rule-eu-digital-euro-proposal"
+        ],
+        "sourceIds": [
+          "src-eu-ecb-de-faq"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "User; PSP",
+        "system": "Linked account",
+        "action": "HYPOTHETICAL: user links a non-digital-euro account for waterfall and reverse waterfall (proposal Art 13); holding limit not set (tested up to EUR 3,000), setting mechanism disputed.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": "Holding limit (not set)",
+        "timing": null,
+        "failures": null,
+        "rules": [
+          "rule-eu-digital-euro-proposal"
+        ],
+        "sourceIds": [
+          "src-eu-com-2023-369",
+          "src-eu-freshfields-de"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "User; bank; Eurosystem",
+        "system": "Funding",
+        "action": "HYPOTHETICAL funding: user's bank deposit decreases and digital euro holding increases; illustratively, the bank's reserves are exchanged for digital euro issued to the user.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Deposit (commercial bank money) down; digital euro (Eurosystem liability) up",
+        "controls": null,
+        "timing": null,
+        "failures": null,
+        "rules": [
+          "rule-eu-digital-euro-proposal"
+        ],
+        "sourceIds": [],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "Payer; merchant",
+        "system": "Online P2M",
+        "action": "HYPOTHETICAL: payer pays a merchant online; if the amount exceeds the holding, reverse waterfall draws from the linked account instantly; basic use free for individuals.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Payer digital euro holding debited",
+        "controls": null,
+        "timing": null,
+        "failures": null,
+        "rules": [
+          "rule-eu-digital-euro-proposal"
+        ],
+        "sourceIds": [
+          "src-eu-ecb-de-faq"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 5,
+        "actor": "Eurosystem",
+        "system": "Centralised Eurosystem settlement platform (not DLT)",
+        "action": "HYPOTHETICAL settlement on the centralised platform, which processes and verifies settlements and holdings.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Holdings updated on the Eurosystem platform",
+        "controls": "Finality moment not confirmed in sources opened",
+        "timing": null,
+        "failures": null,
+        "rules": [
+          "rule-eu-digital-euro-proposal"
+        ],
+        "sourceIds": [
+          "src-eu-ecb-de-faq"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 6,
+        "actor": "Merchant; merchant PSP",
+        "system": "Waterfall",
+        "action": "HYPOTHETICAL: merchant balance above its limit (Parliament favours near-zero for legal persons) swept to the merchant's bank account; merchant service charge capped (Art 17; compensation model under trilogue).",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Digital euro converted to merchant bank deposit",
+        "controls": "Merchant fee cap",
+        "timing": null,
+        "failures": null,
+        "rules": [
+          "rule-eu-digital-euro-proposal"
+        ],
+        "sourceIds": [
+          "src-eu-com-2023-369",
+          "src-eu-agence-europe-de"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 7,
+        "actor": "Payer; payee",
+        "system": "Offline device-to-device",
+        "action": "HYPOTHETICAL offline P2P: details known only to payer and payee; PSPs see funding and defunding; Parliament position that a lost device means lost offline funds (secondary).",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Offline holdings transferred device to device",
+        "controls": null,
+        "timing": null,
+        "failures": "Lost device (Parliament position: funds lost)",
+        "rules": [
+          "rule-eu-digital-euro-proposal"
+        ],
+        "sourceIds": [
+          "src-eu-ecb-de-faq",
+          "src-eu-pot-de"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 8,
+        "actor": "PSPs; Eurosystem",
+        "system": "Draft rulebook dispute and fraud processes",
+        "action": "HYPOTHETICAL: disputes and fraud handled under draft rulebook v0.91 Annex D2 #4 (risk and fraud) and #5 (dispute management).",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "not publicly specified",
+        "controls": null,
+        "timing": null,
+        "failures": null,
+        "rules": [
+          "rule-ea-digital-euro-rulebook-draft"
+        ],
+        "sourceIds": [
+          "src-eu-ecb-de-rulebook"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Hypothetical only; requires Regulation adoption, a Governing Council decision, the pilot (H2 2027) and potential issuance in 2029.",
+    "limitations": "Built only from ECB and Commission design documents and secondary reporting; ledger entries are illustrative; messages, finality, fees and offline loss rules are not sourced.",
+    "sourceIds": [
+      "src-eu-ecb-de-faq",
+      "src-eu-com-2023-369",
+      "src-eu-freshfields-de",
+      "src-eu-agence-europe-de",
+      "src-eu-pot-de",
+      "src-eu-ecb-de-rulebook"
+    ],
+    "topic": "eu"
+  },
+  {
+    "id": "scn-sg-paynow-fast-bank-a-to-bank-b",
+    "name": "PayNow transfer over FAST, bank A to bank B",
+    "market": "SG",
+    "markets": [
+      "SG"
+    ],
+    "module": "core",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "Payer",
+        "system": "Bank A mobile app",
+        "action": "Enters the payee proxy (mobile, NRIC/FIN, UEN or VPA).",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": "not publicly specified",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [],
+        "sourceIds": [
+          "src-sg-abs-paynow-factsheet-2026"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "Bank A",
+        "system": "PayNow central proxy database (ABS owned, BCS operated)",
+        "action": "Resolves the proxy to the payee account.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": "not publicly specified",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [],
+        "sourceIds": [
+          "src-sg-wb-fast-case"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "Payer",
+        "system": "Bank A app",
+        "action": "Sees the payee display name (masked real name since 6 Jun 2026) and confirms.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": "Bank-set authentication, institution limits, SRF alerts and cooling-off controls",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [
+          "rule-sg-shared-responsibility-framework",
+          "rule-sg-paynow-nickname-cessation"
+        ],
+        "sourceIds": [
+          "src-sg-abs-paynow",
+          "src-sg-rajah-tann-srf"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "Bank A",
+        "system": "FAST",
+        "action": "Debits the payer and submits a FAST credit transfer to the ACH.",
+        "messageOrPayload": "ISO 20022 between participant and ACH (message names not publicly specified)",
+        "ledgerEffect": "Dr payer deposit at bank A",
+        "controls": "Max S$200,000 per transaction; collateral at MAS must cover net outflow",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [
+          "rule-sg-scha-bylaws"
+        ],
+        "sourceIds": [
+          "src-sg-wb-fast-case"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 5,
+        "actor": "FAST / Bank B",
+        "system": "FAST (SACH clearing)",
+        "action": "FAST clears and routes to bank B, which credits the payee; both parties notified.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Cr payee deposit at bank B; interbank obligation bank A to bank B",
+        "controls": "not publicly specified",
+        "timing": "Typically under 15 seconds",
+        "failures": "not publicly specified",
+        "rules": [],
+        "sourceIds": [
+          "src-sg-wb-fast-case"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 6,
+        "actor": "SACH",
+        "system": "MEPS+",
+        "action": "Files net positions to MEPS+ at settlement cycles.",
+        "messageOrPayload": "Net settlement file",
+        "ledgerEffect": "Net debit/credit of participant settlement balances at MAS (central bank money)",
+        "controls": "not publicly specified",
+        "timing": "Two cycles per business day (as of 2020/2021); current cycle times not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [],
+        "sourceIds": [
+          "src-sg-wb-fast-case",
+          "src-sg-imf-cr19225"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 7,
+        "actor": "MAS",
+        "system": "FNA designation",
+        "action": "Settlement finality applies through FNA designation of FAST (S 82/2021) and MEPS+ (S 652/2006).",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Final settlement",
+        "controls": "not publicly specified",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [
+          "rule-sg-fna-order-fast-2021",
+          "rule-sg-fna-order-meps-2006"
+        ],
+        "sourceIds": [
+          "src-sg-sso-pssfna-sl-list"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 8,
+        "actor": "Payer / banks",
+        "system": "Bank channels",
+        "action": "Exception handling.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Possible reversal by agreement only",
+        "controls": "not publicly specified",
+        "timing": "not publicly specified",
+        "failures": "Wrong-recipient recovery is best-effort through banks; phishing loss allocated under the SRF waterfall",
+        "rules": [
+          "rule-sg-eupg",
+          "rule-sg-shared-responsibility-framework"
+        ],
+        "sourceIds": [
+          "src-sg-abs-fast-faq-2026"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Payee credited in seconds with commercial bank money at bank B; interbank obligation settled later in central bank money in MEPS+ at the next net settlement cycle.",
+    "limitations": "Cycle times, current cycle count and ISO 20022 message names are not publicly specified in opened sources.",
+    "sourceIds": [
+      "src-sg-abs-paynow-factsheet-2026",
+      "src-sg-wb-fast-case",
+      "src-sg-abs-paynow",
+      "src-sg-rajah-tann-srf",
+      "src-sg-imf-cr19225",
+      "src-sg-sso-pssfna-sl-list",
+      "src-sg-abs-fast-faq-2026"
+    ],
+    "topic": "sg"
+  },
+  {
+    "id": "scn-sg-wholesale-cbdc-overnight-lending",
+    "name": "Wholesale SGD CBDC overnight interbank lending trial",
+    "market": "SG",
+    "markets": [
+      "SG"
+    ],
+    "module": "cbdc",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "MAS",
+        "system": "SGD Testnet",
+        "action": "Makes the first live issuance of SGD wholesale CBDC on the SGD Testnet.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Issuance of wholesale CBDC (MAS liability); funding against MEPS+ reserves not publicly specified",
+        "controls": "not publicly specified",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [],
+        "sourceIds": [
+          "src-sg-mas-wcbdc-trial-release"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "DBS, OCBC, UOB",
+        "system": "SGD Testnet",
+        "action": "Settle interbank overnight lending in wholesale CBDC; Testnet supports conditional (programmable) execution.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Lender CBDC balance debited, borrower credited (amounts not publicly specified)",
+        "controls": "not publicly specified",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [],
+        "sourceIds": [
+          "src-sg-mas-wcbdc-trial-release"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "DBS, OCBC, UOB",
+        "system": "Bank books and regulatory filings",
+        "action": "Record the transactions in official books and regulatory filings.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Booked as real interbank loans",
+        "controls": "not publicly specified",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [],
+        "sourceIds": [
+          "src-sg-mas-wcbdc-trial-release"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "MAS",
+        "system": "SGD Testnet (planned)",
+        "action": "Follow-on: tokenised MAS Bills issued to Primary Dealers settled in CBDC.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "not publicly specified",
+        "controls": "not publicly specified",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [],
+        "sourceIds": [
+          "src-sg-mas-chia-speech-20261009"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Overnight loans settled in wholesale CBDC and booked officially; an implied next-day repayment leg was not described by MAS.",
+    "limitations": "Amounts, rates, funding and redemption of CBDC versus MEPS+ reserves, ledger platform and legal finality are not publicly specified. Pilot on a test network, not production.",
+    "sourceIds": [
+      "src-sg-mas-wcbdc-trial-release",
+      "src-sg-mas-chia-speech-20261009"
+    ],
+    "topic": "sg"
+  },
+  {
+    "id": "scn-in-account-opening-upi-p2m",
+    "name": "New savings account then UPI P2M via a TPAP scanning a merchant UPI QR",
+    "market": "IN",
+    "markets": [
+      "IN"
+    ],
+    "module": "core",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "Customer, bank",
+        "system": "Bank app with UIDAI OTP e-KYC, or bank V-CIP",
+        "action": "Opens a savings account.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "New deposit account, zero balance",
+        "controls": "OTP route capped ₹1 lakh balance, ₹2 lakh credits/FY, term loans ₹60,000, alerts only to Aadhaar mobile, full CDD within one year; V-CIP liveness, face match, GPS, IP blocking, India-stored recordings, concurrent audit before activation",
+        "timing": "not publicly specified",
+        "failures": "OTP account closed if CDD not completed in a year; V-CIP rejected if customer prompted",
+        "rules": [
+          "rule-in-kyc-directions-cb-2025",
+          "rule-in-pmla-2002"
+        ],
+        "sourceIds": [
+          "src-in-rbi-kyc-directions-cb-2025"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "Bank",
+        "system": "CKYCR",
+        "action": "Uploads KYC to CKYCR within 10 days, flags OTP e-KYC, shares KYC identifier; keeps records 5 years.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": "not publicly specified",
+        "timing": "Within 10 days",
+        "failures": "not publicly specified",
+        "rules": [
+          "rule-in-kyc-directions-cb-2025"
+        ],
+        "sourceIds": [
+          "src-in-rbi-kyc-directions-cb-2025"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "Customer",
+        "system": "TPAP and its PSP bank",
+        "action": "Installs a TPAP, links the account via the PSP bank, sets UPI PIN (debit card or Aadhaar OTP route) and gets a UPI ID.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": "List-account calls capped at 25/app/customer/day; UPI IDs inactive for a year disabled; device binding is practice, not sourced",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [
+          "rule-in-npci-oc116",
+          "rule-in-npci-oc215a-api-usage",
+          "rule-in-npci-upi-cc01"
+        ],
+        "sourceIds": [
+          "src-in-npci-upi-circulars",
+          "src-in-medianama-upi-api-guidelines",
+          "src-in-teamlease-upi-cc01"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "Customer, TPAP, PSP bank, NPCI",
+        "system": "UPI",
+        "action": "Scans merchant UPI QR (resolves to merchant VPA); TPAP sends a push pay request via PSP bank to NPCI, routed to remitter bank.",
+        "messageOrPayload": "UPI XML API, not public",
+        "ledgerEffect": "None yet",
+        "controls": "P2P ₹1 lakh/day; verified P2M categories ₹5 lakh/txn; P2P collect discontinued from 1 Oct 2025 (this is pay, not collect); revised merchant QR rules for new/replaced QRs from 1 Dec 2026",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [
+          "rule-in-npci-p2m-limit-2025",
+          "rule-in-npci-oc220-p2p-collect",
+          "rule-in-npci-upi-cc01"
+        ],
+        "sourceIds": [
+          "src-in-air-p2m-limit-raised",
+          "src-in-medianama-p2p-collect",
+          "src-in-teamlease-upi-cc01"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 5,
+        "actor": "Customer, remitter bank",
+        "system": "Remitter bank CBS",
+        "action": "Customer authenticates (UPI PIN or optional device biometric reportedly up to ₹5,000); remitter bank debits the account.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Dr customer deposit",
+        "controls": "Two factors, one dynamic, from 1 Apr 2026; issuer bears full loss on non-compliant authentication",
+        "timing": "not publicly specified",
+        "failures": "Timeout; status check not before 90 seconds",
+        "rules": [
+          "rule-in-rbi-authentication-directions-2025",
+          "rule-in-npci-status-check-circular-2025"
+        ],
+        "sourceIds": [
+          "src-in-rbi-authentication-directions-2025",
+          "src-in-mobileidworld-upi-biometric",
+          "src-in-medianama-upi-api-guidelines"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 6,
+        "actor": "NPCI, beneficiary (acquiring) bank",
+        "system": "UPI",
+        "action": "NPCI forwards credit to the beneficiary bank, which credits the merchant account or the PA escrow if the merchant is onboarded by a PA.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Cr merchant deposit (or PA escrow)",
+        "controls": "not publicly specified",
+        "timing": "not publicly specified",
+        "failures": "Debit without credit: reversal by T+1 else ₹100/day; P2M debit without merchant confirmation: auto-reversal by T+5 else ₹100/day",
+        "rules": [
+          "rule-in-rbi-tat-2019"
+        ],
+        "sourceIds": [
+          "src-in-rbi-tat-circular-2019"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 7,
+        "actor": "NPCI, member banks",
+        "system": "UPI settlement",
+        "action": "NPCI nets positions; authorised transactions settle in one of 10 daily cycles; disputes in 2 dedicated cycles since 3 Nov 2025.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Net interbank settlement; settlement in RBI accounts expected but not confirmed in an opened primary source",
+        "controls": "not publicly specified",
+        "timing": "10 cycles per day; cycle times not opened",
+        "failures": "not publicly specified",
+        "rules": [
+          "rule-in-npci-oc197-settlement-cycles",
+          "rule-in-npci-upi-222-dispute-cycles"
+        ],
+        "sourceIds": [
+          "src-in-npci-upi-circulars",
+          "src-in-simpliance-upi-222"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 8,
+        "actor": "Payment aggregator",
+        "system": "PA escrow at scheduled commercial bank",
+        "action": "If via PA, PA pays merchant from escrow per PA-merchant agreement.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Dr PA escrow, Cr merchant account",
+        "controls": "Escrow must cover unsettled amounts",
+        "timing": "No RBI-fixed T+",
+        "failures": "not publicly specified",
+        "rules": [
+          "rule-in-rbi-pa-directions-2025"
+        ],
+        "sourceIds": [
+          "src-in-rbi-pa-directions-2025"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 9,
+        "actor": "Customer",
+        "system": "TPAP/bank, then RB-IOS",
+        "action": "Disputes raised in app (UDIR/ODR), then bank; after 30 days (or longer NPCI TAT) or unsatisfactory reply, RB-IOS within 90 days.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Possible reversal or compensation",
+        "controls": "RB-IOS compensation caps ₹30 lakh plus ₹3 lakh",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [
+          "rule-in-npci-circular-98",
+          "rule-in-rbios-2026"
+        ],
+        "sourceIds": [
+          "src-in-npci-upi-circulars",
+          "src-in-rbi-rbios-2026-faq"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Merchant holds a commercial bank deposit credit (or PA escrow claim); interbank obligation settled in the next UPI net settlement cycle.",
+    "limitations": "UPI message fields, settlement cycle times and RBI settlement accounts not publicly specified; OTP e-KYC caps (₹1 lakh balance) bind before the ₹5 lakh P2M limits until full CDD.",
+    "sourceIds": [
+      "src-in-rbi-kyc-directions-cb-2025",
+      "src-in-npci-upi-circulars",
+      "src-in-medianama-upi-api-guidelines",
+      "src-in-teamlease-upi-cc01",
+      "src-in-air-p2m-limit-raised",
+      "src-in-medianama-p2p-collect",
+      "src-in-rbi-authentication-directions-2025",
+      "src-in-mobileidworld-upi-biometric",
+      "src-in-rbi-tat-circular-2019",
+      "src-in-simpliance-upi-222",
+      "src-in-rbi-pa-directions-2025",
+      "src-in-rbi-rbios-2026-faq"
+    ],
+    "topic": "in"
+  },
+  {
+    "id": "scn-in-erupee-cbdc-qr-vs-upi-qr",
+    "name": "e₹-R wallet-to-wallet via CBDC QR vs paying a UPI QR from an e₹ wallet",
+    "market": "IN",
+    "markets": [
+      "IN"
+    ],
+    "module": "cbdc",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "User, pilot bank",
+        "system": "e₹ wallet app",
+        "action": "Opens e₹ wallet linked to savings account (no separate KYC) and loads e₹ from bank account (24x7).",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Dr user deposit; Cr user e₹ wallet (RBI liability); interbank leg not publicly specified",
+        "controls": "No interest, no fee, no published limit",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [],
+        "sourceIds": [
+          "src-in-rbi-erupee-faq"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "Payer, payee",
+        "system": "e₹ (CBDC QR)",
+        "action": "Payer scans payee's CBDC QR; e₹ moves wallet to wallet and settles instantly without passing through either bank account.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Dr payer e₹ wallet, Cr payee e₹ wallet; still central bank money",
+        "controls": "Programmable conditions (expiry, geo, MCC, merchant VPA) enforced and displayed",
+        "timing": "Instant",
+        "failures": "not publicly specified",
+        "rules": [
+          "rule-in-rbi-act-1934"
+        ],
+        "sourceIds": [
+          "src-in-rbi-erupee-faq"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "Payer, merchant",
+        "system": "e₹ app paying a UPI QR",
+        "action": "Payer scans a merchant UPI QR from the e₹ app; payment follows UPI settlement timelines.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Dr payer e₹ wallet; merchant receives a bank-deposit credit via UPI; conversion of e₹ into bank money and its interbank settlement not publicly specified",
+        "controls": "not publicly specified",
+        "timing": "UPI settlement timelines",
+        "failures": "not publicly specified",
+        "rules": [],
+        "sourceIds": [
+          "src-in-rbi-erupee-faq",
+          "src-in-rbi-governor-gff2025"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "Payee",
+        "system": "e₹ wallet app",
+        "action": "Payee may redeem e₹ to bank account 24x7; disputes via wallet app or customer care.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Dr payee e₹ wallet, Cr payee deposit",
+        "controls": "not publicly specified",
+        "timing": "not publicly specified",
+        "failures": "Offline not available",
+        "rules": [],
+        "sourceIds": [
+          "src-in-rbi-erupee-faq"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "CBDC QR path leaves the payee holding central bank money; UPI QR path leaves the merchant holding commercial bank money.",
+    "limitations": "e₹ conversion mechanics, ledger architecture and interbank leg are not publicly specified. Pilot, not production.",
+    "sourceIds": [
+      "src-in-rbi-erupee-faq",
+      "src-in-rbi-governor-gff2025"
+    ],
+    "topic": "in"
+  },
+  {
+    "id": "scn-in-erupee-wholesale-call-money",
+    "name": "e₹-W call money (pilot), with G-sec and corporate bond variants",
+    "market": "IN",
+    "markets": [
+      "IN"
+    ],
+    "module": "cbdc",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "Two pilot banks",
+        "system": "Call money market",
+        "action": "Agree a call money trade; operational process unchanged except settlement leg.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": "not publicly specified",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [],
+        "sourceIds": [
+          "src-in-business-standard-call-money"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "Lender and borrower banks",
+        "system": "e₹-W",
+        "action": "Lending leg settles in e₹-W instead of RTGS.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Dr lender e₹-W, Cr borrower e₹-W; how banks acquire e₹-W (e.g. converting reserves) not publicly specified",
+        "controls": "Central bank money settlement pre-empts settlement guarantee infrastructure and collateral needs (RBI aim)",
+        "timing": "T+0 per dealers",
+        "failures": "not publicly specified",
+        "rules": [],
+        "sourceIds": [
+          "src-in-business-standard-call-money",
+          "src-in-rbi-pr-erupee-w-pilot"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "Borrower and lender banks",
+        "system": "e₹-W",
+        "action": "Repayment leg at maturity reverses with interest in e₹-W (inferred; not described in source).",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Dr borrower e₹-W, Cr lender e₹-W (inferred)",
+        "controls": "not publicly specified",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [],
+        "sourceIds": [
+          "src-in-business-standard-call-money"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "Pilot banks",
+        "system": "e₹-W (G-sec variant) and UMI (corporate bond variant)",
+        "action": "Funds leg of secondary-market G-sec trades settles in e₹-W (pilot since 1 Nov 2022, nine banks); corporate bond variant uses atomic DvP on a depository-owned shared ledger via UMI.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Funds leg in e₹-W; securities leg/DvP linkage for G-sec not publicly specified",
+        "controls": "not publicly specified",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [],
+        "sourceIds": [
+          "src-in-rbi-pr-erupee-w-pilot",
+          "src-in-angelone-demat2"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Interbank call money and G-sec funds legs settled in wholesale CBDC (central bank money) in a pilot.",
+    "limitations": "e₹-W DvP mechanics, acquisition of e₹-W and participant names not publicly specified; repayment leg is an inference.",
+    "sourceIds": [
+      "src-in-business-standard-call-money",
+      "src-in-rbi-pr-erupee-w-pilot",
+      "src-in-angelone-demat2"
+    ],
+    "topic": "in"
+  },
+  {
+    "id": "scn-cn-ecny-domestic-qr-bank-wallet",
+    "name": "Domestic e-CNY QR payment through a bank operator wallet (e-CNY 2.0)",
+    "market": "CN",
+    "markets": [
+      "CN"
+    ],
+    "module": "cbdc",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "Customer, bank operator",
+        "system": "Bank-opened real-name e-CNY wallet",
+        "action": "Customer holds e-CNY in a real-name wallet opened by a bank operator.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Balance is an account-based commercial bank liability, counted in the reserve base, deposit-insured (RMB 500,000 cap), interest at demand-deposit rates",
+        "controls": "Bank performs AML/CTF; wallet tier limits per secondary sources",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [
+          "rule-cn-ecny-action-plan-2025",
+          "rule-cn-deposit-insurance-regulations"
+        ],
+        "sourceIds": [
+          "src-cn-xinhua-20251229",
+          "src-cn-xinhua-20260113",
+          "src-cn-wiki-digital-renminbi",
+          "src-cn-govcn-deposit-insurance-regs"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "Customer",
+        "system": "e-CNY app or bank app",
+        "action": "Scans the merchant QR code.",
+        "messageOrPayload": "not publicly specified (no e-CNY QR standard or message set found)",
+        "ledgerEffect": "None yet",
+        "controls": "not publicly specified",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [],
+        "sourceIds": [
+          "src-cn-lulei-article-aisixiang"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "Bank operator(s), PBOC",
+        "system": "Operator ledger or PBOC central e-CNY system (Operations Management Center)",
+        "action": "Same bank: plausibly an on-us book entry. Different operators: transfer crosses the PBOC central e-CNY infrastructure run by the Operations Management Center.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Dr payer wallet; inter-operator leg settlement asset not publicly specified",
+        "controls": "not publicly specified",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [],
+        "sourceIds": [
+          "src-cn-lulei-article-aisixiang"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "Merchant",
+        "system": "Merchant unit wallet",
+        "action": "Merchant receives e-CNY in its unit wallet.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Classification follows operator type: bank operator balance is a bank liability; non-bank operator balance is that institution's liability backed by 100% margin",
+        "controls": "not publicly specified",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [
+          "rule-cn-ecny-action-plan-2025"
+        ],
+        "sourceIds": [
+          "src-cn-xinhua-20251229",
+          "src-cn-lulei-article-aisixiang"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 5,
+        "actor": "All",
+        "system": "e-CNY",
+        "action": "Settlement finality.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "not publicly specified",
+        "controls": "not publicly specified",
+        "timing": "not publicly specified",
+        "failures": "No finality rule found",
+        "rules": [],
+        "sourceIds": [
+          "src-cn-xinhua-20251229"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Merchant holds e-CNY claim on its operator; for bank operators this is a deposit-like commercial bank liability.",
+    "limitations": "Roles and ledger classification only; message formats, interbank e-CNY settlement mechanics and finality are not publicly specified.",
+    "sourceIds": [
+      "src-cn-xinhua-20251229",
+      "src-cn-xinhua-20260113",
+      "src-cn-wiki-digital-renminbi",
+      "src-cn-govcn-deposit-insurance-regs",
+      "src-cn-lulei-article-aisixiang"
+    ],
+    "topic": "cn"
+  },
+  {
+    "id": "scn-cn-cross-border-cbets-vs-cips",
+    "name": "Cross-border RMB payment: CBETS (e-CNY) contrasted with CIPS",
+    "market": "CN",
+    "markets": [
+      "CN"
+    ],
+    "module": "core",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "Overseas institution",
+        "system": "CBETS via Hong Kong access point",
+        "action": "Connects to CBETS as a direct participant through the unified e-CNY cross-border gateway (Hong Kong one-point access).",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": "26 direct participants signed 16 Jun 2026",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [],
+        "sourceIds": [
+          "src-cn-xinhua-gansu-cbets-20260617",
+          "src-cn-xinhua-20260617"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "CBETS participants",
+        "system": "CBETS",
+        "action": "Executes cross-border payment on-chain or off-chain round-the-clock with settlement in e-CNY (example: Lao electricity collections, 3 working days cut to under 5 hours).",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Settlement in e-CNY; ledger mechanics not published",
+        "controls": "not publicly specified",
+        "timing": "Round-the-clock (7x24 per CCTV); under 5 hours in example",
+        "failures": "not publicly specified",
+        "rules": [],
+        "sourceIds": [
+          "src-cn-xinhua-gansu-cbets-20260617",
+          "src-cn-xinhua-20260617",
+          "src-cn-ithome-cctv-cbets"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "Sending institution",
+        "system": "Cross-border data",
+        "action": "Transfers personal information needed for the remittance under the CAC Order No. 16 contract exemption.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": "Art. 5 exemption for remittances the individual is party to; important data outside the exemption",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [
+          "rule-cn-cac-order-16"
+        ],
+        "sourceIds": [
+          "src-cn-cac-order-16"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "CIPS direct participant",
+        "system": "HVPS to CIPS",
+        "action": "Funds its zero-balance CIPS account from its HVPS clearing account.",
+        "messageOrPayload": "hvps.112 (business type A200); night pre-funding hvps.115",
+        "ledgerEffect": "Dr participant HVPS clearing account, Cr CIPS account (operator's clearing account at PBOC)",
+        "controls": "not publicly specified",
+        "timing": "By 09:00; night pre-funding 16:00 to 17:00",
+        "failures": "not publicly specified",
+        "rules": [
+          "rule-cn-cips-operational-guidelines-2026"
+        ],
+        "sourceIds": [
+          "src-cn-cips-operational-guidelines-2026"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 5,
+        "actor": "CIPS direct participant (for itself or an indirect participant)",
+        "system": "CIPS",
+        "action": "Sends a customer payment; settles RTGS if balance suffices, otherwise queued.",
+        "messageOrPayload": "cips.111 (customer payment); cips.113 for batch",
+        "ledgerEffect": "Dr sender CIPS account, Cr receiver CIPS account (central bank money)",
+        "controls": "Expedited and regular queues",
+        "timing": "Day session 8:30 to 17:30, night session 17:00 to 08:30 Beijing time",
+        "failures": "not publicly specified",
+        "rules": [
+          "rule-cn-cips-business-rules-2026",
+          "rule-cn-cips-message-standard-v3"
+        ],
+        "sourceIds": [
+          "src-cn-cips-business-rules-2026",
+          "src-cn-cips-operational-guidelines-2026"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 6,
+        "actor": "CIPS",
+        "system": "CIPS",
+        "action": "Finality and cancellation.",
+        "messageOrPayload": "cips.303 (cancel)",
+        "ledgerEffect": "Irrevocable once sender debited and receiver credited (RTGS) or once netting completes",
+        "controls": "not publicly specified",
+        "timing": "not publicly specified",
+        "failures": "Netting results and CCP settlement cannot be cancelled",
+        "rules": [
+          "rule-cn-cips-business-rules-2026"
+        ],
+        "sourceIds": [
+          "src-cn-cips-business-rules-2026",
+          "src-cn-cips-operational-guidelines-2026"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 7,
+        "actor": "CIPS",
+        "system": "CIPS to HVPS",
+        "action": "Zeroing at day end returns balances to originating HVPS clearing accounts.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "CIPS accounts to zero; funds back in HVPS clearing accounts",
+        "controls": "not publicly specified",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [
+          "rule-cn-cips-business-rules-2026",
+          "rule-cn-cips-operational-guidelines-2026"
+        ],
+        "sourceIds": [
+          "src-cn-cips-business-rules-2026",
+          "src-cn-cips-operational-guidelines-2026"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "CBETS: value settled in e-CNY with sparse public detail. CIPS: value settled in central bank money in zero-balance accounts backed by the operator's PBOC clearing account, returned to HVPS at day end.",
+    "limitations": "No CBETS message standard, finality rule or ledger description found; CIPS steps are documented in operator rules and guidelines.",
+    "sourceIds": [
+      "src-cn-xinhua-gansu-cbets-20260617",
+      "src-cn-xinhua-20260617",
+      "src-cn-ithome-cctv-cbets",
+      "src-cn-cac-order-16",
+      "src-cn-cips-operational-guidelines-2026",
+      "src-cn-cips-business-rules-2026"
+    ],
+    "topic": "cn"
+  },
+  {
+    "id": "scn-crypto-buy-send-redeem-usd-stablecoin",
+    "name": "Buy USD stablecoin on a regulated exchange via bank transfer, send to another wallet, redeem or off-ramp",
+    "market": "GLOBAL",
+    "markets": [
+      "GLOBAL"
+    ],
+    "module": "crypto",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "User and regulated exchange (EU CASP, UK MLR-registered firm until Oct 2027, US money transmitter/broker, Singapore PSA licensee, India FIU-IND-registered VDASP)",
+        "system": "Exchange onboarding",
+        "action": "(Step 1) Onboarding: customer due diligence and KYC.",
+        "messageOrPayload": "Identity, beneficial owner, source of funds data",
+        "ledgerEffect": "None",
+        "controls": "CDD/KYC; India triggers CDD at relationship start and for transactions of INR 50,000 or more or any international transaction; EU authorised CASPs must onboard with full AML/CFT.",
+        "timing": "not publicly specified",
+        "failures": "Unauthorised CASPs in the EU had to cease business after 1 July 2026.",
+        "rules": [
+          "rule-in-pmla-vda-notification-2023",
+          "rule-eu-mica",
+          "rule-eu-esma-mica-transitional-statement-2026"
+        ],
+        "sourceIds": [
+          "src-crypto-mondaq-in-pmla-2023",
+          "src-crypto-harneys-20260611"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "User's bank and exchange's bank",
+        "system": "Domestic rail (ACH/wire in US, Faster Payments in UK, SEPA/SCT Inst in EU, FAST/PayNow in SG, IMPS/NEFT/UPI where banks permit in India)",
+        "action": "(Step 2) Fiat funding: credit transfer to the exchange's client-money/omnibus account.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Bank-ledger debit/credit; exchange internal ledger credits user USD/EUR balance.",
+        "controls": "Bank sanctions screening; R16 payment transparency for cross-border wires.",
+        "timing": "Finality per rail settlement rules (see us.md, uk.md, eu.md)",
+        "failures": "Non-USD fiat implies FX at the exchange, outside regulated FX settlement systems such as CLS (inference).",
+        "rules": [
+          "rule-global-fatf-r16-2025"
+        ],
+        "sourceIds": [
+          "src-crypto-fatf-r16-update-2025"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "Exchange (order book or broker)",
+        "system": "Exchange internal matching engine and ledger",
+        "action": "(Step 3) Purchase: user buys USD stablecoin. Where the exchange lacks inventory it buys from the issuer via mint (exchange wires USD to the issuer reserve bank account; issuer mints to the exchange address).",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Off-chain only: internal ledger reallocates; exchange holds tokens in omnibus custodial wallets. A primary mint increases on-chain supply and reserves.",
+        "controls": "UK FCA best execution and market abuse regime from 25 Oct 2027; in the EU non-MiCA-compliant EMTs cannot be offered by CASPs (inference from MiCA Title IV); Singapore DPT providers may not market non-MAS-regulated coins to retail as 'stablecoins' (proposed); India 1% TDS on VDA transfer consideration.",
+        "timing": "not publicly specified",
+        "failures": "not publicly specified",
+        "rules": [
+          "rule-uk-fca-crypto-policy-statements-2026",
+          "rule-eu-mica",
+          "rule-sg-psa-stablecoin-amendments-consultation",
+          "rule-in-income-tax-act-2025-s393"
+        ],
+        "sourceIds": [
+          "src-crypto-fca-20260630",
+          "src-crypto-sidley-20260930",
+          "src-crypto-tdsman-20260824"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "Exchange (originating VASP) and recipient (beneficiary VASP or self-hosted wallet)",
+        "system": "Public blockchain",
+        "action": "(Step 4) Withdrawal to another wallet: exchange signs a token transfer from its hot wallet (key management via HSM/MPC, vendor-described).",
+        "messageOrPayload": "Travel Rule originator/beneficiary information sent off-chain to the beneficiary VASP (IVMS101 data model over a protocol)",
+        "ledgerEffect": "On-chain balance moves; exchange internal ledger debits user.",
+        "controls": "Sanctions screening of destination address and chain analytics risk scoring (vendor tools); EU ownership assessment for self-hosted wallets above EUR 1,000; FATF notes P2P/unhosted transfers are high risk and outside obliged-entity monitoring.",
+        "timing": "Chain-specific finality (Ethereum: finalised after checkpoint finalisation); beneficiary VASP credits after its own confirmation threshold.",
+        "failures": "not publicly specified",
+        "rules": [
+          "rule-eu-tfr-2023-1113",
+          "rule-global-fatf-r16-2025"
+        ],
+        "sourceIds": [
+          "src-eu-tfr",
+          "src-crypto-fatf-targeted-update-2026",
+          "src-crypto-ethereum-pos"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 5,
+        "actor": "Users only; no obliged entity",
+        "system": "Public blockchain",
+        "action": "(Step 5) Hold or transfer between self-hosted wallets.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "On-chain only.",
+        "controls": "Issuer can freeze or blacklist addresses on authority request.",
+        "timing": "Chain-specific",
+        "failures": "Address freeze by issuer",
+        "rules": [],
+        "sourceIds": [
+          "src-crypto-fatf-targeted-update-2026"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 6,
+        "actor": "Issuer (onboarded institutional customer; retail typically redeems via intermediary) and issuer's reserve custodian/bank",
+        "system": "Public blockchain plus bank rail",
+        "action": "(Step 6a) Redemption via issuer: holder sends tokens to the issuer redemption address; issuer burns; issuer pays fiat from the reserve account over a bank rail.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "On-chain supply reduced (burn); reserve assets reduced (sale of T-bills or deposit drawdown); bank ledger credit to redeemer.",
+        "controls": "US proposed redemption within two business days, minimum one coin; EU EMT holders have a par claim; UK systemic within 24 hours; UK FCA KYC before redemption period.",
+        "timing": "US proposal: generally within two business days; UK systemic: real time or within 24 hours. Finality: burn on-chain plus fiat-rail finality.",
+        "failures": "Issuer-specific minimums (for example Circle Mint account thresholds) not verified.",
+        "rules": [
+          "rule-us-fed-genius-framework-npr",
+          "rule-eu-mica",
+          "rule-uk-boe-systemic-stablecoin-policy-2026",
+          "rule-uk-fca-crypto-policy-statements-2026"
+        ],
+        "sourceIds": [
+          "src-crypto-willkie-20261005",
+          "src-crypto-boe-systemic-stablecoin-20260622",
+          "src-crypto-kpmg-202607"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 7,
+        "actor": "Exchange, exchange's bank, user's bank",
+        "system": "Public blockchain, exchange internal ledger, bank rail",
+        "action": "(Step 6b) Off-ramp via exchange: user deposits stablecoin to the exchange (Travel Rule inbound checks, chain analytics on source), sells for fiat and withdraws by bank transfer.",
+        "messageOrPayload": "Travel Rule inbound data (not further specified)",
+        "ledgerEffect": "On-chain deposit; internal ledger; bank-rail payout.",
+        "controls": "India: 30% tax on gains and 1% TDS apply. Mainland China: fiat-crypto exchange is an illegal financial activity, so no lawful onshore off-ramp exists.",
+        "timing": "not publicly specified",
+        "failures": "Mainland China: no lawful onshore off-ramp.",
+        "rules": [
+          "rule-in-vda-tax-30pct",
+          "rule-in-income-tax-act-2025-s393",
+          "rule-cn-yinfa-2026-42"
+        ],
+        "sourceIds": [
+          "src-crypto-cryptotimes-20260908",
+          "src-crypto-charltons-cn-20260306"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "User holds fiat again (via issuer redemption or exchange off-ramp); tokens either burned (issuer redemption, reserves reduced) or transferred to the exchange (secondary market, reserves unchanged). The trace crosses three ledgers (user bank, exchange internal ledger, public blockchain) and up to four regulated actors.",
+    "limitations": "Where the US regime is referenced, GENIUS-specific requirements are proposals not yet effective. Rail finality is in country files. HSM/MPC key management and chain analytics are vendor-described. Issuer-specific redemption terms (Circle, Paxos, Tether) not verified. FX at the on-ramp and some controls are inferences.",
+    "sourceIds": [
+      "src-crypto-mondaq-in-pmla-2023",
+      "src-crypto-harneys-20260611",
+      "src-crypto-fatf-r16-update-2025",
+      "src-crypto-fca-20260630",
+      "src-crypto-sidley-20260930",
+      "src-crypto-tdsman-20260824",
+      "src-eu-tfr",
+      "src-crypto-fatf-targeted-update-2026",
+      "src-crypto-ethereum-pos",
+      "src-crypto-willkie-20261005",
+      "src-crypto-boe-systemic-stablecoin-20260622",
+      "src-crypto-kpmg-202607",
+      "src-crypto-cryptotimes-20260908",
+      "src-crypto-charltons-cn-20260306"
+    ],
+    "topic": "crypto"
+  },
+  {
+    "id": "scn-card-purchase-dual-message",
+    "name": "Merchant card purchase (dual-message, illustrative) with refund and chargeback branches",
+    "market": "GLOBAL",
+    "markets": [
+      "GLOBAL"
+    ],
+    "module": "core",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "Cardholder",
+        "system": "Merchant checkout; EMV 3DS (optional, CNP)",
+        "action": "Cardholder at checkout; optional EMV 3DS authentication for card-not-present.",
+        "messageOrPayload": "EMV 3DS data (transaction, payment method, device); message names need verification",
+        "ledgerEffect": "None",
+        "controls": "Risk-based authentication: frictionless or step-up",
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-standards-emvco-3ds"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "Token requestor",
+        "system": "Network tokenisation (TSP)",
+        "action": "If network-tokenised, token requestor presents token plus cryptogram per domain controls.",
+        "messageOrPayload": "Token and token cryptogram (token control field)",
+        "ledgerEffect": "None",
+        "controls": "Domain restriction controls (presentment mode, device, merchant)",
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-cards-crossborder-emvco-token"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "Acquirer (via gateway/processor), network, issuer",
+        "system": "Card network authorisation",
+        "action": "Acquirer sends authorisation request through network to issuer; issuer checks validity, status and funds and responds.",
+        "messageOrPayload": "ISO 8583 0100 request / 0110 response class (secondary)",
+        "ledgerEffect": "Issuer hold only; no final funds move",
+        "controls": "Issuer validity, status and funds checks",
+        "timing": "not publicly specified",
+        "failures": "Decline; timeout; stand-in processing (Visa RC 83 for STIP fraud declines from 25 Jul 2026)",
+        "rules": [
+          "rule-global-visa-core-rules"
+        ],
+        "sourceIds": [
+          "src-cards-crossborder-phillyfed",
+          "src-cards-crossborder-wiki-iso8583",
+          "src-uk-visa-rules"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "Merchant",
+        "system": "Gateway / acquirer",
+        "action": "Merchant captures within hold window.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None at network level",
+        "controls": null,
+        "timing": "Within hold window (vendor: 2 to 7 days)",
+        "failures": "Hold expires and funds are released",
+        "rules": [],
+        "sourceIds": [
+          "src-cards-crossborder-stripe-hold"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 5,
+        "actor": "Merchant, acquirer, network, issuer",
+        "system": "Clearing (GCMS for Mastercard)",
+        "action": "Merchant batches drafts to acquirer at least daily; acquirer submits clearing; network routes to issuer; issuer match and drop; interchange assessed.",
+        "messageOrPayload": "Clearing records (format not publicly specified)",
+        "ledgerEffect": "Issuer posts cardholder debit; acquirer books settlement receivable and merchant payable (see journalEntries)",
+        "controls": null,
+        "timing": "Usually within one day",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-cards-crossborder-phillyfed"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 6,
+        "actor": "Network, issuer, acquirer",
+        "system": "Net settlement via network settlement account",
+        "action": "Network computes net positions per client bank at cutoff; net debtors pay in, net creditors paid out (Fedwire drawdown or ACH in US).",
+        "messageOrPayload": "Fedwire 1031 drawdown request / 1032 transfer (US example)",
+        "ledgerEffect": "Interbank cash moves",
+        "controls": null,
+        "timing": "About two days after transaction for dual-message; funds move within about an hour after cutoff",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-cards-crossborder-phillyfed"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 7,
+        "actor": "Acquirer",
+        "system": "Acquirer funding",
+        "action": "Acquirer funds merchant per contract.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Merchant payable cleared; MDR income recognised (illustrative)",
+        "controls": null,
+        "timing": "Most within 24 hours of entering settlement",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-cards-crossborder-phillyfed"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 8,
+        "actor": "Merchant, acquirer, issuer",
+        "system": "Clearing and net settlement (credit)",
+        "action": "Refund branch (8R): merchant issues credit; acquirer debited in net settlement; issuer credits cardholder; interchange on credits flows issuer to acquirer.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "See je-card-issuer-refund",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": "If the transaction should have been reversed instead, Visa Condition 12.2 applies",
+        "rules": [
+          "rule-global-visa-dmg-2024"
+        ],
+        "sourceIds": [
+          "src-cards-crossborder-phillyfed",
+          "src-cards-crossborder-visa-dmg"
+        ],
+        "branch": "8R",
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 9,
+        "actor": "Cardholder, issuer, acquirer, merchant",
+        "system": "Scheme dispute system",
+        "action": "Chargeback branch (8C): cardholder disputes with issuer; issuer files dispute (Visa) or first chargeback (Mastercard); acquirer passes to merchant; merchant accepts or responds (Visa dispute response / Mastercard second presentment); then pre-arbitration and arbitration.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Settlement effect debits acquirer and credits issuer",
+        "controls": null,
+        "timing": "Condition-specific time limits per current scheme rules (not extracted)",
+        "failures": null,
+        "rules": [
+          "rule-global-visa-core-rules",
+          "rule-global-mastercard-chargeback-guide-2025"
+        ],
+        "sourceIds": [
+          "src-uk-visa-rules",
+          "src-cards-crossborder-mc-chargeback",
+          "src-cards-crossborder-phillyfed"
+        ],
+        "branch": "8C",
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Cardholder deposit debited and posted; issuer and acquirer net positions settled through the network settlement account; merchant funded net of MDR per contract; refund or chargeback branches reverse value through net settlement.",
+    "limitations": "Illustrative dual-message flow; Visa clearing (BASE II) and settlement mechanics not confirmed; scheme fees ignored; timeout, stand-in and reversal timing rules not publicly specified in material opened.",
+    "sourceIds": [
+      "src-standards-emvco-3ds",
+      "src-cards-crossborder-emvco-token",
+      "src-cards-crossborder-phillyfed",
+      "src-cards-crossborder-wiki-iso8583",
+      "src-uk-visa-rules",
+      "src-cards-crossborder-stripe-hold",
+      "src-cards-crossborder-visa-dmg",
+      "src-cards-crossborder-mc-chargeback"
+    ],
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "scn-gbp-inr-serial",
+    "name": "GBP to INR remittance via serial correspondent method (2A, illustrative)",
+    "market": "UK-IN",
+    "markets": [
+      "UK",
+      "IN"
+    ],
+    "module": "core",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "UK sender, Bank A",
+        "system": "Bank A channels",
+        "action": "UK sender instructs UK Bank A; pre-contract disclosures (charges, rate, maximum execution time).",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": "UK PSR reg 43 disclosures",
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [
+          "rule-uk-psrs-2017-reg-43"
+        ],
+        "sourceIds": [
+          "src-cards-crossborder-uk-psr-43"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "Bank A",
+        "system": "Bank A compliance and FX desk",
+        "action": "Bank A screens (sanctions/AML; RFI if hit) and converts GBP to INR (assumption: A holds an INR account with Indian correspondent C).",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "See je-gbpinr-bank-a-debit and je-gbpinr-bank-a-nostro",
+        "controls": "Sanctions and AML screening (no primary source opened)",
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-cards-crossborder-cpmi-d147"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "Bank A",
+        "system": "Swift (CBPR+)",
+        "action": "A sends pacs.008 with UETR to C.",
+        "messageOrPayload": "pacs.008 with UETR",
+        "ledgerEffect": "None (messaging)",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [
+          "rule-global-swift-iso20022-migration"
+        ],
+        "sourceIds": [
+          "src-standards-swift-uetr",
+          "src-cards-crossborder-luxcsd"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "Bank C",
+        "system": "Bank C books; NEFT or IMPS",
+        "action": "C debits A's account (vostro/loro) and, if beneficiary is at bank D, pays via NEFT (half-hourly batches) or IMPS.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "See je-gbpinr-bank-c and je-gbpinr-bank-d",
+        "controls": null,
+        "timing": "NEFT half-hourly batches",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-cards-crossborder-cpmi-d147",
+          "src-cards-crossborder-rbi-neft"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 5,
+        "actor": "Bank C or D",
+        "system": "Swift gpi Tracker",
+        "action": "Credit confirmed to gpi Tracker (ACSC).",
+        "messageOrPayload": "ACSC status confirmation",
+        "ledgerEffect": "None",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": "NEFT return within two hours of batch end; return to A via pacs.004; recall/investigation via camt.056 and response camt.029",
+        "rules": [],
+        "sourceIds": [
+          "src-cards-crossborder-swift-gpi-2018"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Beneficiary credited in INR at bank D; A's nostro at C reduced; Tracker shows ACSC.",
+    "limitations": "Illustrative; RBI inward remittance requirements (purpose codes, FIRC/e-BRC, vostro rules) not sourced; end-to-end timing not sourced beyond gpi aggregates; charges codes need verification.",
+    "sourceIds": [
+      "src-cards-crossborder-uk-psr-43",
+      "src-cards-crossborder-cpmi-d147",
+      "src-standards-swift-uetr",
+      "src-cards-crossborder-luxcsd",
+      "src-cards-crossborder-rbi-neft",
+      "src-cards-crossborder-swift-gpi-2018"
+    ],
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "scn-gbp-inr-cover",
+    "name": "GBP to INR remittance via cover method (2B, illustrative)",
+    "market": "UK-IN",
+    "markets": [
+      "UK",
+      "IN"
+    ],
+    "module": "core",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "Bank A",
+        "system": "Swift (CBPR+)",
+        "action": "A sends pacs.008 directly to beneficiary bank D and a pacs.009 COV to correspondent C carrying the same UETR.",
+        "messageOrPayload": "pacs.008 and pacs.009 COV with same UETR",
+        "ledgerEffect": "None (messaging)",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [
+          "rule-global-swift-iso20022-migration"
+        ],
+        "sourceIds": [
+          "src-standards-swift-uetr",
+          "src-cards-crossborder-cpmi-d147"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "Bank C",
+        "system": "Domestic interbank leg (assumption)",
+        "action": "C moves funds to D (assumption: domestic interbank leg).",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "C debits A's vostro; D's account credited",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-cards-crossborder-cpmi-d147"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "Bank D",
+        "system": "Bank D books",
+        "action": "D credits beneficiary on matching the pacs.008 with the cover.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Beneficiary deposit credited",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-standards-swift-uetr"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Beneficiary credited at D once cover funds arrive and are matched by UETR.",
+    "limitations": "Illustrative; domestic interbank leg rail assumed, not sourced.",
+    "sourceIds": [
+      "src-standards-swift-uetr",
+      "src-cards-crossborder-cpmi-d147"
+    ],
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "scn-gbp-inr-mto",
+    "name": "GBP to INR remittance via prefunded MTO (2C, illustrative)",
+    "market": "UK-IN",
+    "markets": [
+      "UK",
+      "IN"
+    ],
+    "module": "core",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "Sender",
+        "system": "Domestic UK rail into MTO UK account",
+        "action": "Sender pays GBP into the MTO's UK account.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "See je-gbpinr-mto-collect",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-cards-crossborder-wise-blog"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "MTO",
+        "system": "MTO internal FX",
+        "action": "MTO converts internally.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "FX position entries (see je-gbpinr-mto-payout)",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-cards-crossborder-wise-blog"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "MTO",
+        "system": "Local Indian rail (Wise states it is connected to UPI)",
+        "action": "MTO pays INR from its Indian account via local rail.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "MTO Indian bank account credited out",
+        "controls": null,
+        "timing": "Wise Q2 2026: 77% of transfers instant (under 20 seconds), 97% within a day (vendor)",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-cards-crossborder-wise-q2"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "MTO treasury",
+        "system": "Correspondent banking or FX trades (inference)",
+        "action": "Periodic rebalancing between MTO accounts.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Not publicly specified",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-cards-crossborder-wise-blog"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Beneficiary paid in INR from MTO prefunded account; prefund risk sits in the INR account balance.",
+    "limitations": "Vendor descriptions; rebalancing mechanics not sourced.",
+    "sourceIds": [
+      "src-cards-crossborder-wise-blog",
+      "src-cards-crossborder-wise-q2"
+    ],
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "scn-us-sme-term-loan-bank-partner",
+    "name": "SME term loan from a fintech lender with a US bank partner (application to repayment, delinquency and hardship branches)",
+    "market": "US",
+    "markets": [
+      "US"
+    ],
+    "module": "core",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "Acme via Fintech web app",
+        "system": "Fintech loan origination system (LOS)",
+        "action": "Collect business details, purpose (business) and owners.",
+        "messageOrPayload": "Legal name, address, TIN, formation documents, owners at 25% or more (Owner A) plus one controller (Owner A)",
+        "ledgerEffect": "None",
+        "controls": "CIP for the entity and BO certification; sanctions screening of entity and owners (OFAC, us.md)",
+        "timing": "BO identified at account (loan) opening",
+        "failures": "Unverifiable entity: CIP lack-of-verification path (decline or hold)",
+        "rules": [
+          "rule-us-bsa-cip",
+          "rule-us-bo-1010-230"
+        ],
+        "sourceIds": [
+          "src-us-ecfr-cip",
+          "src-us-ecfr-cdd"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "Acme / Owner A",
+        "system": "LOS plus bureau and bank-data aggregator",
+        "action": "Consent to business bureau and personal guarantor credit pull; connect bank accounts for cash-flow data.",
+        "messageOrPayload": "Bureau files, 12 months of transactions",
+        "ledgerEffect": "None",
+        "controls": "Consent records with scope and expiry; US 1033 enjoined so aggregator access is contractual (us.md)",
+        "timing": "not publicly specified",
+        "failures": "Aggregator connection fails: fall back to uploaded statements",
+        "rules": [],
+        "sourceIds": [
+          "src-banking-ops-fr-tprm"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": "FCRA permissible purpose not opened"
+      },
+      {
+        "n": 3,
+        "actor": "Decision engine (bank-approved model) plus credit officer",
+        "system": "Decision engine",
+        "action": "Compute cash-flow metrics (e.g. average daily balance, debt service coverage), policy rules and price; approve, counteroffer or decline.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": "Model governance under bank TPRM; fair-lending review (Reg B as amended 21 Jul 2026; state law may still apply)",
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [
+          "rule-us-tprm-guidance-2023",
+          "rule-us-reg-b-2026-amendments"
+        ],
+        "sourceIds": [
+          "src-banking-ops-fr-tprm",
+          "src-banking-ops-gt-regb"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "Partner Bank (via Fintech)",
+        "system": "Notices",
+        "action": "Adverse action branch: if declined or counteroffer not accepted, notice orally or in writing with ECOA notice and right to reasons (Acme revenue under USD 1m); from 1 Jan 2028 record 1071 data if bank meets 1,000-origination threshold.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": null,
+        "timing": "Within 30 days of completed application (90 days after unaccepted counteroffer)",
+        "failures": null,
+        "rules": [
+          "rule-us-reg-b-1002-9",
+          "rule-us-section-1071-revised"
+        ],
+        "sourceIds": [
+          "src-banking-ops-cfpb-1002-9",
+          "src-banking-ops-husch-1071"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 5,
+        "actor": "Acme, Owner A (guarantor)",
+        "system": "E-signature service",
+        "action": "Sign loan agreement, personal guarantee and ACH debit authorisation; no TILA disclosures (business purpose).",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [
+          "rule-us-reg-z-1026-3"
+        ],
+        "sourceIds": [
+          "src-banking-ops-cfr-1026-3"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": "ESIGN Act and Nacha authorisation rules not opened"
+      },
+      {
+        "n": 6,
+        "actor": "Partner Bank",
+        "system": "Bank core/loan system and ACH origination",
+        "action": "Book loan and originate ACH credit to Acme's operating account.",
+        "messageOrPayload": "ACH credit (format not opened)",
+        "ledgerEffect": "See je-loan-book and je-loan-disb-settle",
+        "controls": "Four-eyes on disbursement, beneficiary account name match, sanctions re-check",
+        "timing": "not publicly specified",
+        "failures": "ACH credit returned (e.g. account closed): reverse to suspense and contact borrower (je-loan-disb-return)",
+        "rules": [],
+        "sourceIds": [
+          "src-banking-ops-mt-r01"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 7,
+        "actor": "Partner Bank",
+        "system": "Loan sub-ledger, daily batch",
+        "action": "Accrue interest daily on actual/365.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "See je-loan-accrual-daily and je-loan-accrual-period1",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-banking-ops-cfr-1026-22"
+        ],
+        "branch": null,
+        "note": "Illustrative arithmetic from notes; Reg Z APR rules do not apply to this business loan, cited only for method context.",
+        "gap": null
+      },
+      {
+        "n": 8,
+        "actor": "Servicing",
+        "system": "Servicing system",
+        "action": "Payment notice before each ACH debit (practice).",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-banking-ops-fr-tprm"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 9,
+        "actor": "Partner Bank",
+        "system": "ACH origination (debit)",
+        "action": "Collect level monthly payment of 8,884.88.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "See je-loan-repay-originate and je-loan-repay-settle",
+        "controls": "Idempotency on payment instruction; daily reconciliation of ACH clearing to zero",
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-banking-ops-stripe-idem",
+          "src-banking-ops-mt-immutability"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 10,
+        "actor": "Partner Bank",
+        "system": "ACH returns processing",
+        "action": "Delinquency branch: R01 return reverses posting; account 1 day past due; buckets 1-29, 30-59, 60-89, 90+ (practice); retry up to two reinitiations within 180 days.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "See je-loan-r01-reverse",
+        "controls": null,
+        "timing": "Returned within 2 banking days (secondary on Nacha)",
+        "failures": "Collections: Reg F does not apply (business debt); state law and UDAP may (gap)",
+        "rules": [
+          "rule-us-nacha-returns-reinitiation",
+          "rule-us-reg-f-1006-2"
+        ],
+        "sourceIds": [
+          "src-banking-ops-mt-r01",
+          "src-banking-ops-stockman-reinit",
+          "src-banking-ops-cfr-1006-2"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 11,
+        "actor": "Acme; credit officer",
+        "system": "Loan modification workflow",
+        "action": "Hardship branch: approve e.g. 3 months interest-only.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "No entry for the decision; future schedule changes",
+        "controls": "Documented renewed ability to repay; frequency limits (FFIEC retail analogue; SME per bank credit policy); no capitalising unpaid interest via new advances",
+        "timing": "not publicly specified",
+        "failures": "Re-default: continue to step 12",
+        "rules": [
+          "rule-us-ffiec-retail-classification"
+        ],
+        "sourceIds": [
+          "src-banking-ops-nyfed-11256"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 12,
+        "actor": "Partner Bank",
+        "system": "GL and credit policy",
+        "action": "Place on nonaccrual (commonly 90 days past due) and reverse uncollected interest; charge off when deemed uncollectible per bank commercial credit policy; later recovery.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "See je-loan-nonaccrual, je-loan-chargeoff and je-loan-recovery",
+        "controls": "FFIEC 120-day retail rule is a reference point only",
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [
+          "rule-us-ffiec-retail-classification"
+        ],
+        "sourceIds": [
+          "src-banking-ops-nyfed-11256"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 13,
+        "actor": "Partner Bank",
+        "system": "Bureau reporting",
+        "action": "Commercial bureau reporting of Acme and, if a personal guarantee is reported, consumer reporting of Owner A under Reg V accuracy policies.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [
+          "rule-us-reg-v-1022-42"
+        ],
+        "sourceIds": [
+          "src-banking-ops-cfr-1022-42"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": "Metro 2 field detail"
+      },
+      {
+        "n": 14,
+        "actor": "Partner Bank and Fintech",
+        "system": "Participation / receivables sale",
+        "action": "If the Fintech buys a participation or receivables after origination, the bank records the sold share; under India co-lending each lender must retain at least 10% and book its share within 15 days.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "See je-loan-participation",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [
+          "rule-in-co-lending-2025"
+        ],
+        "sourceIds": [
+          "src-banking-ops-ksk-colending"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Loan disbursed by ACH, accrued and repaid monthly with daily ACH clearing reconciliation; delinquency, hardship, charge-off and recovery branches shown with illustrative entries.",
+    "limitations": "Made-up parameters; ESIGN, Nacha authorisation (WEB/CCD), FCRA permissible purpose, state commercial-financing disclosure laws, Call Report nonaccrual and charge-off rules, CECL and ASU 2022-02 not opened; steps 12 and 14 illustrative only.",
+    "sourceIds": [
+      "src-us-ecfr-cip",
+      "src-us-ecfr-cdd",
+      "src-banking-ops-fr-tprm",
+      "src-banking-ops-gt-regb",
+      "src-banking-ops-cfpb-1002-9",
+      "src-banking-ops-husch-1071",
+      "src-banking-ops-cfr-1026-3",
+      "src-banking-ops-mt-r01",
+      "src-banking-ops-cfr-1026-22",
+      "src-banking-ops-stripe-idem",
+      "src-banking-ops-mt-immutability",
+      "src-banking-ops-stockman-reinit",
+      "src-banking-ops-cfr-1006-2",
+      "src-banking-ops-nyfed-11256",
+      "src-banking-ops-cfr-1022-42",
+      "src-banking-ops-ksk-colending"
+    ],
+    "topic": "banking-ops"
+  },
+  {
+    "id": "scn-us-apsn-overdraft-example",
+    "name": "Authorize positive, settle negative (CFPB Circular 2022-06 Table 1)",
+    "market": "US",
+    "markets": [
+      "US"
+    ],
+    "module": "core",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "Consumer, bank",
+        "system": "Card authorisation",
+        "action": "Day 1: USD 50 debit card purchase authorised against USD 100 available balance.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Available balance reduced by pending debit; ledger balance unchanged",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-banking-ops-cfpb-circ-2022-06"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "Bank",
+        "system": "ACH settlement",
+        "action": "Day 2: USD 120 ACH debit settles; USD 34 fee assessed.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Ledger balance reduced by settled ACH debit and fee",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-banking-ops-cfpb-circ-2022-06"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "Bank",
+        "system": "Card settlement",
+        "action": "Day 3: the USD 50 purchase settles against the insufficient balance, triggering a second fee.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Second overdraft fee",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": "Unanticipated overdraft fee (the practice the circular addresses)",
+        "rules": [],
+        "sourceIds": [
+          "src-banking-ops-cfpb-circ-2022-06"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Two fees charged although the card purchase was authorised against sufficient available balance.",
+    "limitations": "Status of the circular after 2025 not confirmed.",
+    "sourceIds": [
+      "src-banking-ops-cfpb-circ-2022-06"
+    ],
+    "topic": "banking-ops"
+  },
+  {
+    "id": "scn-in-health-quote-to-claim",
+    "name": "Indian retail health policy from quote to claim payout (with reinsurance and reserving)",
+    "market": "IN",
+    "markets": [
+      "IN"
+    ],
+    "module": "insurance",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "Policyholder, insurer (direct or via intermediary)",
+        "system": "Quote, underwriting and policy administration (practice)",
+        "action": "Purchase policy.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-insurance-markets-skadden-in"
+        ],
+        "branch": null,
+        "note": "Intermediaries incl. MGAs per 2025 amendments; system map is industry practice.",
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "Policyholder, insurer",
+        "system": "UPI P2M or recurring e-mandate (cards, PPIs, UPI)",
+        "action": "Pay premium via UPI P2M or set up e-mandate for recurring premium.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Dr Bank / Cr Unearned premium (je-ins-premium, illustrative)",
+        "controls": "E-mandate AFA-free up to Rs 1,00,000 for insurance premiums with 24-hour pre-debit notice",
+        "timing": "UPI P2M insurance up to Rs 5 lakh per transaction, Rs 10 lakh per day (from 15 Sep 2025)",
+        "failures": null,
+        "rules": [
+          "rule-in-upi-p2m-limits-2025",
+          "rule-in-rbi-emandate-2026"
+        ],
+        "sourceIds": [
+          "src-in-air-p2m-limit-raised",
+          "src-in-rbi-emandate-framework-2026"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "Policyholder, insurer",
+        "system": "Billing",
+        "action": "Renewal: grace period 30 days (annual, half-yearly, quarterly) or 15 days (monthly); no renewal denial due to past claims; no fresh underwriting unless sum insured increases.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [
+          "rule-in-irdai-health-master-circular-2024"
+        ],
+        "sourceIds": [
+          "src-insurance-markets-theweek-irdai"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "Hospital, insurer or TPA",
+        "system": "Claims system",
+        "action": "Hospitalisation: cashless authorisation request decided.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Case reserve on notification (step 7)",
+        "controls": null,
+        "timing": "Immediately and within one hour",
+        "failures": null,
+        "rules": [
+          "rule-in-irdai-health-master-circular-2024"
+        ],
+        "sourceIds": [
+          "src-insurance-markets-theweek-irdai"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 5,
+        "actor": "Hospital, insurer or TPA",
+        "system": "Claims system",
+        "action": "Discharge authorisation; documents collected from hospital by insurer/TPA.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": null,
+        "timing": "Within three hours of hospital's request",
+        "failures": "Repudiation only with claims review committee approval",
+        "rules": [
+          "rule-in-irdai-health-master-circular-2024"
+        ],
+        "sourceIds": [
+          "src-insurance-markets-theweek-irdai"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 6,
+        "actor": "Insurer or TPA on insurer's behalf",
+        "system": "Payment to hospital (rail not publicly specified)",
+        "action": "Settle cashless claim with hospital as payee.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Settlement entry not given in notes",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": "Ombudsman award not implemented within 30 days: Rs 5,000 per day penalty",
+        "rules": [],
+        "sourceIds": [
+          "src-insurance-markets-theweek-irdai"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 7,
+        "actor": "Insurer actuarial",
+        "system": "Reserving / actuarial systems",
+        "action": "Case reserve on notification; IBNR for incurred unreported claims at period end.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Dr Claims expense / Cr Case reserve (je-ins-case-reserve, illustrative)",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-insurance-markets-cas-reserves"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 8,
+        "actor": "Insurer, reinsurer",
+        "system": "Reinsurance administration; periodic accounts",
+        "action": "Cession and recovery under a treaty; reinsurer may retrocede.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Dr Reinsurance recoverable / Cr Ceded claims (je-ins-reins-recoverable, illustrative)",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-insurance-markets-naic-reins",
+          "src-standards-acord-data-standards"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 9,
+        "actor": "Insurer finance",
+        "system": "GL / IFRS 17 measurement",
+        "action": "Accounting measurement using IFRS 17 concepts (fulfilment cash flows plus CSM; PAA available for short-duration contracts); conceptual only.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Measurement entries not specified",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [
+          "rule-global-ifrs17"
+        ],
+        "sourceIds": [
+          "src-insurance-markets-ifrs17"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Premium collected over UPI or e-mandate, cashless claim authorised and settled to the hospital, reserves and reinsurance recovery recorded.",
+    "limitations": "Rail for insurer-to-hospital settlement not publicly specified; IRDAI Master Circular not opened (secondary report); Ind AS 117 adoption not verified so IFRS 17 step is conceptual; ledger entries illustrative.",
+    "sourceIds": [
+      "src-insurance-markets-skadden-in",
+      "src-in-air-p2m-limit-raised",
+      "src-in-rbi-emandate-framework-2026",
+      "src-insurance-markets-theweek-irdai",
+      "src-insurance-markets-cas-reserves",
+      "src-insurance-markets-naic-reins",
+      "src-standards-acord-data-standards",
+      "src-insurance-markets-ifrs17"
+    ],
+    "topic": "insurance-markets"
+  },
+  {
+    "id": "scn-us-retail-equity-buy",
+    "name": "US retail investor buys a listed equity (T+1)",
+    "market": "US",
+    "markets": [
+      "US"
+    ],
+    "module": "capital_markets",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "Investor",
+        "system": "ACH or wire into broker",
+        "action": "Fund brokerage account.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Customer cash at broker (provisional until ACH settles; practice)",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": "ACH return windows and broker instant-deposit practices not sourced",
+        "rules": [],
+        "sourceIds": [
+          "src-insurance-markets-sec-2023-29"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "Broker-dealer",
+        "system": "Order routing to trading centres",
+        "action": "Route order subject to order protection.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "None",
+        "controls": "Trade-through prevention; intermarket sweep exception",
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [
+          "rule-us-reg-nms-611"
+        ],
+        "sourceIds": [
+          "src-insurance-markets-cfr-242-611"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "Broker-dealer, matching provider",
+        "system": "Allocation, confirmation and affirmation",
+        "action": "Complete allocations, confirmations and affirmations by end of trade date.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": null,
+        "controls": null,
+        "timing": "By end of T",
+        "failures": null,
+        "rules": [
+          "rule-us-sec-t1"
+        ],
+        "sourceIds": [
+          "src-insurance-markets-sec-2023-29"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "NSCC",
+        "system": "CNS",
+        "action": "Novation and netting into one daily position per security per member; trade guarantee once validated.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Net obligations per member",
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-insurance-markets-dtcc-cns"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 5,
+        "actor": "DTC",
+        "system": "DTC book entry",
+        "action": "Final settlement instructions from NSCC; DTC moves securities by book entry; end-of-day net money settlement.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Securities credited by book entry; net funds settlement in central bank money via settlement banks (mechanics need verification)",
+        "controls": null,
+        "timing": "T+1 (since 28 May 2024)",
+        "failures": null,
+        "rules": [
+          "rule-us-sec-t1"
+        ],
+        "sourceIds": [
+          "src-insurance-markets-dtcc-dtc",
+          "src-insurance-markets-dtcc-cns",
+          "src-insurance-markets-sec-2023-29"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 6,
+        "actor": "Broker-dealer",
+        "system": "15c3-3 reserve computation",
+        "action": "Compute reserve formula and fund Special Reserve Bank Account.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": null,
+        "controls": null,
+        "timing": "Weekly by default; daily for USD 500m+ average total credits",
+        "failures": null,
+        "rules": [
+          "rule-us-15c3-3"
+        ],
+        "sourceIds": [
+          "src-insurance-markets-cfr-15c3-3"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 7,
+        "actor": "NSCC / DTC",
+        "system": "CNS fail adjustments",
+        "action": "Dividends and interest on open fail positions credited or debited by CNS.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": null,
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-insurance-markets-dtcc-cns"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 8,
+        "actor": "SIPC",
+        "system": "SIPC liquidation (failure branch)",
+        "action": "If the member broker fails and assets are missing, SIPC protects up to USD 500,000 incl. USD 250,000 cash.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": null,
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-insurance-markets-sipc"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Investor holds shares via the carrying broker's DTC position; cash leg settled net at end of T+1.",
+    "limitations": "DTC settlement bank and Fedwire Funds timing not sourced; corporate action mechanics not opened beyond CNS fail adjustments.",
+    "sourceIds": [
+      "src-insurance-markets-sec-2023-29",
+      "src-insurance-markets-cfr-242-611",
+      "src-insurance-markets-dtcc-cns",
+      "src-insurance-markets-dtcc-dtc",
+      "src-insurance-markets-cfr-15c3-3",
+      "src-insurance-markets-sipc"
+    ],
+    "topic": "insurance-markets"
+  },
+  {
+    "id": "scn-uk-equity-crest-variant",
+    "name": "UK variant: equity purchase settling in CREST against BoE RTGS",
+    "market": "UK",
+    "markets": [
+      "UK"
+    ],
+    "module": "capital_markets",
+    "steps": [
+      {
+        "n": 1,
+        "actor": "Investor",
+        "system": "FPS (inference)",
+        "action": "Fund brokerage account.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": null,
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-cbdc-fscs-what-we-cover"
+        ],
+        "branch": null,
+        "note": "Funding rail is an inference in notes.",
+        "gap": null
+      },
+      {
+        "n": 2,
+        "actor": "Settlement banks",
+        "system": "BoE RTGS",
+        "action": "Fund CREST settlement bank accounts each morning; swept back at day end.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Central bank money moved into settlement bank accounts",
+        "controls": null,
+        "timing": "DvP from 06:00 (2017)",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-uk-boe-rtgs-pfmi-2017"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 3,
+        "actor": "CREST",
+        "system": "CREST DvP",
+        "action": "Real-time DvP with high-frequency settlement cycles; irrevocable Bank undertakings to debit paying and credit receiving settlement bank.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": "Securities and sterling exchanged DvP",
+        "controls": null,
+        "timing": "Equity and gilt DvP ends 14:55 (2017); T+2 today (inference) and T+1 from 11 Oct 2027",
+        "failures": null,
+        "rules": [
+          "rule-uk-t1-2027"
+        ],
+        "sourceIds": [
+          "src-uk-boe-rtgs-pfmi-2017",
+          "src-insurance-markets-uk-ast"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      },
+      {
+        "n": 4,
+        "actor": "FSCS",
+        "system": "Compensation (failure branch)",
+        "action": "Investments protected up to GBP 85,000 per person per firm.",
+        "messageOrPayload": "not publicly specified",
+        "ledgerEffect": null,
+        "controls": null,
+        "timing": "not publicly specified",
+        "failures": null,
+        "rules": [],
+        "sourceIds": [
+          "src-cbdc-fscs-what-we-cover"
+        ],
+        "branch": null,
+        "note": null,
+        "gap": null
+      }
+    ],
+    "endState": "Shares delivered DvP in CREST with sterling cash leg in central bank money.",
+    "limitations": "CREST figures from 2017 BoE document; UK T+1 legislative instrument not verified.",
+    "sourceIds": [
+      "src-cbdc-fscs-what-we-cover",
+      "src-uk-boe-rtgs-pfmi-2017",
+      "src-insurance-markets-uk-ast"
+    ],
+    "topic": "insurance-markets"
+  }
+]

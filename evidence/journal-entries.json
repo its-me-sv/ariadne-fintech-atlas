@@ -1,0 +1,838 @@
+[
+  {
+    "id": "je-card-issuer-auth",
+    "scenarioId": "scn-card-purchase-dual-message",
+    "scenarioLabel": "scn-card-purchase-dual-message",
+    "step": "Authorisation",
+    "entity": "global-role-issuer",
+    "entityId": "global-role-issuer",
+    "lines": [],
+    "assumptions": "Debit card on a current account (cardholder liability is a deposit), single currency, purchase 100.00, interchange 0.20 (EU debit cap example), acquirer MDR 1.00, scheme fees ignored, issuer and acquirer are direct settlement members. Illustrative only; not universal accounting.",
+    "illustrative": true,
+    "notes": "No general ledger entry; memo hold of 100.00. Available balance falls by 100.00; ledger balance unchanged.",
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "je-card-issuer-clearing",
+    "scenarioId": "scn-card-purchase-dual-message",
+    "scenarioLabel": "scn-card-purchase-dual-message",
+    "step": "Clearing (presentment matched)",
+    "entity": "global-role-issuer",
+    "entityId": "global-role-issuer",
+    "lines": [
+      {
+        "account": "Cardholder deposit",
+        "debit": 100,
+        "credit": null
+      },
+      {
+        "account": "Scheme settlement payable",
+        "debit": null,
+        "credit": 99.8
+      },
+      {
+        "account": "Interchange income",
+        "debit": null,
+        "credit": 0.2
+      }
+    ],
+    "assumptions": "Debit card on a current account (cardholder liability is a deposit), single currency, purchase 100.00, interchange 0.20 (EU debit cap example), acquirer MDR 1.00, scheme fees ignored, issuer and acquirer are direct settlement members. Illustrative only; not universal accounting.",
+    "illustrative": true,
+    "notes": "Release the hold.",
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "je-card-issuer-settlement",
+    "scenarioId": "scn-card-purchase-dual-message",
+    "scenarioLabel": "scn-card-purchase-dual-message",
+    "step": "Settlement",
+    "entity": "global-role-issuer",
+    "entityId": "global-role-issuer",
+    "lines": [
+      {
+        "account": "Scheme settlement payable",
+        "debit": 99.8,
+        "credit": null
+      },
+      {
+        "account": "Central bank or settlement bank account",
+        "debit": null,
+        "credit": 99.8
+      }
+    ],
+    "assumptions": "Debit card on a current account (cardholder liability is a deposit), single currency, purchase 100.00, interchange 0.20 (EU debit cap example), acquirer MDR 1.00, scheme fees ignored, issuer and acquirer are direct settlement members. Illustrative only; not universal accounting.",
+    "illustrative": true,
+    "notes": "Aggregated with all items in the net position.",
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "je-card-issuer-refund",
+    "scenarioId": "scn-card-purchase-dual-message",
+    "scenarioLabel": "scn-card-purchase-dual-message",
+    "step": "Refund (credit presentment 100.00)",
+    "entity": "global-role-issuer",
+    "entityId": "global-role-issuer",
+    "lines": [
+      {
+        "account": "Scheme settlement receivable",
+        "debit": 99.8,
+        "credit": null
+      },
+      {
+        "account": "Interchange expense",
+        "debit": 0.2,
+        "credit": null
+      },
+      {
+        "account": "Cardholder deposit",
+        "debit": null,
+        "credit": 100
+      }
+    ],
+    "assumptions": "Debit card on a current account (cardholder liability is a deposit), single currency, purchase 100.00, interchange 0.20 (EU debit cap example), acquirer MDR 1.00, scheme fees ignored, issuer and acquirer are direct settlement members. Illustrative only; not universal accounting. Interchange on credits flows issuer to acquirer per Philadelphia Fed; amount assumed 0.20.",
+    "illustrative": true,
+    "notes": null,
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "je-card-issuer-chargeback",
+    "scenarioId": "scn-card-purchase-dual-message",
+    "scenarioLabel": "scn-card-purchase-dual-message",
+    "step": "Chargeback won by cardholder",
+    "entity": "global-role-issuer",
+    "entityId": "global-role-issuer",
+    "lines": [
+      {
+        "account": "Chargeback receivable from scheme",
+        "debit": 100,
+        "credit": null
+      },
+      {
+        "account": "Cardholder deposit",
+        "debit": null,
+        "credit": 100
+      }
+    ],
+    "assumptions": "Debit card on a current account (cardholder liability is a deposit), single currency, purchase 100.00, interchange 0.20 (EU debit cap example), acquirer MDR 1.00, scheme fees ignored, issuer and acquirer are direct settlement members. Illustrative only; not universal accounting. Provisional credit assumption.",
+    "illustrative": true,
+    "notes": "Settled later via net settlement credit.",
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "je-card-acquirer-auth",
+    "scenarioId": "scn-card-purchase-dual-message",
+    "scenarioLabel": "scn-card-purchase-dual-message",
+    "step": "Authorisation",
+    "entity": "global-role-acquirer",
+    "entityId": "global-role-acquirer",
+    "lines": [],
+    "assumptions": "Debit card on a current account (cardholder liability is a deposit), single currency, purchase 100.00, interchange 0.20 (EU debit cap example), acquirer MDR 1.00, scheme fees ignored, issuer and acquirer are direct settlement members. Illustrative only; not universal accounting.",
+    "illustrative": true,
+    "notes": "No ledger entry.",
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "je-card-acquirer-clearing",
+    "scenarioId": "scn-card-purchase-dual-message",
+    "scenarioLabel": "scn-card-purchase-dual-message",
+    "step": "Clearing submission",
+    "entity": "global-role-acquirer",
+    "entityId": "global-role-acquirer",
+    "lines": [
+      {
+        "account": "Scheme settlement receivable",
+        "debit": 99.8,
+        "credit": null
+      },
+      {
+        "account": "Interchange expense",
+        "debit": 0.2,
+        "credit": null
+      },
+      {
+        "account": "Merchant payable",
+        "debit": null,
+        "credit": 100
+      }
+    ],
+    "assumptions": "Debit card on a current account (cardholder liability is a deposit), single currency, purchase 100.00, interchange 0.20 (EU debit cap example), acquirer MDR 1.00, scheme fees ignored, issuer and acquirer are direct settlement members. Illustrative only; not universal accounting.",
+    "illustrative": true,
+    "notes": null,
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "je-card-acquirer-settlement",
+    "scenarioId": "scn-card-purchase-dual-message",
+    "scenarioLabel": "scn-card-purchase-dual-message",
+    "step": "Settlement",
+    "entity": "global-role-acquirer",
+    "entityId": "global-role-acquirer",
+    "lines": [
+      {
+        "account": "Settlement bank account",
+        "debit": 99.8,
+        "credit": null
+      },
+      {
+        "account": "Scheme settlement receivable",
+        "debit": null,
+        "credit": 99.8
+      }
+    ],
+    "assumptions": "Debit card on a current account (cardholder liability is a deposit), single currency, purchase 100.00, interchange 0.20 (EU debit cap example), acquirer MDR 1.00, scheme fees ignored, issuer and acquirer are direct settlement members. Illustrative only; not universal accounting.",
+    "illustrative": true,
+    "notes": null,
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "je-card-acquirer-funding",
+    "scenarioId": "scn-card-purchase-dual-message",
+    "scenarioLabel": "scn-card-purchase-dual-message",
+    "step": "Merchant funding (net of MDR 1.00)",
+    "entity": "global-role-acquirer",
+    "entityId": "global-role-acquirer",
+    "lines": [
+      {
+        "account": "Merchant payable",
+        "debit": 100,
+        "credit": null
+      },
+      {
+        "account": "Merchant deposit or outbound transfer",
+        "debit": null,
+        "credit": 99
+      },
+      {
+        "account": "MDR income",
+        "debit": null,
+        "credit": 1
+      }
+    ],
+    "assumptions": "Debit card on a current account (cardholder liability is a deposit), single currency, purchase 100.00, interchange 0.20 (EU debit cap example), acquirer MDR 1.00, scheme fees ignored, issuer and acquirer are direct settlement members. Illustrative only; not universal accounting.",
+    "illustrative": true,
+    "notes": null,
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "je-card-acquirer-chargeback",
+    "scenarioId": "scn-card-purchase-dual-message",
+    "scenarioLabel": "scn-card-purchase-dual-message",
+    "step": "Chargeback",
+    "entity": "global-role-acquirer",
+    "entityId": "global-role-acquirer",
+    "lines": [
+      {
+        "account": "Merchant receivable (or reserve)",
+        "debit": 100,
+        "credit": null
+      },
+      {
+        "account": "Scheme settlement payable",
+        "debit": null,
+        "credit": 100
+      }
+    ],
+    "assumptions": "Debit card on a current account (cardholder liability is a deposit), single currency, purchase 100.00, interchange 0.20 (EU debit cap example), acquirer MDR 1.00, scheme fees ignored, issuer and acquirer are direct settlement members. Illustrative only; not universal accounting.",
+    "illustrative": true,
+    "notes": "If second presentment succeeds, reverse.",
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "je-gbpinr-bank-a-debit",
+    "scenarioId": "scn-gbp-inr-serial",
+    "scenarioLabel": "scn-gbp-inr-serial",
+    "step": "Customer debit and FX",
+    "entity": "Bank A (UK sending bank)",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "Customer deposit (GBP)",
+        "debit": 1005,
+        "credit": null
+      },
+      {
+        "account": "Fee income (GBP)",
+        "debit": null,
+        "credit": 5
+      },
+      {
+        "account": "FX position (GBP)",
+        "debit": null,
+        "credit": 1000
+      }
+    ],
+    "assumptions": "GBP 1,000 sent; Bank A buys INR from its own FX desk at rate R including spread; A's INR account at C is A's nostro (C's vostro); fee GBP 5 charged to sender. Illustrative only.",
+    "illustrative": true,
+    "notes": null,
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "je-gbpinr-bank-a-nostro",
+    "scenarioId": "scn-gbp-inr-serial",
+    "scenarioLabel": "scn-gbp-inr-serial",
+    "step": "INR leg",
+    "entity": "Bank A (UK sending bank)",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "FX position (INR)",
+        "debit": "1,000 x R",
+        "credit": null
+      },
+      {
+        "account": "Nostro INR at Bank C",
+        "debit": null,
+        "credit": "1,000 x R"
+      }
+    ],
+    "assumptions": "GBP 1,000 sent; Bank A buys INR from its own FX desk at rate R including spread; A's INR account at C is A's nostro (C's vostro); fee GBP 5 charged to sender. Illustrative only.",
+    "illustrative": true,
+    "notes": null,
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "je-gbpinr-bank-c",
+    "scenarioId": "scn-gbp-inr-serial",
+    "scenarioLabel": "scn-gbp-inr-serial",
+    "step": "Correspondent pays beneficiary bank D",
+    "entity": "Bank C (Indian correspondent)",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "Vostro Bank A (liability, INR)",
+        "debit": "INR amount",
+        "credit": null
+      },
+      {
+        "account": "Settlement account at RBI via NEFT or IMPS clearing (INR)",
+        "debit": null,
+        "credit": "INR amount"
+      }
+    ],
+    "assumptions": "GBP 1,000 sent; Bank A buys INR from its own FX desk at rate R including spread; A's INR account at C is A's nostro (C's vostro); fee GBP 5 charged to sender. Illustrative only.",
+    "illustrative": true,
+    "notes": null,
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "je-gbpinr-bank-d",
+    "scenarioId": "scn-gbp-inr-serial",
+    "scenarioLabel": "scn-gbp-inr-serial",
+    "step": "Beneficiary credit",
+    "entity": "Bank D (beneficiary bank)",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "Settlement account (INR)",
+        "debit": "INR amount",
+        "credit": null
+      },
+      {
+        "account": "Beneficiary deposit (INR)",
+        "debit": null,
+        "credit": "INR amount"
+      }
+    ],
+    "assumptions": "GBP 1,000 sent; Bank A buys INR from its own FX desk at rate R including spread; A's INR account at C is A's nostro (C's vostro); fee GBP 5 charged to sender. Illustrative only.",
+    "illustrative": true,
+    "notes": null,
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "je-gbpinr-return",
+    "scenarioId": "scn-gbp-inr-serial",
+    "scenarioLabel": "scn-gbp-inr-serial",
+    "step": "Return",
+    "entity": "All banks in chain",
+    "entityId": null,
+    "lines": [],
+    "assumptions": "GBP 1,000 sent; Bank A buys INR from its own FX desk at rate R including spread; A's INR account at C is A's nostro (C's vostro); fee GBP 5 charged to sender. Illustrative only.",
+    "illustrative": true,
+    "notes": "Reverse each step; FX re-conversion at the then-current rate creates a gain or loss for whoever bears it (not publicly specified).",
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "je-gbpinr-mto-collect",
+    "scenarioId": "scn-gbp-inr-mto",
+    "scenarioLabel": "scn-gbp-inr-mto",
+    "step": "Collection",
+    "entity": "MTO",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "MTO UK bank account (GBP)",
+        "debit": "GBP amount",
+        "credit": null
+      },
+      {
+        "account": "Customer payable (GBP)",
+        "debit": null,
+        "credit": "GBP amount"
+      }
+    ],
+    "assumptions": "GBP 1,000 sent; Bank A buys INR from its own FX desk at rate R including spread; A's INR account at C is A's nostro (C's vostro); fee GBP 5 charged to sender. Illustrative only.",
+    "illustrative": true,
+    "notes": null,
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "je-gbpinr-mto-payout",
+    "scenarioId": "scn-gbp-inr-mto",
+    "scenarioLabel": "scn-gbp-inr-mto",
+    "step": "Payout",
+    "entity": "MTO",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "Customer payable (GBP)",
+        "debit": "GBP amount",
+        "credit": null
+      },
+      {
+        "account": "FX position (GBP)",
+        "debit": null,
+        "credit": "GBP amount"
+      },
+      {
+        "account": "FX position (INR)",
+        "debit": "INR amount",
+        "credit": null
+      },
+      {
+        "account": "MTO Indian bank account (INR)",
+        "debit": null,
+        "credit": "INR amount"
+      }
+    ],
+    "assumptions": "GBP 1,000 sent; Bank A buys INR from its own FX desk at rate R including spread; A's INR account at C is A's nostro (C's vostro); fee GBP 5 charged to sender. Illustrative only.",
+    "illustrative": true,
+    "notes": "Prefund risk sits in the INR account balance.",
+    "topic": "cards-crossborder"
+  },
+  {
+    "id": "je-fbo-load-bank-gl",
+    "scenarioId": null,
+    "scenarioLabel": "fbo-load-example",
+    "step": "ACH settlement of load",
+    "entity": "Sponsor Bank (GL)",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "Due from Federal Reserve (reserve account)",
+        "debit": 500,
+        "credit": null
+      },
+      {
+        "account": "Custodial deposits - FBO Fintech X",
+        "debit": null,
+        "credit": 500
+      }
+    ],
+    "assumptions": "Fintech customer Alice loads USD 500 via ACH debit into an FBO account at Sponsor Bank; bank keeps the sub-ledger. Illustrative only.",
+    "illustrative": true,
+    "notes": "Sub-ledger total must equal the FBO control balance.",
+    "topic": "banking-ops"
+  },
+  {
+    "id": "je-fbo-load-subledger",
+    "scenarioId": null,
+    "scenarioLabel": "fbo-load-example",
+    "step": "Sub-ledger posting",
+    "entity": "Sponsor Bank (sub-ledger)",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "Alice",
+        "debit": null,
+        "credit": 500
+      }
+    ],
+    "assumptions": "Fintech customer Alice loads USD 500 via ACH debit into an FBO account at Sponsor Bank; bank keeps the sub-ledger. Illustrative only.",
+    "illustrative": true,
+    "notes": null,
+    "topic": "banking-ops"
+  },
+  {
+    "id": "je-fbo-load-fintech",
+    "scenarioId": null,
+    "scenarioLabel": "fbo-load-example",
+    "step": "Fintech books",
+    "entity": "Fintech X (agent)",
+    "entityId": null,
+    "lines": [],
+    "assumptions": "Fintech customer Alice loads USD 500 via ACH debit into an FBO account at Sponsor Bank; bank keeps the sub-ledger. Illustrative only.",
+    "illustrative": true,
+    "notes": "No balance-sheet deposit liability; memo record only. If the fintech kept the only sub-ledger, the bank would hold a single USD 500 liability to 'Fintech X FBO' with no owner detail (Synapse failure mode).",
+    "topic": "banking-ops"
+  },
+  {
+    "id": "je-loan-book",
+    "scenarioId": "scn-us-sme-term-loan-bank-partner",
+    "scenarioLabel": "scn-us-sme-term-loan-bank-partner",
+    "step": "6. Booking and disbursement",
+    "entity": "Partner Bank (GL)",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "Loans receivable - SME term",
+        "debit": 100000,
+        "credit": null
+      },
+      {
+        "account": "ACH outbound clearing",
+        "debit": null,
+        "credit": 100000
+      }
+    ],
+    "assumptions": "Borrower Acme LLC (US, revenue USD 800,000); loan USD 100,000, 12 monthly amortising payments, fixed 12% nominal annual, daily interest actual/365; no fees; Partner Bank originates and holds the loan; Fintech Lender runs application, model, servicing and collections; disbursement and repayment by ACH. Made-up parameters, not market norms.",
+    "illustrative": true,
+    "notes": null,
+    "topic": "banking-ops"
+  },
+  {
+    "id": "je-loan-disb-settle",
+    "scenarioId": "scn-us-sme-term-loan-bank-partner",
+    "scenarioLabel": "scn-us-sme-term-loan-bank-partner",
+    "step": "6. Disbursement settlement",
+    "entity": "Partner Bank (GL)",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "ACH outbound clearing",
+        "debit": 100000,
+        "credit": null
+      },
+      {
+        "account": "Due from Federal Reserve (reserve account)",
+        "debit": null,
+        "credit": 100000
+      }
+    ],
+    "assumptions": "Borrower Acme LLC (US, revenue USD 800,000); loan USD 100,000, 12 monthly amortising payments, fixed 12% nominal annual, daily interest actual/365; no fees; Partner Bank originates and holds the loan; Fintech Lender runs application, model, servicing and collections; disbursement and repayment by ACH. Made-up parameters, not market norms.",
+    "illustrative": true,
+    "notes": null,
+    "topic": "banking-ops"
+  },
+  {
+    "id": "je-loan-disb-return",
+    "scenarioId": "scn-us-sme-term-loan-bank-partner",
+    "scenarioLabel": "scn-us-sme-term-loan-bank-partner",
+    "step": "6. Failure: ACH credit returned",
+    "entity": "Partner Bank (GL)",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "Due from Federal Reserve",
+        "debit": "returned amount",
+        "credit": null
+      },
+      {
+        "account": "ACH clearing",
+        "debit": null,
+        "credit": "returned amount"
+      }
+    ],
+    "assumptions": "Borrower Acme LLC (US, revenue USD 800,000); loan USD 100,000, 12 monthly amortising payments, fixed 12% nominal annual, daily interest actual/365; no fees; Partner Bank originates and holds the loan; Fintech Lender runs application, model, servicing and collections; disbursement and repayment by ACH. Made-up parameters, not market norms.",
+    "illustrative": true,
+    "notes": "Then hold funds in suspense and contact borrower.",
+    "topic": "banking-ops"
+  },
+  {
+    "id": "je-loan-accrual-daily",
+    "scenarioId": "scn-us-sme-term-loan-bank-partner",
+    "scenarioLabel": "scn-us-sme-term-loan-bank-partner",
+    "step": "7. Daily interest accrual",
+    "entity": "Partner Bank (loan sub-ledger)",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "Accrued interest receivable",
+        "debit": 32.8767,
+        "credit": null
+      },
+      {
+        "account": "Interest income",
+        "debit": null,
+        "credit": 32.8767
+      }
+    ],
+    "assumptions": "Borrower Acme LLC (US, revenue USD 800,000); loan USD 100,000, 12 monthly amortising payments, fixed 12% nominal annual, daily interest actual/365; no fees; Partner Bank originates and holds the loan; Fintech Lender runs application, model, servicing and collections; disbursement and repayment by ACH. Made-up parameters, not market norms.",
+    "illustrative": true,
+    "notes": "100,000 x 12% / 365 = 32.8767 per day.",
+    "topic": "banking-ops"
+  },
+  {
+    "id": "je-loan-accrual-period1",
+    "scenarioId": "scn-us-sme-term-loan-bank-partner",
+    "scenarioLabel": "scn-us-sme-term-loan-bank-partner",
+    "step": "7. First period accrual (31 days, rounded once)",
+    "entity": "Partner Bank (loan sub-ledger)",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "Accrued interest receivable",
+        "debit": 1019.18,
+        "credit": null
+      },
+      {
+        "account": "Interest income",
+        "debit": null,
+        "credit": 1019.18
+      }
+    ],
+    "assumptions": "Borrower Acme LLC (US, revenue USD 800,000); loan USD 100,000, 12 monthly amortising payments, fixed 12% nominal annual, daily interest actual/365; no fees; Partner Bank originates and holds the loan; Fintech Lender runs application, model, servicing and collections; disbursement and repayment by ACH. Made-up parameters, not market norms.",
+    "illustrative": true,
+    "notes": "100,000 x 0.12 x 31 / 365 = 1,019.18; rounding each day to 32.88 gives 1,019.28, so the rounding convention must be fixed in the product spec.",
+    "topic": "banking-ops"
+  },
+  {
+    "id": "je-loan-repay-originate",
+    "scenarioId": "scn-us-sme-term-loan-bank-partner",
+    "scenarioLabel": "scn-us-sme-term-loan-bank-partner",
+    "step": "9. Repayment (month 1) on origination of ACH debit",
+    "entity": "Partner Bank (GL)",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "ACH inbound clearing",
+        "debit": 8884.88,
+        "credit": null
+      },
+      {
+        "account": "Accrued interest receivable",
+        "debit": null,
+        "credit": 1019.18
+      },
+      {
+        "account": "Loans receivable",
+        "debit": null,
+        "credit": 7865.7
+      }
+    ],
+    "assumptions": "Borrower Acme LLC (US, revenue USD 800,000); loan USD 100,000, 12 monthly amortising payments, fixed 12% nominal annual, daily interest actual/365; no fees; Partner Bank originates and holds the loan; Fintech Lender runs application, model, servicing and collections; disbursement and repayment by ACH. Made-up parameters, not market norms.",
+    "illustrative": true,
+    "notes": "Level payment = 100,000 x 0.01 / (1 - 1.01^-12) = 8,884.88.",
+    "topic": "banking-ops"
+  },
+  {
+    "id": "je-loan-repay-settle",
+    "scenarioId": "scn-us-sme-term-loan-bank-partner",
+    "scenarioLabel": "scn-us-sme-term-loan-bank-partner",
+    "step": "9. Repayment settlement",
+    "entity": "Partner Bank (GL)",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "Due from Fed",
+        "debit": 8884.88,
+        "credit": null
+      },
+      {
+        "account": "ACH inbound clearing",
+        "debit": null,
+        "credit": 8884.88
+      }
+    ],
+    "assumptions": "Borrower Acme LLC (US, revenue USD 800,000); loan USD 100,000, 12 monthly amortising payments, fixed 12% nominal annual, daily interest actual/365; no fees; Partner Bank originates and holds the loan; Fintech Lender runs application, model, servicing and collections; disbursement and repayment by ACH. Made-up parameters, not market norms.",
+    "illustrative": true,
+    "notes": null,
+    "topic": "banking-ops"
+  },
+  {
+    "id": "je-loan-r01-reverse",
+    "scenarioId": "scn-us-sme-term-loan-bank-partner",
+    "scenarioLabel": "scn-us-sme-term-loan-bank-partner",
+    "step": "10. R01 return reverses step 9 posting",
+    "entity": "Partner Bank (GL)",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "Loans receivable",
+        "debit": 7865.7,
+        "credit": null
+      },
+      {
+        "account": "Accrued interest receivable",
+        "debit": 1019.18,
+        "credit": null
+      },
+      {
+        "account": "ACH inbound clearing",
+        "debit": null,
+        "credit": 8884.88
+      }
+    ],
+    "assumptions": "Borrower Acme LLC (US, revenue USD 800,000); loan USD 100,000, 12 monthly amortising payments, fixed 12% nominal annual, daily interest actual/365; no fees; Partner Bank originates and holds the loan; Fintech Lender runs application, model, servicing and collections; disbursement and repayment by ACH. Made-up parameters, not market norms.",
+    "illustrative": true,
+    "notes": "Plus settlement reversal against Due from Fed.",
+    "topic": "banking-ops"
+  },
+  {
+    "id": "je-loan-nonaccrual",
+    "scenarioId": "scn-us-sme-term-loan-bank-partner",
+    "scenarioLabel": "scn-us-sme-term-loan-bank-partner",
+    "step": "12. Nonaccrual: reverse uncollected accrued interest",
+    "entity": "Partner Bank (GL)",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "Interest income",
+        "debit": "uncollected accrued amount",
+        "credit": null
+      },
+      {
+        "account": "Accrued interest receivable",
+        "debit": null,
+        "credit": "uncollected accrued amount"
+      }
+    ],
+    "assumptions": "Borrower Acme LLC (US, revenue USD 800,000); loan USD 100,000, 12 monthly amortising payments, fixed 12% nominal annual, daily interest actual/365; no fees; Partner Bank originates and holds the loan; Fintech Lender runs application, model, servicing and collections; disbursement and repayment by ACH. Made-up parameters, not market norms.",
+    "illustrative": true,
+    "notes": "Nonaccrual rule not opened.",
+    "topic": "banking-ops"
+  },
+  {
+    "id": "je-loan-chargeoff",
+    "scenarioId": "scn-us-sme-term-loan-bank-partner",
+    "scenarioLabel": "scn-us-sme-term-loan-bank-partner",
+    "step": "12. Charge-off",
+    "entity": "Partner Bank (GL)",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "Allowance for credit losses",
+        "debit": "X",
+        "credit": null
+      },
+      {
+        "account": "Loans receivable",
+        "debit": null,
+        "credit": "X"
+      }
+    ],
+    "assumptions": "Borrower Acme LLC (US, revenue USD 800,000); loan USD 100,000, 12 monthly amortising payments, fixed 12% nominal annual, daily interest actual/365; no fees; Partner Bank originates and holds the loan; Fintech Lender runs application, model, servicing and collections; disbursement and repayment by ACH. Made-up parameters, not market norms.",
+    "illustrative": true,
+    "notes": "Per bank commercial credit policy.",
+    "topic": "banking-ops"
+  },
+  {
+    "id": "je-loan-recovery",
+    "scenarioId": "scn-us-sme-term-loan-bank-partner",
+    "scenarioLabel": "scn-us-sme-term-loan-bank-partner",
+    "step": "12. Recovery (e.g. from guarantor)",
+    "entity": "Partner Bank (GL)",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "Due from Fed",
+        "debit": "recovery amount",
+        "credit": null
+      },
+      {
+        "account": "Allowance for credit losses",
+        "debit": null,
+        "credit": "recovery amount"
+      }
+    ],
+    "assumptions": "Borrower Acme LLC (US, revenue USD 800,000); loan USD 100,000, 12 monthly amortising payments, fixed 12% nominal annual, daily interest actual/365; no fees; Partner Bank originates and holds the loan; Fintech Lender runs application, model, servicing and collections; disbursement and repayment by ACH. Made-up parameters, not market norms.",
+    "illustrative": true,
+    "notes": "Recoveries credited to allowance is common practice; not opened.",
+    "topic": "banking-ops"
+  },
+  {
+    "id": "je-loan-participation",
+    "scenarioId": "scn-us-sme-term-loan-bank-partner",
+    "scenarioLabel": "scn-us-sme-term-loan-bank-partner",
+    "step": "14. Sale of participation to Fintech",
+    "entity": "Partner Bank (GL)",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "Due from Fintech",
+        "debit": "sold share",
+        "credit": null
+      },
+      {
+        "account": "Loans receivable",
+        "debit": null,
+        "credit": "sold share"
+      }
+    ],
+    "assumptions": "Borrower Acme LLC (US, revenue USD 800,000); loan USD 100,000, 12 monthly amortising payments, fixed 12% nominal annual, daily interest actual/365; no fees; Partner Bank originates and holds the loan; Fintech Lender runs application, model, servicing and collections; disbursement and repayment by ACH. Made-up parameters, not market norms.",
+    "illustrative": true,
+    "notes": null,
+    "topic": "banking-ops"
+  },
+  {
+    "id": "je-ins-premium",
+    "scenarioId": "scn-in-health-quote-to-claim",
+    "scenarioLabel": "scn-in-health-quote-to-claim",
+    "step": "Premium received",
+    "entity": "Insurer",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "Bank",
+        "debit": "premium",
+        "credit": null
+      },
+      {
+        "account": "Unearned premium",
+        "debit": null,
+        "credit": "premium"
+      }
+    ],
+    "assumptions": "Illustrative double-entry pattern from notes, not sourced from an Indian insurer's chart of accounts; amounts not specified.",
+    "illustrative": true,
+    "notes": null,
+    "topic": "insurance-markets"
+  },
+  {
+    "id": "je-ins-case-reserve",
+    "scenarioId": "scn-in-health-quote-to-claim",
+    "scenarioLabel": "scn-in-health-quote-to-claim",
+    "step": "Claim notified: case reserve",
+    "entity": "Insurer",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "Claims expense",
+        "debit": "reserve amount",
+        "credit": null
+      },
+      {
+        "account": "Case reserve",
+        "debit": null,
+        "credit": "reserve amount"
+      }
+    ],
+    "assumptions": "Illustrative double-entry pattern from notes, not sourced from an Indian insurer's chart of accounts; amounts not specified.",
+    "illustrative": true,
+    "notes": null,
+    "topic": "insurance-markets"
+  },
+  {
+    "id": "je-ins-reins-recoverable",
+    "scenarioId": "scn-in-health-quote-to-claim",
+    "scenarioLabel": "scn-in-health-quote-to-claim",
+    "step": "Reinsurance recovery recognised",
+    "entity": "Insurer",
+    "entityId": null,
+    "lines": [
+      {
+        "account": "Reinsurance recoverable",
+        "debit": "ceded share",
+        "credit": null
+      },
+      {
+        "account": "Ceded claims",
+        "debit": null,
+        "credit": "ceded share"
+      }
+    ],
+    "assumptions": "Illustrative double-entry pattern from notes, not sourced from an Indian insurer's chart of accounts; amounts not specified.",
+    "illustrative": true,
+    "notes": null,
+    "topic": "insurance-markets"
+  }
+]

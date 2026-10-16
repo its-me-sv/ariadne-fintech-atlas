@@ -1,0 +1,3948 @@
+{
+  "asOf": "2026-10-15",
+  "depthLegend": "Depth labels: deep means primary sources opened for most key facts, with scenario traces; high level means key facts sourced but detail missing; not covered means outside this pass; awaiting research means identified as needed but not reached.",
+  "jurisdictions": [
+    {
+      "jurisdiction": "UK",
+      "codes": [
+        "UK"
+      ],
+      "depth": "Deep",
+      "depthNote": "Copied from coverage manifest row 'United Kingdom'.",
+      "manifestRows": [
+        {
+          "area": "United Kingdom",
+          "depth": "Deep",
+          "mainGaps": "FPS message standard; current RT2 settlement cycle times; Mastercard UK settlement; FSM Bill progress; digital pound decision"
+        }
+      ],
+      "counts": {
+        "nodes": 81,
+        "stubNodes": 0,
+        "nodesByStatus": {
+          "adopted_not_effective": 2,
+          "design_phase": 4,
+          "in_force": 24,
+          "pilot": 4,
+          "production": 36,
+          "proposed": 2,
+          "research": 2,
+          "retired": 2,
+          "unknown": 5
+        },
+        "edges": 87,
+        "rules": 79,
+        "rulesByEffectiveStatus": {
+          "adopted_not_effective": 4,
+          "consultation": 8,
+          "in_force": 54,
+          "proposed": 7,
+          "superseded": 1,
+          "unknown": 5
+        },
+        "claims": 171,
+        "claimsByStatus": {
+          "conflicting": 3,
+          "needs_verification": 7,
+          "supported": 55,
+          "verified": 106
+        },
+        "scenarios": 6,
+        "sources": 92
+      },
+      "byModule": {
+        "core": {
+          "nodes": 68,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "design_phase": 3,
+            "in_force": 20,
+            "pilot": 3,
+            "production": 34,
+            "proposed": 2,
+            "retired": 2,
+            "unknown": 4
+          },
+          "edges": 71,
+          "rules": 66,
+          "rulesByEffectiveStatus": {
+            "adopted_not_effective": 1,
+            "consultation": 7,
+            "in_force": 48,
+            "proposed": 7,
+            "unknown": 3
+          },
+          "claims": 136,
+          "claimsByStatus": {
+            "conflicting": 2,
+            "needs_verification": 6,
+            "supported": 40,
+            "verified": 88
+          },
+          "scenarios": 5,
+          "sources": 0
+        },
+        "cbdc": {
+          "nodes": 4,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "design_phase": 1,
+            "research": 2,
+            "unknown": 1
+          },
+          "edges": 7,
+          "rules": 1,
+          "rulesByEffectiveStatus": {
+            "in_force": 1
+          },
+          "claims": 13,
+          "claimsByStatus": {
+            "needs_verification": 1,
+            "supported": 1,
+            "verified": 11
+          },
+          "scenarios": 0,
+          "sources": 0
+        },
+        "insurance": {
+          "nodes": 2,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "in_force": 2
+          },
+          "edges": 0,
+          "rules": 3,
+          "rulesByEffectiveStatus": {
+            "in_force": 3
+          },
+          "claims": 5,
+          "claimsByStatus": {
+            "supported": 4,
+            "verified": 1
+          },
+          "scenarios": 0,
+          "sources": 0
+        },
+        "capital_markets": {
+          "nodes": 3,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "in_force": 1,
+            "production": 2
+          },
+          "edges": 2,
+          "rules": 2,
+          "rulesByEffectiveStatus": {
+            "in_force": 1,
+            "unknown": 1
+          },
+          "claims": 3,
+          "claimsByStatus": {
+            "supported": 3
+          },
+          "scenarios": 1,
+          "sources": 0
+        },
+        "crypto": {
+          "nodes": 4,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "adopted_not_effective": 2,
+            "in_force": 1,
+            "pilot": 1
+          },
+          "edges": 7,
+          "rules": 7,
+          "rulesByEffectiveStatus": {
+            "adopted_not_effective": 3,
+            "consultation": 1,
+            "in_force": 1,
+            "superseded": 1,
+            "unknown": 1
+          },
+          "claims": 14,
+          "claimsByStatus": {
+            "conflicting": 1,
+            "supported": 7,
+            "verified": 6
+          },
+          "scenarios": 0,
+          "sources": 0
+        }
+      },
+      "byBusinessDomain": {
+        "authorities": 7,
+        "capital_markets": 3,
+        "crypto": 4,
+        "insurance": 2,
+        "market_infrastructure": 2,
+        "money_and_cbdc": 4,
+        "operators_and_schemes": 8,
+        "other": 21,
+        "payments": 9,
+        "regulation": 19,
+        "standards": 2
+      },
+      "gaps": [
+        {
+          "id": "gap-uk-1",
+          "text": "UK Finance: no primary UK Finance page opened, so its role (trade body, fraud data, Best Practice Standards claims system) is unverified."
+        },
+        {
+          "id": "gap-uk-2",
+          "text": "Timing of the FSM Bill 2026 Commons second reading and Royal Assent (Lords stages completed 15 Sep 2026)."
+        },
+        {
+          "id": "gap-uk-3",
+          "text": "PSR list of designated payment systems: the page failed to load."
+        },
+        {
+          "id": "gap-uk-4",
+          "text": "Exact CHAPS/RTGS ISO 20022 usage-guideline version numbers (MyStandards releases)."
+        },
+        {
+          "id": "gap-uk-5",
+          "text": "A current (2026) list of RTGS account types was not opened; non-bank limits on intraday liquidity and remuneration come from the 2017 and 2018 documents; outcome of BoE consideration (January to June 2026) of overnight safeguarding facilities for non-bank RTGS account holders unknown."
+        },
+        {
+          "id": "gap-uk-6",
+          "text": "FPS and Bacs message standards: Pay.UK ISO 20022 page does not say what FPS uses (widely reported as ISO 8583-based, not verified) or what Bacs uses (Standard 18, not verified)."
+        },
+        {
+          "id": "gap-uk-7",
+          "text": "Mastercard UK sterling settlement mechanism: not found in the BoE documents opened."
+        },
+        {
+          "id": "gap-uk-8",
+          "text": "Current (2026) settlement cycle times for FPS, Bacs, Visa and LINK need a current BoE RT2 timetable."
+        },
+        {
+          "id": "gap-uk-9",
+          "text": "No primary source on FPS return payments or recalls was opened."
+        },
+        {
+          "id": "gap-uk-10",
+          "text": "Whether LINK is formally designated as the cash access coordination body was not confirmed from an opened source."
+        },
+        {
+          "id": "gap-uk-11",
+          "text": "Contactless limits: not researched (search budget exhausted)."
+        },
+        {
+          "id": "gap-uk-12",
+          "text": "No primary UKPI rulebook or commercial VRP launch notice was opened."
+        },
+        {
+          "id": "gap-uk-13",
+          "text": "No final SD17a found; whether the FCA interface-rules consultation was published in Q3 2026 is not confirmed."
+        },
+        {
+          "id": "gap-uk-14",
+          "text": "The Open Banking Standard version current in October 2026 (anything after v4.0) is not confirmed."
+        },
+        {
+          "id": "gap-uk-15",
+          "text": "Bank authorisation (PRA authorises, FCA and PRA dual-regulate): no PRA source opened."
+        },
+        {
+          "id": "gap-uk-16",
+          "text": "Content of S.I. 2026/621 (MLR amendment) unknown."
+        },
+        {
+          "id": "gap-uk-17",
+          "text": "How the DUA Act 2025 amends the DPA and UK GDPR, and its commencement status, were not verified."
+        },
+        {
+          "id": "gap-uk-18",
+          "text": "RAISP (registered account information service provider) status was not sourced."
+        },
+        {
+          "id": "gap-uk-19",
+          "text": "Whether the BoE/HMT digital pound decision and blueprint were published between July and 15 Oct 2026 could not be checked; re-verify on refresh."
+        },
+        {
+          "id": "gap-uk-20",
+          "text": "The unnamed live system for the tokenised cash leg in the March 2026 BoE text conflicts with the July 2026 wholesale page."
+        },
+        {
+          "id": "gap-uk-21",
+          "text": "Scenario traces: exact 2026 cycle times for FPS and Visa settlement; Mastercard UK settlement; the FPS message standard; acquirer-to-merchant funding norms."
+        },
+        {
+          "id": "gap-cbdc-1",
+          "text": "Primary legal texts for cash legal tender, EU deposit guarantee level, India DICGC cover, UK EMR/PSR text, and Singapore and India e-money/stored-value regimes were not opened (country researchers)."
+        },
+        {
+          "id": "gap-cbdc-7",
+          "text": "Digital pound: whether the 'later in 2026' decision was announced by 15 Oct 2026 (not on pages opened; BoE synchronisation page blocked by robots)."
+        },
+        {
+          "id": "gap-cbdc-17",
+          "text": "Explicit FDIC or FSCS deposit-insurance coverage of specific tokenised deposits not confirmed by any source opened."
+        },
+        {
+          "id": "gap-crypto-9",
+          "text": "UK financial promotions regime (cryptoassets in FSMA s21 from 8 October 2023) not re-verified from fca.org.uk."
+        },
+        {
+          "id": "gap-crypto-10",
+          "text": "Exact final FCA stablecoin redemption deadline in PS26/10 not confirmed (CP25/14 proposed end of the business day following a valid request)."
+        },
+        {
+          "id": "gap-crypto-11",
+          "text": "Joint BoE-FCA publication on transitions between non-systemic and systemic stablecoin regimes not located."
+        },
+        {
+          "id": "gap-crypto-12",
+          "text": "UK MLR Part 7A in-force date (1 September 2023) not re-verified; HMT Payments Forward Plan, BoE wholesale innovation page, EU TFR and EBA PSD2 page were taken via sibling notes (not opened in this pass)."
+        },
+        {
+          "id": "gap-cards-crossborder-25",
+          "text": "Typical end-to-end timing for GBP to INR via correspondent not sourced beyond gpi aggregate statistics."
+        },
+        {
+          "id": "gap-banking-ops-11",
+          "text": "UK PSC register and MLR 2017 reg 5/6 thresholds not opened."
+        },
+        {
+          "id": "gap-banking-ops-12",
+          "text": "Account freeze/closure for sanctions hits: EU/UK equivalents of OFAC blocking not opened here."
+        },
+        {
+          "id": "gap-banking-ops-13",
+          "text": "UK SAR regime (POCA 2002, NCA, DAML consent and moratorium periods) not opened."
+        },
+        {
+          "id": "gap-banking-ops-18",
+          "text": "UK CCA exemption thresholds for business lending not opened; do not assert."
+        },
+        {
+          "id": "gap-banking-ops-22",
+          "text": "Data retention rules for TPPs (GDPR, CDR deletion/de-identification, UK GDPR) not opened in detail."
+        },
+        {
+          "id": "gap-banking-ops-23",
+          "text": "EU PSD3/PSR and FIDA status not re-checked here (see eu.md)."
+        },
+        {
+          "id": "gap-banking-ops-26",
+          "text": "Rail-specific outage contingency rules (Fedwire, FPS, UPI) not opened."
+        },
+        {
+          "id": "gap-banking-ops-27",
+          "text": "Named UK special administration cases (e.g. Ipagoo, Railsr) not verified."
+        },
+        {
+          "id": "gap-insurance-markets-20",
+          "text": "Whether a UK statutory instrument amending UK CSDR Article 5 has been made was not verified."
+        }
+      ]
+    },
+    {
+      "jurisdiction": "US",
+      "codes": [
+        "US"
+      ],
+      "depth": "Deep",
+      "depthNote": "Copied from coverage manifest row 'United States'.",
+      "manifestRows": [
+        {
+          "area": "United States",
+          "depth": "Deep",
+          "mainGaps": "CHIPS funding mechanics; RTP Operating Rules text; Nacha rulebook text; CRA status of 2024 CFPB rules; FedNow and RTP ISO 20022 message versions"
+        }
+      ],
+      "counts": {
+        "nodes": 83,
+        "stubNodes": 0,
+        "nodesByStatus": {
+          "adopted_not_effective": 2,
+          "in_force": 19,
+          "pilot": 1,
+          "production": 56,
+          "prohibited": 1,
+          "proposed": 3,
+          "retired": 1
+        },
+        "edges": 101,
+        "rules": 92,
+        "rulesByEffectiveStatus": {
+          "adopted_not_effective": 4,
+          "consultation": 2,
+          "in_force": 57,
+          "proposed": 20,
+          "stayed": 1,
+          "superseded": 2,
+          "unknown": 6
+        },
+        "claims": 194,
+        "claimsByStatus": {
+          "conflicting": 7,
+          "needs_verification": 8,
+          "supported": 100,
+          "verified": 79
+        },
+        "scenarios": 6,
+        "sources": 126
+      },
+      "byModule": {
+        "core": {
+          "nodes": 67,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "in_force": 17,
+            "production": 48,
+            "proposed": 1,
+            "retired": 1
+          },
+          "edges": 73,
+          "rules": 61,
+          "rulesByEffectiveStatus": {
+            "adopted_not_effective": 2,
+            "consultation": 2,
+            "in_force": 43,
+            "proposed": 6,
+            "stayed": 1,
+            "superseded": 2,
+            "unknown": 5
+          },
+          "claims": 143,
+          "claimsByStatus": {
+            "conflicting": 6,
+            "needs_verification": 6,
+            "supported": 65,
+            "verified": 66
+          },
+          "scenarios": 5,
+          "sources": 0
+        },
+        "cbdc": {
+          "nodes": 1,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "prohibited": 1
+          },
+          "edges": 2,
+          "rules": 3,
+          "rulesByEffectiveStatus": {
+            "in_force": 2,
+            "proposed": 1
+          },
+          "claims": 10,
+          "claimsByStatus": {
+            "conflicting": 1,
+            "needs_verification": 1,
+            "supported": 2,
+            "verified": 6
+          },
+          "scenarios": 0,
+          "sources": 0
+        },
+        "insurance": {
+          "nodes": 2,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "in_force": 1,
+            "production": 1
+          },
+          "edges": 1,
+          "rules": 3,
+          "rulesByEffectiveStatus": {
+            "in_force": 3
+          },
+          "claims": 3,
+          "claimsByStatus": {
+            "supported": 1,
+            "verified": 2
+          },
+          "scenarios": 0,
+          "sources": 0
+        },
+        "capital_markets": {
+          "nodes": 7,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "in_force": 1,
+            "production": 6
+          },
+          "edges": 10,
+          "rules": 4,
+          "rulesByEffectiveStatus": {
+            "adopted_not_effective": 1,
+            "in_force": 3
+          },
+          "claims": 9,
+          "claimsByStatus": {
+            "supported": 8,
+            "verified": 1
+          },
+          "scenarios": 1,
+          "sources": 0
+        },
+        "crypto": {
+          "nodes": 6,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "adopted_not_effective": 2,
+            "pilot": 1,
+            "production": 1,
+            "proposed": 2
+          },
+          "edges": 15,
+          "rules": 21,
+          "rulesByEffectiveStatus": {
+            "adopted_not_effective": 1,
+            "in_force": 6,
+            "proposed": 13,
+            "unknown": 1
+          },
+          "claims": 29,
+          "claimsByStatus": {
+            "needs_verification": 1,
+            "supported": 24,
+            "verified": 4
+          },
+          "scenarios": 0,
+          "sources": 0
+        }
+      },
+      "byBusinessDomain": {
+        "authorities": 16,
+        "capital_markets": 7,
+        "crypto": 6,
+        "data_and_identity": 1,
+        "insurance": 2,
+        "market_infrastructure": 3,
+        "money_and_cbdc": 1,
+        "operators_and_schemes": 2,
+        "other": 17,
+        "payments": 10,
+        "regulation": 17,
+        "standards": 1
+      },
+      "gaps": [
+        {
+          "id": "gap-us-1",
+          "text": "OCC charter and supervision page was robots-blocked; OCC role stated only via the Reg II enforcement list."
+        },
+        {
+          "id": "gap-us-2",
+          "text": "Whether the D. Or. CFPB funding ruling has been appealed or stayed, and status of the D.D.C. injunction appeal."
+        },
+        {
+          "id": "gap-us-3",
+          "text": "CRA disapproval of the CFPB overdraft and digital payment apps rules is widely reported for 2025 but could not be confirmed from an opened primary source; treat as needs verification."
+        },
+        {
+          "id": "gap-us-4",
+          "text": "White House text of the 19 May 2026 EO was not opened; the Fed's 120-day report was not found."
+        },
+        {
+          "id": "gap-us-5",
+          "text": "CHIPS prefunding mechanics (commonly described as prefunded balances at FRBNY funded by Fedwire with end-of-day final funding) not confirmed in opened TCH pages; CHIPS Rules and Administrative Procedures needed; exact CHIPS open and close times unconfirmed."
+        },
+        {
+          "id": "gap-us-6",
+          "text": "FedNow default participant limit; FedNow participant count from an official Fed page."
+        },
+        {
+          "id": "gap-us-7",
+          "text": "pacs.008/pacs.009 usage and usage-guideline versions for Fedwire, FedNow and RTP (MyStandards and TCH specs not public)."
+        },
+        {
+          "id": "gap-us-8",
+          "text": "EPN schedule and settlement method; Nacha rulebook text (licensed)."
+        },
+        {
+          "id": "gap-us-9",
+          "text": "Check image exchange networks not researched."
+        },
+        {
+          "id": "gap-us-10",
+          "text": "Exact Visa dispute time limits, EMV shift dates and conditions; Mastercard rules not researched."
+        },
+        {
+          "id": "gap-us-11",
+          "text": "Eighth Circuit Corner Post outcome after 20 Sept 2026 not confirmed."
+        },
+        {
+          "id": "gap-us-12",
+          "text": "Credit Card Competition Act bill number (S. 3623 suggested by an aggregator) not confirmed from Congress.gov (robots-blocked)."
+        },
+        {
+          "id": "gap-us-13",
+          "text": "Whether the Section 1033 reconsideration NPRM was published in the Federal Register between 6 Aug and 15 Oct 2026."
+        },
+        {
+          "id": "gap-us-14",
+          "text": "Effective date and Federal Register citation of the August 2026 BOI final rule (fincen.gov not opened)."
+        },
+        {
+          "id": "gap-us-15",
+          "text": "FDIC pass-through insurance rules (12 CFR 330) and any FDIC brokered deposit changes not researched."
+        },
+        {
+          "id": "gap-us-16",
+          "text": "Public law number and statutory section of the CBDC provision; exact enactment date (10 vs 11 Jul 2026)."
+        },
+        {
+          "id": "gap-us-17",
+          "text": "House passage date and vote of H.R. 1919 (roll call page not opened; Congress.gov robots-blocked)."
+        },
+        {
+          "id": "gap-us-18",
+          "text": "Any Federal Reserve CBDC statement after the 2026 statute (none found)."
+        },
+        {
+          "id": "gap-us-19",
+          "text": "Card network message formats, settlement bank arrangements and timing, network dispute time limits not confirmed from opened sources."
+        },
+        {
+          "id": "gap-us-20",
+          "text": "Nacha file and record formats, Same Day ACH funds availability deadlines, EPN mechanics."
+        },
+        {
+          "id": "gap-us-21",
+          "text": "ISO 20022 message names and versions used by FedNow and RTP (pacs.008, pacs.002 etc.) not confirmed in opened pages."
+        },
+        {
+          "id": "gap-us-22",
+          "text": "RTP Operating Rules text (finality legal basis, return-of-funds process) not opened."
+        },
+        {
+          "id": "gap-us-23",
+          "text": "State privacy laws (e.g. California) not researched."
+        },
+        {
+          "id": "gap-cbdc-9",
+          "text": "US: EO number (believed 14178), whether the EO binds the Federal Reserve as an independent agency, and Anti-CBDC Surveillance State Act status (congress.gov blocked)."
+        },
+        {
+          "id": "gap-cbdc-17",
+          "text": "Explicit FDIC or FSCS deposit-insurance coverage of specific tokenised deposits not confirmed by any source opened."
+        },
+        {
+          "id": "gap-cbdc-18",
+          "text": "FedNow and Fedwire not-CBDC characterisation is an inference from the EO definition; the Fed's FedNow page was not opened."
+        },
+        {
+          "id": "gap-standards-11",
+          "text": "Saudi Open Banking and US FDX exact FAPI profile versions not verified on primary sources."
+        },
+        {
+          "id": "gap-crypto-1",
+          "text": "OCC interpretive letters on custody (IL 1183, March 2025; IL 1184, May 2025) not verified from occ.gov (site blocks automated fetch); cite only the secondary GT Law account or flag as unverified."
+        },
+        {
+          "id": "gap-crypto-2",
+          "text": "Exact Fed and FDIC crypto guidance withdrawal dates (24 to 25 April 2025; FDIC FIL-7-2025 of 28 March 2025) not verified from primary pages."
+        },
+        {
+          "id": "gap-crypto-3",
+          "text": "GENIUS Act statutory text details (yield prohibition, insolvency priority, three-year non-permitted-stablecoin offering ban) not re-fetched from congress.gov."
+        },
+        {
+          "id": "gap-crypto-4",
+          "text": "OCC Bulletin 2026-24 could not be fetched; date and status unverified."
+        },
+        {
+          "id": "gap-banking-ops-4",
+          "text": "Whether CFPB Circular 2022-06 was withdrawn in 2025 was not verified."
+        },
+        {
+          "id": "gap-banking-ops-15",
+          "text": "No primary typology source opened for US APP-style scams (no US reimbursement mandate found)."
+        },
+        {
+          "id": "gap-banking-ops-21",
+          "text": "Primary Nacha Rules text not opened (only secondary bank and vendor pages)."
+        },
+        {
+          "id": "gap-banking-ops-25",
+          "text": "No primary source opened for US non-bank payment firm insolvency (state money transmitter law, bankruptcy treatment of FBO funds); Synapse was a Chapter 11 case."
+        },
+        {
+          "id": "gap-banking-ops-26",
+          "text": "Rail-specific outage contingency rules (Fedwire, FPS, UPI) not opened."
+        },
+        {
+          "id": "gap-banking-ops-28",
+          "text": "ESIGN Act, Nacha authorisation (WEB/CCD), FCRA permissible purpose for guarantor pulls, and state commercial-financing disclosure laws (e.g. California, New York) not opened."
+        },
+        {
+          "id": "gap-insurance-markets-2",
+          "text": "No opened primary source defined treaty vs facultative or proportional vs non-proportional reinsurance (NAIC page did not cover them)."
+        },
+        {
+          "id": "gap-insurance-markets-10",
+          "text": "US state adoption status of NAIC models beyond RBC and Credit for Reinsurance not checked."
+        },
+        {
+          "id": "gap-insurance-markets-14",
+          "text": "DTC net funds settlement mechanics (settlement banks, Fedwire Funds, timing) not described on the opened DTCC page."
+        },
+        {
+          "id": "gap-insurance-markets-16",
+          "text": "NSCC default waterfall specifics (clearing fund) not opened."
+        },
+        {
+          "id": "gap-insurance-markets-25",
+          "text": "Tokenised MMF products (e.g. BlackRock BUIDL, Franklin OnChain US Government Money Fund) not opened; needs verification."
+        },
+        {
+          "id": "gap-insurance-markets-30",
+          "text": "Corporate action processing at DTC (record date, payable date) not opened beyond CNS fail adjustments."
+        }
+      ]
+    },
+    {
+      "jurisdiction": "EU/EA",
+      "codes": [
+        "EU",
+        "EA"
+      ],
+      "depth": "Deep",
+      "depthNote": "Copied from coverage manifest row 'European Union and euro area'.",
+      "manifestRows": [
+        {
+          "area": "European Union and euro area",
+          "depth": "Deep",
+          "mainGaps": "T2 daily schedule; TIPS timeout; STEP2-T cycles; national card schemes; GDPR detail"
+        }
+      ],
+      "counts": {
+        "nodes": 80,
+        "stubNodes": 1,
+        "nodesByStatus": {
+          "adopted_not_effective": 2,
+          "design_phase": 2,
+          "in_force": 24,
+          "production": 40,
+          "proposed": 6,
+          "retired": 4,
+          "unknown": 2
+        },
+        "edges": 103,
+        "rules": 66,
+        "rulesByEffectiveStatus": {
+          "adopted_not_effective": 6,
+          "consultation": 3,
+          "in_force": 42,
+          "proposed": 6,
+          "superseded": 8,
+          "unknown": 1
+        },
+        "claims": 161,
+        "claimsByStatus": {
+          "conflicting": 8,
+          "needs_verification": 4,
+          "supported": 44,
+          "verified": 105
+        },
+        "scenarios": 2,
+        "sources": 97
+      },
+      "byModule": {
+        "core": {
+          "nodes": 69,
+          "stubNodes": 1,
+          "nodesByStatus": {
+            "adopted_not_effective": 2,
+            "in_force": 18,
+            "production": 39,
+            "proposed": 5,
+            "retired": 4,
+            "unknown": 1
+          },
+          "edges": 85,
+          "rules": 46,
+          "rulesByEffectiveStatus": {
+            "adopted_not_effective": 4,
+            "consultation": 1,
+            "in_force": 28,
+            "proposed": 4,
+            "superseded": 8,
+            "unknown": 1
+          },
+          "claims": 104,
+          "claimsByStatus": {
+            "conflicting": 5,
+            "needs_verification": 1,
+            "supported": 20,
+            "verified": 78
+          },
+          "scenarios": 1,
+          "sources": 0
+        },
+        "cbdc": {
+          "nodes": 3,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "design_phase": 2,
+            "proposed": 1
+          },
+          "edges": 6,
+          "rules": 4,
+          "rulesByEffectiveStatus": {
+            "consultation": 1,
+            "in_force": 1,
+            "proposed": 2
+          },
+          "claims": 29,
+          "claimsByStatus": {
+            "conflicting": 1,
+            "needs_verification": 2,
+            "supported": 7,
+            "verified": 19
+          },
+          "scenarios": 1,
+          "sources": 0
+        },
+        "insurance": {
+          "nodes": 2,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "in_force": 2
+          },
+          "edges": 0,
+          "rules": 4,
+          "rulesByEffectiveStatus": {
+            "adopted_not_effective": 1,
+            "in_force": 3
+          },
+          "claims": 6,
+          "claimsByStatus": {
+            "supported": 5,
+            "verified": 1
+          },
+          "scenarios": 0,
+          "sources": 0
+        },
+        "capital_markets": {
+          "nodes": 1,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "in_force": 1
+          },
+          "edges": 1,
+          "rules": 5,
+          "rulesByEffectiveStatus": {
+            "adopted_not_effective": 1,
+            "in_force": 4
+          },
+          "claims": 7,
+          "claimsByStatus": {
+            "conflicting": 1,
+            "supported": 6
+          },
+          "scenarios": 0,
+          "sources": 0
+        },
+        "crypto": {
+          "nodes": 5,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "in_force": 3,
+            "production": 1,
+            "unknown": 1
+          },
+          "edges": 11,
+          "rules": 7,
+          "rulesByEffectiveStatus": {
+            "consultation": 1,
+            "in_force": 6
+          },
+          "claims": 15,
+          "claimsByStatus": {
+            "conflicting": 1,
+            "needs_verification": 1,
+            "supported": 6,
+            "verified": 7
+          },
+          "scenarios": 0,
+          "sources": 0
+        }
+      },
+      "byBusinessDomain": {
+        "authorities": 8,
+        "capital_markets": 1,
+        "crypto": 5,
+        "insurance": 2,
+        "market_infrastructure": 4,
+        "money_and_cbdc": 3,
+        "operators_and_schemes": 3,
+        "other": 17,
+        "payments": 11,
+        "regulation": 24,
+        "standards": 2
+      },
+      "gaps": [
+        {
+          "id": "gap-eu-1",
+          "text": "SSM start date, list of participating countries and number of significant institutions (page lacked these)."
+        },
+        {
+          "id": "gap-eu-2",
+          "text": "DORA CTPP lead overseers."
+        },
+        {
+          "id": "gap-eu-3",
+          "text": "EBA CLEARING ownership and shareholder list."
+        },
+        {
+          "id": "gap-eu-4",
+          "text": "TIPS timeout parameter and exact ISO 20022 message versions (TIPS UDFS not read)."
+        },
+        {
+          "id": "gap-eu-5",
+          "text": "T2 daily cut-offs; participant counts for TIPS; Norway TIPS go-live date."
+        },
+        {
+          "id": "gap-eu-6",
+          "text": "EURO1 loss-sharing and liquidity pool, end-of-day T2 settlement timing, ISO 20022 migration date."
+        },
+        {
+          "id": "gap-eu-7",
+          "text": "STEP2-T settlement cycles (net or gross per cycle not confirmed)."
+        },
+        {
+          "id": "gap-eu-8",
+          "text": "SFD designating Member State for EURO1, STEP2-T and RT1 (ESMA SFD register page failed to load)."
+        },
+        {
+          "id": "gap-eu-9",
+          "text": "SCT (non-instant) rulebook version and D+1 rule text; SDD rulebook versions, D-1 timelines and ISO messages (pain.008, pacs.003, pacs.007, pacs.004 not verified)."
+        },
+        {
+          "id": "gap-eu-10",
+          "text": "SCT Inst rulebook wording on time-out deadline and recall deadlines; reconciliation of 9 s vs 5 s target."
+        },
+        {
+          "id": "gap-eu-11",
+          "text": "Full SEPA country list (inclusion of UK, CH, MC, SM, AD, VA and newer members not confirmed)."
+        },
+        {
+          "id": "gap-eu-12",
+          "text": "IPR Art 5a(2) (reported EUR 25,000 floor on per-transaction derogation limit) not understood with confidence; needs reading."
+        },
+        {
+          "id": "gap-eu-13",
+          "text": "IPR Commission evaluation date (prior lead 9 Oct 2028) not re-extracted."
+        },
+        {
+          "id": "gap-eu-14",
+          "text": "Primary Council press release of 27 Nov 2025 on PSD3/PSR not opened; fraud and spoofing refund mechanics and IBAN/name check scope in PSR text unconfirmed."
+        },
+        {
+          "id": "gap-eu-15",
+          "text": "AMLR EUR 10,000 cash payment limit article and AMLD6 transposition deadline not opened."
+        },
+        {
+          "id": "gap-eu-16",
+          "text": "CMDI amendments to DGSD (2026 OJ publication per earlier lead) not re-verified."
+        },
+        {
+          "id": "gap-eu-17",
+          "text": "International scheme (Visa, Mastercard) EU specifics and national schemes (Cartes Bancaires, girocard, Bancontact, Bizum etc.) not researched."
+        },
+        {
+          "id": "gap-eu-18",
+          "text": "Any October 2026 digital euro trilogue outcome; holding limit amount; final compensation model; digital euro finality and message standards; whether pilot uses real central bank liabilities; Pontes connected platforms and participants."
+        },
+        {
+          "id": "gap-eu-19",
+          "text": "TIPS notification message variants, RT1 funding cycles, SCT Inst recall deadlines; digital euro messages, finality, fees and offline loss rules."
+        },
+        {
+          "id": "gap-eu-20",
+          "text": "GDPR application date (25 May 2018) not shown in fetched metadata: needs verification."
+        },
+        {
+          "id": "gap-cbdc-1",
+          "text": "Primary legal texts for cash legal tender, EU deposit guarantee level, India DICGC cover, UK EMR/PSR text, and Singapore and India e-money/stored-value regimes were not opened (country researchers)."
+        },
+        {
+          "id": "gap-cbdc-2",
+          "text": "MiCA article text (Arts 48 to 50, 54) did not render; only recitals were read."
+        },
+        {
+          "id": "gap-cbdc-3",
+          "text": "EUR-Lex metadata for the EMD2 ELI page showed 'no longer in force 2017-06-25', conflicting with the consolidated text rendering normally; needs verification (likely version metadata, not repeal)."
+        },
+        {
+          "id": "gap-standards-19",
+          "text": "EBA reporting framework binding level not stated in notes."
+        },
+        {
+          "id": "gap-crypto-5",
+          "text": "MiCA application dates (30 June 2024 Titles III/IV; 30 December 2024 general) and Art 143(3) transitional maxima not re-fetched from EUR-Lex."
+        },
+        {
+          "id": "gap-crypto-6",
+          "text": "Number of authorised CASPs on the ESMA interim MiCA register as of October 2026 not found."
+        },
+        {
+          "id": "gap-crypto-7",
+          "text": "European Commission formal position on multi-issuance and timing of any MiCA review legislative proposal not found from a primary source."
+        },
+        {
+          "id": "gap-crypto-8",
+          "text": "ESRB response of 29 September 2026 not fetched (cited via commentary)."
+        },
+        {
+          "id": "gap-crypto-12",
+          "text": "UK MLR Part 7A in-force date (1 September 2023) not re-verified; HMT Payments Forward Plan, BoE wholesale innovation page, EU TFR and EBA PSD2 page were taken via sibling notes (not opened in this pass)."
+        },
+        {
+          "id": "gap-banking-ops-7",
+          "text": "EU distributor/agent passporting detail (PSD2 Art 19, EMD2 Art 3(4)) not opened; see eu.md."
+        },
+        {
+          "id": "gap-banking-ops-12",
+          "text": "Account freeze/closure for sanctions hits: EU/UK equivalents of OFAC blocking not opened here."
+        },
+        {
+          "id": "gap-banking-ops-22",
+          "text": "Data retention rules for TPPs (GDPR, CDR deletion/de-identification, UK GDPR) not opened in detail."
+        },
+        {
+          "id": "gap-banking-ops-23",
+          "text": "EU PSD3/PSR and FIDA status not re-checked here (see eu.md)."
+        },
+        {
+          "id": "gap-insurance-markets-9",
+          "text": "Exact OJ references for the transposition article of Directive (EU) 2025/2 not opened; 30 January 2027 application rests on Deloitte; Insurance Recovery and Resolution Directive (EU) 2025/1 not verified."
+        },
+        {
+          "id": "gap-insurance-markets-24",
+          "text": "EU ICSD EUR 20,000 minimum and stalled ICSD review not verified from text."
+        }
+      ]
+    },
+    {
+      "jurisdiction": "SG",
+      "codes": [
+        "SG"
+      ],
+      "depth": "High level to deep",
+      "depthNote": "Copied from coverage manifest row 'Singapore'.",
+      "manifestRows": [
+        {
+          "area": "Singapore",
+          "depth": "High level to deep",
+          "mainGaps": "MAS primary pages unreachable; current MEPS+ hours; FAST settlement cycle count in 2026; card schemes; Notice 626; retail CBDC position"
+        }
+      ],
+      "counts": {
+        "nodes": 72,
+        "stubNodes": 0,
+        "nodesByStatus": {
+          "consultation": 2,
+          "in_force": 25,
+          "pilot": 3,
+          "production": 34,
+          "proposed": 2,
+          "unknown": 6
+        },
+        "edges": 75,
+        "rules": 27,
+        "rulesByEffectiveStatus": {
+          "consultation": 2,
+          "in_force": 22,
+          "unknown": 3
+        },
+        "claims": 107,
+        "claimsByStatus": {
+          "conflicting": 2,
+          "needs_verification": 7,
+          "supported": 49,
+          "verified": 49
+        },
+        "scenarios": 2,
+        "sources": 38
+      },
+      "byModule": {
+        "core": {
+          "nodes": 65,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "consultation": 1,
+            "in_force": 22,
+            "pilot": 2,
+            "production": 34,
+            "proposed": 2,
+            "unknown": 4
+          },
+          "edges": 64,
+          "rules": 22,
+          "rulesByEffectiveStatus": {
+            "consultation": 1,
+            "in_force": 19,
+            "unknown": 2
+          },
+          "claims": 87,
+          "claimsByStatus": {
+            "conflicting": 2,
+            "needs_verification": 6,
+            "supported": 35,
+            "verified": 44
+          },
+          "scenarios": 1,
+          "sources": 0
+        },
+        "cbdc": {
+          "nodes": 3,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "pilot": 1,
+            "unknown": 2
+          },
+          "edges": 8,
+          "rules": 0,
+          "rulesByEffectiveStatus": {},
+          "claims": 9,
+          "claimsByStatus": {
+            "supported": 4,
+            "verified": 5
+          },
+          "scenarios": 1,
+          "sources": 0
+        },
+        "insurance": {
+          "nodes": 1,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "in_force": 1
+          },
+          "edges": 0,
+          "rules": 1,
+          "rulesByEffectiveStatus": {
+            "in_force": 1
+          },
+          "claims": 1,
+          "claimsByStatus": {
+            "supported": 1
+          },
+          "scenarios": 0,
+          "sources": 0
+        },
+        "capital_markets": {
+          "nodes": 0,
+          "stubNodes": 0,
+          "nodesByStatus": {},
+          "edges": 0,
+          "rules": 0,
+          "rulesByEffectiveStatus": {},
+          "claims": 0,
+          "claimsByStatus": {},
+          "scenarios": 0,
+          "sources": 0
+        },
+        "crypto": {
+          "nodes": 3,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "consultation": 1,
+            "in_force": 2
+          },
+          "edges": 3,
+          "rules": 4,
+          "rulesByEffectiveStatus": {
+            "consultation": 1,
+            "in_force": 2,
+            "unknown": 1
+          },
+          "claims": 10,
+          "claimsByStatus": {
+            "needs_verification": 1,
+            "supported": 9
+          },
+          "scenarios": 0,
+          "sources": 0
+        }
+      },
+      "byBusinessDomain": {
+        "authorities": 3,
+        "crypto": 3,
+        "insurance": 1,
+        "market_infrastructure": 2,
+        "money_and_cbdc": 3,
+        "operators_and_schemes": 5,
+        "other": 20,
+        "payments": 9,
+        "regulation": 25,
+        "standards": 1
+      },
+      "gaps": [
+        {
+          "id": "gap-sg-1",
+          "text": "MAS's own role pages (payments oversight, designated systems list under PSA Part 3) could not be opened; mas.gov.sg was unreachable."
+        },
+        {
+          "id": "gap-sg-2",
+          "text": "Legal basis of the deposit insurance scheme (Deposit Insurance and Policy Owners' Protection Schemes Act) not confirmed from SSO; needs verification."
+        },
+        {
+          "id": "gap-sg-3",
+          "text": "PDPA penalty levels and breach notification provisions not confirmed (SSO PDPA page failed to load)."
+        },
+        {
+          "id": "gap-sg-4",
+          "text": "Current (2026) MEPS+ operating hours, ISO 20022 cutover dates and any MEPS+ renewal or replacement programme not verified."
+        },
+        {
+          "id": "gap-sg-5",
+          "text": "Whether MEPS+ settles FAST cycles in central bank money on weekends: not publicly specified."
+        },
+        {
+          "id": "gap-sg-6",
+          "text": "Exact FAST ISO 20022 message set (e.g. pacs.008, pacs.002) and usage guideline version: not publicly specified."
+        },
+        {
+          "id": "gap-sg-7",
+          "text": "Whether NFIs settle directly in MEPS+ or through a settlement bank: needs verification."
+        },
+        {
+          "id": "gap-sg-8",
+          "text": "Whether MPIs hold MAS settlement accounts for FAST: needs verification (specified-institution current-account terms not opened)."
+        },
+        {
+          "id": "gap-sg-9",
+          "text": "PayNow default ad-hoc limit (raised 28 Sep 2020) amount not confirmed."
+        },
+        {
+          "id": "gap-sg-10",
+          "text": "PayNow proxy lookup API and message fields not publicly specified."
+        },
+        {
+          "id": "gap-sg-11",
+          "text": "PayNow Gen2 Phase 1 report on mas.gov.sg could not be opened."
+        },
+        {
+          "id": "gap-sg-12",
+          "text": "GIRO settlement timing in MEPS+ and debit limits not confirmed."
+        },
+        {
+          "id": "gap-sg-13",
+          "text": "SGQR exact launch date (commonly Sept 2018), NETS ownership, NETS debit/EFTPOS settlement, card scheme presence (Visa, Mastercard, UnionPay, Amex, JCB) and card settlement not sourced (search budget exhausted)."
+        },
+        {
+          "id": "gap-sg-14",
+          "text": "NGP go-live status and Singapore connection via FAST/PayNow as of 15 Oct 2026 not verified (NGP site failed to load)."
+        },
+        {
+          "id": "gap-sg-15",
+          "text": "Current per-linkage cross-border limits (SGD 1,000 figure is a 2023 secondary source)."
+        },
+        {
+          "id": "gap-sg-16",
+          "text": "Primary text of PSA s 6 and First Schedule thresholds not opened; thresholds rely on Deloitte."
+        },
+        {
+          "id": "gap-sg-17",
+          "text": "MAS Notice 626 (banks AML/CFT), Technology Risk Management Guidelines (version and date), Banking Act provisions and E-Payments User Protection Guidelines text not opened; treat any dates as needs verification."
+        },
+        {
+          "id": "gap-sg-18",
+          "text": "MAS formal retail CBDC position not sourced (October 2026 speech does not address retail CBDC)."
+        },
+        {
+          "id": "gap-sg-19",
+          "text": "Orchid purpose-bound money specifics, Ubin phases 2 to 5, Guardian participant details and Global Layer One not sourced."
+        },
+        {
+          "id": "gap-sg-20",
+          "text": "Wholesale CBDC trial values, ledger technology, funding against MEPS+ balances and FNA status of SGD Testnet not publicly specified."
+        },
+        {
+          "id": "gap-sg-21",
+          "text": "Scenario 1: FAST cycle times, current cycle count and ISO 20022 message names."
+        },
+        {
+          "id": "gap-sg-22",
+          "text": "Scenario 2: amounts, rates, funding and redemption of CBDC versus MEPS+ reserves, ledger platform and legal finality not publicly specified."
+        },
+        {
+          "id": "gap-cbdc-1",
+          "text": "Primary legal texts for cash legal tender, EU deposit guarantee level, India DICGC cover, UK EMR/PSR text, and Singapore and India e-money/stored-value regimes were not opened (country researchers)."
+        },
+        {
+          "id": "gap-cbdc-8",
+          "text": "MAS Oct 2026 speech 'Building trusted foundations for digital finance' could not be fetched; MAS Bills trial status and any wholesale CBDC legislation unverified; the MAS original release URL returned a client error (Mondo Visione reprint used)."
+        },
+        {
+          "id": "gap-crypto-13",
+          "text": "MAS August 2023 stablecoin framework release (SGD/G10 single-currency, issuance above SGD 5m, reserves, redemption within five business days, monthly attestation) not re-fetched; Gibson Dunn analysis not fetched."
+        },
+        {
+          "id": "gap-crypto-14",
+          "text": "MAS retail DPT consumer-protection measures (risk awareness assessment, no incentives, no credit-card funding, segregation of customer assets) not verified from mas.gov.sg."
+        },
+        {
+          "id": "gap-insurance-markets-11",
+          "text": "MAS Insurance Act text and post-2020 RBC 2 refinements not opened."
+        },
+        {
+          "id": "gap-insurance-markets-22",
+          "text": "MAS Securities and Futures Act page returned an error; SFA facts and absence of a SIPC-equivalent in Singapore not verified."
+        }
+      ]
+    },
+    {
+      "jurisdiction": "IN",
+      "codes": [
+        "IN"
+      ],
+      "depth": "Deep",
+      "depthNote": "Copied from coverage manifest row 'India'.",
+      "manifestRows": [
+        {
+          "area": "India",
+          "depth": "Deep",
+          "mainGaps": "NPCI primary rulebooks (blocked); UPI settlement asset and cycle times; IMPS and NACH settlement model; e₹ ledger mechanics"
+        }
+      ],
+      "counts": {
+        "nodes": 148,
+        "stubNodes": 0,
+        "nodesByStatus": {
+          "adopted_not_effective": 1,
+          "consultation": 3,
+          "in_force": 52,
+          "pilot": 4,
+          "production": 55,
+          "proposed": 3,
+          "research": 1,
+          "retired": 6,
+          "unknown": 23
+        },
+        "edges": 105,
+        "rules": 86,
+        "rulesByEffectiveStatus": {
+          "adopted_not_effective": 1,
+          "consultation": 3,
+          "in_force": 53,
+          "proposed": 1,
+          "superseded": 6,
+          "unknown": 22
+        },
+        "claims": 193,
+        "claimsByStatus": {
+          "conflicting": 2,
+          "needs_verification": 13,
+          "supported": 54,
+          "verified": 124
+        },
+        "scenarios": 7,
+        "sources": 74
+      },
+      "byModule": {
+        "core": {
+          "nodes": 133,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "adopted_not_effective": 1,
+            "consultation": 3,
+            "in_force": 48,
+            "pilot": 2,
+            "production": 48,
+            "proposed": 2,
+            "research": 1,
+            "retired": 6,
+            "unknown": 22
+          },
+          "edges": 79,
+          "rules": 71,
+          "rulesByEffectiveStatus": {
+            "adopted_not_effective": 1,
+            "consultation": 3,
+            "in_force": 40,
+            "proposed": 1,
+            "superseded": 6,
+            "unknown": 20
+          },
+          "claims": 129,
+          "claimsByStatus": {
+            "conflicting": 1,
+            "needs_verification": 12,
+            "supported": 29,
+            "verified": 87
+          },
+          "scenarios": 4,
+          "sources": 0
+        },
+        "cbdc": {
+          "nodes": 3,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "pilot": 2,
+            "production": 1
+          },
+          "edges": 14,
+          "rules": 5,
+          "rulesByEffectiveStatus": {
+            "in_force": 5
+          },
+          "claims": 41,
+          "claimsByStatus": {
+            "conflicting": 1,
+            "supported": 3,
+            "verified": 37
+          },
+          "scenarios": 2,
+          "sources": 0
+        },
+        "insurance": {
+          "nodes": 6,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "in_force": 2,
+            "production": 3,
+            "unknown": 1
+          },
+          "edges": 7,
+          "rules": 4,
+          "rulesByEffectiveStatus": {
+            "in_force": 4
+          },
+          "claims": 9,
+          "claimsByStatus": {
+            "needs_verification": 1,
+            "supported": 8
+          },
+          "scenarios": 1,
+          "sources": 0
+        },
+        "capital_markets": {
+          "nodes": 3,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "production": 3
+          },
+          "edges": 3,
+          "rules": 2,
+          "rulesByEffectiveStatus": {
+            "in_force": 1,
+            "unknown": 1
+          },
+          "claims": 5,
+          "claimsByStatus": {
+            "supported": 5
+          },
+          "scenarios": 0,
+          "sources": 0
+        },
+        "crypto": {
+          "nodes": 3,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "in_force": 2,
+            "proposed": 1
+          },
+          "edges": 2,
+          "rules": 4,
+          "rulesByEffectiveStatus": {
+            "in_force": 3,
+            "unknown": 1
+          },
+          "claims": 9,
+          "claimsByStatus": {
+            "supported": 9
+          },
+          "scenarios": 0,
+          "sources": 0
+        }
+      },
+      "byBusinessDomain": {
+        "authorities": 10,
+        "capital_markets": 3,
+        "crypto": 3,
+        "data_and_identity": 4,
+        "insurance": 6,
+        "market_infrastructure": 2,
+        "money_and_cbdc": 3,
+        "operators_and_schemes": 7,
+        "other": 16,
+        "payments": 19,
+        "regulation": 73,
+        "standards": 2
+      },
+      "gaps": [
+        {
+          "id": "gap-in-1",
+          "text": "NBSL full name and function not confirmed; NIPL and NBBL corporate details not opened (NPCI subsidiary pages blocked)."
+        },
+        {
+          "id": "gap-in-2",
+          "text": "Whether the NBFC-AA 2016 MD was re-issued in the Nov 2025 consolidation: page shows last update 6 Sep 2024 and no superseded marker; needs verification."
+        },
+        {
+          "id": "gap-in-3",
+          "text": "MoF DFS role beyond the PSS Act notification and PRB seat not separately sourced."
+        },
+        {
+          "id": "gap-in-4",
+          "text": "Primary NPCI PDFs of OC-215A, OC-220, NPCI/2025-26/UPI/222 and CC/01 (login/robots); exact UPI cycle cut-off times; settlement guarantee mechanism; UPI XML API schemas (not public)."
+        },
+        {
+          "id": "gap-in-5",
+          "text": "Current UPI Lite per-transaction and wallet limits (NPCI page says below ₹500; widely reported higher limits not verified)."
+        },
+        {
+          "id": "gap-in-6",
+          "text": "UPI Circle and credit-line limits and eligibility."
+        },
+        {
+          "id": "gap-in-7",
+          "text": "Any 2026 NPCI decision on the TPAP market share cap ahead of 31 Dec 2026."
+        },
+        {
+          "id": "gap-in-8",
+          "text": "UPI settlement asset (member settlement accounts at RBI) not confirmed in an opened primary source."
+        },
+        {
+          "id": "gap-in-9",
+          "text": "IMPS and NACH settlement model and asset; RTGS membership and access criteria; RTGS ISO 20022 version."
+        },
+        {
+          "id": "gap-in-10",
+          "text": "Text of the 2025 AePS touchpoint operator directions and AePS fraud controls detail."
+        },
+        {
+          "id": "gap-in-11",
+          "text": "CoF tokenisation circular (Oct 2022 date) not reopened; BBPS rename to Bharat Connect not confirmed from primary."
+        },
+        {
+          "id": "gap-in-12",
+          "text": "Post-consolidation home of digital lending rules; CIC names; NBFC-AA list; DICGC Act section references."
+        },
+        {
+          "id": "gap-in-13",
+          "text": "PMLA s.11A notification of entities allowed Aadhaar e-KYC; CTR/STR timelines (PML Rules) not opened."
+        },
+        {
+          "id": "gap-in-14",
+          "text": "MTSS and RDA inbound remittance rules, Special Rupee Vostro and cross-border UPI settlement mechanics not reached (search budget exhausted)."
+        },
+        {
+          "id": "gap-in-15",
+          "text": "PSS Act s.23 text not opened (India Code blocked): wording and application to UPI/NPCI net settlement needs verification."
+        },
+        {
+          "id": "gap-in-16",
+          "text": "e₹ production token mechanics, ledger architecture, e₹ to UPI QR conversion and interbank leg; per-wallet limits by bank."
+        },
+        {
+          "id": "gap-in-17",
+          "text": "e₹-W participant names, how banks obtain e₹-W (from reserves?), DvP linkage with SGL/CCIL; no official RBI or SEBI press release on the corporate bond pilot was opened."
+        },
+        {
+          "id": "gap-in-18",
+          "text": "Scenario gaps: UPI message fields, settlement cycle times, RBI settlement accounts; e₹ conversion and ledger; e₹-W DvP mechanics and participant names."
+        },
+        {
+          "id": "gap-in-19",
+          "text": "RBI notification of 29 Sep 2026 on UNSC list amendments and 9 Apr 2026 inward cross-border credit circular not reopened; need verification."
+        },
+        {
+          "id": "gap-in-20",
+          "text": "Device binding for UPI onboarding is practice, not sourced."
+        },
+        {
+          "id": "gap-cbdc-1",
+          "text": "Primary legal texts for cash legal tender, EU deposit guarantee level, India DICGC cover, UK EMR/PSR text, and Singapore and India e-money/stored-value regimes were not opened (country researchers)."
+        },
+        {
+          "id": "gap-crypto-17",
+          "text": "India primary sources (incometaxindia.gov.in, fiuindia.gov.in, rbi.org.in) not fetched; gazette number of the 7 March 2023 notification not captured; outcome of the 16 September 2026 hearing not found."
+        },
+        {
+          "id": "gap-cards-crossborder-1",
+          "text": "Research limitation: the shared web-search budget ran out; Mastercard primary time limits, Visa BASE II naming, RBI MTSS master direction, IMPS limit circular, EMV 3DS component definitions, charges codes OUR/SHA/BEN and newest CPMI correspondent banking data could not be confirmed from a primary source."
+        },
+        {
+          "id": "gap-cards-crossborder-19",
+          "text": "CLS settlement and funding window times from CLS itself were not extracted (only CCIL's statement); CCIL's '7:00 to 12:00 CET' may merge settlement and funding periods. Needs verification."
+        },
+        {
+          "id": "gap-cards-crossborder-23",
+          "text": "MTSS (inward-only India scheme) caps could not be confirmed from RBI; pointer only."
+        },
+        {
+          "id": "gap-cards-crossborder-24",
+          "text": "RBI-specific inward remittance requirements (purpose codes, FIRC/e-BRC, vostro account rules) not sourced."
+        },
+        {
+          "id": "gap-cards-crossborder-25",
+          "text": "Typical end-to-end timing for GBP to INR via correspondent not sourced beyond gpi aggregate statistics."
+        },
+        {
+          "id": "gap-banking-ops-8",
+          "text": "India LSP fund-flow rule (disbursal direct to borrower account, repayment direct to RE) not re-verified here; see in.md."
+        },
+        {
+          "id": "gap-banking-ops-14",
+          "text": "India STR timelines (PML Rules) not opened."
+        },
+        {
+          "id": "gap-banking-ops-20",
+          "text": "NACH (India) mandate and return rules not opened."
+        },
+        {
+          "id": "gap-banking-ops-24",
+          "text": "India AA consent artefact field-level spec (ReBIT) not opened."
+        },
+        {
+          "id": "gap-banking-ops-26",
+          "text": "Rail-specific outage contingency rules (Fedwire, FPS, UPI) not opened."
+        },
+        {
+          "id": "gap-insurance-markets-1",
+          "text": "Research limitation: WebSearch budget ran out; SEBI circulars, NSE, NSDL, NPCI pages and ChinaClear blocked or erroring."
+        },
+        {
+          "id": "gap-insurance-markets-4",
+          "text": "IRDAI health Master Circular not opened (irdai.gov.in blocks automated fetch); circular number and exact date need verification."
+        },
+        {
+          "id": "gap-insurance-markets-5",
+          "text": "India GIC Re obligatory cession percentage for the current year not verified."
+        },
+        {
+          "id": "gap-insurance-markets-7",
+          "text": "Specific rail used for India claim payouts (NEFT, RTGS, IMPS) not specified in opened sources."
+        },
+        {
+          "id": "gap-insurance-markets-12",
+          "text": "Whether Indian insurers have adopted Ind AS 117 is not verified."
+        },
+        {
+          "id": "gap-insurance-markets-18",
+          "text": "India equity T+1 (final phase 27 January 2023) and optional T+0 (beta from 28 March 2024) known only from prior knowledge; status needs verification."
+        },
+        {
+          "id": "gap-insurance-markets-21",
+          "text": "SEBI ASBA, UPI block mechanism for IPO bids, T+3 listing, upstreaming of client funds and secondary-market block mechanism not verified."
+        }
+      ]
+    },
+    {
+      "jurisdiction": "CN",
+      "codes": [
+        "CN"
+      ],
+      "depth": "Deep for e-CNY 2.0 and CIPS; high level for CNAPS",
+      "depthNote": "Copied from coverage manifest row 'Mainland China'.",
+      "manifestRows": [
+        {
+          "area": "Mainland China",
+          "depth": "Deep for e-CNY 2.0 and CIPS; high level for CNAPS",
+          "mainGaps": "CNAPS hours and message sets; NetsUnion; PBOC rule texts; revised AML Law; PIPL and DSL primary text; SAFE FX quota"
+        }
+      ],
+      "counts": {
+        "nodes": 74,
+        "stubNodes": 0,
+        "nodesByStatus": {
+          "in_force": 24,
+          "production": 43,
+          "retired": 3,
+          "unknown": 4
+        },
+        "edges": 86,
+        "rules": 24,
+        "rulesByEffectiveStatus": {
+          "in_force": 19,
+          "superseded": 2,
+          "unknown": 3
+        },
+        "claims": 109,
+        "claimsByStatus": {
+          "conflicting": 4,
+          "needs_verification": 9,
+          "supported": 36,
+          "verified": 60
+        },
+        "scenarios": 2,
+        "sources": 40
+      },
+      "byModule": {
+        "core": {
+          "nodes": 67,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "in_force": 18,
+            "production": 42,
+            "retired": 3,
+            "unknown": 4
+          },
+          "edges": 64,
+          "rules": 14,
+          "rulesByEffectiveStatus": {
+            "in_force": 9,
+            "superseded": 2,
+            "unknown": 3
+          },
+          "claims": 62,
+          "claimsByStatus": {
+            "conflicting": 2,
+            "needs_verification": 4,
+            "supported": 25,
+            "verified": 31
+          },
+          "scenarios": 1,
+          "sources": 0
+        },
+        "cbdc": {
+          "nodes": 4,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "in_force": 3,
+            "production": 1
+          },
+          "edges": 19,
+          "rules": 5,
+          "rulesByEffectiveStatus": {
+            "in_force": 5
+          },
+          "claims": 41,
+          "claimsByStatus": {
+            "conflicting": 2,
+            "needs_verification": 5,
+            "supported": 5,
+            "verified": 29
+          },
+          "scenarios": 1,
+          "sources": 0
+        },
+        "insurance": {
+          "nodes": 1,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "in_force": 1
+          },
+          "edges": 1,
+          "rules": 1,
+          "rulesByEffectiveStatus": {
+            "in_force": 1
+          },
+          "claims": 2,
+          "claimsByStatus": {
+            "supported": 2
+          },
+          "scenarios": 0,
+          "sources": 0
+        },
+        "capital_markets": {
+          "nodes": 0,
+          "stubNodes": 0,
+          "nodesByStatus": {},
+          "edges": 0,
+          "rules": 0,
+          "rulesByEffectiveStatus": {},
+          "claims": 0,
+          "claimsByStatus": {},
+          "scenarios": 0,
+          "sources": 0
+        },
+        "crypto": {
+          "nodes": 2,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "in_force": 2
+          },
+          "edges": 2,
+          "rules": 4,
+          "rulesByEffectiveStatus": {
+            "in_force": 4
+          },
+          "claims": 4,
+          "claimsByStatus": {
+            "supported": 4
+          },
+          "scenarios": 0,
+          "sources": 0
+        }
+      },
+      "byBusinessDomain": {
+        "authorities": 11,
+        "crypto": 2,
+        "insurance": 1,
+        "market_infrastructure": 4,
+        "money_and_cbdc": 4,
+        "operators_and_schemes": 5,
+        "other": 15,
+        "payments": 11,
+        "regulation": 20,
+        "standards": 1
+      },
+      "gaps": [
+        {
+          "id": "gap-cn-1",
+          "text": "Payment and Clearing Association of China (PCAC): no source opened; its role as industry self-regulatory body under PBOC guidance needs verification."
+        },
+        {
+          "id": "gap-cn-2",
+          "text": "CSRC's role confirmed only at the level of securities supervision from a secondary source."
+        },
+        {
+          "id": "gap-cn-3",
+          "text": "NFRA director status in 2026 needs verification from nfra.gov.cn."
+        },
+        {
+          "id": "gap-cn-4",
+          "text": "HVPS, BEPS and IBPS operating hours, cut-offs, CNAPS II architecture and CNAPS message standards not sourced from PBOC or CNCC pages."
+        },
+        {
+          "id": "gap-cn-5",
+          "text": "NetsUnion founding date, ownership, settlement model and hours not sourced."
+        },
+        {
+          "id": "gap-cn-6",
+          "text": "UnionPay card settlement mechanics (net settlement through CNAPS) not sourced."
+        },
+        {
+          "id": "gap-cn-7",
+          "text": "PBOC 2017 barcode payment rules (条码支付业务规范) and QR technical standards not opened."
+        },
+        {
+          "id": "gap-cn-8",
+          "text": "PBOC implementing rules for non-bank payment institutions (实施细则, 2024) not opened (pbc.gov.cn blocked)."
+        },
+        {
+          "id": "gap-cn-9",
+          "text": "Historical 100% centralised deposit of customer reserve funds at the PBOC (Jan 2019) not sourced; current arrangement needs verification."
+        },
+        {
+          "id": "gap-cn-10",
+          "text": "March 2024 State Council General Office measures to ease payments for foreign visitors (expected 国办发〔2024〕10号) not opened."
+        },
+        {
+          "id": "gap-cn-11",
+          "text": "Revised Anti-Money Laundering Law (adopted 8 Nov 2024, effective 1 Jan 2025 per brief) not opened; needs verification."
+        },
+        {
+          "id": "gap-cn-12",
+          "text": "Data Security Law adoption and effective dates (commonly 10 Jun 2021 and 1 Sep 2021) not sourced."
+        },
+        {
+          "id": "gap-cn-13",
+          "text": "PBOC Law: whether the 2020 draft revision (RMB includes physical and digital forms) has been adopted as of Oct 2026 needs verification."
+        },
+        {
+          "id": "gap-cn-14",
+          "text": "SAFE individual annual FX purchase facilitation quota (USD 50,000 equivalent) not sourced."
+        },
+        {
+          "id": "gap-cn-15",
+          "text": "Commercial Banking Law details not sourced."
+        },
+        {
+          "id": "gap-cn-16",
+          "text": "PBOC e-CNY White Paper (July 2021) not opened; definitions cited only via secondary sources."
+        },
+        {
+          "id": "gap-cn-17",
+          "text": "Full list of 30 e-CNY operators and whether MYbank, WeBank, Alipay or Tenpay are among them not established."
+        },
+        {
+          "id": "gap-cn-18",
+          "text": "Settlement finality for e-CNY transfers: no source found."
+        },
+        {
+          "id": "gap-cn-19",
+          "text": "Full text of the e-CNY Action Plan not found; no PBOC statement on M0 treatment after 1 Jan 2026, anonymous wallets, hard wallets or non-bank wallet interest."
+        },
+        {
+          "id": "gap-cn-20",
+          "text": "Mechanics of PBOC issuance/exchange of e-CNY to operators (PBOC liability or reserves) not publicly specified."
+        },
+        {
+          "id": "gap-cn-21",
+          "text": "Full list of 26 CBETS direct participants, CBETS rulebook, message standards, indirect participation model and fees not found."
+        },
+        {
+          "id": "gap-cn-22",
+          "text": "SCIO leads of 30 Dec 2025 and 17 Jun 2026 could not be opened (robots blocked)."
+        },
+        {
+          "id": "gap-cn-23",
+          "text": "mBridge status after handover among remaining central banks beyond PBOC statistics not found."
+        },
+        {
+          "id": "gap-cn-24",
+          "text": "CIPS shareholder structure as of 2026 not verified from a CIPS primary source; CIPS regional participant figures need verification."
+        },
+        {
+          "id": "gap-cn-25",
+          "text": "Which CNCC system is the mainland side of Cross-Border Payment Connect (IBPS likely) needs verification."
+        },
+        {
+          "id": "gap-cn-26",
+          "text": "No e-CNY QR code standard, message set or finality rule found; no CBETS message standard, finality rule or ledger description found."
+        },
+        {
+          "id": "gap-cbdc-4",
+          "text": "Primary PBOC rule text for the 2026 e-CNY framework (only gov.cn/Xinhua report opened)."
+        },
+        {
+          "id": "gap-cbdc-5",
+          "text": "e-CNY ledger technology, finality rule, offline design, wallet tiers and limits, and CBETS cross-border platform details: the 17 Jun 2026 SCIO article and the 2021 PBOC white paper URL were blocked."
+        },
+        {
+          "id": "gap-crypto-16",
+          "text": "Primary pbc.gov.cn texts of Yinfa [2021] No. 237 and the 2026 notice not fetched; PBOC November 2025 stablecoin statements not verified."
+        },
+        {
+          "id": "gap-insurance-markets-1",
+          "text": "Research limitation: WebSearch budget ran out; SEBI circulars, NSE, NSDL, NPCI pages and ChinaClear blocked or erroring."
+        },
+        {
+          "id": "gap-insurance-markets-8",
+          "text": "NFRA establishment and role as successor to CBIRC not verified (nfra.gov.cn not reached)."
+        },
+        {
+          "id": "gap-insurance-markets-13",
+          "text": "Any further C-ROSS II extension after January 2025 not checked."
+        },
+        {
+          "id": "gap-insurance-markets-17",
+          "text": "ChinaClear pages blocked; China settlement architecture and A-share conventions not verified."
+        },
+        {
+          "id": "gap-insurance-markets-23",
+          "text": "China Securities Investor Protection Fund (SIPF) not verified."
+        }
+      ]
+    },
+    {
+      "jurisdiction": "GLOBAL",
+      "codes": [
+        "GLOBAL"
+      ],
+      "depth": null,
+      "depthNote": "The coverage manifest has no single GLOBAL row; the thematic rows that apply across jurisdictions are listed in manifestRows with their own depth labels.",
+      "manifestRows": [
+        {
+          "area": "Money taxonomy",
+          "depth": "Deep",
+          "mainGaps": "Primary legal-tender texts; MiCA article text (only recitals rendered); explicit deposit-insurance coverage of tokenised deposits"
+        },
+        {
+          "area": "Card lifecycle",
+          "depth": "High level",
+          "mainGaps": "Primary Visa and Mastercard dispute time limits; 3DS component and message names; Visa clearing system naming"
+        },
+        {
+          "area": "Cross-border (correspondent, SWIFT, CLS, MTO, FPS interlinking)",
+          "depth": "High level to deep",
+          "mainGaps": "Charge codes; newest CPMI correspondent data; Nexus live status; MTSS (India)"
+        },
+        {
+          "area": "Ledgers and BaaS",
+          "depth": "Deep (US)",
+          "mainGaps": "Accounting-standard sources; EU agent passporting; status of US 2024 RFI follow-up"
+        },
+        {
+          "area": "Onboarding, KYC and fraud",
+          "depth": "High level",
+          "mainGaps": "UK SAR (POCA) regime; India STR timelines; PEP and adverse-media obligations; liveness standards"
+        },
+        {
+          "area": "Lending",
+          "depth": "Deep (US SME trace), high level elsewhere",
+          "mainGaps": "ESIGN, FCRA, Metro 2; UK CCA business thresholds; NACH mandates"
+        },
+        {
+          "area": "Open banking",
+          "depth": "High level comparison",
+          "mainGaps": "TPP data retention; ReBIT consent artefact fields; FiDA outcome"
+        },
+        {
+          "area": "Standards and regulations registry",
+          "depth": "Deep",
+          "mainGaps": "ISO 20022 parts 3 to 9; PCI non-DSS versions; CBPR+ message list; R16 detail"
+        },
+        {
+          "area": "Other jurisdictions (Brazil, Australia, Japan, Switzerland, Gulf)",
+          "depth": "Not covered (except as cross-references)",
+          "mainGaps": "All"
+        }
+      ],
+      "counts": {
+        "nodes": 173,
+        "stubNodes": 0,
+        "nodesByStatus": {
+          "adopted_not_effective": 2,
+          "concluded": 6,
+          "in_force": 63,
+          "pilot": 3,
+          "production": 79,
+          "research": 1,
+          "unknown": 19
+        },
+        "edges": 222,
+        "rules": 64,
+        "rulesByEffectiveStatus": {
+          "adopted_not_effective": 3,
+          "consultation": 1,
+          "in_force": 56,
+          "stayed": 1,
+          "superseded": 2,
+          "unknown": 1
+        },
+        "claims": 358,
+        "claimsByStatus": {
+          "conflicting": 5,
+          "needs_verification": 8,
+          "supported": 116,
+          "verified": 229
+        },
+        "scenarios": 2,
+        "sources": 141
+      },
+      "byModule": {
+        "core": {
+          "nodes": 126,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "adopted_not_effective": 1,
+            "concluded": 1,
+            "in_force": 59,
+            "production": 52,
+            "unknown": 13
+          },
+          "edges": 165,
+          "rules": 61,
+          "rulesByEffectiveStatus": {
+            "adopted_not_effective": 2,
+            "consultation": 1,
+            "in_force": 54,
+            "stayed": 1,
+            "superseded": 2,
+            "unknown": 1
+          },
+          "claims": 230,
+          "claimsByStatus": {
+            "conflicting": 5,
+            "needs_verification": 5,
+            "supported": 89,
+            "verified": 131
+          },
+          "scenarios": 1,
+          "sources": 0
+        },
+        "cbdc": {
+          "nodes": 20,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "concluded": 5,
+            "pilot": 2,
+            "production": 9,
+            "research": 1,
+            "unknown": 3
+          },
+          "edges": 24,
+          "rules": 0,
+          "rulesByEffectiveStatus": {},
+          "claims": 88,
+          "claimsByStatus": {
+            "needs_verification": 2,
+            "supported": 3,
+            "verified": 83
+          },
+          "scenarios": 0,
+          "sources": 0
+        },
+        "insurance": {
+          "nodes": 9,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "adopted_not_effective": 1,
+            "in_force": 2,
+            "production": 6
+          },
+          "edges": 9,
+          "rules": 2,
+          "rulesByEffectiveStatus": {
+            "adopted_not_effective": 1,
+            "in_force": 1
+          },
+          "claims": 6,
+          "claimsByStatus": {
+            "supported": 5,
+            "verified": 1
+          },
+          "scenarios": 0,
+          "sources": 0
+        },
+        "capital_markets": {
+          "nodes": 2,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "in_force": 1,
+            "production": 1
+          },
+          "edges": 4,
+          "rules": 1,
+          "rulesByEffectiveStatus": {
+            "in_force": 1
+          },
+          "claims": 2,
+          "claimsByStatus": {
+            "supported": 2
+          },
+          "scenarios": 0,
+          "sources": 0
+        },
+        "crypto": {
+          "nodes": 16,
+          "stubNodes": 0,
+          "nodesByStatus": {
+            "in_force": 1,
+            "pilot": 1,
+            "production": 11,
+            "unknown": 3
+          },
+          "edges": 20,
+          "rules": 0,
+          "rulesByEffectiveStatus": {},
+          "claims": 32,
+          "claimsByStatus": {
+            "needs_verification": 1,
+            "supported": 17,
+            "verified": 14
+          },
+          "scenarios": 1,
+          "sources": 0
+        }
+      },
+      "byBusinessDomain": {
+        "capital_markets": 2,
+        "crypto": 16,
+        "data_and_identity": 1,
+        "insurance": 9,
+        "market_infrastructure": 2,
+        "money_and_cbdc": 20,
+        "operators_and_schemes": 14,
+        "other": 62,
+        "payments": 5,
+        "standards": 42
+      },
+      "gaps": [
+        {
+          "id": "gap-cbdc-6",
+          "text": "Digital euro: whether trilogues reached provisional agreement after July 2026 (Council timeline shows nothing after 19 Dec 2025; searches exhausted)."
+        },
+        {
+          "id": "gap-cbdc-10",
+          "text": "Sand Dollar and eNaira usage statistics from primary sources."
+        },
+        {
+          "id": "gap-cbdc-11",
+          "text": "mBridge post-2024 operating status, volumes and governance (no BIS source; partner central bank sources not opened)."
+        },
+        {
+          "id": "gap-cbdc-12",
+          "text": "Nexus Global Payments go-live date and first connected systems."
+        },
+        {
+          "id": "gap-cbdc-13",
+          "text": "Partior current (2026) currencies, members and settlement-asset model (only 2022 self-description opened)."
+        },
+        {
+          "id": "gap-cbdc-14",
+          "text": "Regulated Liability Network experimentation final reports not opened."
+        },
+        {
+          "id": "gap-cbdc-15",
+          "text": "Agorá participant reconciliation (27 named vs '28' stated; 7 vs 8 central banks)."
+        },
+        {
+          "id": "gap-cbdc-16",
+          "text": "No systematic review of specific media articles on CBDC conflations was performed (search budget exhausted); conflations are framed against primary-source definitions."
+        },
+        {
+          "id": "gap-cbdc-19",
+          "text": "Settlement finality for cash, e-money and unbacked crypto-assets, and redemption terms for safeguarded balances, not sourced here."
+        },
+        {
+          "id": "gap-cbdc-20",
+          "text": "No numbered scenario traces exist in the CBDC notes; scenarios array intentionally empty."
+        },
+        {
+          "id": "gap-standards-1",
+          "text": "Titles, editions and dates of ISO 20022 Parts 3 to 9 not verified (search budget exhausted)."
+        },
+        {
+          "id": "gap-standards-2",
+          "text": "ISO 20022 annual maintenance cycle calendar and change-request deadline not found."
+        },
+        {
+          "id": "gap-standards-3",
+          "text": "MDR-level descriptions of each ISO 20022 message not opened; message roles are read from official names."
+        },
+        {
+          "id": "gap-standards-4",
+          "text": "Full CBPR+ in-scope message list (including pacs.009 COV and ADV variants) not read (CBPR+ page fetch failed)."
+        },
+        {
+          "id": "gap-standards-5",
+          "text": "Exact ISO 20022 element carrying the UETR not confirmed on a Swift page opened."
+        },
+        {
+          "id": "gap-standards-6",
+          "text": "Which MT messages were formally decommissioned in November 2025 (for example MT 900/910/940/950) not confirmed."
+        },
+        {
+          "id": "gap-standards-7",
+          "text": "CPMI harmonised requirements: covered message types, structured address and UETR expectations (technical annex not opened)."
+        },
+        {
+          "id": "gap-standards-8",
+          "text": "ISO 9362 and ISO 13616 registration authorities not named on ISO pages; ISO 8583 maintenance agency identity not confirmed; ISO 8583 1987 edition metadata not opened."
+        },
+        {
+          "id": "gap-standards-9",
+          "text": "EMV Contact Books 1 to 4 current version and date (contact page fetch failed); EMV 3DS 2.3.1.1 specification publication date; any newer QR MPM draft."
+        },
+        {
+          "id": "gap-standards-10",
+          "text": "Current versions and dates for PCI PIN, P2PE, PTS POI/HSM, 3DS Core Security Standard and MPoC (PCI 3DS page fetch failed)."
+        },
+        {
+          "id": "gap-standards-12",
+          "text": "OpenAPI release dates; whether OIDC Core is also an ISO/IEC PAS."
+        },
+        {
+          "id": "gap-standards-13",
+          "text": "Revised R16 content (thresholds, card exemption, structured information, payment-chain roles) not in pages opened."
+        },
+        {
+          "id": "gap-standards-14",
+          "text": "Wolfsberg Payment Transparency Standards content not opened (news page returned not found)."
+        },
+        {
+          "id": "gap-standards-15",
+          "text": "October 2026 FATF plenary outcome had not appeared on the FATF page as of the check."
+        },
+        {
+          "id": "gap-standards-16",
+          "text": "No CPMI tokenisation report setting standards and no 2026 CPMI stablecoin standard identified."
+        },
+        {
+          "id": "gap-standards-17",
+          "text": "ACORD version numbers; number of IAIS ICPs; ICS adoption date."
+        },
+        {
+          "id": "gap-standards-18",
+          "text": "Exact numbers of mandatory and advisory controls in Swift CSCF v2026 and its publication date not verified on Swift."
+        },
+        {
+          "id": "gap-standards-20",
+          "text": "Jurisdictional transposition of global instruments was out of scope."
+        },
+        {
+          "id": "gap-standards-21",
+          "text": "No numbered scenario traces exist in the standards notes; scenarios array intentionally empty."
+        },
+        {
+          "id": "gap-crypto-15",
+          "text": "Hong Kong licence conditions (HK$25m paid-up capital, full backing, redemption at par within one business day, retail offering restricted to licensed issuers' coins via permitted offerors) not verified from HKMA primary text; whether either licensee launched by 15 October 2026 not confirmed; SFC VATP regime not covered."
+        },
+        {
+          "id": "gap-crypto-18",
+          "text": "IVMS101 and Travel Rule protocol landscape (TRP, TRISA, Sygna Bridge, GTR, Notabene) not verified from primary sources."
+        },
+        {
+          "id": "gap-crypto-19",
+          "text": "Blockchain analytics vendor capabilities (Chainalysis, Elliptic, TRM) not researched."
+        },
+        {
+          "id": "gap-crypto-20",
+          "text": "Bank-issued tokenised deposit programmes (for example JPMorgan Kinexys/JPMD, Citi Token Services) not researched in this module (see cbdc.json)."
+        },
+        {
+          "id": "gap-crypto-21",
+          "text": "PayPal PYUSD, Stripe/Bridge stablecoin accounts and merchant PSP acceptance (Shopify/Stripe USDC) not verified from primary sources."
+        },
+        {
+          "id": "gap-crypto-22",
+          "text": "No primary or vendor source on MPC/threshold signatures, HSM custody or exchange confirmation policies; Bitcoin finality not sourced."
+        },
+        {
+          "id": "gap-crypto-23",
+          "text": "Issuer-specific redemption terms (Circle, Paxos, Tether) not verified."
+        },
+        {
+          "id": "gap-cards-crossborder-2",
+          "text": "Payment facilitator and sponsored merchant definitions: the Visa Payment Facilitator and Marketplace Risk Guide could not be fetched (error); scheme definitions of payment facilitator, BIN sponsor, programme manager and third-party agent need verification against Visa Core Rules and Mastercard Rules."
+        },
+        {
+          "id": "gap-cards-crossborder-3",
+          "text": "Formal definitions of gateway, orchestrator and terminal roles were not found in a primary source."
+        },
+        {
+          "id": "gap-cards-crossborder-4",
+          "text": "Visa clearing system name (BASE II) and VisaNet Settlement Service mechanics not confirmed from an opened primary source; the VisaNet page does not mention them. Needs verification."
+        },
+        {
+          "id": "gap-cards-crossborder-5",
+          "text": "EMV 3DS component names (3DS Server, Directory Server, Access Control Server) and message names (AReq/ARes, CReq/CRes, RReq/RRes) were not on the opened EMVCo page; needs verification against the EMV 3DS Protocol and Core Functions Specification."
+        },
+        {
+          "id": "gap-cards-crossborder-6",
+          "text": "Which party de-tokenises in authorisation is not stated in the opened EMVCo guide (refers to Technical Framework Section 10)."
+        },
+        {
+          "id": "gap-cards-crossborder-7",
+          "text": "Incremental authorisation rules (eligible MCCs) and partial authorisation (partial approval) rules not confirmed; Stripe incremental page returned only an index."
+        },
+        {
+          "id": "gap-cards-crossborder-8",
+          "text": "Settlement currency rules and Visa settlement timing were not extracted from Visa rules."
+        },
+        {
+          "id": "gap-cards-crossborder-9",
+          "text": "Scheme fee schedules are not public in usable form; no scheme fee figures are given."
+        },
+        {
+          "id": "gap-cards-crossborder-10",
+          "text": "Primary Visa and Mastercard dispute time limits were not extracted (only tables of contents); secondary figures need verification before use."
+        },
+        {
+          "id": "gap-cards-crossborder-11",
+          "text": "Stand-in thresholds, timeout values and reversal timing rules are not publicly specified in the material opened."
+        },
+        {
+          "id": "gap-cards-crossborder-12",
+          "text": "Real card accounting differs by issuer (credit vs debit, prepaid e-money safeguarding), by whether interchange on refunds is reversed, and by scheme fee treatment. Not publicly specified."
+        },
+        {
+          "id": "gap-cards-crossborder-13",
+          "text": "Statementing and reconciliation cadences are issuer and acquirer choices and are not set in the sources opened."
+        },
+        {
+          "id": "gap-cards-crossborder-14",
+          "text": "Visa settlement timing and settlement currencies per region were not extracted."
+        },
+        {
+          "id": "gap-cards-crossborder-15",
+          "text": "Charges codes (OUR/SHA/BEN; ISO 20022 ChargeBearer DEBT/SHAR/CRED) not confirmed from an opened source. Needs verification."
+        },
+        {
+          "id": "gap-cards-crossborder-16",
+          "text": "pacs.002 status usage in CBPR+ and repair practices not confirmed from primary material."
+        },
+        {
+          "id": "gap-cards-crossborder-17",
+          "text": "No CPMI correspondent banking data newer than the December 2021 release was found (search budget exhausted); newer releases may exist."
+        },
+        {
+          "id": "gap-cards-crossborder-18",
+          "text": "Sanctions screening and RFI workflows: no primary source opened (FATF R.16 revision mentioned only in FSB press release)."
+        },
+        {
+          "id": "gap-cards-crossborder-20",
+          "text": "Nexus role names (FX Provider, Settlement Access Provider) and messages not confirmed from opened pages."
+        },
+        {
+          "id": "gap-cards-crossborder-21",
+          "text": "Whether Nexus is live as of 15 Oct 2026 could not be verified; the docs page said not yet operational."
+        },
+        {
+          "id": "gap-cards-crossborder-22",
+          "text": "Whether a 2026 FSB progress report has been published by 15 Oct 2026 could not be verified (search budget exhausted)."
+        },
+        {
+          "id": "gap-banking-ops-1",
+          "text": "No primary source opened defining 'collected balance' (Reg CC funds availability lives in us.md); collected vs available distinctions are bank-specific."
+        },
+        {
+          "id": "gap-banking-ops-2",
+          "text": "No primary (accounting standard) source opened on GL vs sub-ledger architecture or on ASC/IFRS treatment; architecture statements are practice."
+        },
+        {
+          "id": "gap-banking-ops-3",
+          "text": "Event sourcing as a named pattern: no authoritative source opened; label ENGINEERING."
+        },
+        {
+          "id": "gap-banking-ops-5",
+          "text": "No primary source opened on the July 2024 RFI comment deadline or any agency follow-up rule; status of agency action after the RFI unknown."
+        },
+        {
+          "id": "gap-banking-ops-6",
+          "text": "Whether the June 2023 TPRM guidance was revised or rescinded in 2025 to 2026 was not checked."
+        },
+        {
+          "id": "gap-banking-ops-9",
+          "text": "No primary source opened on liveness detection standards (e.g. ISO/IEC 30107-3) or on document-verification accuracy; vendor claims are practice."
+        },
+        {
+          "id": "gap-banking-ops-10",
+          "text": "PEP definitions and EDD (FATF R.12, AMLR) and adverse-media obligations were not opened; FFIEC lists negative media as a review trigger only."
+        },
+        {
+          "id": "gap-banking-ops-16",
+          "text": "Metro 2 format content (segments, status codes, CRRG) not opened from a primary source."
+        },
+        {
+          "id": "gap-banking-ops-17",
+          "text": "ESIGN/UETA e-signature rules, FCRA permissible purpose for bureau pulls, and Reg Z periodic statement rules not opened."
+        },
+        {
+          "id": "gap-banking-ops-19",
+          "text": "Nonaccrual (90 days past due) Call Report definition and CECL/ASC 326 allowance mechanics not opened."
+        },
+        {
+          "id": "gap-banking-ops-29",
+          "text": "Commercial charge-off and nonaccrual rules (Call Report instructions), CECL allowance mechanics and modification accounting (ASU 2022-02) not opened."
+        },
+        {
+          "id": "gap-banking-ops-30",
+          "text": "Commercial bureau (e.g. SBFE) reporting formats not researched."
+        },
+        {
+          "id": "gap-banking-ops-31",
+          "text": "Interest accrual day-count, hard vs soft pull and delinquency bucket conventions are practice; no primary source opened."
+        },
+        {
+          "id": "gap-insurance-markets-3",
+          "text": "No primary source opened for FNOL, subrogation, adjuster roles, provider network contracting or insurance fraud bureaus."
+        },
+        {
+          "id": "gap-insurance-markets-6",
+          "text": "Bima Sugam live status as of 15 October 2026 rests on one secondary source; 'November 2026' date is reported, not confirmed."
+        },
+        {
+          "id": "gap-insurance-markets-15",
+          "text": "No opened source on OMS/EMS/smart order routing, MTF/ATS definitions, securities lending, transfer agents, fund platforms or sub-custody chains."
+        },
+        {
+          "id": "gap-insurance-markets-19",
+          "text": "Switzerland T+1 date not verified."
+        },
+        {
+          "id": "gap-insurance-markets-26",
+          "text": "Current DSS participant list and go-live firms not on the opened page."
+        },
+        {
+          "id": "gap-insurance-markets-27",
+          "text": "Project Guardian 2025 to 2026 frameworks not on opened page."
+        },
+        {
+          "id": "gap-insurance-markets-28",
+          "text": "DLT Pilot Regime review outcome not checked; Article 19 application date not opened."
+        },
+        {
+          "id": "gap-insurance-markets-29",
+          "text": "ACH return windows and broker instant-deposit practices not sourced."
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "module": "core",
+      "depth": null,
+      "depthNote": "Core spans the jurisdiction chapters and thematic rows; see manifestRows and the per-jurisdiction depth labels.",
+      "manifestRows": [
+        {
+          "area": "Money taxonomy",
+          "depth": "Deep",
+          "mainGaps": "Primary legal-tender texts; MiCA article text (only recitals rendered); explicit deposit-insurance coverage of tokenised deposits"
+        },
+        {
+          "area": "Card lifecycle",
+          "depth": "High level",
+          "mainGaps": "Primary Visa and Mastercard dispute time limits; 3DS component and message names; Visa clearing system naming"
+        },
+        {
+          "area": "Cross-border (correspondent, SWIFT, CLS, MTO, FPS interlinking)",
+          "depth": "High level to deep",
+          "mainGaps": "Charge codes; newest CPMI correspondent data; Nexus live status; MTSS (India)"
+        },
+        {
+          "area": "Ledgers and BaaS",
+          "depth": "Deep (US)",
+          "mainGaps": "Accounting-standard sources; EU agent passporting; status of US 2024 RFI follow-up"
+        },
+        {
+          "area": "Onboarding, KYC and fraud",
+          "depth": "High level",
+          "mainGaps": "UK SAR (POCA) regime; India STR timelines; PEP and adverse-media obligations; liveness standards"
+        },
+        {
+          "area": "Lending",
+          "depth": "Deep (US SME trace), high level elsewhere",
+          "mainGaps": "ESIGN, FCRA, Metro 2; UK CCA business thresholds; NACH mandates"
+        },
+        {
+          "area": "Open banking",
+          "depth": "High level comparison",
+          "mainGaps": "TPP data retention; ReBIT consent artefact fields; FiDA outcome"
+        },
+        {
+          "area": "Standards and regulations registry",
+          "depth": "Deep",
+          "mainGaps": "ISO 20022 parts 3 to 9; PCI non-DSS versions; CBPR+ message list; R16 detail"
+        },
+        {
+          "area": "Other jurisdictions (Brazil, Australia, Japan, Switzerland, Gulf)",
+          "depth": "Not covered (except as cross-references)",
+          "mainGaps": "All"
+        }
+      ],
+      "counts": {
+        "nodes": 616,
+        "stubNodes": 1,
+        "nodesByStatus": {
+          "adopted_not_effective": 4,
+          "concluded": 1,
+          "consultation": 4,
+          "design_phase": 3,
+          "in_force": 206,
+          "pilot": 8,
+          "production": 306,
+          "proposed": 12,
+          "research": 1,
+          "retired": 16,
+          "unknown": 55
+        },
+        "edges": 551,
+        "rules": 345,
+        "rulesByEffectiveStatus": {
+          "adopted_not_effective": 10,
+          "consultation": 15,
+          "in_force": 245,
+          "proposed": 18,
+          "stayed": 2,
+          "superseded": 20,
+          "unknown": 35
+        },
+        "claims": 897,
+        "claimsByStatus": {
+          "conflicting": 22,
+          "needs_verification": 41,
+          "supported": 299,
+          "verified": 535
+        },
+        "scenarios": 15,
+        "sources": 0
+      },
+      "gaps": [
+        {
+          "id": "gap-uk-1",
+          "text": "UK Finance: no primary UK Finance page opened, so its role (trade body, fraud data, Best Practice Standards claims system) is unverified."
+        },
+        {
+          "id": "gap-uk-2",
+          "text": "Timing of the FSM Bill 2026 Commons second reading and Royal Assent (Lords stages completed 15 Sep 2026)."
+        },
+        {
+          "id": "gap-uk-3",
+          "text": "PSR list of designated payment systems: the page failed to load."
+        },
+        {
+          "id": "gap-uk-4",
+          "text": "Exact CHAPS/RTGS ISO 20022 usage-guideline version numbers (MyStandards releases)."
+        },
+        {
+          "id": "gap-uk-5",
+          "text": "A current (2026) list of RTGS account types was not opened; non-bank limits on intraday liquidity and remuneration come from the 2017 and 2018 documents; outcome of BoE consideration (January to June 2026) of overnight safeguarding facilities for non-bank RTGS account holders unknown."
+        },
+        {
+          "id": "gap-uk-6",
+          "text": "FPS and Bacs message standards: Pay.UK ISO 20022 page does not say what FPS uses (widely reported as ISO 8583-based, not verified) or what Bacs uses (Standard 18, not verified)."
+        },
+        {
+          "id": "gap-uk-7",
+          "text": "Mastercard UK sterling settlement mechanism: not found in the BoE documents opened."
+        },
+        {
+          "id": "gap-uk-8",
+          "text": "Current (2026) settlement cycle times for FPS, Bacs, Visa and LINK need a current BoE RT2 timetable."
+        },
+        {
+          "id": "gap-uk-9",
+          "text": "No primary source on FPS return payments or recalls was opened."
+        },
+        {
+          "id": "gap-uk-10",
+          "text": "Whether LINK is formally designated as the cash access coordination body was not confirmed from an opened source."
+        },
+        {
+          "id": "gap-uk-11",
+          "text": "Contactless limits: not researched (search budget exhausted)."
+        },
+        {
+          "id": "gap-uk-12",
+          "text": "No primary UKPI rulebook or commercial VRP launch notice was opened."
+        },
+        {
+          "id": "gap-uk-13",
+          "text": "No final SD17a found; whether the FCA interface-rules consultation was published in Q3 2026 is not confirmed."
+        },
+        {
+          "id": "gap-uk-14",
+          "text": "The Open Banking Standard version current in October 2026 (anything after v4.0) is not confirmed."
+        },
+        {
+          "id": "gap-uk-15",
+          "text": "Bank authorisation (PRA authorises, FCA and PRA dual-regulate): no PRA source opened."
+        },
+        {
+          "id": "gap-uk-16",
+          "text": "Content of S.I. 2026/621 (MLR amendment) unknown."
+        },
+        {
+          "id": "gap-uk-17",
+          "text": "How the DUA Act 2025 amends the DPA and UK GDPR, and its commencement status, were not verified."
+        },
+        {
+          "id": "gap-uk-18",
+          "text": "RAISP (registered account information service provider) status was not sourced."
+        },
+        {
+          "id": "gap-uk-19",
+          "text": "Whether the BoE/HMT digital pound decision and blueprint were published between July and 15 Oct 2026 could not be checked; re-verify on refresh."
+        },
+        {
+          "id": "gap-uk-20",
+          "text": "The unnamed live system for the tokenised cash leg in the March 2026 BoE text conflicts with the July 2026 wholesale page."
+        },
+        {
+          "id": "gap-uk-21",
+          "text": "Scenario traces: exact 2026 cycle times for FPS and Visa settlement; Mastercard UK settlement; the FPS message standard; acquirer-to-merchant funding norms."
+        },
+        {
+          "id": "gap-us-1",
+          "text": "OCC charter and supervision page was robots-blocked; OCC role stated only via the Reg II enforcement list."
+        },
+        {
+          "id": "gap-us-2",
+          "text": "Whether the D. Or. CFPB funding ruling has been appealed or stayed, and status of the D.D.C. injunction appeal."
+        },
+        {
+          "id": "gap-us-3",
+          "text": "CRA disapproval of the CFPB overdraft and digital payment apps rules is widely reported for 2025 but could not be confirmed from an opened primary source; treat as needs verification."
+        },
+        {
+          "id": "gap-us-4",
+          "text": "White House text of the 19 May 2026 EO was not opened; the Fed's 120-day report was not found."
+        },
+        {
+          "id": "gap-us-5",
+          "text": "CHIPS prefunding mechanics (commonly described as prefunded balances at FRBNY funded by Fedwire with end-of-day final funding) not confirmed in opened TCH pages; CHIPS Rules and Administrative Procedures needed; exact CHIPS open and close times unconfirmed."
+        },
+        {
+          "id": "gap-us-6",
+          "text": "FedNow default participant limit; FedNow participant count from an official Fed page."
+        },
+        {
+          "id": "gap-us-7",
+          "text": "pacs.008/pacs.009 usage and usage-guideline versions for Fedwire, FedNow and RTP (MyStandards and TCH specs not public)."
+        },
+        {
+          "id": "gap-us-8",
+          "text": "EPN schedule and settlement method; Nacha rulebook text (licensed)."
+        },
+        {
+          "id": "gap-us-9",
+          "text": "Check image exchange networks not researched."
+        },
+        {
+          "id": "gap-us-10",
+          "text": "Exact Visa dispute time limits, EMV shift dates and conditions; Mastercard rules not researched."
+        },
+        {
+          "id": "gap-us-11",
+          "text": "Eighth Circuit Corner Post outcome after 20 Sept 2026 not confirmed."
+        },
+        {
+          "id": "gap-us-12",
+          "text": "Credit Card Competition Act bill number (S. 3623 suggested by an aggregator) not confirmed from Congress.gov (robots-blocked)."
+        },
+        {
+          "id": "gap-us-13",
+          "text": "Whether the Section 1033 reconsideration NPRM was published in the Federal Register between 6 Aug and 15 Oct 2026."
+        },
+        {
+          "id": "gap-us-14",
+          "text": "Effective date and Federal Register citation of the August 2026 BOI final rule (fincen.gov not opened)."
+        },
+        {
+          "id": "gap-us-15",
+          "text": "FDIC pass-through insurance rules (12 CFR 330) and any FDIC brokered deposit changes not researched."
+        },
+        {
+          "id": "gap-us-16",
+          "text": "Public law number and statutory section of the CBDC provision; exact enactment date (10 vs 11 Jul 2026)."
+        },
+        {
+          "id": "gap-us-17",
+          "text": "House passage date and vote of H.R. 1919 (roll call page not opened; Congress.gov robots-blocked)."
+        },
+        {
+          "id": "gap-us-18",
+          "text": "Any Federal Reserve CBDC statement after the 2026 statute (none found)."
+        },
+        {
+          "id": "gap-us-19",
+          "text": "Card network message formats, settlement bank arrangements and timing, network dispute time limits not confirmed from opened sources."
+        },
+        {
+          "id": "gap-us-20",
+          "text": "Nacha file and record formats, Same Day ACH funds availability deadlines, EPN mechanics."
+        },
+        {
+          "id": "gap-us-21",
+          "text": "ISO 20022 message names and versions used by FedNow and RTP (pacs.008, pacs.002 etc.) not confirmed in opened pages."
+        },
+        {
+          "id": "gap-us-22",
+          "text": "RTP Operating Rules text (finality legal basis, return-of-funds process) not opened."
+        },
+        {
+          "id": "gap-us-23",
+          "text": "State privacy laws (e.g. California) not researched."
+        },
+        {
+          "id": "gap-eu-1",
+          "text": "SSM start date, list of participating countries and number of significant institutions (page lacked these)."
+        },
+        {
+          "id": "gap-eu-2",
+          "text": "DORA CTPP lead overseers."
+        },
+        {
+          "id": "gap-eu-3",
+          "text": "EBA CLEARING ownership and shareholder list."
+        },
+        {
+          "id": "gap-eu-4",
+          "text": "TIPS timeout parameter and exact ISO 20022 message versions (TIPS UDFS not read)."
+        },
+        {
+          "id": "gap-eu-5",
+          "text": "T2 daily cut-offs; participant counts for TIPS; Norway TIPS go-live date."
+        },
+        {
+          "id": "gap-eu-6",
+          "text": "EURO1 loss-sharing and liquidity pool, end-of-day T2 settlement timing, ISO 20022 migration date."
+        },
+        {
+          "id": "gap-eu-7",
+          "text": "STEP2-T settlement cycles (net or gross per cycle not confirmed)."
+        },
+        {
+          "id": "gap-eu-8",
+          "text": "SFD designating Member State for EURO1, STEP2-T and RT1 (ESMA SFD register page failed to load)."
+        },
+        {
+          "id": "gap-eu-9",
+          "text": "SCT (non-instant) rulebook version and D+1 rule text; SDD rulebook versions, D-1 timelines and ISO messages (pain.008, pacs.003, pacs.007, pacs.004 not verified)."
+        },
+        {
+          "id": "gap-eu-10",
+          "text": "SCT Inst rulebook wording on time-out deadline and recall deadlines; reconciliation of 9 s vs 5 s target."
+        },
+        {
+          "id": "gap-eu-11",
+          "text": "Full SEPA country list (inclusion of UK, CH, MC, SM, AD, VA and newer members not confirmed)."
+        },
+        {
+          "id": "gap-eu-12",
+          "text": "IPR Art 5a(2) (reported EUR 25,000 floor on per-transaction derogation limit) not understood with confidence; needs reading."
+        },
+        {
+          "id": "gap-eu-13",
+          "text": "IPR Commission evaluation date (prior lead 9 Oct 2028) not re-extracted."
+        },
+        {
+          "id": "gap-eu-14",
+          "text": "Primary Council press release of 27 Nov 2025 on PSD3/PSR not opened; fraud and spoofing refund mechanics and IBAN/name check scope in PSR text unconfirmed."
+        },
+        {
+          "id": "gap-eu-15",
+          "text": "AMLR EUR 10,000 cash payment limit article and AMLD6 transposition deadline not opened."
+        },
+        {
+          "id": "gap-eu-16",
+          "text": "CMDI amendments to DGSD (2026 OJ publication per earlier lead) not re-verified."
+        },
+        {
+          "id": "gap-eu-17",
+          "text": "International scheme (Visa, Mastercard) EU specifics and national schemes (Cartes Bancaires, girocard, Bancontact, Bizum etc.) not researched."
+        },
+        {
+          "id": "gap-eu-18",
+          "text": "Any October 2026 digital euro trilogue outcome; holding limit amount; final compensation model; digital euro finality and message standards; whether pilot uses real central bank liabilities; Pontes connected platforms and participants."
+        },
+        {
+          "id": "gap-eu-19",
+          "text": "TIPS notification message variants, RT1 funding cycles, SCT Inst recall deadlines; digital euro messages, finality, fees and offline loss rules."
+        },
+        {
+          "id": "gap-eu-20",
+          "text": "GDPR application date (25 May 2018) not shown in fetched metadata: needs verification."
+        },
+        {
+          "id": "gap-sg-1",
+          "text": "MAS's own role pages (payments oversight, designated systems list under PSA Part 3) could not be opened; mas.gov.sg was unreachable."
+        },
+        {
+          "id": "gap-sg-2",
+          "text": "Legal basis of the deposit insurance scheme (Deposit Insurance and Policy Owners' Protection Schemes Act) not confirmed from SSO; needs verification."
+        },
+        {
+          "id": "gap-sg-3",
+          "text": "PDPA penalty levels and breach notification provisions not confirmed (SSO PDPA page failed to load)."
+        },
+        {
+          "id": "gap-sg-4",
+          "text": "Current (2026) MEPS+ operating hours, ISO 20022 cutover dates and any MEPS+ renewal or replacement programme not verified."
+        },
+        {
+          "id": "gap-sg-5",
+          "text": "Whether MEPS+ settles FAST cycles in central bank money on weekends: not publicly specified."
+        },
+        {
+          "id": "gap-sg-6",
+          "text": "Exact FAST ISO 20022 message set (e.g. pacs.008, pacs.002) and usage guideline version: not publicly specified."
+        },
+        {
+          "id": "gap-sg-7",
+          "text": "Whether NFIs settle directly in MEPS+ or through a settlement bank: needs verification."
+        },
+        {
+          "id": "gap-sg-8",
+          "text": "Whether MPIs hold MAS settlement accounts for FAST: needs verification (specified-institution current-account terms not opened)."
+        },
+        {
+          "id": "gap-sg-9",
+          "text": "PayNow default ad-hoc limit (raised 28 Sep 2020) amount not confirmed."
+        },
+        {
+          "id": "gap-sg-10",
+          "text": "PayNow proxy lookup API and message fields not publicly specified."
+        },
+        {
+          "id": "gap-sg-11",
+          "text": "PayNow Gen2 Phase 1 report on mas.gov.sg could not be opened."
+        },
+        {
+          "id": "gap-sg-12",
+          "text": "GIRO settlement timing in MEPS+ and debit limits not confirmed."
+        },
+        {
+          "id": "gap-sg-13",
+          "text": "SGQR exact launch date (commonly Sept 2018), NETS ownership, NETS debit/EFTPOS settlement, card scheme presence (Visa, Mastercard, UnionPay, Amex, JCB) and card settlement not sourced (search budget exhausted)."
+        },
+        {
+          "id": "gap-sg-14",
+          "text": "NGP go-live status and Singapore connection via FAST/PayNow as of 15 Oct 2026 not verified (NGP site failed to load)."
+        },
+        {
+          "id": "gap-sg-15",
+          "text": "Current per-linkage cross-border limits (SGD 1,000 figure is a 2023 secondary source)."
+        },
+        {
+          "id": "gap-sg-16",
+          "text": "Primary text of PSA s 6 and First Schedule thresholds not opened; thresholds rely on Deloitte."
+        },
+        {
+          "id": "gap-sg-17",
+          "text": "MAS Notice 626 (banks AML/CFT), Technology Risk Management Guidelines (version and date), Banking Act provisions and E-Payments User Protection Guidelines text not opened; treat any dates as needs verification."
+        },
+        {
+          "id": "gap-sg-18",
+          "text": "MAS formal retail CBDC position not sourced (October 2026 speech does not address retail CBDC)."
+        },
+        {
+          "id": "gap-sg-19",
+          "text": "Orchid purpose-bound money specifics, Ubin phases 2 to 5, Guardian participant details and Global Layer One not sourced."
+        },
+        {
+          "id": "gap-sg-20",
+          "text": "Wholesale CBDC trial values, ledger technology, funding against MEPS+ balances and FNA status of SGD Testnet not publicly specified."
+        },
+        {
+          "id": "gap-sg-21",
+          "text": "Scenario 1: FAST cycle times, current cycle count and ISO 20022 message names."
+        },
+        {
+          "id": "gap-sg-22",
+          "text": "Scenario 2: amounts, rates, funding and redemption of CBDC versus MEPS+ reserves, ledger platform and legal finality not publicly specified."
+        },
+        {
+          "id": "gap-in-1",
+          "text": "NBSL full name and function not confirmed; NIPL and NBBL corporate details not opened (NPCI subsidiary pages blocked)."
+        },
+        {
+          "id": "gap-in-2",
+          "text": "Whether the NBFC-AA 2016 MD was re-issued in the Nov 2025 consolidation: page shows last update 6 Sep 2024 and no superseded marker; needs verification."
+        },
+        {
+          "id": "gap-in-3",
+          "text": "MoF DFS role beyond the PSS Act notification and PRB seat not separately sourced."
+        },
+        {
+          "id": "gap-in-4",
+          "text": "Primary NPCI PDFs of OC-215A, OC-220, NPCI/2025-26/UPI/222 and CC/01 (login/robots); exact UPI cycle cut-off times; settlement guarantee mechanism; UPI XML API schemas (not public)."
+        },
+        {
+          "id": "gap-in-5",
+          "text": "Current UPI Lite per-transaction and wallet limits (NPCI page says below ₹500; widely reported higher limits not verified)."
+        },
+        {
+          "id": "gap-in-6",
+          "text": "UPI Circle and credit-line limits and eligibility."
+        },
+        {
+          "id": "gap-in-7",
+          "text": "Any 2026 NPCI decision on the TPAP market share cap ahead of 31 Dec 2026."
+        },
+        {
+          "id": "gap-in-8",
+          "text": "UPI settlement asset (member settlement accounts at RBI) not confirmed in an opened primary source."
+        },
+        {
+          "id": "gap-in-9",
+          "text": "IMPS and NACH settlement model and asset; RTGS membership and access criteria; RTGS ISO 20022 version."
+        },
+        {
+          "id": "gap-in-10",
+          "text": "Text of the 2025 AePS touchpoint operator directions and AePS fraud controls detail."
+        },
+        {
+          "id": "gap-in-11",
+          "text": "CoF tokenisation circular (Oct 2022 date) not reopened; BBPS rename to Bharat Connect not confirmed from primary."
+        },
+        {
+          "id": "gap-in-12",
+          "text": "Post-consolidation home of digital lending rules; CIC names; NBFC-AA list; DICGC Act section references."
+        },
+        {
+          "id": "gap-in-13",
+          "text": "PMLA s.11A notification of entities allowed Aadhaar e-KYC; CTR/STR timelines (PML Rules) not opened."
+        },
+        {
+          "id": "gap-in-14",
+          "text": "MTSS and RDA inbound remittance rules, Special Rupee Vostro and cross-border UPI settlement mechanics not reached (search budget exhausted)."
+        },
+        {
+          "id": "gap-in-15",
+          "text": "PSS Act s.23 text not opened (India Code blocked): wording and application to UPI/NPCI net settlement needs verification."
+        },
+        {
+          "id": "gap-in-16",
+          "text": "e₹ production token mechanics, ledger architecture, e₹ to UPI QR conversion and interbank leg; per-wallet limits by bank."
+        },
+        {
+          "id": "gap-in-17",
+          "text": "e₹-W participant names, how banks obtain e₹-W (from reserves?), DvP linkage with SGL/CCIL; no official RBI or SEBI press release on the corporate bond pilot was opened."
+        },
+        {
+          "id": "gap-in-18",
+          "text": "Scenario gaps: UPI message fields, settlement cycle times, RBI settlement accounts; e₹ conversion and ledger; e₹-W DvP mechanics and participant names."
+        },
+        {
+          "id": "gap-in-19",
+          "text": "RBI notification of 29 Sep 2026 on UNSC list amendments and 9 Apr 2026 inward cross-border credit circular not reopened; need verification."
+        },
+        {
+          "id": "gap-in-20",
+          "text": "Device binding for UPI onboarding is practice, not sourced."
+        },
+        {
+          "id": "gap-cn-1",
+          "text": "Payment and Clearing Association of China (PCAC): no source opened; its role as industry self-regulatory body under PBOC guidance needs verification."
+        },
+        {
+          "id": "gap-cn-2",
+          "text": "CSRC's role confirmed only at the level of securities supervision from a secondary source."
+        },
+        {
+          "id": "gap-cn-3",
+          "text": "NFRA director status in 2026 needs verification from nfra.gov.cn."
+        },
+        {
+          "id": "gap-cn-4",
+          "text": "HVPS, BEPS and IBPS operating hours, cut-offs, CNAPS II architecture and CNAPS message standards not sourced from PBOC or CNCC pages."
+        },
+        {
+          "id": "gap-cn-5",
+          "text": "NetsUnion founding date, ownership, settlement model and hours not sourced."
+        },
+        {
+          "id": "gap-cn-6",
+          "text": "UnionPay card settlement mechanics (net settlement through CNAPS) not sourced."
+        },
+        {
+          "id": "gap-cn-7",
+          "text": "PBOC 2017 barcode payment rules (条码支付业务规范) and QR technical standards not opened."
+        },
+        {
+          "id": "gap-cn-8",
+          "text": "PBOC implementing rules for non-bank payment institutions (实施细则, 2024) not opened (pbc.gov.cn blocked)."
+        },
+        {
+          "id": "gap-cn-9",
+          "text": "Historical 100% centralised deposit of customer reserve funds at the PBOC (Jan 2019) not sourced; current arrangement needs verification."
+        },
+        {
+          "id": "gap-cn-10",
+          "text": "March 2024 State Council General Office measures to ease payments for foreign visitors (expected 国办发〔2024〕10号) not opened."
+        },
+        {
+          "id": "gap-cn-11",
+          "text": "Revised Anti-Money Laundering Law (adopted 8 Nov 2024, effective 1 Jan 2025 per brief) not opened; needs verification."
+        },
+        {
+          "id": "gap-cn-12",
+          "text": "Data Security Law adoption and effective dates (commonly 10 Jun 2021 and 1 Sep 2021) not sourced."
+        },
+        {
+          "id": "gap-cn-13",
+          "text": "PBOC Law: whether the 2020 draft revision (RMB includes physical and digital forms) has been adopted as of Oct 2026 needs verification."
+        },
+        {
+          "id": "gap-cn-14",
+          "text": "SAFE individual annual FX purchase facilitation quota (USD 50,000 equivalent) not sourced."
+        },
+        {
+          "id": "gap-cn-15",
+          "text": "Commercial Banking Law details not sourced."
+        },
+        {
+          "id": "gap-cn-16",
+          "text": "PBOC e-CNY White Paper (July 2021) not opened; definitions cited only via secondary sources."
+        },
+        {
+          "id": "gap-cn-17",
+          "text": "Full list of 30 e-CNY operators and whether MYbank, WeBank, Alipay or Tenpay are among them not established."
+        },
+        {
+          "id": "gap-cn-18",
+          "text": "Settlement finality for e-CNY transfers: no source found."
+        },
+        {
+          "id": "gap-cn-19",
+          "text": "Full text of the e-CNY Action Plan not found; no PBOC statement on M0 treatment after 1 Jan 2026, anonymous wallets, hard wallets or non-bank wallet interest."
+        },
+        {
+          "id": "gap-cn-20",
+          "text": "Mechanics of PBOC issuance/exchange of e-CNY to operators (PBOC liability or reserves) not publicly specified."
+        },
+        {
+          "id": "gap-cn-21",
+          "text": "Full list of 26 CBETS direct participants, CBETS rulebook, message standards, indirect participation model and fees not found."
+        },
+        {
+          "id": "gap-cn-22",
+          "text": "SCIO leads of 30 Dec 2025 and 17 Jun 2026 could not be opened (robots blocked)."
+        },
+        {
+          "id": "gap-cn-23",
+          "text": "mBridge status after handover among remaining central banks beyond PBOC statistics not found."
+        },
+        {
+          "id": "gap-cn-24",
+          "text": "CIPS shareholder structure as of 2026 not verified from a CIPS primary source; CIPS regional participant figures need verification."
+        },
+        {
+          "id": "gap-cn-25",
+          "text": "Which CNCC system is the mainland side of Cross-Border Payment Connect (IBPS likely) needs verification."
+        },
+        {
+          "id": "gap-cn-26",
+          "text": "No e-CNY QR code standard, message set or finality rule found; no CBETS message standard, finality rule or ledger description found."
+        },
+        {
+          "id": "gap-standards-1",
+          "text": "Titles, editions and dates of ISO 20022 Parts 3 to 9 not verified (search budget exhausted)."
+        },
+        {
+          "id": "gap-standards-2",
+          "text": "ISO 20022 annual maintenance cycle calendar and change-request deadline not found."
+        },
+        {
+          "id": "gap-standards-3",
+          "text": "MDR-level descriptions of each ISO 20022 message not opened; message roles are read from official names."
+        },
+        {
+          "id": "gap-standards-4",
+          "text": "Full CBPR+ in-scope message list (including pacs.009 COV and ADV variants) not read (CBPR+ page fetch failed)."
+        },
+        {
+          "id": "gap-standards-5",
+          "text": "Exact ISO 20022 element carrying the UETR not confirmed on a Swift page opened."
+        },
+        {
+          "id": "gap-standards-6",
+          "text": "Which MT messages were formally decommissioned in November 2025 (for example MT 900/910/940/950) not confirmed."
+        },
+        {
+          "id": "gap-standards-7",
+          "text": "CPMI harmonised requirements: covered message types, structured address and UETR expectations (technical annex not opened)."
+        },
+        {
+          "id": "gap-standards-8",
+          "text": "ISO 9362 and ISO 13616 registration authorities not named on ISO pages; ISO 8583 maintenance agency identity not confirmed; ISO 8583 1987 edition metadata not opened."
+        },
+        {
+          "id": "gap-standards-9",
+          "text": "EMV Contact Books 1 to 4 current version and date (contact page fetch failed); EMV 3DS 2.3.1.1 specification publication date; any newer QR MPM draft."
+        },
+        {
+          "id": "gap-standards-10",
+          "text": "Current versions and dates for PCI PIN, P2PE, PTS POI/HSM, 3DS Core Security Standard and MPoC (PCI 3DS page fetch failed)."
+        },
+        {
+          "id": "gap-standards-11",
+          "text": "Saudi Open Banking and US FDX exact FAPI profile versions not verified on primary sources."
+        },
+        {
+          "id": "gap-standards-12",
+          "text": "OpenAPI release dates; whether OIDC Core is also an ISO/IEC PAS."
+        },
+        {
+          "id": "gap-standards-13",
+          "text": "Revised R16 content (thresholds, card exemption, structured information, payment-chain roles) not in pages opened."
+        },
+        {
+          "id": "gap-standards-14",
+          "text": "Wolfsberg Payment Transparency Standards content not opened (news page returned not found)."
+        },
+        {
+          "id": "gap-standards-15",
+          "text": "October 2026 FATF plenary outcome had not appeared on the FATF page as of the check."
+        },
+        {
+          "id": "gap-standards-16",
+          "text": "No CPMI tokenisation report setting standards and no 2026 CPMI stablecoin standard identified."
+        },
+        {
+          "id": "gap-standards-17",
+          "text": "ACORD version numbers; number of IAIS ICPs; ICS adoption date."
+        },
+        {
+          "id": "gap-standards-18",
+          "text": "Exact numbers of mandatory and advisory controls in Swift CSCF v2026 and its publication date not verified on Swift."
+        },
+        {
+          "id": "gap-standards-19",
+          "text": "EBA reporting framework binding level not stated in notes."
+        },
+        {
+          "id": "gap-standards-20",
+          "text": "Jurisdictional transposition of global instruments was out of scope."
+        },
+        {
+          "id": "gap-standards-21",
+          "text": "No numbered scenario traces exist in the standards notes; scenarios array intentionally empty."
+        },
+        {
+          "id": "gap-cards-crossborder-1",
+          "text": "Research limitation: the shared web-search budget ran out; Mastercard primary time limits, Visa BASE II naming, RBI MTSS master direction, IMPS limit circular, EMV 3DS component definitions, charges codes OUR/SHA/BEN and newest CPMI correspondent banking data could not be confirmed from a primary source."
+        },
+        {
+          "id": "gap-cards-crossborder-2",
+          "text": "Payment facilitator and sponsored merchant definitions: the Visa Payment Facilitator and Marketplace Risk Guide could not be fetched (error); scheme definitions of payment facilitator, BIN sponsor, programme manager and third-party agent need verification against Visa Core Rules and Mastercard Rules."
+        },
+        {
+          "id": "gap-cards-crossborder-3",
+          "text": "Formal definitions of gateway, orchestrator and terminal roles were not found in a primary source."
+        },
+        {
+          "id": "gap-cards-crossborder-4",
+          "text": "Visa clearing system name (BASE II) and VisaNet Settlement Service mechanics not confirmed from an opened primary source; the VisaNet page does not mention them. Needs verification."
+        },
+        {
+          "id": "gap-cards-crossborder-5",
+          "text": "EMV 3DS component names (3DS Server, Directory Server, Access Control Server) and message names (AReq/ARes, CReq/CRes, RReq/RRes) were not on the opened EMVCo page; needs verification against the EMV 3DS Protocol and Core Functions Specification."
+        },
+        {
+          "id": "gap-cards-crossborder-6",
+          "text": "Which party de-tokenises in authorisation is not stated in the opened EMVCo guide (refers to Technical Framework Section 10)."
+        },
+        {
+          "id": "gap-cards-crossborder-7",
+          "text": "Incremental authorisation rules (eligible MCCs) and partial authorisation (partial approval) rules not confirmed; Stripe incremental page returned only an index."
+        },
+        {
+          "id": "gap-cards-crossborder-8",
+          "text": "Settlement currency rules and Visa settlement timing were not extracted from Visa rules."
+        },
+        {
+          "id": "gap-cards-crossborder-9",
+          "text": "Scheme fee schedules are not public in usable form; no scheme fee figures are given."
+        },
+        {
+          "id": "gap-cards-crossborder-10",
+          "text": "Primary Visa and Mastercard dispute time limits were not extracted (only tables of contents); secondary figures need verification before use."
+        },
+        {
+          "id": "gap-cards-crossborder-11",
+          "text": "Stand-in thresholds, timeout values and reversal timing rules are not publicly specified in the material opened."
+        },
+        {
+          "id": "gap-cards-crossborder-12",
+          "text": "Real card accounting differs by issuer (credit vs debit, prepaid e-money safeguarding), by whether interchange on refunds is reversed, and by scheme fee treatment. Not publicly specified."
+        },
+        {
+          "id": "gap-cards-crossborder-13",
+          "text": "Statementing and reconciliation cadences are issuer and acquirer choices and are not set in the sources opened."
+        },
+        {
+          "id": "gap-cards-crossborder-14",
+          "text": "Visa settlement timing and settlement currencies per region were not extracted."
+        },
+        {
+          "id": "gap-cards-crossborder-15",
+          "text": "Charges codes (OUR/SHA/BEN; ISO 20022 ChargeBearer DEBT/SHAR/CRED) not confirmed from an opened source. Needs verification."
+        },
+        {
+          "id": "gap-cards-crossborder-16",
+          "text": "pacs.002 status usage in CBPR+ and repair practices not confirmed from primary material."
+        },
+        {
+          "id": "gap-cards-crossborder-17",
+          "text": "No CPMI correspondent banking data newer than the December 2021 release was found (search budget exhausted); newer releases may exist."
+        },
+        {
+          "id": "gap-cards-crossborder-18",
+          "text": "Sanctions screening and RFI workflows: no primary source opened (FATF R.16 revision mentioned only in FSB press release)."
+        },
+        {
+          "id": "gap-cards-crossborder-19",
+          "text": "CLS settlement and funding window times from CLS itself were not extracted (only CCIL's statement); CCIL's '7:00 to 12:00 CET' may merge settlement and funding periods. Needs verification."
+        },
+        {
+          "id": "gap-cards-crossborder-20",
+          "text": "Nexus role names (FX Provider, Settlement Access Provider) and messages not confirmed from opened pages."
+        },
+        {
+          "id": "gap-cards-crossborder-21",
+          "text": "Whether Nexus is live as of 15 Oct 2026 could not be verified; the docs page said not yet operational."
+        },
+        {
+          "id": "gap-cards-crossborder-22",
+          "text": "Whether a 2026 FSB progress report has been published by 15 Oct 2026 could not be verified (search budget exhausted)."
+        },
+        {
+          "id": "gap-cards-crossborder-23",
+          "text": "MTSS (inward-only India scheme) caps could not be confirmed from RBI; pointer only."
+        },
+        {
+          "id": "gap-cards-crossborder-24",
+          "text": "RBI-specific inward remittance requirements (purpose codes, FIRC/e-BRC, vostro account rules) not sourced."
+        },
+        {
+          "id": "gap-cards-crossborder-25",
+          "text": "Typical end-to-end timing for GBP to INR via correspondent not sourced beyond gpi aggregate statistics."
+        },
+        {
+          "id": "gap-banking-ops-1",
+          "text": "No primary source opened defining 'collected balance' (Reg CC funds availability lives in us.md); collected vs available distinctions are bank-specific."
+        },
+        {
+          "id": "gap-banking-ops-2",
+          "text": "No primary (accounting standard) source opened on GL vs sub-ledger architecture or on ASC/IFRS treatment; architecture statements are practice."
+        },
+        {
+          "id": "gap-banking-ops-3",
+          "text": "Event sourcing as a named pattern: no authoritative source opened; label ENGINEERING."
+        },
+        {
+          "id": "gap-banking-ops-4",
+          "text": "Whether CFPB Circular 2022-06 was withdrawn in 2025 was not verified."
+        },
+        {
+          "id": "gap-banking-ops-5",
+          "text": "No primary source opened on the July 2024 RFI comment deadline or any agency follow-up rule; status of agency action after the RFI unknown."
+        },
+        {
+          "id": "gap-banking-ops-6",
+          "text": "Whether the June 2023 TPRM guidance was revised or rescinded in 2025 to 2026 was not checked."
+        },
+        {
+          "id": "gap-banking-ops-7",
+          "text": "EU distributor/agent passporting detail (PSD2 Art 19, EMD2 Art 3(4)) not opened; see eu.md."
+        },
+        {
+          "id": "gap-banking-ops-8",
+          "text": "India LSP fund-flow rule (disbursal direct to borrower account, repayment direct to RE) not re-verified here; see in.md."
+        },
+        {
+          "id": "gap-banking-ops-9",
+          "text": "No primary source opened on liveness detection standards (e.g. ISO/IEC 30107-3) or on document-verification accuracy; vendor claims are practice."
+        },
+        {
+          "id": "gap-banking-ops-10",
+          "text": "PEP definitions and EDD (FATF R.12, AMLR) and adverse-media obligations were not opened; FFIEC lists negative media as a review trigger only."
+        },
+        {
+          "id": "gap-banking-ops-11",
+          "text": "UK PSC register and MLR 2017 reg 5/6 thresholds not opened."
+        },
+        {
+          "id": "gap-banking-ops-12",
+          "text": "Account freeze/closure for sanctions hits: EU/UK equivalents of OFAC blocking not opened here."
+        },
+        {
+          "id": "gap-banking-ops-13",
+          "text": "UK SAR regime (POCA 2002, NCA, DAML consent and moratorium periods) not opened."
+        },
+        {
+          "id": "gap-banking-ops-14",
+          "text": "India STR timelines (PML Rules) not opened."
+        },
+        {
+          "id": "gap-banking-ops-15",
+          "text": "No primary typology source opened for US APP-style scams (no US reimbursement mandate found)."
+        },
+        {
+          "id": "gap-banking-ops-16",
+          "text": "Metro 2 format content (segments, status codes, CRRG) not opened from a primary source."
+        },
+        {
+          "id": "gap-banking-ops-17",
+          "text": "ESIGN/UETA e-signature rules, FCRA permissible purpose for bureau pulls, and Reg Z periodic statement rules not opened."
+        },
+        {
+          "id": "gap-banking-ops-18",
+          "text": "UK CCA exemption thresholds for business lending not opened; do not assert."
+        },
+        {
+          "id": "gap-banking-ops-19",
+          "text": "Nonaccrual (90 days past due) Call Report definition and CECL/ASC 326 allowance mechanics not opened."
+        },
+        {
+          "id": "gap-banking-ops-20",
+          "text": "NACH (India) mandate and return rules not opened."
+        },
+        {
+          "id": "gap-banking-ops-21",
+          "text": "Primary Nacha Rules text not opened (only secondary bank and vendor pages)."
+        },
+        {
+          "id": "gap-banking-ops-22",
+          "text": "Data retention rules for TPPs (GDPR, CDR deletion/de-identification, UK GDPR) not opened in detail."
+        },
+        {
+          "id": "gap-banking-ops-23",
+          "text": "EU PSD3/PSR and FIDA status not re-checked here (see eu.md)."
+        },
+        {
+          "id": "gap-banking-ops-24",
+          "text": "India AA consent artefact field-level spec (ReBIT) not opened."
+        },
+        {
+          "id": "gap-banking-ops-25",
+          "text": "No primary source opened for US non-bank payment firm insolvency (state money transmitter law, bankruptcy treatment of FBO funds); Synapse was a Chapter 11 case."
+        },
+        {
+          "id": "gap-banking-ops-26",
+          "text": "Rail-specific outage contingency rules (Fedwire, FPS, UPI) not opened."
+        },
+        {
+          "id": "gap-banking-ops-27",
+          "text": "Named UK special administration cases (e.g. Ipagoo, Railsr) not verified."
+        },
+        {
+          "id": "gap-banking-ops-28",
+          "text": "ESIGN Act, Nacha authorisation (WEB/CCD), FCRA permissible purpose for guarantor pulls, and state commercial-financing disclosure laws (e.g. California, New York) not opened."
+        },
+        {
+          "id": "gap-banking-ops-29",
+          "text": "Commercial charge-off and nonaccrual rules (Call Report instructions), CECL allowance mechanics and modification accounting (ASU 2022-02) not opened."
+        },
+        {
+          "id": "gap-banking-ops-30",
+          "text": "Commercial bureau (e.g. SBFE) reporting formats not researched."
+        },
+        {
+          "id": "gap-banking-ops-31",
+          "text": "Interest accrual day-count, hard vs soft pull and delinquency bucket conventions are practice; no primary source opened."
+        }
+      ]
+    },
+    {
+      "module": "cbdc",
+      "depth": "Deep",
+      "depthNote": "Copied from coverage manifest row 'CBDC: six-jurisdiction comparison'. Other rows for this module are listed in manifestRows.",
+      "manifestRows": [
+        {
+          "area": "CBDC: six-jurisdiction comparison",
+          "depth": "Deep",
+          "mainGaps": "e-CNY ledger and finality; e₹ ledger and holding limits; digital euro trilogue outcome after 30 Sep 2026; digital pound decision after July 2026"
+        },
+        {
+          "area": "CBDC: global projects (Agorá, mBridge, Helvetia, Nexus, Pontes, Appia)",
+          "depth": "Deep",
+          "mainGaps": "mBridge post-handover operation; Nexus go-live; Partior current model"
+        },
+        {
+          "area": "CBDC: Brazil Drex, Russia digital ruble, e-HKD detail, NY Fed Ion",
+          "depth": "Awaiting research",
+          "mainGaps": "All"
+        }
+      ],
+      "counts": {
+        "nodes": 42,
+        "stubNodes": 0,
+        "nodesByStatus": {
+          "concluded": 5,
+          "design_phase": 3,
+          "in_force": 3,
+          "pilot": 5,
+          "production": 14,
+          "prohibited": 1,
+          "proposed": 1,
+          "research": 4,
+          "unknown": 6
+        },
+        "edges": 77,
+        "rules": 19,
+        "rulesByEffectiveStatus": {
+          "consultation": 1,
+          "in_force": 15,
+          "proposed": 3
+        },
+        "claims": 241,
+        "claimsByStatus": {
+          "conflicting": 5,
+          "needs_verification": 11,
+          "supported": 27,
+          "verified": 198
+        },
+        "scenarios": 5,
+        "sources": 0
+      },
+      "gaps": [
+        {
+          "id": "gap-cbdc-1",
+          "text": "Primary legal texts for cash legal tender, EU deposit guarantee level, India DICGC cover, UK EMR/PSR text, and Singapore and India e-money/stored-value regimes were not opened (country researchers)."
+        },
+        {
+          "id": "gap-cbdc-2",
+          "text": "MiCA article text (Arts 48 to 50, 54) did not render; only recitals were read."
+        },
+        {
+          "id": "gap-cbdc-3",
+          "text": "EUR-Lex metadata for the EMD2 ELI page showed 'no longer in force 2017-06-25', conflicting with the consolidated text rendering normally; needs verification (likely version metadata, not repeal)."
+        },
+        {
+          "id": "gap-cbdc-4",
+          "text": "Primary PBOC rule text for the 2026 e-CNY framework (only gov.cn/Xinhua report opened)."
+        },
+        {
+          "id": "gap-cbdc-5",
+          "text": "e-CNY ledger technology, finality rule, offline design, wallet tiers and limits, and CBETS cross-border platform details: the 17 Jun 2026 SCIO article and the 2021 PBOC white paper URL were blocked."
+        },
+        {
+          "id": "gap-cbdc-6",
+          "text": "Digital euro: whether trilogues reached provisional agreement after July 2026 (Council timeline shows nothing after 19 Dec 2025; searches exhausted)."
+        },
+        {
+          "id": "gap-cbdc-7",
+          "text": "Digital pound: whether the 'later in 2026' decision was announced by 15 Oct 2026 (not on pages opened; BoE synchronisation page blocked by robots)."
+        },
+        {
+          "id": "gap-cbdc-8",
+          "text": "MAS Oct 2026 speech 'Building trusted foundations for digital finance' could not be fetched; MAS Bills trial status and any wholesale CBDC legislation unverified; the MAS original release URL returned a client error (Mondo Visione reprint used)."
+        },
+        {
+          "id": "gap-cbdc-9",
+          "text": "US: EO number (believed 14178), whether the EO binds the Federal Reserve as an independent agency, and Anti-CBDC Surveillance State Act status (congress.gov blocked)."
+        },
+        {
+          "id": "gap-cbdc-10",
+          "text": "Sand Dollar and eNaira usage statistics from primary sources."
+        },
+        {
+          "id": "gap-cbdc-11",
+          "text": "mBridge post-2024 operating status, volumes and governance (no BIS source; partner central bank sources not opened)."
+        },
+        {
+          "id": "gap-cbdc-12",
+          "text": "Nexus Global Payments go-live date and first connected systems."
+        },
+        {
+          "id": "gap-cbdc-13",
+          "text": "Partior current (2026) currencies, members and settlement-asset model (only 2022 self-description opened)."
+        },
+        {
+          "id": "gap-cbdc-14",
+          "text": "Regulated Liability Network experimentation final reports not opened."
+        },
+        {
+          "id": "gap-cbdc-15",
+          "text": "Agorá participant reconciliation (27 named vs '28' stated; 7 vs 8 central banks)."
+        },
+        {
+          "id": "gap-cbdc-16",
+          "text": "No systematic review of specific media articles on CBDC conflations was performed (search budget exhausted); conflations are framed against primary-source definitions."
+        },
+        {
+          "id": "gap-cbdc-17",
+          "text": "Explicit FDIC or FSCS deposit-insurance coverage of specific tokenised deposits not confirmed by any source opened."
+        },
+        {
+          "id": "gap-cbdc-18",
+          "text": "FedNow and Fedwire not-CBDC characterisation is an inference from the EO definition; the Fed's FedNow page was not opened."
+        },
+        {
+          "id": "gap-cbdc-19",
+          "text": "Settlement finality for cash, e-money and unbacked crypto-assets, and redemption terms for safeguarded balances, not sourced here."
+        },
+        {
+          "id": "gap-cbdc-20",
+          "text": "No numbered scenario traces exist in the CBDC notes; scenarios array intentionally empty."
+        }
+      ]
+    },
+    {
+      "module": "insurance",
+      "depth": "High level",
+      "depthNote": "Copied from coverage manifest row 'Insurance module'.",
+      "manifestRows": [
+        {
+          "area": "Insurance module",
+          "depth": "High level",
+          "mainGaps": "Primary IRDAI circular; treaty and facultative definitions; claim payout rails"
+        }
+      ],
+      "counts": {
+        "nodes": 23,
+        "stubNodes": 0,
+        "nodesByStatus": {
+          "adopted_not_effective": 1,
+          "in_force": 11,
+          "production": 10,
+          "unknown": 1
+        },
+        "edges": 13,
+        "rules": 16,
+        "rulesByEffectiveStatus": {
+          "adopted_not_effective": 2,
+          "in_force": 14
+        },
+        "claims": 30,
+        "claimsByStatus": {
+          "needs_verification": 1,
+          "supported": 26,
+          "verified": 3
+        },
+        "scenarios": 1,
+        "sources": 0
+      },
+      "gaps": [
+        {
+          "id": "gap-insurance-markets-2",
+          "text": "No opened primary source defined treaty vs facultative or proportional vs non-proportional reinsurance (NAIC page did not cover them)."
+        },
+        {
+          "id": "gap-insurance-markets-3",
+          "text": "No primary source opened for FNOL, subrogation, adjuster roles, provider network contracting or insurance fraud bureaus."
+        },
+        {
+          "id": "gap-insurance-markets-4",
+          "text": "IRDAI health Master Circular not opened (irdai.gov.in blocks automated fetch); circular number and exact date need verification."
+        },
+        {
+          "id": "gap-insurance-markets-6",
+          "text": "Bima Sugam live status as of 15 October 2026 rests on one secondary source; 'November 2026' date is reported, not confirmed."
+        },
+        {
+          "id": "gap-insurance-markets-9",
+          "text": "Exact OJ references for the transposition article of Directive (EU) 2025/2 not opened; 30 January 2027 application rests on Deloitte; Insurance Recovery and Resolution Directive (EU) 2025/1 not verified."
+        },
+        {
+          "id": "gap-insurance-markets-10",
+          "text": "US state adoption status of NAIC models beyond RBC and Credit for Reinsurance not checked."
+        },
+        {
+          "id": "gap-insurance-markets-11",
+          "text": "MAS Insurance Act text and post-2020 RBC 2 refinements not opened."
+        },
+        {
+          "id": "gap-insurance-markets-12",
+          "text": "Whether Indian insurers have adopted Ind AS 117 is not verified."
+        },
+        {
+          "id": "gap-insurance-markets-13",
+          "text": "Any further C-ROSS II extension after January 2025 not checked."
+        }
+      ]
+    },
+    {
+      "module": "capital_markets",
+      "depth": "High level",
+      "depthNote": "Copied from coverage manifest row 'Capital markets module'.",
+      "manifestRows": [
+        {
+          "area": "Capital markets module",
+          "depth": "High level",
+          "mainGaps": "India equity T+1 and T+0 primary; ChinaClear; DTC funds settlement; tokenised MMFs"
+        }
+      ],
+      "counts": {
+        "nodes": 16,
+        "stubNodes": 0,
+        "nodesByStatus": {
+          "in_force": 4,
+          "production": 12
+        },
+        "edges": 16,
+        "rules": 14,
+        "rulesByEffectiveStatus": {
+          "adopted_not_effective": 2,
+          "in_force": 10,
+          "unknown": 2
+        },
+        "claims": 26,
+        "claimsByStatus": {
+          "conflicting": 1,
+          "supported": 24,
+          "verified": 1
+        },
+        "scenarios": 2,
+        "sources": 0
+      },
+      "gaps": [
+        {
+          "id": "gap-insurance-markets-1",
+          "text": "Research limitation: WebSearch budget ran out; SEBI circulars, NSE, NSDL, NPCI pages and ChinaClear blocked or erroring."
+        },
+        {
+          "id": "gap-insurance-markets-5",
+          "text": "India GIC Re obligatory cession percentage for the current year not verified."
+        },
+        {
+          "id": "gap-insurance-markets-7",
+          "text": "Specific rail used for India claim payouts (NEFT, RTGS, IMPS) not specified in opened sources."
+        },
+        {
+          "id": "gap-insurance-markets-8",
+          "text": "NFRA establishment and role as successor to CBIRC not verified (nfra.gov.cn not reached)."
+        },
+        {
+          "id": "gap-insurance-markets-14",
+          "text": "DTC net funds settlement mechanics (settlement banks, Fedwire Funds, timing) not described on the opened DTCC page."
+        },
+        {
+          "id": "gap-insurance-markets-15",
+          "text": "No opened source on OMS/EMS/smart order routing, MTF/ATS definitions, securities lending, transfer agents, fund platforms or sub-custody chains."
+        },
+        {
+          "id": "gap-insurance-markets-16",
+          "text": "NSCC default waterfall specifics (clearing fund) not opened."
+        },
+        {
+          "id": "gap-insurance-markets-17",
+          "text": "ChinaClear pages blocked; China settlement architecture and A-share conventions not verified."
+        },
+        {
+          "id": "gap-insurance-markets-18",
+          "text": "India equity T+1 (final phase 27 January 2023) and optional T+0 (beta from 28 March 2024) known only from prior knowledge; status needs verification."
+        },
+        {
+          "id": "gap-insurance-markets-19",
+          "text": "Switzerland T+1 date not verified."
+        },
+        {
+          "id": "gap-insurance-markets-20",
+          "text": "Whether a UK statutory instrument amending UK CSDR Article 5 has been made was not verified."
+        },
+        {
+          "id": "gap-insurance-markets-21",
+          "text": "SEBI ASBA, UPI block mechanism for IPO bids, T+3 listing, upstreaming of client funds and secondary-market block mechanism not verified."
+        },
+        {
+          "id": "gap-insurance-markets-22",
+          "text": "MAS Securities and Futures Act page returned an error; SFA facts and absence of a SIPC-equivalent in Singapore not verified."
+        },
+        {
+          "id": "gap-insurance-markets-23",
+          "text": "China Securities Investor Protection Fund (SIPF) not verified."
+        },
+        {
+          "id": "gap-insurance-markets-24",
+          "text": "EU ICSD EUR 20,000 minimum and stalled ICSD review not verified from text."
+        },
+        {
+          "id": "gap-insurance-markets-25",
+          "text": "Tokenised MMF products (e.g. BlackRock BUIDL, Franklin OnChain US Government Money Fund) not opened; needs verification."
+        },
+        {
+          "id": "gap-insurance-markets-26",
+          "text": "Current DSS participant list and go-live firms not on the opened page."
+        },
+        {
+          "id": "gap-insurance-markets-27",
+          "text": "Project Guardian 2025 to 2026 frameworks not on opened page."
+        },
+        {
+          "id": "gap-insurance-markets-28",
+          "text": "DLT Pilot Regime review outcome not checked; Article 19 application date not opened."
+        },
+        {
+          "id": "gap-insurance-markets-29",
+          "text": "ACH return windows and broker instant-deposit practices not sourced."
+        },
+        {
+          "id": "gap-insurance-markets-30",
+          "text": "Corporate action processing at DTC (record date, payable date) not opened beyond CNS fail adjustments."
+        }
+      ]
+    },
+    {
+      "module": "crypto",
+      "depth": "Deep for US, EU, UK; high level for SG, HK, CN, IN",
+      "depthNote": "Copied from coverage manifest row 'Crypto and stablecoins module'.",
+      "manifestRows": [
+        {
+          "area": "Crypto and stablecoins module",
+          "depth": "Deep for US, EU, UK; high level for SG, HK, CN, IN",
+          "mainGaps": "GENIUS statute text; MiCA article text; IVMS101 primary; HK licence conditions; India primary sources"
+        }
+      ],
+      "counts": {
+        "nodes": 40,
+        "stubNodes": 0,
+        "nodesByStatus": {
+          "adopted_not_effective": 4,
+          "consultation": 1,
+          "in_force": 12,
+          "pilot": 2,
+          "production": 12,
+          "proposed": 3,
+          "unknown": 6
+        },
+        "edges": 48,
+        "rules": 48,
+        "rulesByEffectiveStatus": {
+          "adopted_not_effective": 4,
+          "consultation": 3,
+          "in_force": 23,
+          "proposed": 13,
+          "superseded": 1,
+          "unknown": 4
+        },
+        "claims": 112,
+        "claimsByStatus": {
+          "conflicting": 2,
+          "needs_verification": 4,
+          "supported": 78,
+          "verified": 28
+        },
+        "scenarios": 1,
+        "sources": 0
+      },
+      "gaps": [
+        {
+          "id": "gap-crypto-1",
+          "text": "OCC interpretive letters on custody (IL 1183, March 2025; IL 1184, May 2025) not verified from occ.gov (site blocks automated fetch); cite only the secondary GT Law account or flag as unverified."
+        },
+        {
+          "id": "gap-crypto-2",
+          "text": "Exact Fed and FDIC crypto guidance withdrawal dates (24 to 25 April 2025; FDIC FIL-7-2025 of 28 March 2025) not verified from primary pages."
+        },
+        {
+          "id": "gap-crypto-3",
+          "text": "GENIUS Act statutory text details (yield prohibition, insolvency priority, three-year non-permitted-stablecoin offering ban) not re-fetched from congress.gov."
+        },
+        {
+          "id": "gap-crypto-4",
+          "text": "OCC Bulletin 2026-24 could not be fetched; date and status unverified."
+        },
+        {
+          "id": "gap-crypto-5",
+          "text": "MiCA application dates (30 June 2024 Titles III/IV; 30 December 2024 general) and Art 143(3) transitional maxima not re-fetched from EUR-Lex."
+        },
+        {
+          "id": "gap-crypto-6",
+          "text": "Number of authorised CASPs on the ESMA interim MiCA register as of October 2026 not found."
+        },
+        {
+          "id": "gap-crypto-7",
+          "text": "European Commission formal position on multi-issuance and timing of any MiCA review legislative proposal not found from a primary source."
+        },
+        {
+          "id": "gap-crypto-8",
+          "text": "ESRB response of 29 September 2026 not fetched (cited via commentary)."
+        },
+        {
+          "id": "gap-crypto-9",
+          "text": "UK financial promotions regime (cryptoassets in FSMA s21 from 8 October 2023) not re-verified from fca.org.uk."
+        },
+        {
+          "id": "gap-crypto-10",
+          "text": "Exact final FCA stablecoin redemption deadline in PS26/10 not confirmed (CP25/14 proposed end of the business day following a valid request)."
+        },
+        {
+          "id": "gap-crypto-11",
+          "text": "Joint BoE-FCA publication on transitions between non-systemic and systemic stablecoin regimes not located."
+        },
+        {
+          "id": "gap-crypto-12",
+          "text": "UK MLR Part 7A in-force date (1 September 2023) not re-verified; HMT Payments Forward Plan, BoE wholesale innovation page, EU TFR and EBA PSD2 page were taken via sibling notes (not opened in this pass)."
+        },
+        {
+          "id": "gap-crypto-13",
+          "text": "MAS August 2023 stablecoin framework release (SGD/G10 single-currency, issuance above SGD 5m, reserves, redemption within five business days, monthly attestation) not re-fetched; Gibson Dunn analysis not fetched."
+        },
+        {
+          "id": "gap-crypto-14",
+          "text": "MAS retail DPT consumer-protection measures (risk awareness assessment, no incentives, no credit-card funding, segregation of customer assets) not verified from mas.gov.sg."
+        },
+        {
+          "id": "gap-crypto-15",
+          "text": "Hong Kong licence conditions (HK$25m paid-up capital, full backing, redemption at par within one business day, retail offering restricted to licensed issuers' coins via permitted offerors) not verified from HKMA primary text; whether either licensee launched by 15 October 2026 not confirmed; SFC VATP regime not covered."
+        },
+        {
+          "id": "gap-crypto-16",
+          "text": "Primary pbc.gov.cn texts of Yinfa [2021] No. 237 and the 2026 notice not fetched; PBOC November 2025 stablecoin statements not verified."
+        },
+        {
+          "id": "gap-crypto-17",
+          "text": "India primary sources (incometaxindia.gov.in, fiuindia.gov.in, rbi.org.in) not fetched; gazette number of the 7 March 2023 notification not captured; outcome of the 16 September 2026 hearing not found."
+        },
+        {
+          "id": "gap-crypto-18",
+          "text": "IVMS101 and Travel Rule protocol landscape (TRP, TRISA, Sygna Bridge, GTR, Notabene) not verified from primary sources."
+        },
+        {
+          "id": "gap-crypto-19",
+          "text": "Blockchain analytics vendor capabilities (Chainalysis, Elliptic, TRM) not researched."
+        },
+        {
+          "id": "gap-crypto-20",
+          "text": "Bank-issued tokenised deposit programmes (for example JPMorgan Kinexys/JPMD, Citi Token Services) not researched in this module (see cbdc.json)."
+        },
+        {
+          "id": "gap-crypto-21",
+          "text": "PayPal PYUSD, Stripe/Bridge stablecoin accounts and merchant PSP acceptance (Shopify/Stripe USDC) not verified from primary sources."
+        },
+        {
+          "id": "gap-crypto-22",
+          "text": "No primary or vendor source on MPC/threshold signatures, HSM custody or exchange confirmation policies; Bitcoin finality not sourced."
+        },
+        {
+          "id": "gap-crypto-23",
+          "text": "Issuer-specific redemption terms (Circle, Paxos, Tether) not verified."
+        }
+      ]
+    }
+  ],
+  "manifestTable": [
+    {
+      "area": "Money taxonomy",
+      "depth": "Deep",
+      "mainGaps": "Primary legal-tender texts; MiCA article text (only recitals rendered); explicit deposit-insurance coverage of tokenised deposits"
+    },
+    {
+      "area": "CBDC: six-jurisdiction comparison",
+      "depth": "Deep",
+      "mainGaps": "e-CNY ledger and finality; e₹ ledger and holding limits; digital euro trilogue outcome after 30 Sep 2026; digital pound decision after July 2026"
+    },
+    {
+      "area": "CBDC: global projects (Agorá, mBridge, Helvetia, Nexus, Pontes, Appia)",
+      "depth": "Deep",
+      "mainGaps": "mBridge post-handover operation; Nexus go-live; Partior current model"
+    },
+    {
+      "area": "CBDC: Brazil Drex, Russia digital ruble, e-HKD detail, NY Fed Ion",
+      "depth": "Awaiting research",
+      "mainGaps": "All"
+    },
+    {
+      "area": "United Kingdom",
+      "depth": "Deep",
+      "mainGaps": "FPS message standard; current RT2 settlement cycle times; Mastercard UK settlement; FSM Bill progress; digital pound decision"
+    },
+    {
+      "area": "United States",
+      "depth": "Deep",
+      "mainGaps": "CHIPS funding mechanics; RTP Operating Rules text; Nacha rulebook text; CRA status of 2024 CFPB rules; FedNow and RTP ISO 20022 message versions"
+    },
+    {
+      "area": "European Union and euro area",
+      "depth": "Deep",
+      "mainGaps": "T2 daily schedule; TIPS timeout; STEP2-T cycles; national card schemes; GDPR detail"
+    },
+    {
+      "area": "Singapore",
+      "depth": "High level to deep",
+      "mainGaps": "MAS primary pages unreachable; current MEPS+ hours; FAST settlement cycle count in 2026; card schemes; Notice 626; retail CBDC position"
+    },
+    {
+      "area": "India",
+      "depth": "Deep",
+      "mainGaps": "NPCI primary rulebooks (blocked); UPI settlement asset and cycle times; IMPS and NACH settlement model; e₹ ledger mechanics"
+    },
+    {
+      "area": "Mainland China",
+      "depth": "Deep for e-CNY 2.0 and CIPS; high level for CNAPS",
+      "mainGaps": "CNAPS hours and message sets; NetsUnion; PBOC rule texts; revised AML Law; PIPL and DSL primary text; SAFE FX quota"
+    },
+    {
+      "area": "Card lifecycle",
+      "depth": "High level",
+      "mainGaps": "Primary Visa and Mastercard dispute time limits; 3DS component and message names; Visa clearing system naming"
+    },
+    {
+      "area": "Cross-border (correspondent, SWIFT, CLS, MTO, FPS interlinking)",
+      "depth": "High level to deep",
+      "mainGaps": "Charge codes; newest CPMI correspondent data; Nexus live status; MTSS (India)"
+    },
+    {
+      "area": "Ledgers and BaaS",
+      "depth": "Deep (US)",
+      "mainGaps": "Accounting-standard sources; EU agent passporting; status of US 2024 RFI follow-up"
+    },
+    {
+      "area": "Onboarding, KYC and fraud",
+      "depth": "High level",
+      "mainGaps": "UK SAR (POCA) regime; India STR timelines; PEP and adverse-media obligations; liveness standards"
+    },
+    {
+      "area": "Lending",
+      "depth": "Deep (US SME trace), high level elsewhere",
+      "mainGaps": "ESIGN, FCRA, Metro 2; UK CCA business thresholds; NACH mandates"
+    },
+    {
+      "area": "Open banking",
+      "depth": "High level comparison",
+      "mainGaps": "TPP data retention; ReBIT consent artefact fields; FiDA outcome"
+    },
+    {
+      "area": "Standards and regulations registry",
+      "depth": "Deep",
+      "mainGaps": "ISO 20022 parts 3 to 9; PCI non-DSS versions; CBPR+ message list; R16 detail"
+    },
+    {
+      "area": "Insurance module",
+      "depth": "High level",
+      "mainGaps": "Primary IRDAI circular; treaty and facultative definitions; claim payout rails"
+    },
+    {
+      "area": "Capital markets module",
+      "depth": "High level",
+      "mainGaps": "India equity T+1 and T+0 primary; ChinaClear; DTC funds settlement; tokenised MMFs"
+    },
+    {
+      "area": "Crypto and stablecoins module",
+      "depth": "Deep for US, EU, UK; high level for SG, HK, CN, IN",
+      "mainGaps": "GENIUS statute text; MiCA article text; IVMS101 primary; HK licence conditions; India primary sources"
+    },
+    {
+      "area": "Other jurisdictions (Brazil, Australia, Japan, Switzerland, Gulf)",
+      "depth": "Not covered (except as cross-references)",
+      "mainGaps": "All"
+    }
+  ]
+}

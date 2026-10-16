@@ -1,0 +1,188 @@
+[
+  {
+    "id": "dim-architecture",
+    "name": "Architecture (two-tier vs direct)",
+    "options": [
+      "direct (one-tier)",
+      "hybrid",
+      "intermediated (two-tier)"
+    ],
+    "notes": "BIS recommends two-tier and advises against direct; most central bank laws do not allow current accounts for the public, so most designs are two-tier.",
+    "sourceIds": [
+      "src-cbdc-bis-aer2021-ch3",
+      "src-cbdc-imf-ftn-2025-006-pdf"
+    ],
+    "topic": "cbdc"
+  },
+  {
+    "id": "dim-account-token",
+    "name": "Account-based vs token-based",
+    "options": [
+      "account-based (identity-linked)",
+      "token-based (signature-based)",
+      "hybrid / not mutually exclusive"
+    ],
+    "notes": "BIS 2021 favours account-based on digital ID; NY Fed economists say the categories overlap; IMF reframes as proprietary title and nature of platform accounts; RBI preferred token-based for retail.",
+    "sourceIds": [
+      "src-cbdc-bis-aer2021-ch3",
+      "src-cbdc-nyfed-lse-token-or-account",
+      "src-cbdc-imf-ftn-2025-006-pdf",
+      "src-in-rbi-cbdc-concept-note"
+    ],
+    "topic": "cbdc"
+  },
+  {
+    "id": "dim-ledger",
+    "name": "Ledger technology",
+    "options": [
+      "centralised",
+      "decentralised hub-and-spoke",
+      "peer-to-peer",
+      "modular hybrid (centralised core, decentralised identity/keys)"
+    ],
+    "notes": "RBI did not consider DLT suitable at present for throughput reasons; a unified ledger may or may not use DLT.",
+    "sourceIds": [
+      "src-cbdc-bis-system-design-2024",
+      "src-in-rbi-cbdc-concept-note",
+      "src-cbdc-bis-aer2025-ch3"
+    ],
+    "topic": "cbdc"
+  },
+  {
+    "id": "dim-offline",
+    "name": "Offline payments",
+    "options": [
+      "immediate (device to device)",
+      "deferred (settles on reconnection)",
+      "not available"
+    ],
+    "notes": "Mitigations: holding limits, forward-transaction limits, time-offline limits, secure hardware; law must define offline finality (draft digital euro: final when local storage updated); e₹ offline not yet available.",
+    "sourceIds": [
+      "src-cbdc-bis-system-design-2024",
+      "src-cbdc-imf-ftn-2025-006-pdf",
+      "src-in-rbi-erupee-faq"
+    ],
+    "topic": "cbdc"
+  },
+  {
+    "id": "dim-privacy",
+    "name": "Privacy and data access",
+    "options": [
+      "privacy by design",
+      "privacy by policy",
+      "tiered user-chosen privacy",
+      "managed anonymity (small value anonymous, high value traceable)"
+    ],
+    "notes": "Must be compatible with AML/CFT; PETs add latency and complexity; separate payment services from control over data.",
+    "sourceIds": [
+      "src-cbdc-bis-system-design-2024",
+      "src-cbdc-bis-aer2021-ch3",
+      "src-in-rbi-cbdc-concept-note"
+    ],
+    "topic": "cbdc"
+  },
+  {
+    "id": "dim-limits",
+    "name": "Holding and transaction limits",
+    "options": [
+      "no limit",
+      "fixed holding cap",
+      "tiered by ID level",
+      "transaction limits",
+      "waterfall to bank account"
+    ],
+    "notes": "Caps must be grounded in law; examples: earlier BoE GBP 10,000 to 20,000; China tiered by ID; eNaira NGN 120,000 to 5,000,000.",
+    "sourceIds": [
+      "src-cbdc-imf-ftn-2025-006-pdf",
+      "src-cbdc-enaira-portal"
+    ],
+    "topic": "cbdc"
+  },
+  {
+    "id": "dim-remuneration",
+    "name": "Remuneration and fees",
+    "options": [
+      "unremunerated",
+      "interest-bearing",
+      "free basic services",
+      "fee caps"
+    ],
+    "notes": "Most projects unremunerated; e-CNY bank-wallet balances earn deposit interest from 1 Jan 2026; draft digital euro provides free basic services.",
+    "sourceIds": [
+      "src-cbdc-imf-ftn-2025-006-pdf",
+      "src-cn-govcn-en-20251229"
+    ],
+    "topic": "cbdc"
+  },
+  {
+    "id": "dim-programmability",
+    "name": "Programmability",
+    "options": [
+      "none",
+      "programmable payments (user-set conditions)",
+      "programmable money (use restrictions encoded in currency)",
+      "purpose-bound restrictions on specific (sponsored) funds"
+    ],
+    "notes": "IMF: programmable money largely rejected; BoE commits to prohibit programmable money; India allows sponsor-set expiry, geo, MCC and merchant VPA restrictions.",
+    "sourceIds": [
+      "src-cbdc-imf-ftn-2025-006-pdf",
+      "src-uk-boe-dp-progress",
+      "src-in-rbi-erupee-faq"
+    ],
+    "topic": "cbdc"
+  },
+  {
+    "id": "dim-interoperability",
+    "name": "Interoperability (domestic and point of sale)",
+    "options": [
+      "EMV terminal compatibility",
+      "QR",
+      "NFC",
+      "existing rails (for example UPI-QR)"
+    ],
+    "notes": "A BoE PoC indicated existing EMV terminals could in principle initiate CBDC payments without modification; e₹ via UPI-QR settles on UPI timelines.",
+    "sourceIds": [
+      "src-cbdc-bis-system-design-2024",
+      "src-in-rbi-erupee-faq"
+    ],
+    "topic": "cbdc"
+  },
+  {
+    "id": "dim-cross-border",
+    "name": "Cross-border (multi-CBDC)",
+    "options": [
+      "enhanced compatibility",
+      "interlinking",
+      "single multi-CBDC system (PvP by default)",
+      "hub-and-spoke link (Icebreaker)"
+    ],
+    "notes": "mBridge (single system), Icebreaker (hub-and-spoke), Dunbar (multi-CBDC prototypes), Agorá (unified ledger with tokenised reserves and deposits).",
+    "sourceIds": [
+      "src-cbdc-bis-aer2021-ch3",
+      "src-cn-bis-mbridge",
+      "src-cbdc-bis-icebreaker",
+      "src-cbdc-bis-dunbar",
+      "src-cbdc-bis-agora-page"
+    ],
+    "topic": "cbdc"
+  },
+  {
+    "id": "dim-legal",
+    "name": "Legal considerations",
+    "options": [
+      "explicit statutory authority to issue",
+      "claim vs property characterisation",
+      "ring-fencing from intermediary insolvency",
+      "mandated distribution",
+      "wallet portability",
+      "legal tender status",
+      "legally defined finality"
+    ],
+    "notes": "IMF: central bank must have statutory authority; Jamaica and India amended laws; Nigeria mandates distribution; EU draft gives ECB portability power.",
+    "sourceIds": [
+      "src-cbdc-imf-ftn-2025-006-pdf",
+      "src-cbdc-imf-ftn-2025-006-landing"
+    ],
+    "topic": "cbdc"
+  }
+]

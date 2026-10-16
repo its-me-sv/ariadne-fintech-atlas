@@ -1,0 +1,611 @@
+[
+  {
+    "alias": "cn-hkma",
+    "canonical": "hk-hkma",
+    "collection": "nodes",
+    "method": "name_or_alias_match",
+    "reason": "Shared normalised name or alias 'hong kong monetary authority' (types central_bank/central_bank; jurisdictions HK/HK; defined in different evidence files)"
+  },
+  {
+    "alias": "cry-eu-casp",
+    "canonical": "eu-lic-casp",
+    "collection": "nodes",
+    "method": "curated",
+    "reason": "Both are the MiCA crypto-asset service provider (CASP) authorisation licence type in the EU (crypto.json and eu.json)."
+  },
+  {
+    "alias": "cry-eu-tfr",
+    "canonical": "eu-tfr-2023-1113",
+    "collection": "nodes",
+    "method": "name_or_alias_match",
+    "reason": "Shared normalised name or alias 'tfr' (types regulation/regulation; jurisdictions EU/EU; defined in different evidence files)"
+  },
+  {
+    "alias": "cry-sg-bloom",
+    "canonical": "sg-project-bloom",
+    "collection": "nodes",
+    "method": "curated",
+    "reason": "Both describe the MAS BLOOM initiative for settlement using tokenised bank liabilities and regulated stablecoins (sg.json 'BLOOM', crypto.json 'MAS BLOOM initiative'); both files link it to MAS with edge id rel-mas-bloom."
+  },
+  {
+    "alias": "ea-ecb",
+    "canonical": "eu-ecb",
+    "collection": "nodes",
+    "method": "dangling_suffix_alias_match",
+    "reason": "Referenced id has no node; its suffix 'ecb' equals a name or alias of exactly one node in jurisdiction EA"
+  },
+  {
+    "alias": "eu-digital-euro",
+    "canonical": "ea-digital-euro",
+    "collection": "nodes",
+    "method": "name_or_alias_match",
+    "reason": "Shared normalised name or alias 'digital euro' (types cbdc/cbdc; jurisdictions EA/EU,EA; defined in different evidence files)"
+  },
+  {
+    "alias": "global-cbpr-plus",
+    "canonical": "global-swift-cbpr-plus",
+    "collection": "nodes",
+    "method": "name_or_alias_match",
+    "reason": "Shared normalised name or alias 'cbpr' (types standard/rulebook; jurisdictions GLOBAL/GLOBAL; defined in different evidence files)"
+  },
+  {
+    "alias": "global-cls",
+    "canonical": "us-cls-bank",
+    "collection": "nodes",
+    "method": "name_or_alias_match",
+    "reason": "Shared normalised name or alias 'cls' (types market_infrastructure/market_infrastructure; jurisdictions US/GLOBAL; defined in different evidence files)"
+  },
+  {
+    "alias": "global-emv-payment-tokenisation",
+    "canonical": "global-emv-tokenisation",
+    "collection": "nodes",
+    "method": "curated",
+    "reason": "Both describe the EMVCo EMV Payment Tokenisation framework (cards-crossborder.json 'EMV Payment Tokenisation', standards.json 'EMV Payment Tokenisation Technical Framework')."
+  },
+  {
+    "alias": "in-account-aggregator",
+    "canonical": "in-account-aggregator-framework",
+    "collection": "nodes",
+    "method": "name_or_alias_match",
+    "reason": "Shared normalised name or alias 'aa' (types data_sharing_framework/data_sharing_framework; jurisdictions IN/IN; defined in different evidence files)"
+  },
+  {
+    "alias": "in-upi-paynow",
+    "canonical": "in-upi-paynow-link",
+    "collection": "nodes",
+    "method": "name_or_alias_match",
+    "reason": "Shared normalised name or alias 'upi paynow linkage' (types rail/rail; jurisdictions IN,SG/IN,SG; defined in different evidence files)"
+  },
+  {
+    "alias": "ins-cn-nfra",
+    "canonical": "cn-nfra",
+    "collection": "nodes",
+    "method": "curated",
+    "reason": "insurance-markets.json 'Financial Regulatory Administration (China)' is the National Financial Regulatory Administration (cn.json cn-nfra, alias NFRA), named as the issuer extending the C-ROSS II transition."
+  },
+  {
+    "alias": "ins-global-acord",
+    "canonical": "global-acord",
+    "collection": "nodes",
+    "method": "name_or_alias_match",
+    "reason": "Shared normalised name or alias 'acord data standards' (types standard/standard; jurisdictions GLOBAL/GLOBAL; defined in different evidence files)"
+  },
+  {
+    "alias": "ins-in-irdai",
+    "canonical": "in-irdai",
+    "collection": "nodes",
+    "method": "name_or_alias_match",
+    "reason": "Shared normalised name or alias 'irdai' (types regulator/regulator; jurisdictions IN/IN; defined in different evidence files)"
+  },
+  {
+    "alias": "mkt-cn-csrc",
+    "canonical": "cn-csrc",
+    "collection": "nodes",
+    "method": "name_or_alias_match",
+    "reason": "Shared normalised name or alias 'csrc' (types regulator/regulator; jurisdictions CN/CN; defined in different evidence files)"
+  },
+  {
+    "alias": "mkt-ea-pontes",
+    "canonical": "ea-pontes",
+    "collection": "nodes",
+    "method": "name_or_alias_match",
+    "reason": "Shared normalised name or alias 'pontes' (types market_infrastructure/market_infrastructure; jurisdictions EA/EA; defined in different evidence files)"
+  },
+  {
+    "alias": "mkt-ea-t2s",
+    "canonical": "ea-t2s",
+    "collection": "nodes",
+    "method": "name_or_alias_match",
+    "reason": "Shared normalised name or alias 'target2 securities t2s' (types market_infrastructure/market_infrastructure; jurisdictions EA/EA; defined in different evidence files)"
+  },
+  {
+    "alias": "mkt-global-pfmi",
+    "canonical": "global-cpmi-iosco-pfmi",
+    "collection": "nodes",
+    "method": "name_or_alias_match",
+    "reason": "Shared normalised name or alias 'pfmi' (types standard/standard; jurisdictions GLOBAL/GLOBAL; defined in different evidence files)"
+  },
+  {
+    "alias": "mkt-in-ccil",
+    "canonical": "in-ccil",
+    "collection": "nodes",
+    "method": "name_or_alias_match",
+    "reason": "Shared normalised name or alias 'ccil' (types market_infrastructure/market_infrastructure; jurisdictions IN/IN; defined in different evidence files)"
+  },
+  {
+    "alias": "mkt-in-sebi",
+    "canonical": "in-sebi",
+    "collection": "nodes",
+    "method": "name_or_alias_match",
+    "reason": "Shared normalised name or alias 'sebi' (types regulator/regulator; jurisdictions IN/IN; defined in different evidence files)"
+  },
+  {
+    "alias": "mkt-sg-project-guardian",
+    "canonical": "sg-project-guardian",
+    "collection": "nodes",
+    "method": "name_or_alias_match",
+    "reason": "Shared normalised name or alias 'project guardian' (types other/other; jurisdictions SG/SG; defined in different evidence files)"
+  },
+  {
+    "alias": "mkt-uk-dss",
+    "canonical": "uk-dss",
+    "collection": "nodes",
+    "method": "name_or_alias_match",
+    "reason": "Shared normalised name or alias 'dss' (types other/other; jurisdictions UK/UK; defined in different evidence files)"
+  },
+  {
+    "alias": "mkt-us-fedwire-securities",
+    "canonical": "us-fedwire-securities",
+    "collection": "nodes",
+    "method": "name_or_alias_match",
+    "reason": "Shared normalised name or alias 'fedwire securities service' (types market_infrastructure/market_infrastructure; jurisdictions US/US; defined in different evidence files)"
+  },
+  {
+    "alias": "mkt-us-sec",
+    "canonical": "us-sec",
+    "collection": "nodes",
+    "method": "name_or_alias_match",
+    "reason": "Shared normalised name or alias 'sec' (types regulator/regulator; jurisdictions US/US; defined in different evidence files)"
+  },
+  {
+    "alias": "sg-paynow-upi-link",
+    "canonical": "in-upi-paynow-link",
+    "collection": "nodes",
+    "method": "curated",
+    "reason": "Same cross-border linkage between Singapore PayNow and India UPI (launched Feb 2023) described in sg.json as 'PayNow and UPI linkage' and in in.json and cards-crossborder.json as 'UPI-PayNow linkage'; names differ only by word order."
+  },
+  {
+    "alias": "us-cbdc",
+    "canonical": "us-cbdc-status",
+    "collection": "nodes",
+    "method": "curated",
+    "reason": "Both nodes describe the same subject: the United States position on a CBDC (us.json 'US central bank digital currency' and cbdc.json 'United States CBDC status'). Same executive order source URL; us-cbdc-status is the id named by the atlas brief."
+  },
+  {
+    "alias": "us-fed",
+    "canonical": "us-frb",
+    "collection": "nodes",
+    "method": "curated",
+    "reason": "Dangling id used in crypto.json for the Federal Reserve as a GENIUS Act primary regulator (approves subsidiaries of insured state member banks). That role belongs to the Board of Governors, node us-frb (alias 'Federal Reserve Board')."
+  },
+  {
+    "alias": "us-fed-master-account",
+    "canonical": "us-master-account",
+    "collection": "nodes",
+    "method": "curated",
+    "reason": "Dangling id used in insurance-markets.json for 'Federal Reserve master accounts'. us.json models this as us-master-account ('Reserve Bank master account')."
+  },
+  {
+    "alias": "us-federal-reserve",
+    "canonical": "us-frb",
+    "collection": "nodes",
+    "method": "name_or_alias_match",
+    "reason": "Shared normalised name or alias 'federal reserve board' (types central_bank/central_bank; jurisdictions US/US; defined in different evidence files)"
+  },
+  {
+    "alias": "us-fedwire",
+    "canonical": "us-fedwire-funds",
+    "collection": "nodes",
+    "method": "dangling_suffix_alias_match",
+    "reason": "Referenced id has no node; its suffix 'fedwire' equals a name or alias of exactly one node in jurisdiction US"
+  },
+  {
+    "alias": "rule-eu-emd2",
+    "canonical": "rule-eu-emd2-2009-110",
+    "collection": "rules",
+    "method": "curated",
+    "reason": "Both are the Second E-Money Directive, Directive 2009/110/EC, and cite the same EUR-Lex URL (CELEX 32009L0110)."
+  },
+  {
+    "alias": "rule-global-visa-core-rules-2026",
+    "canonical": "rule-global-visa-core-rules",
+    "collection": "rules",
+    "method": "rule_name_and_url",
+    "reason": "Same rule name ignoring parentheticals ('visa core rules and visa product and service rules') and a shared canonical source URL, defined in different evidence files"
+  },
+  {
+    "alias": "rule-us-cip-1020-220",
+    "canonical": "rule-us-bsa-cip",
+    "collection": "rules",
+    "method": "rule_name_and_url",
+    "reason": "Same rule name ignoring parentheticals ('customer identification program for banks') and a shared canonical source URL, defined in different evidence files"
+  },
+  {
+    "alias": "rule-us-eo-14178-digital-financial-technology",
+    "canonical": "rule-us-eo-digital-fintech-2025",
+    "collection": "rules",
+    "method": "rule_name_and_url",
+    "reason": "Same rule name ignoring parentheticals ('executive order strengthening american leadership in digital financial technology') and a shared canonical source URL, defined in different evidence files"
+  },
+  {
+    "alias": "rule-us-fdic-custodial-recordkeeping",
+    "canonical": "rule-us-fdic-custodial-proposal",
+    "collection": "rules",
+    "method": "rule_name_and_url",
+    "reason": "Same rule name ignoring parentheticals ('fdic recordkeeping for custodial accounts') and a shared canonical source URL, defined in different evidence files"
+  },
+  {
+    "alias": "src-banking-ops-cfr-1010-230",
+    "canonical": "src-us-ecfr-cdd",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.ecfr.gov/current/title-31/subtitle-B/chapter-X/part-1010/subpart-B/section-1010.230"
+  },
+  {
+    "alias": "src-banking-ops-cfr-1020-220",
+    "canonical": "src-us-ecfr-cip",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.ecfr.gov/current/title-31/subtitle-B/chapter-X/part-1020/subpart-B/section-1020.220"
+  },
+  {
+    "alias": "src-banking-ops-emd2",
+    "canonical": "src-eu-emd2",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://eur-lex.europa.eu/legal-content/EN/TXT/HTML?uri=CELEX:32009L0110"
+  },
+  {
+    "alias": "src-banking-ops-fca-ps25-12",
+    "canonical": "src-uk-fca-ps25-12",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.fca.org.uk/publications/policy-statements/ps25-12-changes-safeguarding-regime-payments-and-e-money-firms"
+  },
+  {
+    "alias": "src-banking-ops-oidf-fapi",
+    "canonical": "src-standards-oidf-fapi-specs",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://openid.net/wg/fapi/specifications"
+  },
+  {
+    "alias": "src-banking-ops-oira-3064-ag07",
+    "canonical": "src-us-reginfo-fdic-custodial",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.reginfo.gov/public/do/eAgendaViewRule?pubId=202510&RIN=3064-AG07&operation=OPERATION_PRINT_RULE"
+  },
+  {
+    "alias": "src-banking-ops-psr-app",
+    "canonical": "src-uk-psr-app",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.psr.org.uk/our-work/app-scams"
+  },
+  {
+    "alias": "src-banking-ops-sahamati",
+    "canonical": "src-in-sahamati",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://sahamati.org.in"
+  },
+  {
+    "alias": "src-banking-ops-uk-emrs",
+    "canonical": "src-uk-leg-emrs-2011",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.legislation.gov.uk/uksi/2011/99/contents"
+  },
+  {
+    "alias": "src-banking-ops-uk-psrs",
+    "canonical": "src-uk-leg-psrs-2017",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.legislation.gov.uk/uksi/2017/752/contents"
+  },
+  {
+    "alias": "src-cards-crossborder-bis-nexus",
+    "canonical": "src-sg-bis-nexus",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.bis.org/about/bisih/topics/fmis/nexus.htm"
+  },
+  {
+    "alias": "src-cards-crossborder-cfpb-100530",
+    "canonical": "src-us-cfpb-1005-30",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.consumerfinance.gov/rules-policy/regulations/1005/30"
+  },
+  {
+    "alias": "src-cards-crossborder-cfpb-100534",
+    "canonical": "src-us-cfpb-1005-34",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.consumerfinance.gov/rules-policy/regulations/1005/34"
+  },
+  {
+    "alias": "src-cards-crossborder-emvco-3ds",
+    "canonical": "src-standards-emvco-3ds",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.emvco.com/emv-technologies/3-d-secure"
+  },
+  {
+    "alias": "src-cards-crossborder-fed-regii",
+    "canonical": "src-us-frb-reg-ii",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.federalreserve.gov/paymentsystems/regii-about.htm"
+  },
+  {
+    "alias": "src-cards-crossborder-fsb-targets",
+    "canonical": "src-standards-fsb-targets-report",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.fsb.org/uploads/P131021-2.pdf"
+  },
+  {
+    "alias": "src-cards-crossborder-ifr",
+    "canonical": "src-eu-ifr",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://eur-lex.europa.eu/legal-content/EN/TXT/HTML?uri=CELEX:32015R0751"
+  },
+  {
+    "alias": "src-cards-crossborder-npci-imps",
+    "canonical": "src-in-npci-imps",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.npci.org.in/what-we-do/imps/product-overview"
+  },
+  {
+    "alias": "src-cards-crossborder-stripe-issuing",
+    "canonical": "src-crypto-stripe-issuing-docs",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://docs.stripe.com/issuing/how-issuing-works"
+  },
+  {
+    "alias": "src-cards-crossborder-swift-uetr",
+    "canonical": "src-standards-swift-uetr",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.swift.com/payments/what-unique-end-end-transaction-reference-uetr"
+  },
+  {
+    "alias": "src-cards-crossborder-visa-core-rules",
+    "canonical": "src-uk-visa-rules",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://usa.visa.com/dam/VCOM/download/about-visa/visa-rules-public.pdf"
+  },
+  {
+    "alias": "src-cbdc-bis-mbridge",
+    "canonical": "src-cn-bis-mbridge",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.bis.org/project/mbridge"
+  },
+  {
+    "alias": "src-cbdc-boe-digital-pound-news",
+    "canonical": "src-uk-boe-dp-news",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.bankofengland.co.uk/the-digital-pound/digital-pound-news"
+  },
+  {
+    "alias": "src-cbdc-boe-progress-update-2026",
+    "canonical": "src-uk-boe-dp-progress",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.bankofengland.co.uk/the-digital-pound/progress-update-digital-pound-design-phase"
+  },
+  {
+    "alias": "src-cbdc-council-digital-euro-timeline",
+    "canonical": "src-eu-council-de-timeline",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.consilium.europa.eu/en/policies/digital-euro/timeline"
+  },
+  {
+    "alias": "src-cbdc-ecb-digital-euro-pilot",
+    "canonical": "src-eu-ecb-de-pilot",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.ecb.europa.eu/euro/digital_euro/pilot/html/index.en.html"
+  },
+  {
+    "alias": "src-cbdc-ecb-digital-euro-progress",
+    "canonical": "src-eu-ecb-de-progress",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.ecb.europa.eu/euro/digital_euro/progress/html/index.en.html"
+  },
+  {
+    "alias": "src-cbdc-eurlex-emd2",
+    "canonical": "src-eu-emd2",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://eur-lex.europa.eu/legal-content/EN/TXT/HTML?uri=CELEX:32009L0110"
+  },
+  {
+    "alias": "src-cbdc-fdic-deposit-insurance",
+    "canonical": "src-us-fdic-understanding-di",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance"
+  },
+  {
+    "alias": "src-cbdc-govcn-ecny-framework-20251229",
+    "canonical": "src-cn-govcn-en-20251229",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://english.www.gov.cn/news/202512/29/content_WS69526d4ec6d00ca5f9a08511.html"
+  },
+  {
+    "alias": "src-cbdc-govcn-ecny-operators-20260817",
+    "canonical": "src-cn-govcn-en-20260817",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://english.www.gov.cn/news/202608/17/content_WS6a82f788c6d00ca5f9a0ca72.html"
+  },
+  {
+    "alias": "src-cbdc-rbi-concept-note-2022",
+    "canonical": "src-in-rbi-cbdc-concept-note",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://rbi.org.in/Scripts/PublicationReportDetails.aspx?UrlPage=&ID=1218"
+  },
+  {
+    "alias": "src-cbdc-rbi-erupee-faq",
+    "canonical": "src-in-rbi-erupee-faq",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.rbi.org.in/commonman/english/scripts/FAQs.aspx?Id=3686"
+  },
+  {
+    "alias": "src-cbdc-whitehouse-eo-20250123",
+    "canonical": "src-us-wh-eo-2025",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.whitehouse.gov/presidential-actions/2025/01/strengthening-american-leadership-in-digital-financial-technology"
+  },
+  {
+    "alias": "src-crypto-asianbanker-bloom",
+    "canonical": "src-sg-mas-bloom-release",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.theasianbanker.com/press-releases/mas-launches-bloom-initiative-to-extend-settlement-capabilities"
+  },
+  {
+    "alias": "src-crypto-blockhead-20261012",
+    "canonical": "src-sg-blockhead-20261012",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.blockhead.co/2026/10/12/mas-chief-says-stablecoins-may-not-be-fit-for-large-wholesale-settlement"
+  },
+  {
+    "alias": "src-crypto-boe-wholesale-innovation",
+    "canonical": "src-uk-boe-wholesale",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.bankofengland.co.uk/payments/payments-innovation/innovation-in-wholesale-markets"
+  },
+  {
+    "alias": "src-crypto-eba-payment-services-page",
+    "canonical": "src-eu-eba-payments",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.eba.europa.eu/regulation-and-policy/payment-services-and-electronic-money"
+  },
+  {
+    "alias": "src-crypto-eurlex-tfr",
+    "canonical": "src-eu-tfr",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://eur-lex.europa.eu/legal-content/EN/TXT/HTML?uri=CELEX:32023R1113"
+  },
+  {
+    "alias": "src-crypto-fdic-understanding-deposit-insurance",
+    "canonical": "src-us-fdic-understanding-di",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance"
+  },
+  {
+    "alias": "src-crypto-hmt-payments-forward-plan",
+    "canonical": "src-uk-hmt-pfp",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.gov.uk/government/publications/payments-forward-plan/payments-forward-plan-accessible-version"
+  },
+  {
+    "alias": "src-crypto-legislation-mlrs-2017",
+    "canonical": "src-uk-leg-mlrs-2017",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.legislation.gov.uk/uksi/2017/692/contents"
+  },
+  {
+    "alias": "src-crypto-mondovisione-chia-20261009",
+    "canonical": "src-sg-mas-chia-speech-20261009",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://mondovisione.com/media-and-resources/news/building-trusted-foundations-for-digital-finance-keynote-address-by-mr-chia-2026109"
+  },
+  {
+    "alias": "src-insurance-markets-acord",
+    "canonical": "src-standards-acord-data-standards",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.acord.org/standards-architecture/acord-data-standards"
+  },
+  {
+    "alias": "src-insurance-markets-air-upi",
+    "canonical": "src-in-air-p2m-limit-raised",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.newsonair.gov.in/npci-raises-upi-person-to-merchant-transaction-limit-to-%E2%82%B95-lakh"
+  },
+  {
+    "alias": "src-insurance-markets-bis-pfmi",
+    "canonical": "src-standards-cpmi-iosco-pfmi",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.bis.org/cpmi/publ/d101.htm"
+  },
+  {
+    "alias": "src-insurance-markets-boe-rtgs-pfmi",
+    "canonical": "src-uk-boe-rtgs-pfmi-2017",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.bankofengland.co.uk/-/media/boe/files/payments/rtgspfmidesc"
+  },
+  {
+    "alias": "src-insurance-markets-ecb-pontes",
+    "canonical": "src-cbdc-ecb-pontes",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.ecb.europa.eu/paym/target/pontes/html/index.en.html"
+  },
+  {
+    "alias": "src-insurance-markets-ecb-t2s",
+    "canonical": "src-eu-ecb-t2s",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.ecb.europa.eu/paym/target/t2s/html/index.en.html"
+  },
+  {
+    "alias": "src-insurance-markets-fscs",
+    "canonical": "src-cbdc-fscs-what-we-cover",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.fscs.org.uk/what-we-cover"
+  },
+  {
+    "alias": "src-insurance-markets-rbi-emandate",
+    "canonical": "src-in-rbi-emandate-framework-2026",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=13374"
+  },
+  {
+    "alias": "src-standards-epc-sct-inst-rb-v1-2",
+    "canonical": "src-eu-epc-sct-inst-rb-v12",
+    "collection": "sources",
+    "method": "canonical_url",
+    "reason": "Same canonical URL https://www.europeanpaymentscouncil.eu/document-library/rulebooks/2025-sepa-instant-credit-transfer-rulebook-version-1-2"
+  }
+]
