@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useAtlas, prettyStatus, prettyType, statusTone, isGap } from "../data/store";
 import type { AtlasNode, AtlasRule, Claim, Source } from "../data/types";
 import { KIND_COLOR, kindOf } from "./kinds";
@@ -18,6 +18,18 @@ export function Pill({ status }: { status?: string }) {
 
 export function DetailPanel() {
   const { selected, actor, idx, select, showActor } = useAtlas();
+  const open = Boolean(selected || actor);
+  useEffect(() => {
+    if (!open) return;
+    const on = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      const t = e.target as HTMLElement | null;
+      if (t && (t.tagName === "INPUT" || t.tagName === "SELECT" || t.tagName === "TEXTAREA")) return;
+      showActor(null); select(null);
+    };
+    addEventListener("keydown", on);
+    return () => removeEventListener("keydown", on);
+  }, [open, select, showActor]);
   if (actor) {
     return (
       <aside className="detail glass" aria-label="Details">

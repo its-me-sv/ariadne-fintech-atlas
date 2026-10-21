@@ -63,6 +63,7 @@ button, input, select { font: inherit; color: inherit; }
 button { cursor: pointer; }
 a { color: var(--accent); }
 :focus-visible { outline: 2.5px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .num { font-variant-numeric: tabular-nums; }
 h1, h2, h3 { text-wrap: balance; margin: 0; }
 p { margin: 0; }
@@ -333,3 +334,82 @@ p { margin: 0; }
 .g-table summary { cursor: pointer; font-weight: 700; color: var(--accent); }
 .react-flow__minimap { border-radius: 10px; overflow: hidden; }
 .react-flow__controls { border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+
+/* ---------- shared content blocks ---------- */
+.sec { margin-top: 28px; }
+.sec h2 { font-size: 19px; font-weight: 800; letter-spacing: -0.01em; }
+.sec-lead { color: var(--ink-2); font-size: 13.5px; margin: 4px 0 12px; max-width: 80ch; line-height: 1.5; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.nchip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: #fff; border-radius: 9px; padding: 4px 9px 4px 7px; font-size: 12.5px; font-weight: 600; color: var(--ink); text-align: left; max-width: 100%; }
+.nchip i { width: 9px; height: 9px; border-radius: 3px; flex: none; }
+.nchip span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.nchip:hover { border-color: #c7d0ee; background: var(--sunk); }
+.nchip .pill { font-size: 10.5px; padding: 1px 6px; flex: none; }
+.linklike-plain { border: 0; background: none; padding: 0; text-align: left; color: var(--ink); font: inherit; cursor: pointer; }
+.linklike-plain:hover { color: var(--accent); }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.mcard { padding: 12px 14px; font-size: 13px; line-height: 1.5; display: flex; flex-direction: column; gap: 6px; }
+.mcard-h { display: flex; gap: 8px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.mcard .mk { font-size: 13.5px; }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.filters input, .filters select { height: 38px; border-radius: 10px; border: 1px solid var(--line); background: #fff; padding: 0 10px; font-size: 13px; }
+.filters input { flex: 1 1 260px; min-width: 0; }
+
+/* compare */
+.cmp-wrap { padding: 4px; }
+.cmp { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 1100px; font-size: 13px; }
+.cmp th, .cmp td { padding: 10px 10px; border-bottom: 1px solid var(--line-2); vertical-align: top; text-align: left; }
+.cmp thead th { position: sticky; top: 0; background: #fff; z-index: 1; font-size: 13.5px; }
+.cmp thead th a { color: var(--ink); text-decoration: none; }
+.cmp thead th a:hover { color: var(--accent); }
+.cmp .cmp-k { width: 190px; background: var(--sunk); }
+.cmp .cmp-k b { display: block; font-size: 13px; }
+.cmp .cmp-k small { display: block; color: var(--ink-3); font-weight: 500; font-size: 11.5px; margin-top: 2px; }
+.cmp td .pill { margin: 2px 2px 0 0; }
+.cmp-cbdc { display: inline-flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+.cmp-gaps { font-size: 12px; line-height: 1.45; }
+.mini-track { height: 6px; border-radius: 6px; background: #e8ecf8; margin: 5px 0; overflow: hidden; }
+.mini-track i { display: block; height: 100%; background: var(--good); }
+.rails-tbl td { min-width: 110px; }
+.rails-tbl td:first-child { min-width: 200px; }
+
+/* rules */
+.upc { padding: 14px 18px; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 6px 26px; max-height: 460px; overflow: auto; }
+.upc-m h3 { font-size: 13.5px; font-weight: 800; color: var(--accent); margin: 8px 0 4px; }
+.upc-m ul { list-style: none; padding: 0; margin: 0; }
+.upc-m li { font-size: 12.5px; line-height: 1.45; padding: 4px 0; border-bottom: 1px dashed var(--line); }
+.upc-d { display: inline-block; min-width: 82px; color: var(--ink-2); font-weight: 600; }
+.rules-tbl td:first-child { min-width: 280px; }
+
+/* money */
+.money-key { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12.5px; font-weight: 600; color: var(--ink-2); margin-bottom: 10px; }
+.money-key span { display: inline-flex; align-items: center; gap: 7px; }
+.money-key i { width: 12px; height: 12px; border-radius: 4px; }
+.money-tbl { min-width: 1500px; }
+.money-tbl th[scope="row"] { min-width: 220px; background: var(--sunk); text-align: left; vertical-align: top; padding: 9px 8px; border-bottom: 1px solid var(--line-2); font-weight: 400; }
+.money-tbl th[scope="row"] small { display: block; font-size: 11.5px; margin-top: 6px; line-height: 1.4; }
+.money-tbl td { min-width: 150px; font-size: 12.5px; line-height: 1.45; }
+.money-name .nchip { border-color: var(--t); border-width: 1.5px; }
+.money-name .nchip i { background: var(--t) !important; }
+
+/* blueprint */
+.bp-pick { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.bp-line { font-size: 14px; margin-bottom: 14px; max-width: 80ch; }
+.bp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 14px; }
+.bp-block { padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+.bp-block h3 { font-size: 15px; font-weight: 800; }
+.bp-why { font-size: 13px; color: var(--ink-2); line-height: 1.5; }
+.bp-models { display: grid; gap: 6px; }
+.bp-model { padding: 8px 10px; font-size: 12px; line-height: 1.4; display: flex; flex-direction: column; gap: 2px; }
+.bp-model em { font-style: normal; color: var(--ink-3); }
+.bp-rules { list-style: none; padding: 0; margin: 0; font-size: 12.5px; }
+.bp-rules li { padding: 4px 0; border-bottom: 1px dashed var(--line); display: flex; gap: 8px; justify-content: space-between; align-items: center; }
+
+/* modules */
+.mod-stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; max-width: 900px; }
+.mod-stats .card { padding: 12px 14px; }
+.mod-stats small { display: block; font-size: 12px; color: var(--ink-3); font-weight: 600; }
+.mod-stats b { display: block; font-size: 24px; font-weight: 800; }
+.mod-list { padding-left: 18px; font-size: 13.5px; line-height: 1.8; }
+.mod-group { margin-bottom: 12px; }
+.mod-group h3 { font-size: 13.5px; font-weight: 800; margin-bottom: 6px; }

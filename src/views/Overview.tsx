@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
-import { useAtlas, inJur, prettyStatus, statusTone, prettyType } from "../data/store";
+import { useAtlas, inJur, prettyStatus, statusTone, prettyType, JURS } from "../data/store";
 import type { Jur } from "../data/types";
 import { worldFor, type Building } from "../world/worlds";
 import { FLOW_COLOR, type CamCmd } from "../world/flow";
@@ -87,8 +87,10 @@ export default function Overview() {
   const shiftX = !wide ? 0 : panelOpen ? 150 : -40;
 
   return (
-    <div className="stage ov">
-      <div className="ov-canvas">
+    <main className="stage ov">
+      <h1 className="sr-only">{world ? `${JURS.find((j) => j.id === scope)?.label ?? scope} payment infrastructure` : "Global financial infrastructure"}</h1>
+      <p className="sr-only">The 3D city is a visual summary. Every building in it is also listed as a button in the Rails, Rules and Sources table below, and the trace controls step through the same transaction.</p>
+      <div className="ov-canvas" aria-hidden="true">
         <Suspense fallback={<div className="loading">Building the city</div>}>
           {world ? (
             <Scene buildings={world.buildings} step={step} allSteps={allSteps} onPick={onPick} cmd={cmd} shiftX={shiftX} reducedMotion={reduced} />
@@ -147,7 +149,7 @@ export default function Overview() {
             })}
           </ol>
           {stepData && (
-            <div className="tr-detail">
+            <div className="tr-detail" aria-live={playing ? "off" : "polite"}>
               <div className="tr-who"><b>Step {stepData.n}</b><span>{[stepData.actor, stepData.system].filter(Boolean).join(" on ")}</span></div>
               <p>{stepData.action}</p>
               {stepData.ledgerEffect && <p className="tr-ledger"><b>Ledger:</b> {stepData.ledgerEffect}</p>}
@@ -158,7 +160,7 @@ export default function Overview() {
       )}
 
       {kpis && <ScopeTable scope={scope} />}
-    </div>
+    </main>
   );
 }
 

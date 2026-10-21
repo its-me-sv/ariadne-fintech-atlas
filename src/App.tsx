@@ -6,9 +6,13 @@ import { Dock } from "./ui/Dock";
 import { DetailPanel } from "./ui/DetailPanel";
 
 const Overview = lazy(() => import("./views/Overview"));
-const Placeholder = lazy(() => import("./views/Placeholder"));
 const Traces = lazy(() => import("./views/Traces"));
 const Graph = lazy(() => import("./views/Graph"));
+const Compare = lazy(() => import("./views/Compare"));
+const Rules = lazy(() => import("./views/Rules"));
+const Money = lazy(() => import("./views/Money"));
+const Blueprint = lazy(() => import("./views/Blueprint"));
+const Module = lazy(() => import("./views/Module"));
 
 export default function App() {
   const { load, core, error, setScope, select } = useAtlas();
@@ -33,7 +37,11 @@ export default function App() {
   else if (route.view === "overview" || route.view === "node") view = <Overview />;
   else if (route.view === "traces") view = <Traces />;
   else if (route.view === "graph") view = <Graph />;
-  else view = <Placeholder view={route.view} />;
+  else if (route.view === "compare") view = <Compare />;
+  else if (route.view === "rules") view = <Rules />;
+  else if (route.view === "money") view = <Money />;
+  else if (route.view === "blueprint") view = <Blueprint />;
+  else view = <Module />;
 
   return (
     <div className="app">
