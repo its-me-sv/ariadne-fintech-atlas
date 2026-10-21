@@ -109,6 +109,8 @@ export const useAtlas = create<State>((set, get) => ({
     try {
       const res = await fetch("./data/core.json");
       if (!res.ok) throw new Error(`core.json returned ${res.status}`);
+      // A dev server answers a missing file with index.html, which is not JSON
+      if (!(res.headers.get("content-type") ?? "").includes("json")) throw new Error("MISSING_DATA");
       const core = (await res.json()) as Core;
       set({ core, idx: buildIndexes(core) });
       // evidence is larger and only needed in detail panels: load it after first paint
@@ -121,7 +123,10 @@ export const useAtlas = create<State>((set, get) => ({
       }
       set({ claims: ev.claims, sources: new Map((ev.sources as Source[]).map((s) => [s.id, s])), claimsBySubject: bySubject });
     } catch (e) {
-      set({ error: `The atlas data could not be loaded (${(e as Error).message}). Reload the page to try again.` });
+      const msg = (e as Error).message;
+      set({ error: msg === "MISSING_DATA"
+        ? "The data files have not been generated yet. Run npm run data (or npm run build) in the project folder, then reload."
+        : `The atlas data could not be loaded (${msg}). Reload the page to try again.` });
     }
   },
 }));

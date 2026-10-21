@@ -141,7 +141,8 @@ p { margin: 0; }
 .faint { color: var(--ink-3); }
 .gap-text { color: var(--warn); }
 .loading { position: absolute; inset: 0; display: grid; place-items: center; color: var(--ink-2); font-weight: 600; }
-.error { margin: 120px auto; max-width: 520px; padding: 20px; }
+.error { position: absolute; z-index: 5; top: calc(var(--top-h) + 40px); left: 50%; transform: translateX(-50%); width: min(560px, calc(100% - 32px)); padding: 20px; }
+.error code { font-size: 12.5px; background: var(--sunk); padding: 1px 6px; border-radius: 6px; }
 
 /* detail panel */
 .detail {

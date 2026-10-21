@@ -26,7 +26,7 @@ Node 20 or newer.
 
 ```bash
 npm ci
-npm run dev        # http://localhost:5173
+npm run dev        # generates public/data first, then http://localhost:5173
 npm run build      # data, type check, production build, artifact folder
 npm test           # vitest: world integrity, routes, copy rules
 ```

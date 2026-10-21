@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "data": "tsx scripts/build-data.ts",
+    "predev": "npm run data",
     "dev": "vite",
     "build": "npm run data && tsc --noEmit && vite build && node scripts/prepare-artifact.mjs",
     "test": "vitest run",
