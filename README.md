@@ -48,7 +48,7 @@ src/ui/              top bar, dock, detail panel, shared bits, kind colours
 tests/               vitest suites
 ```
 
-Bundles are split so the first load is small: three.js loads only on the 3D overview, and React Flow with ELK only on the graph.
+Bundles are split so the first load is small: three.js loads only on the 3D overview, and React Flow only on the graph. ELK layout runs in a Web Worker (results cached per filter), so large graphs never freeze the page, and the 3D scene drops to 1x resolution on devices that cannot hold a smooth frame rate.
 
 ## Updating the data
 

@@ -1,7 +1,8 @@
 import { memo, useEffect, useMemo, useState } from "react";
 import { ReactFlow, Background, Controls, MiniMap, Handle, Position, MarkerType, type Edge, type Node, type NodeProps } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
-import ELK from "elkjs/lib/elk.bundled.js";
+import ELK from "elkjs/lib/elk-api.js";
+import elkWorkerUrl from "elkjs/lib/elk-worker.min.js?url";
 import { useAtlas, inJur, prettyType, prettyStatus, statusTone } from "../data/store";
 import type { AtlasEdge, AtlasNode } from "../data/types";
 import { KIND_COLOR, KIND_LABEL, kindOf, type Kind } from "../ui/kinds";
@@ -46,7 +47,10 @@ const AtlasNodeView = memo(function AtlasNodeView({ data, selected }: NodeProps<
   );
 });
 const nodeTypes = { atlas: AtlasNodeView };
-const elk = new ELK();
+// ELK runs in a Web Worker so a big layout never freezes the page; results are cached per filter set.
+const elk = new ELK({ workerFactory: () => new Worker(elkWorkerUrl) });
+type Pos = Record<string, { x: number; y: number }>;
+const layoutCache = new Map<string, Pos>();
 
 export default function Graph() {
   const { core, scope, select, selected } = useAtlas();
@@ -75,6 +79,9 @@ export default function Graph() {
 
   useEffect(() => {
     let live = true;
+    const key = `${nodes.map((n) => n.id).join(",")}|${edges.map((e) => e.id).join(",")}`;
+    const hit = layoutCache.get(key);
+    if (hit) { setLayout(hit); return; }
     setLayout(null);
     const dense = nodes.length > 45;
     elk.layout({
@@ -89,10 +96,10 @@ export default function Graph() {
       children: nodes.map((n) => ({ id: n.id, width: 230, height: 56 })),
       edges: edges.map((e) => ({ id: e.id, sources: [e.from], targets: [e.to] })),
     }).then((g) => {
-      if (!live) return;
-      const pos: Record<string, { x: number; y: number }> = {};
+      const pos: Pos = {};
       for (const c of g.children ?? []) pos[c.id] = { x: c.x ?? 0, y: c.y ?? 0 };
-      setLayout(pos);
+      layoutCache.set(key, pos);
+      if (live) setLayout(pos);
     }).catch(() => live && setLayout({}));
     return () => { live = false; };
   }, [nodes, edges]);

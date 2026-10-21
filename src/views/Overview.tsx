@@ -89,7 +89,7 @@ export default function Overview() {
   return (
     <main className="stage ov">
       <h1 className="sr-only">{world ? `${JURS.find((j) => j.id === scope)?.label ?? scope} payment infrastructure` : "Global financial infrastructure"}</h1>
-      <p className="sr-only">The 3D city is a visual summary. Every building in it is also listed as a button in the Rails, Rules and Sources table below, and the trace controls step through the same transaction.</p>
+      <p className="sr-only">The 3D city is a visual summary. Every system in it can also be reached from search, the Rails, Rules and Sources table on wide screens, and the Graph and Compare pages. The trace controls below step through the same transaction.</p>
       <div className="ov-canvas" aria-hidden="true">
         <Suspense fallback={<div className="loading">Building the city</div>}>
           {world ? (

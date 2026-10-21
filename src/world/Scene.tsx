@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Html, OrbitControls, RoundedBox } from "@react-three/drei";
+import { Html, OrbitControls, PerformanceMonitor, RoundedBox } from "@react-three/drei";
 import * as THREE from "three";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 import { KIND_COLOR, type Kind } from "../ui/kinds";
@@ -442,14 +442,17 @@ export default function Scene({ buildings, step, allSteps, onPick, cmd, shiftX, 
     for (const s of allSteps) for (const r of s.routes) m.set(`${r.path}:${r.flow}`, r);
     return [...m.values()];
   }, [allSteps]);
+  // Start sharp, and drop to 1x resolution if the device cannot hold a smooth frame rate.
+  const [dpr, setDpr] = useState(() => Math.min(1.75, typeof devicePixelRatio === "number" ? devicePixelRatio : 1));
   return (
     <Canvas
       shadows={{ type: THREE.PCFSoftShadowMap }}
-      dpr={[1, 1.75]}
+      dpr={dpr}
       camera={{ fov: 28, near: 0.5, far: 600, position: HOME.toArray() }}
       gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.08 }}
       onPointerMissed={() => undefined}
     >
+      <PerformanceMonitor onDecline={() => setDpr(1)} flipflops={1} />
       <color attach="background" args={[GROUND]} />
       <fog attach="fog" args={[GROUND, 125, 220]} />
       <hemisphereLight args={["#ffffff", "#c9d0ee", 1.55]} />
