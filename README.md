@@ -1,8 +1,12 @@
-<p align="center"><img src="docs/brand/ariadne-icon-256.png" width="128" alt="Ariadne logo"></p>
+<p align="center">
+  <img src="docs/brand/ariadne-icon-256.png" width="96" alt="Ariadne logo">
+</p>
 
-# Ariadne - Fintech Atlas
+<h1 align="center">Ariadne - Fintech Atlas</h1>
 
-An explorable, source-backed map of how payments really move.
+<p align="center">An explorable, source-backed map of how payments really move.</p>
+
+<p align="center">Explore how money, messages and rules move through six markets, in 3D.</p>
 
 ![The clay globe with India, the United Kingdom, the United States, the EU, Singapore and China highlighted, each with a pin and a label showing its number of mapped systems](docs/screenshots/01-globe.png)
 
