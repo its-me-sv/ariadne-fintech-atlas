@@ -54,7 +54,8 @@ describe("3D worlds", () => {
 
 describe("user-facing copy", () => {
   it("has no em or en dashes in source text", () => {
-    const files = ["src/world/worlds.ts", "src/views/Overview.tsx", "src/views/Traces.tsx", "src/views/Graph.tsx", "src/views/Compare.tsx", "src/views/Rules.tsx", "src/views/Money.tsx", "src/views/Blueprint.tsx", "src/views/Module.tsx", "src/ui/DetailPanel.tsx", "src/ui/TopBar.tsx"];
+    const files = ["src/world/worlds.ts", "src/views/Overview.tsx", "src/views/Traces.tsx", "src/views/Graph.tsx", "src/views/Compare.tsx", "src/views/Rules.tsx", "src/views/Money.tsx", "src/views/Blueprint.tsx", "src/views/Module.tsx", "src/ui/DetailPanel.tsx", "src/ui/TopBar.tsx",
+      "src/App.tsx", "src/world/Globe.tsx", "src/ui/Flag.tsx", "src/ui/flags.ts", "src/ui/PhoneNotice.tsx", "src/views/traceFilter.ts", "index.html"];
     for (const f of files) expect(readFileSync(new URL(`../${f}`, import.meta.url), "utf8")).not.toMatch(/[–—]/);
   });
 });
