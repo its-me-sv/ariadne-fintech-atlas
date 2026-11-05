@@ -21,7 +21,7 @@ export function PhoneNotice() {
   return (
     <main className="phone-notice">
       <div className="pn-card">
-        <div className="pn-logo"><LogoMark size={40} /><span className="logo-text"><b>Ariadne</b><small>Fintech Atlas</small></span></div>
+        <div className="pn-logo"><LogoMark size={64} /><span className="logo-text"><b>Ariadne</b><small>Fintech Atlas</small></span></div>
         <h1>Ariadne works best on a laptop or PC</h1>
         <p>It is an explorable, source-backed map of how payments, messages and rules move through banks, switches and regulators in six markets, with 3D cities and step-by-step traces.</p>
         <p className="pn-note">Open this same link on a larger screen to explore it.</p>

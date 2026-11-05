@@ -103,12 +103,11 @@ export function TopBar() {
   );
 }
 
-export function LogoMark({ size = 30 }: { size?: number }) {
-  const s = Math.round(size * 0.53);
+/** The Ariadne icon (public/logo-64.png). Decorative: the "Ariadne" text always sits next to it. */
+export function LogoMark({ size = 32 }: { size?: number }) {
   return (
-    <i className="logo-mark" style={{ width: size, height: size }}>
-      <svg width={s} height={s} viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1 14.5 4.7v6.6L8 15 1.5 11.3V4.7z" fill="none" stroke="#fff" strokeWidth="1.8" /><path d="M8 8v7M1.5 4.7 8 8l6.5-3.3" stroke="#fff" strokeWidth="1.4" fill="none" /></svg>
-    </i>
+    <img className="logo-mark" src={`${import.meta.env.BASE_URL}logo-64.png`} width={size} height={size} alt=""
+      style={{ borderRadius: Math.round(size * 0.3) }} />
   );
 }
 

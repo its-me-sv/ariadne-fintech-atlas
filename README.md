@@ -1,3 +1,5 @@
+<p align="center"><img src="docs/brand/ariadne-icon-256.png" width="128" alt="Ariadne logo"></p>
+
 # Ariadne - Fintech Atlas
 
 An explorable, source-backed map of how payments really move.
@@ -290,6 +292,7 @@ Every fact in the atlas needs a source, so changes without one cannot be merged.
 - Evidence dataset (`evidence/`): CC BY 4.0, see [evidence/LICENSE](evidence/LICENSE).
 - Quoted excerpts and linked documents belong to their original publishers and are cited by source.
 - Flag images are served by [flagcdn.com](https://flagcdn.com). Country outlines come from [world-atlas](https://github.com/topojson/world-atlas) (Natural Earth).
+- The Ariadne logo and the files in `docs/brand/` are not covered by the MIT license. All rights reserved by Suraj Vijayan.
 
 ## Acknowledgements
 

@@ -1,0 +1,14 @@
+{
+  "name": "Ariadne - Fintech Atlas",
+  "short_name": "Ariadne",
+  "description": "An explorable, source-backed map of how payments really move.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#edf0fa",
+  "theme_color": "#edf0fa",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
