@@ -8,6 +8,8 @@
 
 <p align="center">Explore how money, messages and rules move through six markets, in 3D.</p>
 
+<p align="center"><b>Live demo:</b> <a href="https://ariadne.surajvijayan.dev">https://ariadne.surajvijayan.dev</a></p>
+
 ![The clay globe with India, the United Kingdom, the United States, the EU, Singapore and China highlighted, each with a pin and a label showing its number of mapped systems](docs/screenshots/01-globe.png)
 
 [Ariadne](https://en.wikipedia.org/wiki/Ariadne) is an interactive atlas of the systems behind everyday payments: the banks, central banks, payment rails, card schemes, regulators and rules that sit between "Pay" and "Paid". You can spin a globe, step into a 3D city for each of six markets, and follow one transaction from the payer's app to final settlement, with every claim linked to its source. It is for students, product people, engineers, policy readers and anyone curious about how money moves. The name comes from the myth: like Ariadne's thread through the Labyrinth, the traces follow one payment through banks, switches and rules.
@@ -205,6 +207,22 @@ npm test           # vitest: world integrity, routes, flags, traces filter, trav
 ```
 
 `npm run build` writes `dist/`, a plain static site you can deploy anywhere. Optionally, `npm run build:artifact` also writes `artifact/`, the same build with the page skeleton stripped, for hosts that supply their own.
+
+### Deployment
+
+The live site at [ariadne.surajvijayan.dev](https://ariadne.surajvijayan.dev) is deployed by GitHub Actions with [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml):
+
+- **When:** every push to `main`, or by hand from the Actions tab (`workflow_dispatch`).
+- **Build job:** checks out the repo, sets up Node 22 with the npm cache, then runs `npm ci`, `npm test` and `npm run build` (which also generates `public/data`). It uploads `dist/` as the Pages artifact. A failing test stops the deploy.
+- **Deploy job:** publishes the artifact to the `github-pages` environment with `actions/deploy-pages`. Runs share one `pages` concurrency group and are not cancelled mid-deploy.
+
+The Vite base is `./` and routes are hash tokens, so the same `dist/` works at the domain root, under a subpath, or from any static host.
+
+**Custom domain.** `public/CNAME` records the domain, `ariadne.surajvijayan.dev`, and is copied into `dist/`. With Actions deployments, GitHub reads the domain from the repository settings rather than from that file, so the one-time setup is:
+
+1. Repository **Settings > Pages**: set **Source** to **GitHub Actions**, and enter `ariadne.surajvijayan.dev` as the custom domain.
+2. At the DNS provider for `surajvijayan.dev`: add a `CNAME` record for `ariadne` pointing to `its-me-sv.github.io`.
+3. Once the certificate is issued, tick **Enforce HTTPS**.
 
 ### Tech stack
 
