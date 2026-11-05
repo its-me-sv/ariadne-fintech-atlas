@@ -13,6 +13,14 @@ const Globe = lazy(() => import("../world/Globe"));
 
 const RAIL_TYPES = new Set(["rail", "rtgs", "ach", "instant_payment_system", "card_scheme"]);
 
+const PANELS_KEY = "ariadne.overview.hidePanels";
+function readHidden() {
+  try { return localStorage.getItem(PANELS_KEY) === "1"; } catch { return false; }
+}
+function saveHidden(v: boolean) {
+  try { localStorage.setItem(PANELS_KEY, v ? "1" : "0"); } catch { /* storage blocked: keep the choice for this visit only */ }
+}
+
 function useReducedMotion() {
   const [r, setR] = useState(() => typeof matchMedia !== "undefined" && matchMedia("(prefers-reduced-motion: reduce)").matches);
   useEffect(() => {
@@ -33,6 +41,8 @@ export default function Overview() {
   const [playing, setPlaying] = useState(false);
   const [cmd, setCmd] = useState<CamCmd>(null);
   const reduced = useReducedMotion();
+  const [panelsHidden, setPanelsHidden] = useState(readHidden);
+  const togglePanels = () => setPanelsHidden((h) => { saveHidden(!h); return !h; });
   const panelOpen = !!(selected || actor);
   const [wide, setWide] = useState(() => innerWidth > 820);
   useEffect(() => { const on = () => setWide(innerWidth > 820); addEventListener("resize", on); return () => removeEventListener("resize", on); }, []);
@@ -101,7 +111,7 @@ export default function Overview() {
       </div>
 
       {kpis && (
-        <section className="ov-kpis" aria-label="Key figures">
+        <section className={`ov-kpis ov-fade${panelsHidden ? " is-hidden" : ""}`} aria-label="Key figures" aria-hidden={panelsHidden || undefined}>
           <Kpi icon="rail" label="Payment rails" value={String(kpis.rails.length)} delta={`${kpis.live} live`} sub={kpis.rails.slice(0, 4).map((r) => r.aliases?.[0] ?? r.canonicalName.split(" (")[0]).join(", ")} />
           <Kpi icon="rules" label="Rules tracked" value={String(kpis.rules)} delta={`${kpis.inForce} in force`} sub={`${kpis.upcoming} proposed or not yet effective`} />
           <Kpi icon="check" label="Claims verified" value={`${kpis.claims ? Math.round((kpis.verified / kpis.claims) * 100) : 0}%`} delta={`${kpis.verified} of ${kpis.claims}`} sub="Primary source opened and read" />
@@ -122,6 +132,10 @@ export default function Overview() {
         <button aria-label="Rotate right" onClick={() => setCmd({ type: "right", n: Date.now() })}><Icon name="rotr" size={18} /></button>
         <hr />
         <button aria-label="Reset view" onClick={() => setCmd({ type: "reset", n: Date.now() })}><Icon name="home" size={18} /></button>
+        <hr />
+        <button aria-pressed={panelsHidden} aria-label={panelsHidden ? "Show panels" : "Hide panels"} title={panelsHidden ? "Show panels" : "Hide panels"} onClick={togglePanels}>
+          <Icon name={panelsHidden ? "eye" : "eyeOff"} size={18} />
+        </button>
       </div>
 
       {world && scenario && stepN !== null && (
@@ -159,7 +173,7 @@ export default function Overview() {
         </section>
       )}
 
-      {kpis && <ScopeTable scope={scope} />}
+      {kpis && <ScopeTable scope={scope} hidden={panelsHidden} />}
     </main>
   );
 }
@@ -177,7 +191,7 @@ function Kpi({ icon, label, value, delta, sub }: { icon: string; label: string; 
   );
 }
 
-function ScopeTable({ scope }: { scope: Jur }) {
+function ScopeTable({ scope, hidden }: { scope: Jur; hidden: boolean }) {
   const { core, sources, select } = useAtlas();
   const [tab, setTab] = useState<"rails" | "rules" | "sources">("rails");
   const rails = useMemo(() => (core ? core.nodes.filter((n) => !n.stub && RAIL_TYPES.has(n.type) && inJur(n.jurisdictions, scope))
@@ -187,7 +201,7 @@ function ScopeTable({ scope }: { scope: Jur }) {
   const srcs = useMemo(() => (sources ? [...sources.values()].filter((s) => scope === "GLOBAL" || inJur([s.jurisdiction ?? ""], scope))
     .sort((a, b) => (b.publicationDate ?? "").localeCompare(a.publicationDate ?? "")) : []), [sources, scope]);
   return (
-    <section className="ov-table glass" aria-label="Rails, rules and sources">
+    <section className={`ov-table glass ov-fade${hidden ? " is-hidden" : ""}`} aria-label="Rails, rules and sources" aria-hidden={hidden || undefined}>
       <div className="seg" role="tablist">
         <button role="tab" aria-pressed={tab === "rails"} aria-selected={tab === "rails"} onClick={() => setTab("rails")}>Rails <span className="faint num">{rails.length}</span></button>
         <button role="tab" aria-pressed={tab === "rules"} aria-selected={tab === "rules"} onClick={() => setTab("rules")}>Rules <span className="faint num">{rules.length}</span></button>

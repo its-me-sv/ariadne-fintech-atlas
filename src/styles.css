@@ -239,6 +239,10 @@ p { margin: 0; }
 .ov-mapctl button { width: 36px; height: 36px; display: grid; place-items: center; border: 0; background: none; color: var(--ink-2); border-radius: 9px; }
 .ov-mapctl button:hover { background: var(--sunk); color: var(--ink); }
 .ov-mapctl hr { border: 0; border-top: 1px solid var(--line); margin: 4px 6px; }
+.ov-mapctl button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); }
+/* hide panels toggle: fade out, then drop from the tab order and the accessibility tree */
+.ov-fade { transition: opacity 0.2s ease, visibility 0s linear 0s; }
+.ov-fade.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.2s ease, visibility 0s linear 0.2s; }
 .ov-trace { position: absolute; z-index: 10; left: max(104px, calc(env(safe-area-inset-left, 0px) + 104px)); bottom: max(16px, env(safe-area-inset-bottom, 0px)); width: min(640px, calc(100% - 640px)); min-width: 460px; padding: 14px 18px 12px; }
 .tr-head { display: flex; align-items: center; gap: 10px; color: var(--accent); }
 .tr-head b { color: var(--ink); font-size: 14.5px; font-weight: 800; white-space: nowrap; }
