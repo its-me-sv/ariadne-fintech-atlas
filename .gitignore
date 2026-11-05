@@ -2,4 +2,8 @@ node_modules/
 dist/
 artifact/
 public/data/
-.checkpoint-tmp/
+.DS_Store
+*.log
+.env
+.env.*
+coverage/

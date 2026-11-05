@@ -1,20 +1,18 @@
-// Turns the Vite build (dist/) into a publishable artifact folder (artifact/).
+// Optional (npm run build:artifact): turns the Vite build (dist/) into an artifact/ folder for hosts that
+// supply their own page skeleton.
 // The artifact host wraps the page in its own <!doctype><html><head><body> skeleton,
 // so the page keeps only its title, meta, links, styles and scripts plus the body markup.
-import { readFileSync, writeFileSync, rmSync, mkdirSync, cpSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, rmSync, mkdirSync, cpSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
 const dist = join(root, "dist");
 const out = join(root, "artifact");
-const keepCheckpoint = existsSync(join(out, "checkpoint"));
-if (keepCheckpoint) cpSync(join(out, "checkpoint"), join(root, ".checkpoint-tmp"), { recursive: true });
 rmSync(out, { recursive: true, force: true });
 mkdirSync(out, { recursive: true });
 cpSync(join(dist, "assets"), join(out, "assets"), { recursive: true });
 cpSync(join(dist, "data"), join(out, "data"), { recursive: true });
-if (keepCheckpoint) { cpSync(join(root, ".checkpoint-tmp"), join(out, "checkpoint"), { recursive: true }); rmSync(join(root, ".checkpoint-tmp"), { recursive: true, force: true }); }
 
 const html = readFileSync(join(dist, "index.html"), "utf8");
 const head = (html.match(/<head>([\s\S]*?)<\/head>/) || [, ""])[1]

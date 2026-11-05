@@ -2,6 +2,10 @@
 
 Like Ariadne's thread through the Labyrinth, the traces follow a single payment through banks, switches and rules.
 
+For education and research, not legal or financial advice. Evidence as of 15 October 2026.
+
+Built for laptop and desktop screens. On phones the app shows a short notice asking you to open the same link on a larger screen.
+
 A source-backed, explorable map of how money, messages, data and rules move through financial infrastructure in India, the UK, the US, the EU, Singapore and China, plus global layers (card networks, SWIFT, CLS, standards bodies) and CBDC work.
 
 Every system, link and rule in the app comes from the evidence package in `evidence/` (as of 15 October 2026). Gaps stay visible: anything a source does not specify is shown as "Not stated", "Not publicly specified" or "Needs verification" rather than filled in.
@@ -10,8 +14,9 @@ Every system, link and rule in the app comes from the evidence package in `evide
 
 | Route | View |
 | --- | --- |
-| `#overview-in`, `#overview-uk`, `#overview-us`, `#overview-eu`, `#overview-sg`, `#overview-cn`, `#overview-global` | 3D clay city per market with its hero transaction animated, or a clay globe with a pin per market for the global view |
-| `#traces`, `#trace-<scenario id>` | Step-by-step transaction traces with rules, sources and illustrative ledger entries |
+| `#overview-in`, `#overview-uk`, `#overview-us`, `#overview-eu`, `#overview-sg`, `#overview-cn` | 3D clay city per market with its hero transaction animated |
+| `#overview-global` | Clay globe with the six markets highlighted and a pin at each financial capital; select a pin or country to fly into its city |
+| `#traces`, `#trace-<scenario id>` | Step-by-step transaction traces with rules, sources and illustrative ledger entries; filter by market or by traces that have a 3D view |
 | `#graph-<market>` | Architecture graph (React Flow + ELK) filtered by flow type and kind of institution |
 | `#compare` | Market comparison matrix and rails side by side |
 | `#rules` | Standards and rules registry with a dated "coming up" timeline |
@@ -20,7 +25,7 @@ Every system, link and rule in the app comes from the evidence package in `evide
 | `#module-cbdc`, `#module-insurance`, `#module-markets`, `#module-crypto` | Module pages |
 | `#node-<id>` | Deep link that opens a system's detail panel |
 
-Routes are plain hash tokens because the artifact host only passes `#token` links through.
+Routes are plain hash tokens, so the app runs from any static host or subpath without server rewrites.
 
 ## Run, build, test
 
@@ -29,13 +34,11 @@ Node 20 or newer.
 ```bash
 npm ci
 npm run dev        # generates public/data first, then http://localhost:5173
-npm run build      # data, type check, production build, artifact folder
-npm test           # vitest: world integrity, routes, copy rules
+npm run build      # data, type check, production build into dist/
+npm test           # vitest: world integrity, routes, flags, traces filter, copy rules
 ```
 
-`npm run build` writes `dist/` (a normal static site, deployable anywhere) and `artifact/` (the same build with the page skeleton stripped, for publishing as a claude.ai artifact).
-
-`npm run checkpoint -- "message"` builds, commits, and packs a source snapshot into `artifact/checkpoint/` so a published artifact can always rebuild the project. `node scripts/files-map.mjs` prints the files map for publishing.
+`npm run build` writes `dist/`, a normal static site you can deploy anywhere. Optionally, `npm run build:artifact` also writes `artifact/`, the same build with the page skeleton stripped, for hosts that supply their own.
 
 ## Project layout
 
@@ -46,11 +49,11 @@ src/data/            types, Zustand store, indexes, search
 src/router.ts        hash routes
 src/world/           3D: worlds.ts (layouts and step maps), Scene.tsx (clay buildings, routes, vehicles), Globe.tsx (global view)
 src/views/           one file per view
-src/ui/              top bar, dock, detail panel, shared bits, kind colours
+src/ui/              top bar, dock, detail panel, flags, phone notice, shared bits, kind colours
 tests/               vitest suites
 ```
 
-Bundles are split so the first load is small: three.js loads only on the 3D overview, and React Flow only on the graph. ELK layout runs in a Web Worker (results cached per filter), so large graphs never freeze the page, and the 3D scene drops to 1x resolution on devices that cannot hold a smooth frame rate.
+Bundles are split so the first load is small: three.js loads only on the 3D overview, the world map data and d3-geo only on the globe, and React Flow only on the graph. Phones never load any of them. ELK layout runs in a Web Worker (results cached per filter), so large graphs never freeze the page, and the 3D scene drops to 1x resolution on devices that cannot hold a smooth frame rate.
 
 ## Updating the data
 
@@ -79,3 +82,10 @@ Change `asOf` in `evidence/manifest.json` when the evidence date moves; the rule
 ## Copy rules
 
 No em or en dashes in any user-facing text; a test enforces this for the main source files. Status labels follow the sources exactly.
+
+## License
+
+- Code: MIT, see [LICENSE](LICENSE).
+- Evidence dataset (`evidence/`): CC BY 4.0, see [evidence/LICENSE](evidence/LICENSE).
+- Quoted excerpts and linked documents belong to their original publishers and are cited by source.
+- Flag images are served by [flagcdn.com](https://flagcdn.com). Country outlines come from [world-atlas](https://github.com/topojson/world-atlas) (Natural Earth).

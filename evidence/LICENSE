@@ -1,0 +1,29 @@
+Ariadne - Fintech Atlas evidence dataset
+Copyright (c) 2026 Suraj Vijayan
+
+The dataset in this folder (the JSON files and schema.ts) is licensed under the
+Creative Commons Attribution 4.0 International License (CC BY 4.0).
+
+You are free to:
+  Share: copy and redistribute the material in any medium or format.
+  Adapt: remix, transform, and build upon the material for any purpose,
+  even commercially.
+
+Under the following terms:
+  Attribution: You must give appropriate credit, provide a link to the
+  license, and indicate if changes were made. You may do so in any reasonable
+  manner, but not in any way that suggests the licensor endorses you or your use.
+
+  No additional restrictions: You may not apply legal terms or technological
+  measures that legally restrict others from doing anything the license permits.
+
+The full license text is available at:
+https://creativecommons.org/licenses/by/4.0/
+https://creativecommons.org/licenses/by/4.0/legalcode
+
+Third-party material: quoted excerpts, document titles and the documents linked
+from the dataset belong to their original publishers. They are cited by source
+for reference and are not covered by this license.
+
+The dataset is provided as is, for education and research. It is not legal or
+financial advice. Evidence is as of 15 October 2026.
