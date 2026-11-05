@@ -429,6 +429,19 @@ export function CameraRig({ cmd, shiftX, shiftY, target = TARGET, home = HOME }:
   return null;
 }
 
+/** Calls onReady once, after the canvas has drawn its first frames (so the city is really on screen). */
+function ReadySignal({ onReady }: { onReady?: () => void }) {
+  const cb = useRef(onReady);
+  cb.current = onReady;
+  const frames = useRef(0);
+  useFrame(() => {
+    if (frames.current > 1) return;
+    frames.current += 1;
+    if (frames.current === 2) cb.current?.();
+  });
+  return null;
+}
+
 // ---------- scene ----------
 export interface SceneProps {
   buildings: Building[];
@@ -438,9 +451,11 @@ export interface SceneProps {
   cmd: CamCmd;
   shiftX: number;
   reducedMotion: boolean;
+  /** Fires once when the first frame has rendered. */
+  onReady?: () => void;
 }
 
-export default function Scene({ buildings, step, allSteps, onPick, cmd, shiftX, reducedMotion }: SceneProps) {
+export default function Scene({ buildings, step, allSteps, onPick, cmd, shiftX, reducedMotion, onReady }: SceneProps) {
   const focus = new Set(step?.focus ?? []);
   const seen = useMemo(() => {
     const m = new Map<string, { path: PathKey; flow: Flow }>();
@@ -487,6 +502,7 @@ export default function Scene({ buildings, step, allSteps, onPick, cmd, shiftX, 
       })}
       <OrbitControls makeDefault target={TARGET.toArray()} enableDamping dampingFactor={0.08} minDistance={40} maxDistance={190} minPolarAngle={0.45} maxPolarAngle={1.18} />
       <CameraRig cmd={cmd} shiftX={shiftX} />
+      <ReadySignal onReady={onReady} />
     </Canvas>
   );
 }

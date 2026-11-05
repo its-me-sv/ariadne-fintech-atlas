@@ -7,6 +7,7 @@ import { KIND_COLOR, type Kind } from "../ui/kinds";
 import { Icon } from "../ui/icons";
 import { href, go, jurToken } from "../router";
 import { fmtDate } from "../ui/TopBar";
+import { TravelOverlay, useTravel } from "./Travel";
 
 const Scene = lazy(() => import("../world/Scene"));
 const Globe = lazy(() => import("../world/Globe"));
@@ -44,6 +45,10 @@ export default function Overview() {
   const [panelsHidden, setPanelsHidden] = useState(readHidden);
   const togglePanels = () => setPanelsHidden((h) => { saveHidden(!h); return !h; });
   const panelOpen = !!(selected || actor);
+  const travel = useTravel(scope, reduced);
+  // the canvas lags the scope while the travel overlay fades in over the old city
+  const sceneWorld = travel.sceneScope === "GLOBAL" ? null : worldFor(travel.sceneScope);
+  useEffect(() => { setCmd(null); }, [scope]);
   const [wide, setWide] = useState(() => innerWidth > 820);
   useEffect(() => { const on = () => setWide(innerWidth > 820); addEventListener("resize", on); return () => removeEventListener("resize", on); }, []);
 
@@ -91,9 +96,9 @@ export default function Overview() {
     });
   };
 
-  const step = world && stepN !== null ? world.steps[stepN] ?? null : null;
+  const step = world && stepN !== null && sceneWorld === world ? world.steps[stepN] ?? null : null;
   const stepData = scenario?.steps.find((s) => s.n === stepN);
-  const allSteps = world ? Object.values(world.steps) : [];
+  const allSteps = sceneWorld ? Object.values(sceneWorld.steps) : [];
   const shiftX = !wide ? 0 : panelOpen ? 150 : -40;
 
   return (
@@ -101,14 +106,18 @@ export default function Overview() {
       <h1 className="sr-only">{world ? `${JURS.find((j) => j.id === scope)?.label ?? scope} payment infrastructure` : "Global financial infrastructure"}</h1>
       <p className="sr-only">The 3D city is a visual summary. Every system in it can also be reached from search, the Rails, Rules and Sources table on wide screens, and the Graph and Compare pages. The trace controls below step through the same transaction.</p>
       <div className="ov-canvas" aria-hidden="true">
-        <Suspense fallback={<div className="loading">{world ? "Building the city" : "Drawing the globe"}</div>}>
-          {world ? (
-            <Scene buildings={world.buildings} step={step} allSteps={allSteps} onPick={onPick} cmd={cmd} shiftX={shiftX} reducedMotion={reduced} />
+        <Suspense fallback={travel.trip ? null : <div className="loading">{world ? "Building the city" : "Drawing the globe"}</div>}>
+          {sceneWorld ? (
+            <Scene key={sceneWorld.jur} buildings={sceneWorld.buildings} step={step} allSteps={allSteps} onPick={onPick} cmd={cmd} shiftX={shiftX} reducedMotion={reduced}
+              onReady={() => travel.ready(sceneWorld.jur)} />
           ) : (
             <Globe onPick={(j: Jur) => go("overview", jurToken(j))} cmd={cmd} reducedMotion={reduced} panelsHidden={panelsHidden} rightInset={panelOpen && wide ? 414 : 0} />
           )}
         </Suspense>
       </div>
+
+      {travel.trip && <TravelOverlay trip={travel.trip} reduced={reduced} onSkip={travel.skip} />}
+      <p className="sr-only" aria-live="polite">{travel.announce}</p>
 
       {kpis && (
         <section className={`ov-kpis ov-fade${panelsHidden ? " is-hidden" : ""}`} aria-label="Key figures" aria-hidden={panelsHidden || undefined}>

@@ -221,6 +221,49 @@ p { margin: 0; }
 .pn-card p { font-size: 14.5px; line-height: 1.55; color: var(--ink-2); margin: 0 0 12px; }
 .pn-card .pn-note { margin: 16px 0 0; padding: 10px 12px; border-radius: 12px; background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: 13.5px; }
 
+/* ---------- travel between market cities (transform and opacity animation only) ---------- */
+.travel { position: absolute; inset: 0; z-index: 18; overflow: hidden; cursor: pointer; opacity: 1; transition: opacity 0.15s ease; animation: tv-in 0.15s ease; }
+.travel.out { opacity: 0; pointer-events: none; transition-duration: 0.32s; }
+@keyframes tv-in { from { opacity: 0; } }
+.tv-plane { background: linear-gradient(180deg, #cfe3fb 0%, #e6e9fb 55%, #f6ecf6 100%); }
+.tv-ship { background: linear-gradient(180deg, #d6e8fb 0%, #eef1fb 52%, #eef1fb 100%); }
+.travel.reduced { background: var(--ground); }
+/* reduced motion: no travel art, just a 100ms + 100ms crossfade (opacity only, so it is kept) */
+.travel.reduced, .travel.reduced.out { transition: opacity 0.1s linear !important; animation: tv-in 0.1s linear !important; }
+.tv-scene { position: absolute; inset: 0; }
+.tv-track { position: absolute; inset: 0; width: 200%; animation: tv-drift linear infinite; will-change: transform; }
+@keyframes tv-drift { to { transform: translateX(-50%); } }
+.tv-cloud { position: absolute; height: auto; filter: drop-shadow(0 8px 10px rgba(80, 96, 170, 0.14)); }
+.tv-mover { position: absolute; }
+.tv-bob { position: relative; animation: tv-bob 2.4s ease-in-out infinite; }
+@keyframes tv-bob { 50% { transform: translateY(-10px); } }
+.tv-jet { left: 50%; top: 26%; width: min(300px, 34vw); margin-left: calc(min(300px, 34vw) / -2); animation: tv-glide 1.6s cubic-bezier(0.22, 0.8, 0.3, 1) both; }
+@keyframes tv-glide { from { transform: translateX(-62vw) rotate(-4deg); } 70% { transform: translateX(3vw) rotate(1deg); } to { transform: translateX(0) rotate(0); } }
+.tv-plane-svg { display: block; width: 100%; height: auto; position: relative; }
+.tv-trail { position: absolute; right: 86%; top: 47%; width: 46vw; height: 7px; border-radius: 99px; background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.95)); transform-origin: right center; animation: tv-trail 1.4s ease-in-out infinite; }
+.tv-trail.t2 { top: 58%; height: 5px; width: 34vw; animation-delay: 0.35s; }
+@keyframes tv-trail { 0%, 100% { opacity: 0.45; transform: scaleX(0.75); } 50% { opacity: 0.95; transform: scaleX(1); } }
+.tv-sea { position: absolute; left: 0; right: 0; bottom: 0; height: 300px; }
+.tv-wave { top: auto; }
+.tv-wave.front { z-index: 2; }
+.tv-wave svg { display: block; width: 100%; height: 100%; }
+.tv-ship .tv-mover { left: 50%; bottom: 178px; width: min(250px, 30vw); margin-left: calc(min(250px, 30vw) / -2); z-index: 1; animation: tv-sail 1.6s cubic-bezier(0.22, 0.8, 0.3, 1) both; }
+@keyframes tv-sail { from { transform: translateX(-58vw); } to { transform: translateX(0); } }
+.tv-rock { animation: tv-rock 2.2s ease-in-out infinite; transform-origin: 50% 90%; }
+@keyframes tv-rock { 0%, 100% { transform: translateY(0) rotate(-2.5deg); } 50% { transform: translateY(-8px) rotate(2.5deg); } }
+.tv-boat-svg { display: block; width: 100%; height: auto; position: relative; }
+.tv-wake { position: absolute; right: 84%; bottom: 26%; display: flex; gap: 10px; flex-direction: row-reverse; }
+.tv-wake i { width: 34px; height: 9px; border-radius: 99px; background: #ffffff; animation: tv-wake 1.2s ease-out infinite; }
+.tv-wake i:nth-child(2) { animation-delay: 0.3s; width: 26px; }
+.tv-wake i:nth-child(3) { animation-delay: 0.6s; width: 18px; }
+@keyframes tv-wake { from { opacity: 0.95; transform: translateX(0) scaleX(1); } to { opacity: 0; transform: translateX(-40px) scaleX(0.5); } }
+.tv-card { position: absolute; left: 50%; top: 54%; transform: translate(-50%, -50%); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 16px 24px 14px; border-radius: 18px; text-align: center; min-width: 260px; }
+.tv-ship .tv-card { top: 30%; }
+.tv-route { display: flex; align-items: center; gap: 12px; color: var(--ink-3); }
+.tv-route .flag-img, .tv-route .flag-chip { border-radius: 4px; }
+.tv-card b { font-size: 17px; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; }
+.tv-card small { font-size: 11.5px; color: var(--ink-3); font-weight: 600; }
+
 /* ---------- overview ---------- */
 .ov-canvas { position: absolute; inset: 0; z-index: 0; isolation: isolate; }
 .ov-canvas canvas { touch-action: none; }
