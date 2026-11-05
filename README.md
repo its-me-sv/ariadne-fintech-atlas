@@ -1,4 +1,6 @@
-# Fintech Infrastructure Atlas
+# Ariadne - Fintech Atlas
+
+Like Ariadne's thread through the Labyrinth, the traces follow a single payment through banks, switches and rules.
 
 A source-backed, explorable map of how money, messages, data and rules move through financial infrastructure in India, the UK, the US, the EU, Singapore and China, plus global layers (card networks, SWIFT, CLS, standards bodies) and CBDC work.
 
