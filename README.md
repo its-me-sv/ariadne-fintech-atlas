@@ -10,7 +10,7 @@ Every system, link and rule in the app comes from the evidence package in `evide
 
 | Route | View |
 | --- | --- |
-| `#overview-in`, `#overview-uk`, `#overview-us`, `#overview-eu`, `#overview-sg`, `#overview-cn`, `#overview-global` | 3D clay city per market with its hero transaction animated, or six islands for the global view |
+| `#overview-in`, `#overview-uk`, `#overview-us`, `#overview-eu`, `#overview-sg`, `#overview-cn`, `#overview-global` | 3D clay city per market with its hero transaction animated, or a clay globe with a pin per market for the global view |
 | `#traces`, `#trace-<scenario id>` | Step-by-step transaction traces with rules, sources and illustrative ledger entries |
 | `#graph-<market>` | Architecture graph (React Flow + ELK) filtered by flow type and kind of institution |
 | `#compare` | Market comparison matrix and rails side by side |
@@ -44,7 +44,7 @@ evidence/            research dataset (nodes, edges, rules, scenarios, claims, s
 scripts/build-data.ts  trims evidence/ into public/data/core.json and evidence.json (loaded at runtime)
 src/data/            types, Zustand store, indexes, search
 src/router.ts        hash routes
-src/world/           3D: worlds.ts (layouts and step maps), Scene.tsx (clay buildings, routes, vehicles), Islands.tsx
+src/world/           3D: worlds.ts (layouts and step maps), Scene.tsx (clay buildings, routes, vehicles), Globe.tsx (global view)
 src/views/           one file per view
 src/ui/              top bar, dock, detail panel, shared bits, kind colours
 tests/               vitest suites
@@ -73,7 +73,7 @@ Change `asOf` in `evidence/manifest.json` when the evidence date moves; the rule
 **A market (country).**
 1. Add its nodes, edges, rules and scenarios with the new jurisdiction code, and a coverage record in `evidence/coverage.json`.
 2. Add the code to `Jur` in `src/data/types.ts`, to `JURS` in `src/data/store.ts`, to `JUR_TOKENS` in `src/router.ts` and to `MARKETS` in `src/ui/bits.tsx`.
-3. For a 3D world, add an entry to `WORLDS` in `src/world/worlds.ts`: a hero `scenarioId`, `buildings` (each in one slot, pointing at a real `nodeId` or carrying actor text) and a `steps` map from scenario step number to the slots in focus and the `PATHS` routes to animate. Add an island in `src/world/Islands.tsx`.
+3. For a 3D world, add an entry to `WORLDS` in `src/world/worlds.ts`: a hero `scenarioId`, `buildings` (each in one slot, pointing at a real `nodeId` or carrying actor text) and a `steps` map from scenario step number to the slots in focus and the `PATHS` routes to animate. Add a pin (capital coordinates and colour) to `GLOBE_MARKETS` and its country ids to `COUNTRY_MARKET` in `src/world/Globe.tsx`.
 4. Run `npm test`.
 
 ## Copy rules

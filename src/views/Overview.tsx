@@ -9,7 +9,7 @@ import { href, go, jurToken } from "../router";
 import { fmtDate } from "../ui/TopBar";
 
 const Scene = lazy(() => import("../world/Scene"));
-const Islands = lazy(() => import("../world/Islands"));
+const Globe = lazy(() => import("../world/Globe"));
 
 const RAIL_TYPES = new Set(["rail", "rtgs", "ach", "instant_payment_system", "card_scheme"]);
 
@@ -91,11 +91,11 @@ export default function Overview() {
       <h1 className="sr-only">{world ? `${JURS.find((j) => j.id === scope)?.label ?? scope} payment infrastructure` : "Global financial infrastructure"}</h1>
       <p className="sr-only">The 3D city is a visual summary. Every system in it can also be reached from search, the Rails, Rules and Sources table on wide screens, and the Graph and Compare pages. The trace controls below step through the same transaction.</p>
       <div className="ov-canvas" aria-hidden="true">
-        <Suspense fallback={<div className="loading">Building the city</div>}>
+        <Suspense fallback={<div className="loading">{world ? "Building the city" : "Drawing the globe"}</div>}>
           {world ? (
             <Scene buildings={world.buildings} step={step} allSteps={allSteps} onPick={onPick} cmd={cmd} shiftX={shiftX} reducedMotion={reduced} />
           ) : (
-            <Islands onPick={(j: Jur) => go("overview", jurToken(j))} cmd={cmd} />
+            <Globe onPick={(j: Jur) => go("overview", jurToken(j))} cmd={cmd} reducedMotion={reduced} />
           )}
         </Suspense>
       </div>
