@@ -208,6 +208,15 @@ p { margin: 0; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 
+/* ---------- phone notice ---------- */
+.phone-notice { position: fixed; inset: 0; display: grid; place-items: center; padding: max(24px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(24px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: radial-gradient(120% 80% at 50% 0%, #f7f8fe 0%, var(--ground) 60%); overflow-y: auto; }
+.pn-card { max-width: 420px; width: 100%; background: #fff; border-radius: 22px; box-shadow: var(--shadow); padding: 28px 24px 24px; text-align: center; }
+.pn-logo { display: inline-flex; align-items: center; gap: 12px; text-align: left; margin-bottom: 20px; }
+.pn-logo .logo-text b { font-size: 22px; }
+.pn-card h1 { font-size: 21px; line-height: 1.25; font-weight: 800; letter-spacing: -0.01em; margin: 0 0 10px; color: var(--ink); }
+.pn-card p { font-size: 14.5px; line-height: 1.55; color: var(--ink-2); margin: 0 0 12px; }
+.pn-card .pn-note { margin: 16px 0 0; padding: 10px 12px; border-radius: 12px; background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: 13.5px; }
+
 /* ---------- overview ---------- */
 .ov-canvas { position: absolute; inset: 0; z-index: 0; isolation: isolate; }
 .ov-canvas canvas { touch-action: none; }

@@ -4,6 +4,7 @@ import { jurFromToken, useRoute, go } from "./router";
 import { TopBar } from "./ui/TopBar";
 import { Dock } from "./ui/Dock";
 import { DetailPanel } from "./ui/DetailPanel";
+import { PhoneNotice, useSmallScreen } from "./ui/PhoneNotice";
 
 const Overview = lazy(() => import("./views/Overview"));
 const Traces = lazy(() => import("./views/Traces"));
@@ -17,7 +18,8 @@ const Module = lazy(() => import("./views/Module"));
 export default function App() {
   const { load, core, error, setScope, select } = useAtlas();
   const route = useRoute();
-  useEffect(() => { load(); }, [load]);
+  const small = useSmallScreen();
+  useEffect(() => { if (!small) load(); }, [load, small]);
 
   // keep the scope in sync with jurisdiction-scoped routes, and open deep-linked nodes
   useEffect(() => {
@@ -30,6 +32,9 @@ export default function App() {
       go("overview", jur && ["in", "uk", "us", "eu", "ea", "sg", "cn"].includes(jur) ? (jur === "ea" ? "eu" : jur) : "global");
     }
   }, [route, core, setScope, select]);
+
+  // phones: show the notice before any view, so no 3D or graph code is requested
+  if (small) return <PhoneNotice />;
 
   let view = null;
   if (error) view = <div className="error glass"><h2>Data unavailable</h2><p className="muted" style={{ marginTop: 8 }}>{error}</p></div>;
