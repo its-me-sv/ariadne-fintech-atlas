@@ -31,6 +31,7 @@ const P: Record<string, ReactElement> = {
   van: <><path d="M2.5 7h11v8h-11zM13.5 10h4l3 3v2h-7z" /><circle cx="6.5" cy="16.5" r="1.8" /><circle cx="17" cy="16.5" r="1.8" /></>,
   rail: <><rect x="3.5" y="6" width="17" height="12" rx="3" /><path d="M7.5 10h2M7.5 14h2M12 10h4.5M12 14h4.5" /></>,
   layers: <><path d="m12 3 9 5-9 5-9-5z" /><path d="m3 13 9 5 9-5" /></>,
+  cube: <><path d="M12 2.8 20 7.4v9.2l-8 4.6-8-4.6V7.4z" /><path d="M4 7.4 12 12l8-4.6M12 12v9.2" /></>,
   globe: <><circle cx="12" cy="12" r="8.5" /><path d="M3.5 12h17M12 3.5c2.4 2.3 3.6 5.1 3.6 8.5s-1.2 6.2-3.6 8.5c-2.4-2.3-3.6-5.1-3.6-8.5s1.2-6.2 3.6-8.5z" /></>,
   link: <><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1" /><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" /></>,
 };

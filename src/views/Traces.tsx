@@ -5,6 +5,7 @@ import { go, href, useRoute } from "../router";
 import { WORLDS } from "../world/worlds";
 import { Icon } from "../ui/icons";
 import { Flag } from "../ui/Flag";
+import { filterTraces, has3dView } from "./traceFilter";
 import { fmtDate } from "../ui/TopBar";
 
 const MARKET_LABEL: Record<string, string> = {
@@ -22,10 +23,11 @@ export default function Traces() {
   const { core, idx } = useAtlas();
   const route = useRoute();
   const [filter, setFilter] = useState<string>("all");
+  const [only3d, setOnly3d] = useState(false);
   const scenarios = core?.scenarios ?? [];
   const current = (route.param && idx?.scenario.get(route.param)) || scenarios[0];
   const markets = useMemo(() => [...new Set(scenarios.map((s) => s.market ?? "GLOBAL"))], [scenarios]);
-  const shown = scenarios.filter((s) => filter === "all" || (s.market ?? "GLOBAL") === filter);
+  const shown = filterTraces(scenarios, filter, only3d);
 
   useEffect(() => { if (!route.param && current) history.replaceState(null, "", href("traces", current.id)); }, [route.param, current]);
   if (!current) return null;
@@ -40,12 +42,21 @@ export default function Traces() {
       </div>
       <div className="tr-layout">
         <nav className="tr-list glass" aria-label="Traces">
-          <div className="seg tr-filter">
-            <button aria-pressed={filter === "all"} onClick={() => setFilter("all")}>All <span className="faint num">{scenarios.length}</span></button>
-            {markets.map((m) => <button key={m} className="flag-btn" aria-pressed={filter === m} onClick={() => setFilter(m)} title={MARKET_LABEL[m] ?? m}><Flag code={m} />{m}</button>)}
+          <div className="tr-filters">
+            <div className="seg tr-filter">
+              <button aria-pressed={filter === "all"} onClick={() => setFilter("all")}>All <span className="faint num">{scenarios.length}</span></button>
+              {markets.map((m) => <button key={m} className="flag-btn" aria-pressed={filter === m} onClick={() => setFilter(m)} title={MARKET_LABEL[m] ?? m}><Flag code={m} />{m}</button>)}
+            </div>
+            <button className="toggle-chip" aria-pressed={only3d} onClick={() => setOnly3d((v) => !v)} title="Only traces you can watch in a 3D city">
+              <Icon name="cube" size={15} />Has 3D view
+            </button>
           </div>
+          {shown.length === 0 && (
+            <p className="tr-empty">{only3d ? "No traces with a 3D view for this filter. Try another market, or turn off Has 3D view." : "No traces for this filter yet."}</p>
+          )}
           {shown.map((s) => (
             <a key={s.id} href={href("traces", s.id)} className="tr-item" aria-current={s.id === current.id ? "page" : undefined}>
+              {has3dView(s.id) && <span className="tr-3d" title="Has a 3D view" aria-label="Has a 3D view" role="img"><Icon name="cube" size={13} /></span>}
               <b>{s.name.replace(/^HYPOTHETICAL (\w)/, (_m, c: string) => c.toUpperCase())}</b>
               <small>{MARKET_LABEL[s.market ?? "GLOBAL"] ?? s.market}, {s.steps.length} steps{label(s) ? `, ${label(s)!.toLowerCase()}` : ""}</small>
             </a>
