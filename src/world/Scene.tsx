@@ -403,13 +403,18 @@ const PIN_Y: Partial<Record<Slot, number>> = { cb: 11.3, payerBank: 11, payeeBan
 // ---------- camera ----------
 const TARGET = new THREE.Vector3(5, 0, -5);
 const HOME = new THREE.Vector3(TARGET.x - 66, 86, TARGET.z + 99);
-export function CameraRig({ cmd, shiftX, target = TARGET, home = HOME }: { cmd: CamCmd; shiftX: number; target?: THREE.Vector3; home?: THREE.Vector3 }) {
+export function CameraRig({ cmd, shiftX, shiftY, target = TARGET, home = HOME }: { cmd: CamCmd; shiftX: number; shiftY?: number; target?: THREE.Vector3; home?: THREE.Vector3 }) {
   const { camera, size } = useThree();
   const controls = useThree((s) => s.controls) as unknown as OrbitControlsImpl | null;
   const shift = useRef(shiftX);
+  const shiftV = useRef(shiftY ?? 0);
   useFrame((_, dt) => {
-    shift.current += (shiftX - shift.current) * Math.min(1, dt * 6);
-    (camera as THREE.PerspectiveCamera).setViewOffset(size.width, size.height, shift.current, size.width < 820 ? size.height * 0.08 : -size.height * 0.02, size.width, size.height);
+    const k = Math.min(1, dt * 6);
+    shift.current += (shiftX - shift.current) * k;
+    // shiftY (px) is optional; without it the city views keep their fixed vertical framing
+    if (shiftY !== undefined) shiftV.current += (shiftY - shiftV.current) * k;
+    const y = shiftY !== undefined ? shiftV.current : size.width < 820 ? size.height * 0.08 : -size.height * 0.02;
+    (camera as THREE.PerspectiveCamera).setViewOffset(size.width, size.height, shift.current, y, size.width, size.height);
   });
   useEffect(() => {
     if (!cmd || !controls) return;

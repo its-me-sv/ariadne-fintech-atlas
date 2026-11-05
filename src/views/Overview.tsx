@@ -105,7 +105,7 @@ export default function Overview() {
           {world ? (
             <Scene buildings={world.buildings} step={step} allSteps={allSteps} onPick={onPick} cmd={cmd} shiftX={shiftX} reducedMotion={reduced} />
           ) : (
-            <Globe onPick={(j: Jur) => go("overview", jurToken(j))} cmd={cmd} reducedMotion={reduced} />
+            <Globe onPick={(j: Jur) => go("overview", jurToken(j))} cmd={cmd} reducedMotion={reduced} panelsHidden={panelsHidden} rightInset={panelOpen && wide ? 414 : 0} />
           )}
         </Suspense>
       </div>
@@ -118,11 +118,11 @@ export default function Overview() {
         </section>
       )}
 
-      <div className="ov-legend glass" aria-label="Flow legend">
+      {world && <div className="ov-legend glass" aria-label="Flow legend">
         {(["value", "message", "data", "control"] as const).map((f) => (
           <span key={f}><i className={`lg lg-${f}`} style={{ borderColor: FLOW_COLOR[f] }} />{f === "value" ? "Money settles" : f === "message" ? "Payment message" : f === "data" ? "Data or check" : "Control"}</span>
         ))}
-      </div>
+      </div>}
 
       <div className={`ov-mapctl glass${panelOpen ? " shifted" : ""}`} role="toolbar" aria-label="Map controls">
         <button aria-label="Zoom in" onClick={() => setCmd({ type: "in", n: Date.now() })}><Icon name="plus" size={18} /></button>

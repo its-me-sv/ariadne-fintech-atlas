@@ -100,7 +100,7 @@ function buildIndexes(core: Core): Indexes {
 export const useAtlas = create<State>((set, get) => ({
   core: null, idx: null, claims: null, sources: null, claimsBySubject: null, error: null, selected: null,
   select: (id) => set({ selected: id, actor: null }),
-  scope: "IN",
+  scope: "GLOBAL",
   setScope: (j) => set({ scope: j }),
   actor: null,
   showActor: (a) => set({ actor: a, selected: null }),

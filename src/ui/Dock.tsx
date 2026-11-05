@@ -24,7 +24,7 @@ export function Dock() {
   return (
     <nav className="dock" aria-label="Views">
       {MAIN.map((m) => (
-        <a key={m.view} href={href(m.view, m.scoped ? jurToken(scope) : null)} aria-current={route.view === m.view ? "page" : undefined}>
+        <a key={m.view} href={href(m.view, m.view === "overview" ? "global" : m.scoped ? jurToken(scope) : null)} aria-current={route.view === m.view ? "page" : undefined}>
           <Icon name={m.icon} size={20} />{m.label}
         </a>
       ))}

@@ -15,7 +15,7 @@ Every system, link and rule in the app comes from the evidence package in `evide
 | Route | View |
 | --- | --- |
 | `#overview-in`, `#overview-uk`, `#overview-us`, `#overview-eu`, `#overview-sg`, `#overview-cn` | 3D clay city per market with its hero transaction animated |
-| `#overview-global` | Clay globe with the six markets highlighted and a pin at each financial capital; select a pin or country to fly into its city |
+| `#overview-global` (default; an empty or unknown hash opens it) | Clay globe with the six markets highlighted and a pin at each financial capital; select a pin or country to fly into its city |
 | `#traces`, `#trace-<scenario id>` | Step-by-step transaction traces with rules, sources and illustrative ledger entries; filter by market or by traces that have a 3D view |
 | `#graph-<market>` | Architecture graph (React Flow + ELK) filtered by flow type and kind of institution |
 | `#compare` | Market comparison matrix and rails side by side |

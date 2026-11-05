@@ -11,12 +11,12 @@ const JUR_TOKENS: Record<string, Jur> = { global: "GLOBAL", in: "IN", uk: "UK", 
 
 export function parseHash(h: string): Route {
   const t = h.replace(/^#/, "").trim();
-  if (!t) return { view: "overview", param: "in" };
+  if (!t) return { view: "overview", param: "global" };
   if (t.startsWith("trace-")) return { view: "traces", param: t.slice(6) };
   const i = t.indexOf("-");
   const head = (i < 0 ? t : t.slice(0, i)) as View;
   const rest = i < 0 ? null : t.slice(i + 1);
-  if (!VIEWS.includes(head)) return { view: "overview", param: "in" };
+  if (!VIEWS.includes(head)) return { view: "overview", param: "global" };
   return { view: head, param: rest };
 }
 
