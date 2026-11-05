@@ -13,6 +13,7 @@ import { useAtlas, inJur } from "../data/store";
 import type { Jur } from "../data/types";
 import { CameraRig, tint } from "./Scene";
 import type { CamCmd } from "./flow";
+import { Flag } from "../ui/Flag";
 
 type Market = Exclude<Jur, "GLOBAL">;
 
@@ -150,7 +151,7 @@ function Pin({ m, count, hot, onPick, onHover }: {
       <Html position={[0, 3.2, 0]} center zIndexRange={[5, 0]}>
         <div ref={label} className={`tag3d globe-tag${hot ? " sel" : ""}`} style={{ transition: "opacity 0.25s" }}
           onPointerEnter={() => onHover(m.jur)} onPointerLeave={() => onHover(null)} onClick={() => onPick(m.jur)}>
-          <b>{m.name}</b>
+          <b><Flag code={m.jur} />{m.name}</b>
           <span className="num">{count} systems</span>
         </div>
       </Html>

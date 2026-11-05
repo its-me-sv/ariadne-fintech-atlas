@@ -4,6 +4,7 @@ import type { AtlasNode } from "../data/types";
 import { useRoute, href } from "../router";
 import { NodeChip, Section, StatusPill } from "../ui/bits";
 import { KIND_LABEL, kindOf, type Kind } from "../ui/kinds";
+import { Where } from "../ui/Flag";
 
 const MODULES: Record<string, { key: string; title: string; lead: string }> = {
   cbdc: { key: "cbdc", title: "Central bank digital currency", lead: "CBDCs and tokenised central bank money, kept apart from deposits, e-money and stablecoins. Status labels follow the sources: production, pilot, design phase, research, concluded or prohibited." },
@@ -72,7 +73,7 @@ export default function Module() {
         <div className="tbl-wrap glass">
           <table className="tbl">
             <thead><tr><th>Instrument</th><th>Type</th><th>Where</th><th>Status</th></tr></thead>
-            <tbody>{data.rules.map((r) => <tr key={r.id}><td><RuleLink id={r.id} name={r.canonicalName} /></td><td>{prettyType(r.instrumentType ?? "rule")}</td><td>{(r.jurisdictions ?? []).join(", ")}</td><td><StatusPill status={r.effectiveStatus} /></td></tr>)}</tbody>
+            <tbody>{data.rules.map((r) => <tr key={r.id}><td><RuleLink id={r.id} name={r.canonicalName} /></td><td>{prettyType(r.instrumentType ?? "rule")}</td><td><Where codes={r.jurisdictions} /></td><td><StatusPill status={r.effectiveStatus} /></td></tr>)}</tbody>
           </table>
         </div>
       </Section>
@@ -95,7 +96,7 @@ function CbdcTables({ nodes }: { nodes: AtlasNode[] }) {
         <div className="tbl-wrap glass">
           <table className="tbl">
             <thead><tr><th>CBDC</th><th>Where</th><th>Status</th><th>What it is</th></tr></thead>
-            <tbody>{cbdcs.map((n) => <tr key={n.id}><td><NodeChip n={n} showStatus={false} label={n.canonicalName} /></td><td>{(n.jurisdictions ?? []).join(", ")}</td><td><StatusPill status={n.status} /></td><td>{n.purpose}</td></tr>)}</tbody>
+            <tbody>{cbdcs.map((n) => <tr key={n.id}><td><NodeChip n={n} showStatus={false} label={n.canonicalName} /></td><td><Where codes={n.jurisdictions} /></td><td><StatusPill status={n.status} /></td><td>{n.purpose}</td></tr>)}</tbody>
           </table>
         </div>
       </Section>

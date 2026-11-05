@@ -1,6 +1,7 @@
 import { useAtlas } from "../data/store";
 import type { AtlasNode } from "../data/types";
 import { MARKETS, NodeChip, Section, StatusPill, splitLabelled, nodesIn } from "../ui/bits";
+import { Flag } from "../ui/Flag";
 
 const ORDER = [
   "global-money-cash", "global-money-reserves", "global-money-retail-cbdc", "global-money-wholesale-cbdc",
@@ -81,7 +82,7 @@ export default function Money() {
         <div className="cards">
           {MARKETS.map((m) => nodesIn(core.nodes, m.id, ["cbdc"]).map((n) => (
             <article key={n.id} className="card mcard">
-              <div className="mcard-h"><b className="mk">{m.label}</b><StatusPill status={n.status} /></div>
+              <div className="mcard-h"><b className="mk"><Flag code={m.id} />{m.label}</b><StatusPill status={n.status} /></div>
               <NodeChip n={n} showStatus={false} label={n.canonicalName} />
               {n.purpose && <p>{n.purpose}</p>}
             </article>

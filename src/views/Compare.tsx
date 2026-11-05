@@ -4,6 +4,7 @@ import type { AtlasNode } from "../data/types";
 import { MARKETS, NodeChip, Section, StatusPill, nodesIn } from "../ui/bits";
 import { WORLDS } from "../world/worlds";
 import { href } from "../router";
+import { Flag } from "../ui/Flag";
 
 const ROWS: { label: string; hint: string; types: string[]; filter?: (n: AtlasNode) => boolean }[] = [
   { label: "Central bank", hint: "Issues reserves and runs or oversees the RTGS", types: ["central_bank"] },
@@ -50,7 +51,7 @@ export default function Compare() {
       <div className="tbl-wrap glass cmp-wrap">
         <table className="cmp">
           <thead>
-            <tr><th scope="col" className="cmp-k">Building block</th>{MARKETS.map((m) => <th scope="col" key={m.id}><a href={href("overview", m.id.toLowerCase())}>{m.label}</a></th>)}</tr>
+            <tr><th scope="col" className="cmp-k">Building block</th>{MARKETS.map((m) => <th scope="col" key={m.id}><a className="cmp-h" href={href("overview", m.id.toLowerCase())}><Flag code={m.id} />{m.label}</a></th>)}</tr>
           </thead>
           <tbody>
             {ROWS.map((r) => (

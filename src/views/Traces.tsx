@@ -4,6 +4,7 @@ import type { Scenario, ScenarioStep } from "../data/types";
 import { go, href, useRoute } from "../router";
 import { WORLDS } from "../world/worlds";
 import { Icon } from "../ui/icons";
+import { Flag } from "../ui/Flag";
 import { fmtDate } from "../ui/TopBar";
 
 const MARKET_LABEL: Record<string, string> = {
@@ -41,7 +42,7 @@ export default function Traces() {
         <nav className="tr-list glass" aria-label="Traces">
           <div className="seg tr-filter">
             <button aria-pressed={filter === "all"} onClick={() => setFilter("all")}>All <span className="faint num">{scenarios.length}</span></button>
-            {markets.map((m) => <button key={m} aria-pressed={filter === m} onClick={() => setFilter(m)}>{m}</button>)}
+            {markets.map((m) => <button key={m} className="flag-btn" aria-pressed={filter === m} onClick={() => setFilter(m)} title={MARKET_LABEL[m] ?? m}><Flag code={m} />{m}</button>)}
           </div>
           {shown.map((s) => (
             <a key={s.id} href={href("traces", s.id)} className="tr-item" aria-current={s.id === current.id ? "page" : undefined}>
@@ -79,7 +80,7 @@ function TraceBody({ s }: { s: Scenario }) {
     <article className="tr-body">
       <header className="tr-title glass">
         <div className="tr-badges">
-          <span className="pill t-muted">{MARKET_LABEL[s.market ?? "GLOBAL"] ?? s.market}</span>
+          <span className="pill t-muted pill-flag"><Flag code={s.market ?? "GLOBAL"} />{MARKET_LABEL[s.market ?? "GLOBAL"] ?? s.market}</span>
           <span className="pill t-muted">{MODULE_LABEL[s.module ?? "core"] ?? s.module}</span>
           {tag && <span className={`pill ${tag === "Hypothetical" ? "t-warn" : "t-info"}`}>{tag}</span>}
           <span className="pill t-muted num">{s.steps.length} steps</span>

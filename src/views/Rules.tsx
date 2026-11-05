@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { useAtlas, prettyType, prettyStatus } from "../data/store";
 import { Section, StatusPill } from "../ui/bits";
 import { fmtDate } from "../ui/TopBar";
+import { Where } from "../ui/Flag";
 
 const BINDING: Record<string, string> = {
   binding_law: "Binding law", binding_scheme_rule: "Scheme rule", mandatory_standard_by_reference: "Standard made mandatory",
@@ -99,7 +100,7 @@ export default function Rules() {
                   <td><button className="linklike-plain" onClick={() => select(r.id)}><b>{r.canonicalName}</b></button>{r.version && <small className="faint"> {r.version}</small>}</td>
                   <td>{prettyType(r.instrumentType ?? "rule")}</td>
                   <td>{r.issuer ?? <span className="faint">Not stated</span>}</td>
-                  <td>{(r.jurisdictions ?? []).join(", ")}</td>
+                  <td><Where codes={r.jurisdictions} /></td>
                   <td>{BINDING[r.bindingLevel ?? ""] ?? (r.bindingLevel ?? "").replace(/_/g, " ")}</td>
                   <td><StatusPill status={r.effectiveStatus} /></td>
                   <td className="num">{r.dates?.effective ? fmtDate(r.dates.effective) : <span className="faint">Not stated</span>}</td>

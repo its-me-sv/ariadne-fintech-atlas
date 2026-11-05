@@ -3,6 +3,7 @@ import { useAtlas, inJur } from "../data/store";
 import type { AtlasNode, AtlasRule, Jur } from "../data/types";
 import { go, useRoute } from "../router";
 import { MARKETS, NodeChip, StatusPill } from "../ui/bits";
+import { Flag } from "../ui/Flag";
 
 // Editorial guide: which building blocks each product needs. The items listed under each block come
 // from the dataset by keyword and type match, so they are pointers to check, not legal advice.
@@ -115,7 +116,7 @@ export default function Blueprint() {
           {PRODUCTS.map((p) => <button key={p.id} aria-pressed={p.id === product.id} onClick={() => go("blueprint", p.id)}>{p.name}</button>)}
         </div>
         <div className="seg" role="group" aria-label="Market">
-          {MARKETS.map((m) => <button key={m.id} aria-pressed={m.id === market} onClick={() => setMarket(m.id)}>{m.short}</button>)}
+          {MARKETS.map((m) => <button key={m.id} className="flag-btn" aria-pressed={m.id === market} onClick={() => setMarket(m.id)}><Flag code={m.id} />{m.short}</button>)}
         </div>
       </div>
       <p className="bp-line"><b>{product.name}:</b> {product.line}</p>
