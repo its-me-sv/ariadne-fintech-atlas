@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import type { Jur } from "./data/types";
 
-// Routes are plain hash tokens (letters, digits, - . _), because the artifact host only passes
-// those through shared links. Examples: #overview-in, #graph-uk, #trace-scn-uk-fps-sip, #node-in-upi.
+// Routes are plain hash tokens (letters, digits, - . _), so they work on any static host without
+// server rewrites and survive being shared or pasted anywhere. Examples: #overview-in, #graph-uk,
+// #trace-scn-uk-fps-sip, #node-in-upi.
 export type View = "home" | "overview" | "graph" | "traces" | "compare" | "rules" | "money" | "blueprint" | "module" | "node";
 export interface Route { view: View; param: string | null }
 

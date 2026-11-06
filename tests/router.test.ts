@@ -22,7 +22,7 @@ describe("hash routes", () => {
     expect(parseHash("#compare")).toEqual({ view: "compare", param: null });
     expect(href("home")).toBe("#home");
   });
-  it("only produces tokens the artifact host passes through", () => {
+  it("only produces plain tokens that survive any host and any shared link", () => {
     for (const h of [href("traces", "scn-in-erupee-cbdc-qr-vs-upi-qr"), href("overview", "eu"), href("module", "cbdc"), href("blueprint", "neobank")])
       expect(h).toMatch(/^#[A-Za-z0-9._~-]+$/);
   });
