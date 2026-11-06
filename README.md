@@ -212,7 +212,7 @@ Node 20 or newer.
 npm ci
 npm run dev        # generates public/data first, then serves http://localhost:5173
 npm run build      # data, type check, production build into dist/
-npm test           # vitest: world integrity, routes, flags, traces filter, travel modes, copy rules
+npm test           # vitest: evidence schema, world integrity, routes, flags, traces filter, travel modes, home page, copy rules
 ```
 
 `npm run build` writes `dist/`, a plain static site you can deploy anywhere. Optionally, `npm run build:artifact` also writes `artifact/`, the same build with the page skeleton stripped, for hosts that supply their own.
