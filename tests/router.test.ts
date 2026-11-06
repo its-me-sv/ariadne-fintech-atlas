@@ -9,11 +9,18 @@ describe("hash routes", () => {
     expect(parseHash("#rules")).toEqual({ view: "rules", param: null });
     expect(parseHash("#node-in-upi")).toEqual({ view: "node", param: "in-upi" });
   });
-  it("falls back to the global overview", () => {
-    expect(parseHash("")).toEqual({ view: "overview", param: "global" });
-    expect(parseHash("#")).toEqual({ view: "overview", param: "global" });
-    expect(parseHash("#nonsense")).toEqual({ view: "overview", param: "global" });
-    expect(parseHash("#nonsense-in")).toEqual({ view: "overview", param: "global" });
+  it("falls back to the home page", () => {
+    expect(parseHash("")).toEqual({ view: "home", param: null });
+    expect(parseHash("#")).toEqual({ view: "home", param: null });
+    expect(parseHash("#home")).toEqual({ view: "home", param: null });
+    expect(parseHash("#nonsense")).toEqual({ view: "home", param: null });
+    expect(parseHash("#nonsense-in")).toEqual({ view: "home", param: null });
+  });
+  it("keeps deep links working", () => {
+    expect(parseHash("#overview-global")).toEqual({ view: "overview", param: "global" });
+    expect(parseHash("#overview-sg")).toEqual({ view: "overview", param: "sg" });
+    expect(parseHash("#compare")).toEqual({ view: "compare", param: null });
+    expect(href("home")).toBe("#home");
   });
   it("only produces tokens the artifact host passes through", () => {
     for (const h of [href("traces", "scn-in-erupee-cbdc-qr-vs-upi-qr"), href("overview", "eu"), href("module", "cbdc"), href("blueprint", "neobank")])

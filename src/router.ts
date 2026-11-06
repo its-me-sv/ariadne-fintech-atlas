@@ -3,20 +3,20 @@ import type { Jur } from "./data/types";
 
 // Routes are plain hash tokens (letters, digits, - . _), because the artifact host only passes
 // those through shared links. Examples: #overview-in, #graph-uk, #trace-scn-uk-fps-sip, #node-in-upi.
-export type View = "overview" | "graph" | "traces" | "compare" | "rules" | "money" | "blueprint" | "module" | "node";
+export type View = "home" | "overview" | "graph" | "traces" | "compare" | "rules" | "money" | "blueprint" | "module" | "node";
 export interface Route { view: View; param: string | null }
 
-const VIEWS: View[] = ["overview", "graph", "traces", "compare", "rules", "money", "blueprint", "module", "node"];
+const VIEWS: View[] = ["home", "overview", "graph", "traces", "compare", "rules", "money", "blueprint", "module", "node"];
 const JUR_TOKENS: Record<string, Jur> = { global: "GLOBAL", in: "IN", uk: "UK", us: "US", eu: "EU", sg: "SG", cn: "CN" };
 
 export function parseHash(h: string): Route {
   const t = h.replace(/^#/, "").trim();
-  if (!t) return { view: "overview", param: "global" };
+  if (!t) return { view: "home", param: null };
   if (t.startsWith("trace-")) return { view: "traces", param: t.slice(6) };
   const i = t.indexOf("-");
   const head = (i < 0 ? t : t.slice(0, i)) as View;
   const rest = i < 0 ? null : t.slice(i + 1);
-  if (!VIEWS.includes(head)) return { view: "overview", param: "global" };
+  if (!VIEWS.includes(head)) return { view: "home", param: null };
   return { view: head, param: rest };
 }
 

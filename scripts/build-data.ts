@@ -56,5 +56,14 @@ const core = {
 };
 writeFileSync(join(OUT, "core.json"), JSON.stringify(core));
 writeFileSync(join(OUT, "evidence.json"), JSON.stringify({ claims, sources }));
+// tiny summary for the home page, so it never has to download core.json just to show the numbers
+const stats = {
+  asOf: core.asOf,
+  systems: (nodes as Array<{ stub?: boolean }>).filter((n) => !n.stub).length,
+  rules: rules.length,
+  sources: sources.length,
+  traces: scenarios.length,
+};
+writeFileSync(join(OUT, "stats.json"), JSON.stringify(stats));
 const kb = (f: string) => Math.round(readFileSync(join(OUT, f)).length / 1024);
 console.log(`data: core.json ${kb("core.json")} KB, evidence.json ${kb("evidence.json")} KB; nodes ${nodes.length}, edges ${edges.length}, rules ${rules.length}, scenarios ${scenarios.length}, claims ${claims.length}, sources ${sources.length}`);

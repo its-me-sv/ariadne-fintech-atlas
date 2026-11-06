@@ -47,7 +47,7 @@ export function TopBar() {
 
   return (
     <header className="topbar">
-      <a className="logo" href={href("overview", jurToken(scope))} aria-label="Ariadne, Fintech Atlas home">
+      <a className="logo" href={href("home")} aria-label="Ariadne, Fintech Atlas home">
         <LogoMark />
         <span className="logo-text"><b>Ariadne</b><small>Fintech Atlas</small></span>
       </a>

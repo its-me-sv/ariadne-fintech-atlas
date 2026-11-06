@@ -14,11 +14,12 @@
 
 [Ariadne](https://en.wikipedia.org/wiki/Ariadne) is an interactive atlas of the systems behind everyday payments: the banks, central banks, payment rails, card schemes, regulators and rules that sit between "Pay" and "Paid". You can spin a globe, step into a 3D city for each of six markets, and follow one transaction from the payer's app to final settlement, with every claim linked to its source. It is for students, product people, engineers, policy readers and anyone curious about how money moves. The name comes from the myth: like Ariadne's thread through the Labyrinth, the traces follow one payment through banks, switches and rules.
 
-For education and research, not legal or financial advice. Evidence as of 15 October 2026. Built for laptop and desktop screens.
+For education and research, not legal or financial advice. Evidence as of 15 October 2026. The home page works on phones; the atlas itself is built for laptop and desktop screens.
 
 ## Contents
 
 - [Take the tour](#take-the-tour)
+  - [Home page](#home-page)
   - [Globe](#globe)
   - [Market cities and live traces](#market-cities-and-live-traces)
   - [Evidence behind every item](#evidence-behind-every-item)
@@ -40,6 +41,12 @@ For education and research, not legal or financial advice. Evidence as of 15 Oct
 - [Acknowledgements](#acknowledgements)
 
 ## Take the tour
+
+### Home page
+
+![The Ariadne home page: the emblem, the title in classical capitals, a gold thread drawn through a seven-circuit labyrinth, and the atlas numbers below](docs/screenshots/00-home.png)
+
+The front door. It tells the story of Ariadne's thread, explains why the project borrows it, shares a little thread trivia with links to the sources, and leads into each part of the atlas. It is the one page that also works on phones.
 
 ### Globe
 
@@ -174,13 +181,15 @@ The other 3 traces are cross-border, from the UK to India.
 - **Close** the detail panel or the search results with `Escape`.
 - **On a city**, use the map controls to zoom, rotate and reset the view, and the eye button to hide or show the panels.
 - **On a trace**, use the arrow keys (or `j` and `k`) to move between steps.
-- **Laptop or PC only.** On phones the app shows a short notice asking you to open the same link on a larger screen.
+- **Home page on any screen, atlas on laptop or PC.** The home page works on phones. The atlas views show a short notice on phones asking you to open the same link on a larger screen.
+- **Back to the start**: the Ariadne logo in the top bar opens the home page.
 
 Every view has a link you can share:
 
 | Route | View |
 | --- | --- |
-| `#overview-global` (default; an empty or unknown link opens it) | Clay globe with the six markets highlighted and a pin at each financial capital |
+| `#home` (default; an empty or unknown link opens it) | Home page: the story of the name, the atlas in numbers and a way into each view |
+| `#overview-global` | Clay globe with the six markets highlighted and a pin at each financial capital |
 | `#overview-in`, `#overview-uk`, `#overview-us`, `#overview-eu`, `#overview-sg`, `#overview-cn` | 3D clay city per market with its hero transaction animated |
 | `#traces`, `#trace-<scenario id>` | Step-by-step transaction traces with rules, sources and illustrative ledger entries |
 | `#graph-<market>` | Architecture graph filtered by flow type and kind of institution |
@@ -258,7 +267,8 @@ docs/screenshots/      images used in this README
 - **Lazy chunks.** The first load is React, the store and the shell. Each view is its own chunk. three.js loads only on the 3D overview, d3-geo and the world map data only on the globe, and React Flow only on the graph.
 - **Graph layout.** ELK runs in a Web Worker with results cached per filter set, so large graphs never freeze the page.
 - **3D performance.** City scenes drop to 1x resolution on devices that cannot hold a smooth frame rate.
-- **Phones.** The phone notice renders before any view, so phones never request the 3D or graph code.
+- **Home page.** Its chunk imports no 3D, graph or map code (a test walks its import graph to enforce this). It reads its numbers from a tiny `public/data/stats.json` written by the data build, so phones never download the full dataset. On laptops, once the browser is idle it prefetches the Overview chunk and the atlas data, and hovering or focusing a way into the atlas fetches the chunk at once, so entering feels instant.
+- **Phones.** The home page works on phones. For every atlas view, the phone notice renders before the view, so phones never request the 3D or graph code.
 - **Routes.** Plain hash tokens, so the app runs from any static host or subpath without server rewrites.
 
 ## Updating the data and extending the atlas

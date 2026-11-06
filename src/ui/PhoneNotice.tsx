@@ -25,6 +25,7 @@ export function PhoneNotice() {
         <h1>Ariadne works best on a laptop or PC</h1>
         <p>It is an explorable, source-backed map of how payments, messages and rules move through banks, switches and regulators in six markets, with 3D cities and step-by-step traces.</p>
         <p className="pn-note">Open this same link on a larger screen to explore it.</p>
+        <a className="pn-home" href="#home">Read about Ariadne</a>
       </div>
     </main>
   );

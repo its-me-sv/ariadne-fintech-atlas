@@ -6,6 +6,7 @@ import { Dock } from "./ui/Dock";
 import { DetailPanel } from "./ui/DetailPanel";
 import { PhoneNotice, useSmallScreen } from "./ui/PhoneNotice";
 
+const Home = lazy(() => import("./views/Home"));
 const Overview = lazy(() => import("./views/Overview"));
 const Traces = lazy(() => import("./views/Traces"));
 const Graph = lazy(() => import("./views/Graph"));
@@ -19,7 +20,16 @@ export default function App() {
   const { load, core, error, setScope, select } = useAtlas();
   const route = useRoute();
   const small = useSmallScreen();
-  useEffect(() => { if (!small) load(); }, [load, small]);
+  const home = route.view === "home";
+  useEffect(() => {
+    if (small) return;
+    if (!home) { load(); return; }
+    // on the home page, fetch the atlas data once the browser is idle, so entering the atlas is instant
+    const run = () => load();
+    if ("requestIdleCallback" in window) { const id = requestIdleCallback(run, { timeout: 4000 }); return () => cancelIdleCallback(id); }
+    const id = setTimeout(run, 2000);
+    return () => clearTimeout(id);
+  }, [load, small, home]);
 
   // keep the scope in sync with jurisdiction-scoped routes, and open deep-linked nodes
   useEffect(() => {
@@ -33,7 +43,9 @@ export default function App() {
     }
   }, [route, core, setScope, select]);
 
-  // phones: show the notice before any view, so no 3D or graph code is requested
+  // the home page works everywhere and has no atlas chrome
+  if (home) return <Suspense fallback={<div className="home-loading" />}><Home /></Suspense>;
+  // phones: show the notice before any atlas view, so no 3D or graph code is requested
   if (small) return <PhoneNotice />;
 
   let view = null;
