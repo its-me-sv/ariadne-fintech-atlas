@@ -96,6 +96,14 @@
 .hm-card-link { transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s; }
 .hm-card-link:hover { transform: translateY(-2px); border-color: rgba(31, 158, 158, 0.5); box-shadow: 0 10px 22px rgba(18, 42, 42, 0.09); }
 
+/* "Why I built this": a short signed note */
+.hm-letter { max-width: 40em; margin: 0 auto; padding: 24px 28px; background: var(--card); border: 1px solid var(--card-line); border-left: 3px solid var(--teal); border-radius: 14px; box-shadow: var(--card-shadow); }
+.hm-letter p { font-size: 16.5px; line-height: 1.75; color: var(--ink-h); margin: 0 0 14px; }
+.hm-sign { display: flex; align-items: center; gap: 10px; margin: 20px 0 0 !important; font-family: var(--serif); font-weight: 700; font-size: 17px; letter-spacing: 0.03em; }
+.hm-sign img { width: 36px; height: 36px; border-radius: 50%; box-shadow: 0 0 0 1px rgba(31, 158, 158, 0.35); }
+.hm-sign a { text-decoration: none; }
+.hm-sign a:hover { text-decoration: underline; }
+
 /* footer */
 .hm-footer { padding: 18px 20px 40px; text-align: center; font-size: 13.5px; line-height: 1.7; color: var(--ink-h2); }
 .hm-footer .hm-meander { margin-bottom: 18px; }
@@ -118,6 +126,8 @@
   .hm-numbers { grid-template-columns: repeat(3, 1fr); row-gap: 18px; }
   .hm-sec { padding: 36px 16px; }
   .hm-prose { font-size: 16px; text-align: left; }
+  .hm-letter { padding: 20px 18px; }
+  .hm-letter p { font-size: 16px; }
   .hm-map li { grid-template-columns: 44px 1fr; }
   .hm-map li > span:last-child { grid-column: 2; }
   .hm-cards.views { grid-template-columns: 1fr; }

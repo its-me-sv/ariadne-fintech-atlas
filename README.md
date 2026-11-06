@@ -18,6 +18,7 @@ For education and research, not legal or financial advice. Evidence as of 15 Oct
 
 ## Contents
 
+- [Why I built this](#why-i-built-this)
 - [Take the tour](#take-the-tour)
   - [Home page](#home-page)
   - [Globe](#globe)
@@ -39,6 +40,20 @@ For education and research, not legal or financial advice. Evidence as of 15 Oct
 - [Corrections and contributions](#corrections-and-contributions)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
+
+## Why I built this
+
+I love fintech. I've built products on it, like [Payzer](https://surajvijay.hashnode.dev/everything-about-project-payzer-1) and [Zeyphr](https://github.com/SriranganK/zeyphr-frontend), and now I'm working my way into the core of it: how money actually moves between banks, switches and central banks, who settles with whom, which rules apply, and the standards underneath, down to ISO 20022 message level.
+
+Learning that meant piecing together central bank sites, scheme rulebooks, standards documents and countless articles, each covering one corner. Ariadne puts that map in one place, with every fact linked to its source.
+
+It's for anyone on the same path:
+
+- **Learn** how payment systems, rules, money types and CBDCs fit together across six markets.
+- **Compare** how different countries solve the same problem.
+- **Build** something new. A broad view of what already exists often reveals gaps and connections that are easy to miss when the knowledge is split across the internet.
+
+[Suraj Vijayan](https://www.linkedin.com/in/suraj-vijay-32b679224/)
 
 ## Take the tour
 

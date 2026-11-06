@@ -18,6 +18,9 @@ import "./home.css";
 export const REPO_URL = "https://github.com/its-me-sv/ariadne-fintech-atlas";
 const WIKI = "https://en.wikipedia.org/wiki/";
 const ICON = `${import.meta.env.BASE_URL}icon-512.png`;
+const LINKEDIN_URL = "https://www.linkedin.com/in/suraj-vijay-32b679224/";
+const PAYZER_URL = "https://surajvijay.hashnode.dev/everything-about-project-payzer-1";
+const ZEYPHR_URL = "https://github.com/SriranganK/zeyphr-frontend";
 
 interface Stats {
   systems: number;
@@ -421,6 +424,37 @@ export default function Home() {
               <span>You, finding your way in and back out again.</span>
             </li>
           </ul>
+        </section>
+
+        <Meander />
+
+        <section className="hm-sec" aria-labelledby="hm-built">
+          <h2 id="hm-built">Why I built this</h2>
+          <article className="hm-letter">
+            <p>
+              I love fintech. I've built products on it, like{" "}
+              <External href={PAYZER_URL}>Payzer</External> and{" "}
+              <External href={ZEYPHR_URL}>Zeyphr</External>, and now I want to
+              understand the core: how money actually moves, who settles with
+              whom, which rules apply, right down to the standards underneath,
+              like ISO 20022.
+            </p>
+            <p>
+              That picture is scattered across central bank sites, scheme
+              rulebooks, standards documents and countless articles. So I mapped
+              it in one place.
+            </p>
+            <p>
+              Ariadne is for anyone on the same path. Use it to learn how the
+              pieces fit together, or to spot what you could build with what
+              already exists. Seeing the whole map often shows connections you'd
+              miss when every piece lives in a different corner of the internet.
+            </p>
+            <p className="hm-sign">
+              <img src={ICON} width={36} height={36} alt="" />
+              <External href={LINKEDIN_URL}>Suraj Vijayan</External>
+            </p>
+          </article>
         </section>
       </main>
 
