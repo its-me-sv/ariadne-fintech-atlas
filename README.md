@@ -204,7 +204,7 @@ Every view has a link you can share:
 
 ### Requirements
 
-Node 20 or newer.
+Node 22.12 or newer (the toolchain is Vite 8 and Vitest 5).
 
 ### Run, build, test
 
