@@ -16,18 +16,19 @@ updates:
       build-tooling-security:
         applies-to: security-updates
         patterns: ["vite", "vitest", "@vitejs/*", "typescript", "tsx", "@types/node"]
-      react:
+      # React and the 3D stack share one group: each @react-three/fiber major needs a specific React major.
+      react-3d:
         applies-to: version-updates
-        patterns: ["react", "react-dom", "@types/react", "@types/react-dom"]
-      react-security:
+        patterns: ["react", "react-dom", "@types/react", "@types/react-dom", "three", "three-stdlib", "@types/three", "@react-three/*"]
+      react-3d-security:
         applies-to: security-updates
-        patterns: ["react", "react-dom", "@types/react", "@types/react-dom"]
-      three:
+        patterns: ["react", "react-dom", "@types/react", "@types/react-dom", "three", "three-stdlib", "@types/three", "@react-three/*"]
+      graph:
         applies-to: version-updates
-        patterns: ["three", "three-stdlib", "@types/three", "@react-three/*"]
-      three-security:
+        patterns: ["elkjs", "@xyflow/*"]
+      graph-security:
         applies-to: security-updates
-        patterns: ["three", "three-stdlib", "@types/three", "@react-three/*"]
+        patterns: ["elkjs", "@xyflow/*"]
       map:
         applies-to: version-updates
         patterns: ["d3-*", "@types/d3-*", "topojson-client", "@types/topojson-client", "@types/geojson", "world-atlas"]
