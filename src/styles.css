@@ -213,7 +213,7 @@ p { margin: 0; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 
 /* ---------- home page shell (the page itself styles from src/views/home.css) ---------- */
-.home-loading { position: fixed; inset: 0; background: #f6f1e6; }
+.home-loading { position: fixed; inset: 0; background: #fcfcfb; }
 
 /* ---------- phone notice ---------- */
 .phone-notice { position: fixed; inset: 0; display: grid; place-items: center; padding: max(24px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(24px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: radial-gradient(120% 80% at 50% 0%, #f7f8fe 0%, var(--ground) 60%); overflow-y: auto; }

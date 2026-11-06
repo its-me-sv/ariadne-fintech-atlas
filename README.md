@@ -46,7 +46,7 @@ For education and research, not legal or financial advice. Evidence as of 15 Oct
 
 ![The Ariadne home page: the emblem, the title in classical capitals, a gold thread drawn through a seven-circuit labyrinth, and the atlas numbers below](docs/screenshots/00-home.png)
 
-The front door. It tells the story of Ariadne's thread, explains why the project borrows it, shares a little thread trivia with links to the sources, and leads into each part of the atlas. It is the one page that also works on phones.
+The front door. It shows the atlas in numbers, leads into each part of the atlas, tells the story of Ariadne's thread and explains why the project borrows it. It is the one page that also works on phones.
 
 ### Globe
 

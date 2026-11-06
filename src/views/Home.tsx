@@ -1,4 +1,4 @@
-// The Ariadne home page. Light, parchment and Greek key; no 3D, graph or map code is imported here.
+// The Ariadne home page. Light, white and Greek key; no 3D, graph or map code is imported here.
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { useAtlas, JURS } from "../data/store";
 import { MARKETS } from "../ui/bits";
@@ -151,41 +151,6 @@ export default function Home() {
           </ul>
         </section>
 
-        <section className="hm-sec" aria-labelledby="hm-who">
-          <h2 id="hm-who">Who was Ariadne?</h2>
-          <p className="hm-prose">
-            In Greek myth, <External href={`${WIKI}Ariadne`}>Ariadne</External> was a princess of Crete, the daughter of King Minos.
-            The craftsman Daedalus had built the Labyrinth to hold the Minotaur, a creature half man and half bull.
-            When the Athenian hero Theseus was sent into it, Ariadne gave him a ball of thread so he could find his way back out.
-            He followed the thread and escaped.
-          </p>
-        </section>
-
-        <Meander />
-
-        <section className="hm-sec" aria-labelledby="hm-why">
-          <h2 id="hm-why">Why Ariadne for this project?</h2>
-          <ul className="hm-map">
-            <li><span className="ic"><MythIcon name="labyrinth" /></span><b>The Labyrinth</b><span>The world's payment systems, with their rails, switches, central banks and rulebooks.</span></li>
-            <li><span className="ic"><MythIcon name="thread" /></span><b>The thread</b><span>Each trace follows one payment step by step, and every turn links back to its source.</span></li>
-            <li><span className="ic"><MythIcon name="minotaur" /></span><b>The Minotaur</b><span>Jargon and opacity, lurking at every corner. Far less scary in good light.</span></li>
-            <li><span className="ic"><MythIcon name="theseus" /></span><b>Theseus</b><span>You, finding your way in and back out again.</span></li>
-          </ul>
-        </section>
-
-        <Meander />
-
-        <section className="hm-sec" aria-labelledby="hm-trivia">
-          <h2 id="hm-trivia">Thread trivia</h2>
-          <div className="hm-cards trivia">
-            <article><h3>A clue was once a ball of thread</h3><p>The English word "clue" is a variant of "clew", a ball of thread or yarn. Its meaning grew from the thread Theseus used to find his way out of the labyrinth.</p><External href="https://en.wiktionary.org/wiki/clue">Wiktionary: clue</External></article>
-            <article><h3>A method in logic</h3><p>"Ariadne's thread" names a way of solving problems with many possible routes: keep a record of every choice, so you can backtrack and try the alternatives.</p><External href={`${WIKI}Ariadne%27s_thread_(logic)`}>Wikipedia: Ariadne's thread (logic)</External></article>
-            <article><h3>A crown among the stars</h3><p>The constellation Corona Borealis was generally said to represent the crown that Dionysus gave to Ariadne, set in the heavens.</p><External href={`${WIKI}Corona_Borealis`}>Wikipedia: Corona Borealis</External></article>
-            <article><h3>The palace of Knossos</h3><p>The first palace at Knossos on Crete was built around 1900 BC. In later Greek tradition its complex plan was remembered as the Labyrinth.</p><External href={`${WIKI}Knossos`}>Wikipedia: Knossos</External></article>
-            <article><h3>One path, no dead ends</h3><p>The classical labyrinth is a single path of seven circuits, with no branches and no dead ends, like the one drawn at the top of this page.</p><External href={`${WIKI}Labyrinth`}>Wikipedia: Labyrinth</External></article>
-          </div>
-        </section>
-
         <Meander />
 
         <section className="hm-sec" aria-labelledby="hm-inside">
@@ -207,6 +172,30 @@ export default function Home() {
             })}
           </div>
         </section>
+
+        <Meander />
+
+        <section className="hm-sec" aria-labelledby="hm-who">
+          <h2 id="hm-who">Who was Ariadne?</h2>
+          <p className="hm-prose">
+            In Greek myth, <External href={`${WIKI}Ariadne`}>Ariadne</External> was a princess of Crete, the daughter of King Minos.
+            The craftsman Daedalus had built the Labyrinth to hold the Minotaur, a creature half man and half bull.
+            When the Athenian hero Theseus was sent into it, Ariadne gave him a ball of thread so he could find his way back out.
+            He followed the thread and escaped.
+          </p>
+        </section>
+
+        <Meander />
+
+        <section className="hm-sec" aria-labelledby="hm-why">
+          <h2 id="hm-why">Why Ariadne for this project?</h2>
+          <ul className="hm-map">
+            <li><span className="ic"><MythIcon name="labyrinth" /></span><b>The Labyrinth</b><span>The world's payment systems, with their rails, switches, central banks and rulebooks.</span></li>
+            <li><span className="ic"><MythIcon name="thread" /></span><b>The thread</b><span>Each trace follows one payment step by step, and every turn links back to its source.</span></li>
+            <li><span className="ic"><MythIcon name="minotaur" /></span><b>The Minotaur</b><span>Jargon and opacity, lurking at every corner. Far less scary in good light.</span></li>
+            <li><span className="ic"><MythIcon name="theseus" /></span><b>Theseus</b><span>You, finding your way in and back out again.</span></li>
+          </ul>
+        </section>
       </main>
 
       <footer className="hm-footer">
@@ -214,7 +203,7 @@ export default function Home() {
         <p>Built by <External href="https://surajvijayan.dev">Suraj Vijayan</External>. <External href={REPO_URL}>Source on GitHub</External>.</p>
         <p>Code under the MIT license, evidence dataset under CC BY 4.0. Evidence as of 15 October 2026.</p>
         <p>For education and research, not legal or financial advice.</p>
-        <p className="hm-credit">Myth details from Wikipedia and Wiktionary, linked above.</p>
+        <p className="hm-credit">Myth details from Wikipedia.</p>
       </footer>
     </div>
   );
