@@ -1,0 +1,36 @@
+name: Data correction
+description: Something in the atlas is wrong, out of date or missing a source
+title: "Data: "
+labels: [data]
+body:
+  - type: markdown
+    attributes:
+      value: Every fact in the atlas needs a source, so please include one. Thank you for helping keep it accurate.
+  - type: input
+    id: item
+    attributes:
+      label: Item id
+      description: From the link (for example #node-in-upi or #trace-scn-uk-fps-sip) or from the files in evidence/
+      placeholder: in-upi
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What is wrong
+      description: What the atlas says now, and what it should say
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source link
+      description: A primary source if possible (law, regulator, central bank, scheme rulebook)
+      placeholder: https://
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: Source date
+      description: Publication or last updated date, if shown
