@@ -1,0 +1,44 @@
+# Packages that must move together are grouped, so a security fix or version bump arrives as one
+# pull request instead of several that break each other when merged one at a time
+# (for example vitest raised without vite).
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      build-tooling:
+        applies-to: version-updates
+        patterns: ["vite", "vitest", "@vitejs/*", "typescript", "tsx", "@types/node"]
+      build-tooling-security:
+        applies-to: security-updates
+        patterns: ["vite", "vitest", "@vitejs/*", "typescript", "tsx", "@types/node"]
+      react:
+        applies-to: version-updates
+        patterns: ["react", "react-dom", "@types/react", "@types/react-dom"]
+      react-security:
+        applies-to: security-updates
+        patterns: ["react", "react-dom", "@types/react", "@types/react-dom"]
+      three:
+        applies-to: version-updates
+        patterns: ["three", "three-stdlib", "@types/three", "@react-three/*"]
+      three-security:
+        applies-to: security-updates
+        patterns: ["three", "three-stdlib", "@types/three", "@react-three/*"]
+      map:
+        applies-to: version-updates
+        patterns: ["d3-*", "@types/d3-*", "topojson-client", "@types/topojson-client", "@types/geojson", "world-atlas"]
+      everything-else-security:
+        applies-to: security-updates
+        patterns: ["*"]
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+    groups:
+      actions:
+        patterns: ["*"]
