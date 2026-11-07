@@ -203,6 +203,7 @@ export default function Home() {
                 <img src={ICON} width={132} height={132} alt="" />
               </div>
               <h1 id="hm-title">Ariadne</h1>
+              <p className="hm-say">(Pronounced ar-ee-AD-nee)</p>
               <p className="hm-sub">Fintech Atlas</p>
               <p className="hm-tagline">
                 One thread through the payments labyrinth.
@@ -404,7 +405,7 @@ export default function Home() {
           <h2 id="hm-who">Who was Ariadne?</h2>
           <p className="hm-prose">
             In Greek myth, <External href={`${WIKI}Ariadne`}>Ariadne</External>{" "}
-            was a princess of Crete, the daughter of King Minos. The craftsman
+            (Pronounced ar-ee-AD-nee) was a princess of Crete, the daughter of King Minos. The craftsman
             Daedalus had built the Labyrinth to hold the Minotaur, a creature
             half man and half bull. When the Athenian hero Theseus was sent into
             it, Ariadne gave him a ball of thread so he could find his way back

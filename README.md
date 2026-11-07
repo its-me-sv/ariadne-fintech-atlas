@@ -12,7 +12,7 @@
 
 ![The clay globe with India, the United Kingdom, the United States, the EU, Singapore and China highlighted, each with a pin and a label showing its number of mapped systems](docs/screenshots/01-globe.png)
 
-[Ariadne](https://en.wikipedia.org/wiki/Ariadne) is an interactive atlas of the systems behind everyday payments: the banks, central banks, payment rails, card schemes, regulators and rules that sit between "Pay" and "Paid". You can spin a globe, step into a 3D city for each of six markets, and follow one transaction from the payer's app to final settlement, with every claim linked to its source. It is for students, product people, engineers, policy readers and anyone curious about how money moves. The name comes from the myth: like Ariadne's thread through the Labyrinth, the traces follow one payment through banks, switches and rules.
+[Ariadne](https://en.wikipedia.org/wiki/Ariadne) (Pronounced ar-ee-AD-nee) is an interactive atlas of the systems behind everyday payments: the banks, central banks, payment rails, card schemes, regulators and rules that sit between "Pay" and "Paid". You can spin a globe, step into a 3D city for each of six markets, and follow one transaction from the payer's app to final settlement, with every claim linked to its source. It is for students, product people, engineers, policy readers and anyone curious about how money moves. The name comes from the myth: like Ariadne's thread through the Labyrinth, the traces follow one payment through banks, switches and rules.
 
 For education and research, not legal or financial advice. Evidence as of 15 October 2026. The home page works on phones; the atlas itself is built for laptop and desktop screens.
 
