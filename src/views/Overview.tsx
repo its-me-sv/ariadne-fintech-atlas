@@ -48,6 +48,7 @@ export default function Overview() {
   const travel = useTravel(scope, reduced);
   // the canvas lags the scope while the travel overlay fades in over the old city
   const sceneWorld = travel.sceneScope === "GLOBAL" ? null : worldFor(travel.sceneScope);
+  // biome-ignore lint/correctness/useExhaustiveDependencies: scope is the trigger, not an input. Clearing the pending camera command on every market switch is what resets the camera; removing scope (Biome's suggested fix) would break that.
   useEffect(() => { setCmd(null); }, [scope]);
   const [wide, setWide] = useState(() => innerWidth > 820);
   useEffect(() => { const on = () => setWide(innerWidth > 820); addEventListener("resize", on); return () => removeEventListener("resize", on); }, []);
