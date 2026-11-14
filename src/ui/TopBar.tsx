@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { JURS, useAtlas, inJur } from "../data/store";
+import { JURS, useAtlas, inJur, searchAtlas } from "../data/store";
 import type { Jur } from "../data/types";
 import { go, href, jurToken, useRoute } from "../router";
 import { Icon } from "./icons";
@@ -24,7 +24,7 @@ export function TopBar() {
     return () => window.removeEventListener("keydown", on);
   }, []);
 
-  const hits = useMemo(() => (idx && q.trim().length > 1 ? idx.search.search(q).slice(0, 10) : []), [idx, q]);
+  const hits = useMemo(() => (idx && q.trim().length > 1 ? searchAtlas(idx, q).slice(0, 10) : []), [idx, q]);
 
   const choose = (h: { id: string; kind: string }) => {
     setOpen(false); setQ("");

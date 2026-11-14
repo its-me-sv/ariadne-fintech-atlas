@@ -29,7 +29,7 @@ interface Indexes {
   scenario: Map<string, Scenario>;
   edgesByNode: Map<string, AtlasEdge[]>;
   rulesByNode: Map<string, AtlasRule[]>;
-  search: MiniSearch<SearchHit & { text: string }>;
+  search: MiniSearch<SearchHit & { text: string; aliases?: string }>;
 }
 
 interface State {
@@ -73,16 +73,18 @@ function buildIndexes(core: Core): Indexes {
     if (!list.includes(r)) list.push(r);
     rulesByNode.set(n.id, list);
   }
-  const search = new MiniSearch<SearchHit & { text: string }>({
-    fields: ["title", "text"],
+  // Aliases ("UPI", "FPS") are a field of their own, weighted like the title: they are names, not prose.
+  const search = new MiniSearch<SearchHit & { text: string; aliases?: string }>({
+    fields: ["title", "aliases", "text"],
     storeFields: ["id", "kind", "title", "sub"],
-    searchOptions: { boost: { title: 3 }, prefix: true, fuzzy: 0.15 },
+    searchOptions: { boost: { title: 3, aliases: 3 }, prefix: true, fuzzy: 0.15 },
   });
   search.addAll([
     ...core.nodes.filter((n) => !n.stub).map((n) => ({
       id: n.id, kind: "node" as const, title: n.canonicalName,
       sub: `${prettyType(n.type)}${n.jurisdictions?.length ? `, ${n.jurisdictions.join(", ")}` : ""}`,
-      text: [n.id, ...(n.aliases ?? []), n.purpose ?? "", n.operator ?? ""].join(" "),
+      aliases: (n.aliases ?? []).join(" "),
+      text: [n.id, n.purpose ?? "", n.operator ?? ""].join(" "),
     })),
     ...core.rules.map((r) => ({
       id: r.id, kind: "rule" as const, title: r.canonicalName,
@@ -95,6 +97,20 @@ function buildIndexes(core: Core): Indexes {
     })),
   ]);
   return { node, rule, scenario, edgesByNode, rulesByNode, search };
+}
+
+const normal = (s: string) => s.trim().toLowerCase();
+
+/**
+ * Search the atlas. A system whose alias is exactly the query ("UPI") comes first; everything else
+ * keeps the search engine's relevance order.
+ */
+export function searchAtlas(idx: Indexes, q: string) {
+  const want = normal(q);
+  const hits = idx.search.search(q);
+  const exact = (h: { id: string; kind?: string }) =>
+    h.kind === "node" && (idx.node.get(h.id)?.aliases ?? []).some((a) => normal(a) === want);
+  return [...hits.filter(exact), ...hits.filter((h) => !exact(h))];
 }
 
 export const useAtlas = create<State>((set, get) => ({
