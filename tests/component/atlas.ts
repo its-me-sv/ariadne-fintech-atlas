@@ -1,11 +1,13 @@
 // Loads the real generated atlas data (public/data, built by `npm run data`) through the store's
 // real load() path, by stubbing fetch. Component tests then run against the same data users see.
 import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { vi } from "vitest";
 import { useAtlas } from "../../src/data/store";
 import type { Core } from "../../src/data/types";
 
-const file = (name: string) => readFileSync(new URL(`../../public/data/${name}`, import.meta.url), "utf8");
+// Resolved from the project root: under jsdom, import.meta.url is not a file URL for this module.
+const file = (name: string) => readFileSync(resolve(process.cwd(), "public", "data", name), "utf8");
 
 let cache: { core: string; evidence: string } | null = null;
 function data() {
