@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { TopBar } from "../../src/ui/TopBar";
 import { DetailPanel } from "../../src/ui/DetailPanel";
 import { useAtlas, inJur } from "../../src/data/store";
-import { loadAtlas } from "./atlas";
+import { loadAtlas, loaded } from "./atlas";
 
 const searchBox = () => screen.getByRole("searchbox", { name: "Search the atlas" });
 const scopeButton = () => screen.getByRole("button", { name: /systems, .* rules mapped/ });
@@ -62,8 +62,9 @@ describe("TopBar search", () => {
     await user.type(searchBox(), "GBP to INR remittance via serial");
     const listbox = await screen.findByRole("listbox");
     const trace = within(listbox).getAllByRole("option").find((o) => o.textContent?.includes("Transaction trace"));
-    expect(trace).toBeDefined();
-    await user.pointer({ keys: "[MouseLeft>]", target: trace! });
+    if (!trace) throw new Error("no transaction trace in the results");
+    // results open on mousedown (before the input's blur closes the list), so press without releasing
+    await user.pointer({ keys: "[MouseLeft>]", target: trace });
     expect(location.hash).toBe("#trace-scn-gbp-inr-serial");
   });
 
@@ -87,7 +88,7 @@ describe("TopBar market switcher", () => {
   beforeEach(async () => { await loadAtlas(); });
 
   const countLabel = (jur: Parameters<typeof inJur>[1]) => {
-    const core = useAtlas.getState().core!;
+    const { core } = loaded();
     const nodes = core.nodes.filter((n) => !n.stub && inJur(n.jurisdictions, jur)).length;
     const rules = core.rules.filter((r) => inJur(r.jurisdictions, jur)).length;
     return `${nodes} systems, ${rules} rules mapped`;

@@ -38,6 +38,13 @@ export function stubAtlasFetch() {
   return mock;
 }
 
+/** The loaded store, or a clear failure if a test forgot to call loadAtlas(). */
+export function loaded() {
+  const { core, idx } = useAtlas.getState();
+  if (!core || !idx) throw new Error("atlas data not loaded: call loadAtlas() first");
+  return { core, idx };
+}
+
 /** Load core and evidence into the store, exactly as the app does on startup. */
 export async function loadAtlas() {
   stubAtlasFetch();
