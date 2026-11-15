@@ -68,4 +68,6 @@ test("this browser really has WebGL (SwiftShader in headless CI)", async ({ page
   });
   expect(gl, "no WebGL context").not.toBeNull();
   test.info().annotations.push({ type: "webgl-renderer", description: gl ?? "" });
+  // printed so the CI log records which renderer ran the 3D tests
+  console.log(`WebGL renderer: ${gl}`);
 });
