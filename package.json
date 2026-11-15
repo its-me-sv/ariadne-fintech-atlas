@@ -14,7 +14,15 @@
     "build": "npm run data && tsc --noEmit && vite build",
     "build:artifact": "npm run build && node scripts/prepare-artifact.mjs",
     "icons": "node scripts/make-icons.mjs",
-    "test": "vitest run"
+    "lint": "biome lint",
+    "typecheck": "tsc --noEmit",
+    "pretest": "npm run data",
+    "test": "vitest run",
+    "test:unit": "vitest run --project unit",
+    "test:component": "npm run data && vitest run --project component",
+    "test:coverage": "npm run data && vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:all": "npm run lint && npm run typecheck && npm run test:coverage && npm run test:e2e"
   },
   "dependencies": {
     "@react-three/drei": "9.122.0",
@@ -32,6 +40,12 @@
     "zustand": "5.0.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.6.7",
+    "@playwright/test": "1.65.1",
+    "@testing-library/dom": "10.4.2",
+    "@testing-library/jest-dom": "7.0.1",
+    "@testing-library/react": "16.3.3",
+    "@testing-library/user-event": "14.6.10",
     "@types/d3-geo": "3.1.0",
     "@types/geojson": "7946.0.14",
     "@types/node": "26.6.6",
@@ -40,6 +54,8 @@
     "@types/three": "0.170.0",
     "@types/topojson-client": "3.1.5",
     "@vitejs/plugin-react": "6.2.1",
+    "@vitest/coverage-v8": "5.1.0",
+    "jsdom": "31.0.1",
     "png-to-ico": "2.1.8",
     "sharp": "0.35.5",
     "tsx": "4.23.15",

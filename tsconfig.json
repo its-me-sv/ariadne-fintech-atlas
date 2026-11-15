@@ -14,5 +14,5 @@
     "noEmit": true,
     "types": ["node"]
   },
-  "include": ["src", "scripts", "tests", "evidence/schema.ts"]
+  "include": ["src", "scripts", "tests", "e2e", "playwright.config.ts", "evidence/schema.ts"]
 }

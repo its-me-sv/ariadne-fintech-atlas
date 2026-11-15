@@ -30,5 +30,27 @@ export default defineConfig({
       },
     },
   },
-  test: { environment: "node" },
+  test: {
+    // Two projects: pure logic and data checks run in Node; React components render in jsdom.
+    projects: [
+      { extends: true, test: { name: "unit", environment: "node", include: ["tests/*.test.ts"] } },
+      {
+        extends: true,
+        test: {
+          name: "component",
+          environment: "jsdom",
+          include: ["tests/component/**/*.test.{ts,tsx}"],
+          setupFiles: ["tests/component/setup.ts"],
+        },
+      },
+    ],
+    coverage: {
+      provider: "v8",
+      // Everything under src counts, including the Three.js scenes. Nothing is excluded to flatter the number.
+      include: ["src/**/*.{ts,tsx}"],
+      exclude: ["src/vite-env.d.ts"],
+      reporter: ["text-summary", "text", "html", "json-summary", "lcov"],
+      reportsDirectory: "coverage",
+    },
+  },
 } as never);
